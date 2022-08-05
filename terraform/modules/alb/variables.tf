@@ -37,12 +37,12 @@ variable "enable_deletion_protection" {
 }
 
 variable "security_group" {
-  type = set(string)
+  type        = set(string)
   description = "The ID of the security group associated with the load balancer"
 }
 
 variable "subnets" {
-  type = set(string)
+  type        = set(string)
   description = "The subnets associated with the load balancer"
 }
 
