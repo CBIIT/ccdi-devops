@@ -14,6 +14,6 @@ variable "level" {
 }
 
 variable "target_log_bucket" {
-  type = string 
+  type        = string
   description = "The name of the bucket where you want Amazon S3 to store server access logs (provide the ID)"
 }
