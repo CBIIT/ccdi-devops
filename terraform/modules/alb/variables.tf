@@ -1,6 +1,10 @@
+##################################
+#  Required Variables ############
+##################################
+
 variable "program" {
   type        = string
-  description = "The name of the program that the ALB belongs to"
+  description = "The name of the program this app or project supports (i.e. ccdi)"
 }
 
 variable "app" {
@@ -10,13 +14,32 @@ variable "app" {
 
 variable "tier" {
   type        = string
-  description = "The name of the tier or environment that the load balancer belongs to"
+  description = "The tier or environment that the load balancer belongs to"
 }
 
 variable "internal" {
   type        = bool
   description = "Set to true for non-prod accounts that do have allowable internet egress"
 }
+
+variable "security_group_id" {
+  type        = set(string)
+  description = "The ID of the security group associated with the load balancer"
+}
+
+variable "subnets" {
+  type        = set(string)
+  description = "The subnets associated with the load balancer"
+}
+
+variable "access_logs_bucket" {
+  type        = string
+  description = "The log bucket to send S3 access logs to"
+}
+
+##################################
+#  Optional Variables ############
+##################################
 
 variable "load_balancer_type" {
   type        = string
@@ -34,21 +57,6 @@ variable "enable_deletion_protection" {
   type        = bool
   description = "If true, deletion of the load balancer will be disabled via the AWS API. This will prevent Terraform from deleting the load balancer. Defaults to false."
   default     = true
-}
-
-variable "security_group" {
-  type        = set(string)
-  description = "The ID of the security group associated with the load balancer"
-}
-
-variable "subnets" {
-  type        = set(string)
-  description = "The subnets associated with the load balancer"
-}
-
-variable "access_logs_bucket" {
-  type        = string
-  description = "The log bucket to send S3 access logs to"
 }
 
 variable "timeout_create" {
