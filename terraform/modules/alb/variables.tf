@@ -37,6 +37,16 @@ variable "access_logs_bucket" {
   description = "The log bucket to send S3 access logs to"
 }
 
+variable "alb_listener_ssl_policy" {
+  type = string 
+  description = "The ssl policy to associate with the HTTPS listener for the ALB"
+}
+
+variable "certificate_arn" {
+  type = string 
+  description = "The ARN of the certificate manager domain certificate for the ALB"
+}
+
 ##################################
 #  Optional Variables ############
 ##################################

@@ -8,6 +8,7 @@ resource "aws_lb" "alb" {
   security_groups            = var.security_group_id
   subnets                    = var.subnets
 
+
   access_logs {
     bucket  = var.access_logs_bucket
     prefix  = "${var.program}/${var.tier}/${var.app}/alb-access-logs/"
