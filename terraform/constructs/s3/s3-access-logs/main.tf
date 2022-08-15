@@ -28,8 +28,8 @@ data "aws_iam_policy_document" "log_delivery" {
     }
     actions = ["s3:PutObject"]
     resources = [
-      "${module.s3.id}",
-      "${module.s3.id}/*"
+      "${module.s3.arn}",
+      "${module.s3.arn}/*"
     ]
   }
 }
