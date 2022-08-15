@@ -10,6 +10,5 @@ module "s3" {
 resource "aws_s3_bucket_logging" "s3" {
   bucket        = module.s3.id
   target_bucket = var.target_log_bucket
-  target_prefix = "${var.level}/s3-access-logs/${aws_s3_bucket.s3.bucket}/"
+  target_prefix = "${var.level}/s3-access-logs/${module.s3.bucket}/"
 }
-
