@@ -4,6 +4,11 @@ output "id" {
 }
 
 output "arn" {
-  value = aws_s3_bucket.s3.arn 
+  value       = module.s3.arn
   description = "The S3 Bucket ARN"
+}
+
+output "bucket" {
+  value       = module.s3.bucket
+  description = "The S3 Bucket name (bucket)"
 }
