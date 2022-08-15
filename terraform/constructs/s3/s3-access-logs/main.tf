@@ -1,3 +1,7 @@
+locals {
+  lifecycle_rule_expiration_days = var.level == "prod" ? 90 : 14
+}
+
 module "s3" {
   source = "../../module/s3/"
 
@@ -27,5 +31,18 @@ data "aws_iam_policy_document" "log_delivery" {
       "${module.s3.id}",
       "${module.s3.id}/*"
     ]
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "s3" {
+  bucket = module.s3.id
+
+  rule {
+    id     = "expire_objects"
+    status = "Enabled"
+
+    expiration {
+      days = local.lifecycle_rule_expiration_days
+    }
   }
 }
