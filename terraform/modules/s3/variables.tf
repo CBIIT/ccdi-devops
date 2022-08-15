@@ -27,26 +27,31 @@ variable "bucket_name" {
 ##################################
 
 variable "block_public_acls" {
-  type    = bool
-  default = true
+  type        = bool
+  description = "Whether S3 should block public ACLs for this bucket"
+  default     = true
 }
 
 variable "block_public_policy" {
-  type    = bool
-  default = true
+  type        = bool
+  description = "Whether S3 should block public bucket policies for this bucket"
+  default     = true
 }
 
 variable "ignore_public_acls" {
-  type    = bool
-  default = true
+  type        = bool
+  description = "Whether S3 should ignore public ACLs for this bucket"
+  default     = true
 }
 
 variable "restrict_public_buckets" {
-  type    = bool
-  default = true
+  type        = bool
+  description = "Whether S3 should restrict public bucket policies for this bucket"
+  default     = true
 }
 
 variable "version_configuration_status" {
-  type    = string
-  default = "Enabled"
+  type        = string
+  description = "The versioning state of the bucket. Can be 'Enabled', 'Disabled', or 'Suspended'"
+  default     = "Enabled"
 }

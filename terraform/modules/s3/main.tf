@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "s3" {
-	# checkov:skip=CKV_AWS_145: AES256 is sufficient, KMS not required
-	# checkov:skip=CKV_AWS_144: Cross-region replication is not permitted at NCI
+  # checkov:skip=CKV_AWS_145: AES256 is sufficient, KMS not required
+  # checkov:skip=CKV_AWS_144: Cross-region replication is not permitted at NCI
   bucket = "${var.program}-${var.app}-${var.level}-${var.bucket_name}"
 }
 
@@ -22,7 +22,7 @@ resource "aws_s3_bucket_versioning" "s3" {
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "s3" {
   bucket = aws_s3_bucket.s3.id
-  
+
   rule {
     apply_server_side_encryption_by_default {
       sse_algorithm = "AES256"
