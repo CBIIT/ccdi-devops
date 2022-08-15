@@ -24,6 +24,7 @@ resource "aws_lb_listener" "http" {
   port              = var.http_port
   protocol          = var.http_protocol
 
+
   default_action {
     type = "redirect"
 

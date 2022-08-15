@@ -14,12 +14,12 @@ variable "account_level" {
 }
 
 variable "repo_type" {
-  type = string 
+  type        = string
   description = "The repository type, based on images stored (frontend, backend, files, etc.)"
 }
 
 variable "image_tag_mutability" {
-  type = string 
+  type        = string
   description = "The tag mutability setting for the repository. Must be MUTABLE or IMMUTABLE"
-  default = "MUTABLE"
+  default     = "MUTABLE"
 }
