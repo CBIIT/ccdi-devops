@@ -8,9 +8,10 @@ resource "aws_lb" "alb" {
   security_groups            = var.security_group_id
   subnets                    = var.subnets
 
+
   access_logs {
     bucket  = var.access_logs_bucket
-    prefix  = "${var.program}-${var.app}-${var.tier}-alb-access-logs"
+    prefix  = "${var.program}/${var.tier}/${var.app}/alb-access-logs/"
     enabled = true
   }
 
@@ -40,6 +41,8 @@ resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.alb.arn
   port              = var.https_port
   protocol          = var.https_protocol
+  ssl_policy        = var.alb_listener_ssl_policy
+  certificate_arn   = var.domain_certificate_arn
 
   default_action {
     type = "fixed-response"
