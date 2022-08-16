@@ -2,9 +2,14 @@
 #  Required Variables ############
 ##################################
 
-variable "program" {
+variable "access_logs_bucket" {
   type        = string
-  description = "The name of the program this app or project supports (i.e. ccdi)"
+  description = "The log bucket to send S3 access logs to"
+}
+
+variable "alb_listener_ssl_policy" {
+  type        = string
+  description = "The ssl policy to associate with the HTTPS listener for the ALB"
 }
 
 variable "app" {
@@ -12,14 +17,19 @@ variable "app" {
   description = "The name of the application that the load balancer belongs to"
 }
 
-variable "tier" {
+variable "domain_certificate_arn" {
   type        = string
-  description = "The tier or environment that the load balancer belongs to"
+  description = "The ARN of the certificate manager domain certificate for the ALB"
 }
 
 variable "internal" {
   type        = bool
   description = "Set to true for non-prod accounts that do have allowable internet egress"
+}
+
+variable "program" {
+  type        = string
+  description = "The name of the program this app or project supports (i.e. ccdi)"
 }
 
 variable "security_group_id" {
@@ -32,19 +42,9 @@ variable "subnets" {
   description = "The subnets associated with the load balancer"
 }
 
-variable "access_logs_bucket" {
+variable "tier" {
   type        = string
-  description = "The log bucket to send S3 access logs to"
-}
-
-variable "alb_listener_ssl_policy" {
-  type        = string
-  description = "The ssl policy to associate with the HTTPS listener for the ALB"
-}
-
-variable "domain_certificate_arn" {
-  type        = string
-  description = "The ARN of the certificate manager domain certificate for the ALB"
+  description = "The tier or environment that the load balancer belongs to"
 }
 
 ##################################
