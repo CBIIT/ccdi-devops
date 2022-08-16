@@ -22,6 +22,10 @@ variable "tier" {
   description = "The tier or environment that the load balancer belongs to"
 }
 
+variable "port" {
+  type = number
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID for the target group"
