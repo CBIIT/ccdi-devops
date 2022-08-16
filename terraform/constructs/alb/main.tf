@@ -69,3 +69,5 @@ module "backend_target_group" {
   target_description               = var.backend_target_description
   vpc_id                           = var.vpc_id
 }
+
+# need to add security group
