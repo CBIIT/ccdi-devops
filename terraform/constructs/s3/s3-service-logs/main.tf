@@ -3,7 +3,7 @@ locals {
 }
 
 module "s3" {
-  source = "../../module/s3/"
+  source = "../../../modules/s3/"
 
   program     = var.program
   app         = var.app
