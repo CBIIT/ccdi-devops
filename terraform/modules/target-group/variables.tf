@@ -7,7 +7,7 @@ variable "app" {
   description = "The name of the application that the load balancer belongs to"
 }
 
-variable "port" {
+variable "target_group_port" {
   type = number
 }
 
@@ -16,14 +16,14 @@ variable "program" {
   description = "The name of the program this app or project supports (i.e. ccdi)"
 }
 
-variable "tier" {
-  type        = string
-  description = "The tier or environment that the load balancer belongs to"
-}
-
 variable "target_description" {
   type        = string
   description = "Describing the target, such as frontend or backend"
+}
+
+variable "tier" {
+  type        = string
+  description = "The tier or environment that the load balancer belongs to"
 }
 
 variable "vpc_id" {
@@ -40,14 +40,14 @@ variable "health_check_path" {
   default = "/"
 }
 
-variable "health_check_protocol" {
-  type    = string
-  default = "HTTP"
-}
-
 variable "health_check_port" {
   type    = string
   default = "traffic-port"
+}
+
+variable "health_check_protocol" {
+  type    = string
+  default = "HTTP"
 }
 
 variable "health_check_matcher" {

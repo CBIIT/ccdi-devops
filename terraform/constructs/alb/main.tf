@@ -29,8 +29,8 @@ module "frontend_target_group" {
 
   app                              = var.app
   health_check_path                = var.health_check_path
-  health_check_protocol            = var.frontend_health_check_protocol
-  health_check_port                = var.frontend_health_check_port
+  health_check_protocol            = var.protocol
+  health_check_port                = var.health_check_port
   health_check_matcher             = var.health_check_matcher
   health_check_interval            = var.health_check_interval
   health_check_timeout             = var.health_check_timeout
@@ -40,7 +40,7 @@ module "frontend_target_group" {
   stickiness_cookie_duration       = var.stickiness_cookie_duration
   stickiness_enabled               = var.stickiness_enabled
   stickiness_type                  = var.stickiness_type
-  port                             = var.frontend_port
+  target_group_port                = var.frontend_port
   program                          = var.program
   tier                             = var.tier
   target_description               = var.frontend_target_description
@@ -52,8 +52,8 @@ module "backend_target_group" {
 
   app                              = var.app
   health_check_path                = var.health_check_path
-  health_check_protocol            = var.backend_health_check_protocol
-  health_check_port                = var.backend_health_check_port
+  health_check_protocol            = var.health_check_protocol
+  health_check_port                = var.health_check_port
   health_check_matcher             = var.health_check_matcher
   health_check_interval            = var.health_check_interval
   health_check_timeout             = var.health_check_timeout
