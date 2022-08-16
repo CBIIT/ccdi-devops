@@ -17,9 +17,17 @@ variable "app" {
   description = "The name of the application that the load balancer belongs to"
 }
 
+variable "backend_port" {
+  type = string
+}
+
 variable "domain_certificate_arn" {
   type        = string
   description = "The ARN of the certificate manager domain certificate for the ALB"
+}
+
+variable "frontend_port" {
+  type = string 
 }
 
 variable "internal" {
