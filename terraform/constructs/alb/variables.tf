@@ -64,10 +64,6 @@ variable "subnets" {
   description = "The subnets associated with the load balancer"
 }
 
-variable "target_group_port" {
-  type = number
-}
-
 variable "tier" {
   type        = string
   description = "The tier or environment that the load balancer belongs to"
