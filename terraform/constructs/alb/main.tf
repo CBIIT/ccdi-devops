@@ -1,5 +1,5 @@
 module "alb" {
-  source = "../../../modules/alb"
+  source = "../../modules/alb"
 
   access_logs_bucket          = var.access_logs_bucket
   app                         = var.app
