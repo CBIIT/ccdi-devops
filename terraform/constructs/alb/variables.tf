@@ -19,6 +19,7 @@ variable "app" {
 
 variable "backend_port" {
   type = string
+  default = "8080"
 }
 
 variable "domain_certificate_arn" {
@@ -28,6 +29,7 @@ variable "domain_certificate_arn" {
 
 variable "frontend_port" {
   type = string 
+  default = "80"
 }
 
 variable "internal" {
