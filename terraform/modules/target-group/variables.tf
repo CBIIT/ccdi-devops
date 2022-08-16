@@ -7,10 +7,6 @@ variable "app" {
   description = "The name of the application that the load balancer belongs to"
 }
 
-variable "target_group_port" {
-  type = number
-}
-
 variable "program" {
   type        = string
   description = "The name of the program this app or project supports (i.e. ccdi)"
