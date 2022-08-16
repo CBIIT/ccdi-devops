@@ -3,7 +3,7 @@ locals {
 }
 
 module "s3" {
-  source = "./terraform/constructs/s3/s3-access-logs/"
+  source = "../../../modules/s3/"
 
   program     = var.program
   app         = var.app
