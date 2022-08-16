@@ -22,6 +22,12 @@ variable "backend_port" {
   default = "8080"
 }
 
+variable "backend_target_description" {
+  type        = string
+  description = "Describing the target, such as frontend or backend"
+  default = "backend"
+}
+
 variable "domain_certificate_arn" {
   type        = string
   description = "The ARN of the certificate manager domain certificate for the ALB"
@@ -30,6 +36,12 @@ variable "domain_certificate_arn" {
 variable "frontend_port" {
   type = string 
   default = "80"
+}
+
+variable "frontend_target_description" {
+  type        = string
+  description = "Describing the target, such as frontend or backend"
+  default = "frontend"
 }
 
 variable "internal" {
@@ -50,11 +62,6 @@ variable "security_group_id" {
 variable "subnets" {
   type        = set(string)
   description = "The subnets associated with the load balancer"
-}
-
-variable "target_description" {
-  type        = string
-  description = "Describing the target, such as frontend or backend"
 }
 
 variable "target_group_port" {
