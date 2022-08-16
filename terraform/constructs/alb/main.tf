@@ -40,7 +40,7 @@ module "frontend_target_group" {
   stickiness_cookie_duration       = var.stickiness_cookie_duration
   stickiness_enabled               = var.stickiness_enabled
   stickiness_type                  = var.stickiness_type
-  target_group_port                = var.frontend_port
+  port                             = var.frontend_port
   program                          = var.program
   tier                             = var.tier
   target_description               = var.frontend_target_description
