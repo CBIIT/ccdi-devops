@@ -6,7 +6,7 @@ resource "aws_lb" "alb" {
   drop_invalid_header_fields = var.drop_invalid_header_fields
   enable_deletion_protection = var.enable_deletion_protection
   security_groups            = var.security_group_id
-  subnets                    = var.subnets
+  subnets                    = var.public_subnets
 
   access_logs {
     bucket  = var.access_logs_bucket

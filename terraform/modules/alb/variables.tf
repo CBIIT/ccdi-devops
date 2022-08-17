@@ -27,7 +27,7 @@ variable "security_group_id" {
   description = "The ID of the security group associated with the load balancer"
 }
 
-variable "subnets" {
+variable "public_subnets" {
   type        = set(string)
   description = "The subnets associated with the load balancer"
 }

@@ -20,7 +20,7 @@ module "alb" {
   security_group_id           = var.security_group_id
   timeout_create              = var.timeout_create
   alb_listener_ssl_policy     = var.alb_listener_ssl_policy
-  subnets                     = var.public_subnets
+  public_subnets              = var.public_subnets
   tier                        = var.tier
 }
 
