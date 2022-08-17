@@ -13,7 +13,7 @@ resource "aws_security_group_rule" "alb_inbound_http" {
   description       = "Allow inbound http traffic from the internet or nih network"
   type              = "ingress"
   from_port         = 80
-  protocol          = "TCP"
+  protocol          = "tcp"
   to_port           = 80
   cidr_blocks       = var.security_group_ingress_cidr
 }
@@ -23,7 +23,7 @@ resource "aws_security_group_rule" "alb_inbound_https" {
   description       = "Allow inbound https traffic from the internet or nih network"
   type              = "ingress"
   from_port         = 443
-  protocol          = "TCP"
+  protocol          = "tcp"
   to_port           = 443
   cidr_blocks       = var.security_group_ingress_cidr
 }
