@@ -38,11 +38,6 @@ variable "program" {
   description = "The name of the program this app or project supports (i.e. ccdi)"
 }
 
-variable "security_group_id" {
-  type        = set(string)
-  description = "The ID of the security group associated with the load balancer"
-}
-
 variable "public_subnets" {
   type        = set(string)
   description = "The subnets associated with the load balancer"
