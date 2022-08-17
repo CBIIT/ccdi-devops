@@ -1,6 +1,6 @@
 resource "aws_lb" "alb" {
   # checkov:skip=CKV_AWS_152: ADD REASON
-  name                       = "${var.program}-${var.app}-${var.tier}-alb"
+  name                       = "${var.program}-${var.app}-${var.tier}-lb"
   internal                   = var.internal
   load_balancer_type         = var.load_balancer_type
   drop_invalid_header_fields = var.drop_invalid_header_fields
