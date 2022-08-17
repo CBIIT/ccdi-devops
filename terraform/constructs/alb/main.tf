@@ -2,6 +2,7 @@ module "alb" {
   source = "../../modules/alb"
 
   access_logs_bucket          = var.access_logs_bucket
+  alb_listener_ssl_policy     = var.alb_listener_ssl_policy
   app                         = var.app
   domain_certificate_arn      = var.domain_certificate_arn
   drop_invalid_header_fields  = var.drop_invalid_header_fields
@@ -19,7 +20,6 @@ module "alb" {
   program                     = var.program
   security_group_id           = var.security_group_id
   timeout_create              = var.timeout_create
-  alb_listener_ssl_policy     = var.alb_listener_ssl_policy
   public_subnets              = var.public_subnets
   tier                        = var.tier
 }

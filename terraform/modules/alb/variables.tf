@@ -57,7 +57,7 @@ variable "load_balancer_type" {
   default     = "application"
 }
 
-variable "drop_invalid_header" {
+variable "drop_invalid_header_fields" {
   type        = bool
   description = "Indecates whether or not headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false)"
   default     = true
