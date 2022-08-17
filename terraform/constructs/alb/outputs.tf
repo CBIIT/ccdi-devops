@@ -3,7 +3,7 @@ output "alb_id" {
 }
 
 output "alb_arn" {
-  value = module.alb_arn
+  value = module.alb.arn
 }
 
 output "security_group_id" {
