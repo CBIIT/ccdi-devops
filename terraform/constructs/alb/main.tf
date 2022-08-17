@@ -4,7 +4,7 @@ module "alb" {
   access_logs_bucket          = var.access_logs_bucket
   app                         = var.app
   domain_certificate_arn      = var.domain_certificate_arn
-  drop_invalid_header         = var.drop_invalid_header
+  drop_invalid_header_fields  = var.drop_invalid_header_fields
   enable_deletion_protection  = var.enable_deletion_protection
   fixed_response_content_type = var.fixed_response_content_type
   fixed_response_message_body = var.fixed_response_message_body
