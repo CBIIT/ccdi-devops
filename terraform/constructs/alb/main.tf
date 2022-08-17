@@ -1,5 +1,5 @@
 module "alb" {
-  source = "../../modules/alb"
+  source = "../../modules/alb/"
 
   access_logs_bucket          = var.access_logs_bucket
   alb_listener_ssl_policy     = var.alb_listener_ssl_policy
@@ -25,7 +25,7 @@ module "alb" {
 }
 
 module "frontend_target_group" {
-  source = "../../modules/target-group"
+  source = "../../modules/target-group/"
 
   app                              = var.app
   health_check_path                = var.health_check_path
@@ -48,7 +48,7 @@ module "frontend_target_group" {
 }
 
 module "backend_target_group" {
-  source = "../../modules/target-group"
+  source = "../../modules/target-group/"
 
   app                              = var.app
   health_check_path                = var.health_check_path
@@ -70,4 +70,12 @@ module "backend_target_group" {
   vpc_id                           = var.vpc_id
 }
 
-# need to add security group
+module "security_group" {
+  source = "../../modules/security-groups/alb-sg/"
+
+  app                         = var.app
+  program                     = var.program
+  security_group_ingress_cidr = var.security_group_ingress_cidr
+  tier                        = var.tier
+  vpc_id                      = var.vpc_id
+}
