@@ -18,7 +18,7 @@ module "alb" {
   internal                    = var.internal
   load_balancer_type          = var.load_balancer_type
   program                     = var.program
-  security_group_id           = var.security_group_id
+  security_group_id           = [var.module.security_group.security_group_id]
   timeout_create              = var.timeout_create
   public_subnets              = var.public_subnets
   tier                        = var.tier
