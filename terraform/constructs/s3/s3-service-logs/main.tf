@@ -1,6 +1,5 @@
 locals {
   lifecycle_rule_expiration_days = var.level == "prod" ? 90 : 14
-  alb_log_prefix = "${var.program}-${var.app}-${var.level}-alb"
   s3_log_prefix = "${var.program}-${var.app}-${var.level}-s3"
 }
 
@@ -10,7 +9,7 @@ data "aws_iam_policy_document" "alb" {
   statement {
     actions = [ "s3:PutObject" ]
     effect = "Allow" 
-    resources = [ "${module.s3.arn}/${local.alb_log_prefix}/AWSLogs/${var.account_id}/*" ]
+    resources = [ "${module.s3.arn}/AWSLogs/${var.account_id}/*" ]
     principals {
       type = "AWS" 
       identifiers = [ "${data.aws_elb_service_account.main.arn}" ]
