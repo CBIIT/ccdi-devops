@@ -10,7 +10,7 @@ resource "aws_lb" "alb" {
 
   access_logs {
     bucket  = var.access_logs_bucket
-    prefix  = "${var.program}/${var.tier}/${var.app}/alb-access-logs/"
+    prefix  = "${var.program}/${var.tier}/${var.app}/alb-access-logs"
     enabled = true
   }
 
