@@ -1,7 +1,7 @@
 locals {
   lifecycle_rule_expiration_days = var.level == "prod" ? 90 : 14
-  alb_log_prefix = "${var.program}-${var.app}-${var.tier}-alb"
-  s3_log_prefix = "${var.program}-${var.app}-${var.tier}-s3"
+  alb_log_prefix = "${var.program}-${var.app}-${var.level}-alb"
+  s3_log_prefix = "${var.program}-${var.app}-${var.level}-s3"
 }
 
 data "aws_elb_service_account" "main" {}
