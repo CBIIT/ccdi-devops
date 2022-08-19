@@ -7,9 +7,9 @@ data "aws_elb_service_account" "main" {}
 
 data "aws_iam_policy_document" "alb" {
   statement {
-    actions   = ["s3:PutObject"]
-    effect    = "Allow"
-    resources = ["${module.s3.arn}/AWSLogs/${var.account_id}/*"]
+    actions = [ "s3:PutObject" ]
+    effect = "Allow" 
+    resources = [ "${module.s3.arn}/*" ]
     principals {
       type        = "AWS"
       identifiers = ["${data.aws_elb_service_account.main.arn}"]
