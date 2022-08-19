@@ -24,7 +24,8 @@ resource "aws_security_group_rule" "outbound_all" {
 }
 
 resource "aws_security_group_rule" "inbound_nih_network" {
-  count             = var.allow_nih_access ? 1 : 0
+  count = var.allow_nih_access ? 1 : 0
+
   security_group_id = aws_security_group.opensearch.id
   description       = "Allowing access over HTTPS from NIH Network"
   type              = "ingress"

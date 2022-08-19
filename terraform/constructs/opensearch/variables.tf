@@ -9,7 +9,7 @@ variable "app" {
 
 variable "engine_version" {
   type        = string
-  description = "The engine version of the OpenSearch cluster (i.e. '1.2')"
+  description = "The engine version of the OpenSearch cluster (i.e. '1.3')"
 }
 
 variable "hot_node_count" {

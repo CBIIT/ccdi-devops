@@ -2,18 +2,17 @@ module "opensearch" {
   source = "../../modules/opensearch/"
 
   # Required Variables
-  app                          = var.app
-  engine_version               = var.engine_version
-  hot_node_count               = var.hot_node_count
-  hot_node_type                = var.hot_node_type
-  master_node_count            = var.master_node_count
-  master_node_enabled          = var.master_node_enabled
-  master_node_type             = var.master_node_type
-  multi_az                     = var.multi_az
-  opensearch_security_group_id = module.opensearch_security_group.id
-  program                      = var.program
-  subnet_ids                   = var.subnet_ids
-  tier                         = var.tier
+  app                 = var.app
+  engine_version      = var.engine_version
+  hot_node_count      = var.hot_node_count
+  hot_node_type       = var.hot_node_type
+  master_node_count   = var.master_node_count
+  master_node_enabled = var.master_node_enabled
+  master_node_type    = var.master_node_type
+  multi_az            = var.multi_az
+  program             = var.program
+  subnet_ids          = var.subnet_ids
+  tier                = var.tier
 
   # Optional Variables
   availability_zone_count        = var.availability_zone_count
@@ -28,6 +27,7 @@ module "opensearch" {
   enforce_https                  = var.enforce_https
   iam_prefix                     = var.iam_prefix
   log_retention                  = var.log_retention
+  opensearch_security_group_id   = module.opensearch_security_group.id
   snapshot_hour                  = var.snapshot_hour
   warm_node_count                = var.warm_node_count
   warm_node_enabled              = var.warm_node_enabled
