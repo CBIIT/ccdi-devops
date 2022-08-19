@@ -66,6 +66,12 @@ variable "vpc_id" {
 #  Optional Variables ############
 ##################################
 
+variable "allow_nih_access" {
+  type        = bool
+  description = "Set to true to allow traffic from the NIH network"
+  default     = false
+}
+
 variable "availability_zone_count" {
   type        = number
   description = "The number of availability zones to distribute cluster resources across"

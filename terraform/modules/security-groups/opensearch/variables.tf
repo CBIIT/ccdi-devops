@@ -1,3 +1,9 @@
+variable "allow_nih_access" {
+  type        = bool
+  description = "Set to true to allow traffic from the NIH network"
+  default     = false
+}
+
 variable "app" {
   type        = string
   description = "The name of the application that the load balancer belongs to"

@@ -41,8 +41,9 @@ module "opensearch_config" {
 module "opensearch_security_group" {
   source = "../../modules/config/opensearch/"
 
-  app     = var.app
-  program = var.program
-  tier    = var.tier
-  vpc_id  = var.vpc_id
+  allow_nih_access = var.allow_nih_access
+  app              = var.app
+  program          = var.program
+  tier             = var.tier
+  vpc_id           = var.vpc_id
 }
