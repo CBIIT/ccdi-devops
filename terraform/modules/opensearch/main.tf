@@ -32,7 +32,7 @@ resource "aws_opensearch_domain" "os" {
 
   vpc_options {
     subnet_ids         = var.subnet_ids
-    security_group_ids = [aws_security_group.os.id]
+    security_group_ids = var.opensearch_security_group_id
   }
 
   snapshot_options {

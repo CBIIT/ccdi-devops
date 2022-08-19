@@ -47,6 +47,11 @@ variable "program" {
   description = "The name of the program this app or project supports (i.e. ccdi)"
 }
 
+variable "opensearch_security_group_id" {
+  type = set(string)
+  description = "The ID security group(s) associated with the OpenSearch cluster"
+}
+
 variable "subnet_ids" {
   type        = set(string)
   description = "The subnets which OpenSearch will be deployed to"
