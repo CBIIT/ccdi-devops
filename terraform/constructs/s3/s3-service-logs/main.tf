@@ -1,6 +1,6 @@
 locals {
   lifecycle_rule_expiration_days = var.level == "prod" ? 90 : 14
-  s3_log_prefix = "${var.program}-${var.app}-${var.level}-s3"
+  s3_log_prefix                  = "${var.program}-${var.app}-${var.level}-s3"
 }
 
 data "aws_elb_service_account" "main" {}
@@ -11,8 +11,8 @@ data "aws_iam_policy_document" "alb" {
     effect = "Allow" 
     resources = [ "${module.s3.arn}/*" ]
     principals {
-      type = "AWS" 
-      identifiers = [ "${data.aws_elb_service_account.main.arn}" ]
+      type        = "AWS"
+      identifiers = ["${data.aws_elb_service_account.main.arn}"]
     }
   }
 }
@@ -46,6 +46,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3" {
 }
 
 resource "aws_s3_bucket_policy" "s3" {
-  bucket = module.s3.id 
+  bucket = module.s3.id
   policy = data.aws_iam_policy_document.alb.json
 }

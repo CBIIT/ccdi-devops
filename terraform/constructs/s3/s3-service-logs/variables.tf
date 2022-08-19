@@ -19,6 +19,6 @@ variable "target_log_bucket" {
 }
 
 variable "account_id" {
-  type = string 
+  type        = string
   description = "The account ID where the S3 Log Bucket is hosted"
 }
