@@ -42,14 +42,14 @@ variable "multi_az" {
   description = "Set to true to distribute cluster resources across multiple availability zones"
 }
 
-variable "program" {
-  type        = string
-  description = "The name of the program this app or project supports (i.e. ccdi)"
-}
-
 variable "opensearch_security_group_id" {
   type        = set(string)
   description = "The ID security group(s) associated with the OpenSearch cluster"
+}
+
+variable "program" {
+  type        = string
+  description = "The name of the program this app or project supports (i.e. ccdi)"
 }
 
 variable "subnet_ids" {
@@ -66,19 +66,15 @@ variable "tier" {
 #  Optional Variables ############
 ##################################
 
+variable "availability_zone_count" {
+  type        = number
+  description = "The number of availability zones to distribute cluster resources across"
+  default     = 2
+}
+
 variable "cold_storage_enabled" {
   type    = bool
   default = false
-}
-
-variable "custom_domain_endpoint_enabled" {
-  type    = bool
-  default = false
-}
-
-variable "enforce_https" {
-  type    = bool
-  default = true
 }
 
 variable "create_domain_policy" {
@@ -86,10 +82,9 @@ variable "create_domain_policy" {
   default = true
 }
 
-variable "availability_zone_count" {
-  type        = number
-  description = "The number of availability zones to distribute cluster resources across"
-  default     = 2
+variable "custom_domain_endpoint_enabled" {
+  type    = bool
+  default = false
 }
 
 variable "ebs_enabled" {
@@ -122,15 +117,15 @@ variable "enable_os_search_slow_logs" {
   default     = true
 }
 
+variable "enforce_https" {
+  type    = bool
+  default = true
+}
+
 variable "iam_prefix" {
   type        = string
   description = "The string used to prefix the IAM role or policy name according to NCI power user governance"
   default     = "power-user"
-}
-
-variable "jenkins_cidr" {
-  type        = string
-  description = "The CIDR range that Jenkins belongs to"
 }
 
 variable "log_retention" {
