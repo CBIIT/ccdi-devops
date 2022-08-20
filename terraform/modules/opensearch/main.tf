@@ -55,19 +55,19 @@ resource "aws_opensearch_domain" "os" {
 
   log_publishing_options {
     enabled                  = var.enable_os_index_slow_logs
-    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_index_slow[count.index].arn
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_index_slow.arn
     log_type                 = "INDEX_SLOW_LOGS"
   }
 
   log_publishing_options {
     enabled                  = var.enable_os_search_slow_logs
-    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_search_slow[count.index].arn
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_search_slow.arn
     log_type                 = "SEARCH_SLOW_LOGS" 
   }
 
   log_publishing_options {
     enabled                  = var.enable_os_application_logs
-    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_app[count.index].arn
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_app.arn
     log_type                 = "ES_APPLICATION_LOGS"
   }
 }
@@ -100,21 +100,18 @@ data "aws_iam_policy_document" "os" {
 
 resource "aws_cloudwatch_log_group" "os_index_slow" {
 	# checkov:skip=CKV_AWS_158: Do not need to encrypt these logs with KMS, already encrypted with AES-256
-  count             = var.enable_os_index_slow_logs ? 1 : 0
   name              = "${var.program}-${var.app}-${var.tier}-opensearch-index-slow-logs"
   retention_in_days = var.log_retention
 }
 
 resource "aws_cloudwatch_log_group" "os_search_slow" {
 	# checkov:skip=CKV_AWS_158: Do not need to encrypt these logs with KMS, already encrypted with AES-256
-  count             = var.enable_os_search_slow_logs ? 1 : 0
   name              = "${var.program}-${var.app}-${var.tier}-opensearch-search-slow-logs"
   retention_in_days = var.log_retention
 }
 
 resource "aws_cloudwatch_log_group" "os_app" {
   # checkov:skip=CKV_AWS_158: Do not need to encrypt these logs with KMS, already encrypted with AES-256
-  count             = var.enable_os_application_logs ? 1 : 0
   name              = "${var.program}-${var.app}-${var.tier}-opensearch-application-logs"
   retention_in_days = var.log_retention
 }
