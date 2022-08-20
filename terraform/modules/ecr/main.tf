@@ -20,7 +20,7 @@ resource "aws_ecr_repository_policy" "ecr" {
 resource "aws_ecr_lifecycle_policy" "ecr" {
   repository = aws_ecr_repository.ecr.name
 
-  policy = policy = jsonencode({
+  policy = jsonencode({
     rules = [{
       rulePriority = 1
       description  = "Keep the last 15 images"
