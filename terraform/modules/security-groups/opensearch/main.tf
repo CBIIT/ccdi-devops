@@ -3,7 +3,6 @@ locals {
 }
 
 resource "aws_security_group" "opensearch" {
-	# checkov:skip=CKV2_AWS_5: This security group does not need to be attached to another resource
   name        = "${var.program}-${var.app}-${var.tier}-opensearch"
   description = "Security group associated with the OpenSearch cluster"
   vpc_id      = var.vpc_id
@@ -34,10 +33,4 @@ resource "aws_security_group_rule" "inbound_nih_network" {
   protocol          = "tcp"
   to_port           = 443
   cidr_blocks       = local.nih_cidr
-}
-
-variable "allow_nih_access" {
-  type        = bool
-  description = "Set to true to allow traffic from the NIH network"
-  default     = false
 }
