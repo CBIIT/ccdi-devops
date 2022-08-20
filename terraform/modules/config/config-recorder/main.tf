@@ -53,7 +53,7 @@ data "aws_iam_policy_document" "config" {
     effect  = "Allow"
     resources = [
       "arn:aws:s3:::${var.service_log_bucket}",
-      "arn:aws:s3:::${var.service_log_bucket_arn}/*"
+      "arn:aws:s3:::${var.service_log_bucket}/*"
     ]
   }
 }
