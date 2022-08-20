@@ -3,6 +3,7 @@ locals {
 }
 
 resource "aws_security_group" "opensearch" {
+	# checkov:skip=CKV2_AWS_5: This security group does not need to be attached to another resource
   name        = "${var.program}-${var.app}-${var.tier}-opensearch"
   description = "Security group associated with the OpenSearch cluster"
   vpc_id      = var.vpc_id
