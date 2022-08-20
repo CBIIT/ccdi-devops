@@ -55,19 +55,19 @@ resource "aws_opensearch_domain" "os" {
 
   log_publishing_options {
     enabled                  = var.enable_os_index_slow_logs
-    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_index_slow.arn
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_index_slow[count.index].arn
     log_type                 = "INDEX_SLOW_LOGS"
   }
 
   log_publishing_options {
     enabled                  = var.enable_os_search_slow_logs
-    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_search_slow.arn
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_search_slow[count.index].arn
     log_type                 = "SEARCH_SLOW_LOGS" 
   }
 
   log_publishing_options {
     enabled                  = var.enable_os_application_logs
-    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_app.arn
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.os_app[count.index].arn
     log_type                 = "ES_APPLICATION_LOGS"
   }
 }
