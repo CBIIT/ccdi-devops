@@ -100,7 +100,7 @@ data "aws_iam_policy_document" "os" {
 
 resource "aws_cloudwatch_log_group" "os_index_slow" {
 	# checkov:skip=CKV_AWS_158: Do not need to encrypt these logs with KMS, already encrypted with AES-256
-  count             = enable_os_index_slow_logs ? 1 : 0
+  count             = var.enable_os_index_slow_logs ? 1 : 0
   name              = "${var.program}-${var.app}-${var.tier}-opensearch-index-slow-logs"
   retention_in_days = var.log_retention
 }
@@ -114,7 +114,7 @@ resource "aws_cloudwatch_log_group" "os_search_slow" {
 
 resource "aws_cloudwatch_log_group" "os_app" {
   # checkov:skip=CKV_AWS_158: Do not need to encrypt these logs with KMS, already encrypted with AES-256
-  count             = enable_os_application_logs ? 1 : 0
+  count             = var.enable_os_application_logs ? 1 : 0
   name              = "${var.program}-${var.app}-${var.tier}-opensearch-application-logs"
   retention_in_days = var.log_retention
 }
