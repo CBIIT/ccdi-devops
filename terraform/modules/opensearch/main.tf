@@ -1,3 +1,10 @@
+resource "aws_iam_service_linked_role" "os" {
+  count = var.tier == "dev" || var.tier == "stage" ? 1 : 0
+  
+  aws_service_name = "opensearchservice.amazonaws.com"
+  description      = "creates the AWSServiceRoleForAmazonOpenSearchService role"
+}
+
 resource "aws_opensearch_domain" "os" {
   domain_name    = "${var.program}-${var.app}-${var.tier}-opensearch"
   engine_version = "OpenSearch_${var.engine_version}"
