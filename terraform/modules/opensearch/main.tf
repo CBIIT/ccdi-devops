@@ -55,19 +55,19 @@ resource "aws_opensearch_domain" "os" {
 
   log_publishing_options {
     enabled                  = var.enable_os_index_slow_logs
-    cloudwatch_log_group_arn = var.enable_os_index_slow_logs ? aws_cloudwatch_log_group.os_index_slow.arn : null
+    cloudwatch_log_group_arn = var.enable_os_index_slow_logs ? aws_cloudwatch_log_group.os_index_slow[count.index].arn : null
     log_type                 = var.enable_os_index_slow_logs ? "INDEX_SLOW_LOGS" : null
   }
 
   log_publishing_options {
     enabled                  = var.enable_os_search_slow_logs
-    cloudwatch_log_group_arn = var.enable_os_search_slow_logs ? aws_cloudwatch_log_group.os_search_slow.arn : null
+    cloudwatch_log_group_arn = var.enable_os_search_slow_logs ? aws_cloudwatch_log_group.os_search_slow[count.index].arn : null
     log_type                 = var.enable_os_search_slow_logs ? "SEARCH_SLOW_LOGS" : null
   }
 
   log_publishing_options {
     enabled                  = var.enable_os_application_logs
-    cloudwatch_log_group_arn = var.enable_os_application_logs ? aws_cloudwatch_log_group.os_app.arn : null
+    cloudwatch_log_group_arn = var.enable_os_application_logs ? aws_cloudwatch_log_group.os_app[count.index].arn : null
     log_type                 = var.enable_os_application_logs ? "ES_APPLICATION_LOGS" : null
   }
 }
