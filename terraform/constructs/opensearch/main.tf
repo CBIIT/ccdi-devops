@@ -27,7 +27,7 @@ module "opensearch" {
   enforce_https                  = var.enforce_https
   iam_prefix                     = var.iam_prefix
   log_retention                  = var.log_retention
-  opensearch_security_group_id   = module.opensearch_security_group.id
+  opensearch_security_group_id   = [module.opensearch_security_group.id]
   snapshot_hour                  = var.snapshot_hour
   warm_node_count                = var.warm_node_count
   warm_node_enabled              = var.warm_node_enabled
