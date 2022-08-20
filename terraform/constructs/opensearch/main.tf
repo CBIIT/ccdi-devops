@@ -39,7 +39,7 @@ module "opensearch_config" {
 }
 
 module "opensearch_security_group" {
-  source = "../../modules/config/opensearch/"
+  source = "../../modules/security-groups/opensearch/"
 
   allow_nih_access = var.allow_nih_access
   app              = var.app
