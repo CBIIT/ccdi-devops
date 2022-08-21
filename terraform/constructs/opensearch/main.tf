@@ -34,10 +34,6 @@ module "opensearch" {
   warm_node_type                 = var.warm_node_type
 }
 
-module "opensearch_config" {
-  source = "../../modules/config/opensearch/"
-}
-
 module "opensearch_security_group" {
   source = "../../modules/security-groups/opensearch/"
 
