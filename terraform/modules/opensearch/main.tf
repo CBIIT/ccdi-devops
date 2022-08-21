@@ -1,6 +1,6 @@
 resource "aws_iam_service_linked_role" "os" {
   count = var.tier == "dev" || var.tier == "stage" ? 1 : 0
-  
+
   aws_service_name = "opensearchservice.amazonaws.com"
   description      = "creates the AWSServiceRoleForAmazonOpenSearchService role"
 

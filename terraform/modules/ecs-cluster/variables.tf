@@ -9,11 +9,11 @@ variable "program" {
 }
 
 variable "tier" {
-  type = string 
+  type = string
 }
 
 variable "container_insights_enabled" {
-  type = string 
+  type        = string
   description = "Enables ECS container insights. Valid values are 'enabled' and 'disabled'"
-  default = "enabled"
+  default     = "enabled"
 }

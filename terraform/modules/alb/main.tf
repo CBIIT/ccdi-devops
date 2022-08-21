@@ -20,8 +20,8 @@ resource "aws_lb" "alb" {
 }
 
 resource "aws_lb_listener" "http" {
-	# checkov:skip=CKV_AWS_2: No need to only allow HTTPS, this rule redirects to HTTPS listener
-	# checkov:skip=CKV_AWS_103: No need to enforce TLS 1.2, this listener redirects to HTTPS listener
+  # checkov:skip=CKV_AWS_2: No need to only allow HTTPS, this rule redirects to HTTPS listener
+  # checkov:skip=CKV_AWS_103: No need to enforce TLS 1.2, this listener redirects to HTTPS listener
   load_balancer_arn = aws_lb.alb.arn
   port              = var.http_port
   protocol          = var.http_protocol
@@ -39,8 +39,8 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_lb_listener" "https" {
-	# checkov:skip=CKV_AWS_2: This listener is using HTTPS, just passed through variable
-	# checkov:skip=CKV_AWS_103: TLS policy added in the variable called alb_listener_ssl_policy
+  # checkov:skip=CKV_AWS_2: This listener is using HTTPS, just passed through variable
+  # checkov:skip=CKV_AWS_103: TLS policy added in the variable called alb_listener_ssl_policy
   load_balancer_arn = aws_lb.alb.arn
   port              = var.https_port
   protocol          = var.https_protocol
