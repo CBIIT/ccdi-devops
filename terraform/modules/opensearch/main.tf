@@ -3,6 +3,12 @@ resource "aws_iam_service_linked_role" "os" {
 
   aws_service_name = "opensearchservice.amazonaws.com"
   description      = "creates the AWSServiceRoleForAmazonOpenSearchService role"
+
+  lifecycle {
+    ignore_changes = [
+      tags_all,
+    ]
+  }
 }
 
 resource "aws_opensearch_domain" "os" {
@@ -87,6 +93,8 @@ resource "aws_opensearch_domain_policy" "os" {
 }
 
 data "aws_iam_policy_document" "os" {
+  count = var.create_domain_policy ? 1 : 0
+  
   statement {
     effect = "Allow"
     actions = [
