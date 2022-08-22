@@ -41,6 +41,7 @@ resource "aws_opensearch_domain" "os" {
   ebs_options {
     ebs_enabled = var.ebs_enabled
     volume_size = var.ebs_enabled ? var.ebs_volume_size : null
+    
   }
 
   vpc_options {
@@ -93,7 +94,7 @@ resource "aws_opensearch_domain_policy" "os" {
 
   lifecycle {
     ignore_changes = [
-      access_policies, ebs_options.iops,
+      access_policies, 
     ]
   }
 }
