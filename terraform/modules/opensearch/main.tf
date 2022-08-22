@@ -93,7 +93,7 @@ resource "aws_opensearch_domain_policy" "os" {
 
   lifecycle {
     ignore_changes = [
-      access_policies
+      access_policies, ebs_options,
     ]
   }
 }
