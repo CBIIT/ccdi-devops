@@ -89,12 +89,12 @@ resource "aws_opensearch_domain_policy" "os" {
   count = var.create_domain_policy ? 1 : 0
 
   domain_name     = aws_opensearch_domain.os.domain_name
-  access_policies = data.aws_iam_policy_document.os.json
+  access_policies = data.aws_iam_policy_document.os[count.index].json
 }
 
 data "aws_iam_policy_document" "os" {
   count = var.create_domain_policy ? 1 : 0
-  
+
   statement {
     effect = "Allow"
     actions = [
