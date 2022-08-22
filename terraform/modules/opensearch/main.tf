@@ -5,7 +5,9 @@ resource "aws_iam_service_linked_role" "os" {
   description      = "creates the AWSServiceRoleForAmazonOpenSearchService role"
 
   lifecycle {
-    prevent_destroy = true
+    ignore_changes = [
+      all
+    ]
   }
 }
 
