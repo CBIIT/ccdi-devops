@@ -90,6 +90,12 @@ resource "aws_opensearch_domain_policy" "os" {
 
   domain_name     = aws_opensearch_domain.os.domain_name
   access_policies = data.aws_iam_policy_document.os[count.index].json
+
+  lifecycle {
+    ignore_changes = [
+      access_policies
+    ]
+  }
 }
 
 data "aws_iam_policy_document" "os" {
