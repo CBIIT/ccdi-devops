@@ -93,6 +93,8 @@ resource "aws_opensearch_domain_policy" "os" {
 }
 
 data "aws_iam_policy_document" "os" {
+  count = var.create_domain_policy ? 1 : 0
+  
   statement {
     effect = "Allow"
     actions = [
