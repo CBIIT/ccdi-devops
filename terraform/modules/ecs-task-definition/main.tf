@@ -12,8 +12,6 @@ resource "aws_ecs_task_definition" "task" {
     cpu_architecture        = "X86_64"
   }
 
-
-
   container_definitions = jsonencode([
     {
       name      = "${var.container_definition_name}"
@@ -31,7 +29,6 @@ resource "aws_ecs_task_definition" "task" {
     }
   ])
 }
-
 
 
 ##################################
@@ -78,11 +75,22 @@ variable "cpu" {
   description = "Number of CPU units consumed by the task"
 }
 
+variable "container_definition_name" {
+  type = string
+}
+
+variable "container_definition_image" {
+  type = string
+}
+
+variable "container_definition_essential" {
+  type = string
+  
+}
 
 ##################################
 #  Optional Variables ############
 ##################################
-
 
 
 variable "requires_compatibilities" {
