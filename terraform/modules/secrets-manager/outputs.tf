@@ -13,3 +13,7 @@ output "secret_manager_version_id" {
   description = "The ID of the AWS Secrets Manager secret version"
 }
 
+output "neo4j_password" {
+  value     = random_password.neo4j_password.result
+  sensitive = true
+}
