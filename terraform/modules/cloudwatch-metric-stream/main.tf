@@ -1,0 +1,55 @@
+locals {
+  permission_boundary_arn = var.level == "prod" ? "arn:aws:iam::${var.account_id}:policy/PermissionBoundary_PowerUser" : null
+}
+
+data "aws_caller_identity" "current" {}
+
+
+resource "aws_cloudwatch_metric_stream" "cw_stream" {
+  name     = "${var.program}-${var.app}-${var.level}-cloudwatch-metric-stream"
+  role_arn = aws_iam_role.cw_stream_to_firehose.arn
+}
+
+resource "aws_iam_role" "cw_stream_to_firehose" {
+  name                  = "${var.iam_prefix}-${var.program}-${var.app}-${var.level}-cloudwatch-stream-to-firehose"
+  description           = "Allows CloudWatch Streams to send metric streams to Kinesis Data Firehose Delivery Streams"
+  force_detach_policies = var.role_force_detach_policies
+  assume_role_policy    = data.aws_iam_policy_document.cw_stream_to_firehose_assume_role.json
+  permissions_boundary  = local.permissions_boundary_arn
+}
+
+resource "aws_iam_role_policy_attachment" "cw_stream_to_firehose" {
+
+}
+
+resource "aws_iam_policy" "cw_stream_to_firehose" {
+  name        = "${var.iam_prefix}-${var.program}-${var.app}-${var.level}-cloudwatch-stream-to-firehose"
+  description = "Allows CloudWatch Streams to send metric streams to Kinesis Data Firehose Delivery Streams"
+  policy      = data.aws_iam_policy_document.cw_stream_to_firehose.json
+}
+
+data "aws_iam_policy_document" "cw_stream_to_firehose" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "firehose:PutRecord",
+      "firehose:PutRecordBatch"
+    ]
+    resources = [var.firehose_delivery_stream_arn]
+  }
+}
+
+data "aws_iam_policy_document" "cw_stream_to_firehose_assume_role" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["streams.metrics.cloudwatch.amazonaws.com"]
+    }
+  }
+}
+
+
+
