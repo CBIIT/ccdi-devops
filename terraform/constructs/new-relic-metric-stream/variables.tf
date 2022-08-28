@@ -12,9 +12,19 @@ variable "app" {
   description = "The name of the application (i.e. 'mtp')"
 }
 
+variable "external_id" {
+  type        = string
+  description = "The external id for the delivery stream trust policy condition"
+}
+
 variable "firehose_delivery_stream_arn" {
   type        = string
   description = "ARN of the Amazon Kinesis Firehose delivery stream to use for this metric stream"
+}
+
+variable "http_endpoint_access_key" {
+  type        = string
+  description = "The access key required for Kinesis Firehose to authenticate with the HTTP endpoint selected as the destination"
 }
 
 variable "level" {
