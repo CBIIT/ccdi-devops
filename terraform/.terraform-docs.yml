@@ -1,7 +1,5 @@
 formatter: "md doc"
 
-version: ">= 1.2.8"
-
 recursive:
   enabled: true
 
