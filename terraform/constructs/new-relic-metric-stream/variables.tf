@@ -17,11 +17,6 @@ variable "external_id" {
   description = "The external id for the delivery stream trust policy condition"
 }
 
-variable "firehose_delivery_stream_arn" {
-  type        = string
-  description = "ARN of the Amazon Kinesis Firehose delivery stream to use for this metric stream"
-}
-
 variable "http_endpoint_access_key" {
   type        = string
   description = "The access key required for Kinesis Firehose to authenticate with the HTTP endpoint selected as the destination"
@@ -63,6 +58,11 @@ variable "destination" {
   type        = string
   description = "the destination to where the data is delivered. The only options are extended_s3, redshift, elasticsearch, and http_endpoint"
   default     = "http_endpoint"
+}
+
+variable "firehose_delivery_stream_arn" {
+  type        = string
+  description = "ARN of the Amazon Kinesis Firehose delivery stream to use for this metric stream"
 }
 
 variable "http_endpoint_name" {
