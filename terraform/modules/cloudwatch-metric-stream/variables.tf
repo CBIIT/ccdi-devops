@@ -13,12 +13,12 @@ variable "app" {
 }
 
 variable "firehose_delivery_stream_arn" {
-  type = string
+  type        = string
   description = "ARN of the Amazon Kinesis Firehose delivery stream to use for this metric stream"
 }
 
 variable "level" {
-  type = string
+  type        = string
   description = "The account level - either 'nonprod' or 'prod' are accepted"
 }
 
@@ -32,9 +32,9 @@ variable "program" {
 ##################################
 
 variable "iam_prefix" {
-  type    = string
+  type        = string
   description = "The string prefix for IAM resource name attributes"
-  default = "power-user"
+  default     = "power-user"
 }
 
 variable "include_filter" {
@@ -49,7 +49,7 @@ variable "output_format" {
 }
 
 variable "role_force_detach_policies" {
-  type    = bool
+  type        = bool
   description = "Force detaching any policies the role has before destroying it"
-  default = false
+  default     = false
 }

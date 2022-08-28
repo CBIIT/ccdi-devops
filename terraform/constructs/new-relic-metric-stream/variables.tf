@@ -60,6 +60,11 @@ variable "destination" {
   default     = "http_endpoint"
 }
 
+variable "firehose_delivery_stream_arn" {
+  type        = string
+  description = "ARN of the Amazon Kinesis Firehose delivery stream to use for this metric stream"
+}
+
 variable "http_endpoint_name" {
   type        = string
   description = "The HTTP endpoint name"
@@ -70,6 +75,29 @@ variable "http_endpoint_url" {
   type        = string
   description = "The HTTP endpoint URL to which Kinesis Firehose sends your data"
   default     = "https://aws-api.newrelic.com/cloudwatch-metrics/v1"
+}
+
+variable "iam_prefix" {
+  type        = string
+  description = "The string prefix for IAM resource name attributes"
+  default     = "power-user"
+}
+
+variable "include_filter" {
+  type        = set(string)
+  description = "Specify the service namespaces to include in metric stream in a list"
+}
+
+variable "output_format" {
+  type        = string
+  description = "Output format of the CloudWatch Metric Stream - can be json or opentelemetry0.7"
+  default     = "opentelemetry0.7"
+}
+
+variable "role_force_detach_policies" {
+  type        = bool
+  description = "Force detaching any policies the role has before destroying it"
+  default     = false
 }
 
 variable "s3_backup_mode" {
