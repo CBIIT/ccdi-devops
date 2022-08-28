@@ -1,7 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
 
 
-
 # Resources
 
 | Name | Type |

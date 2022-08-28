@@ -33,12 +33,7 @@
 | <a name="input_https_port"></a> [https\_port](#input\_https\_port) | The standard HTTPS port | `number` | `443` | no |
 | <a name="input_https_protocol"></a> [https\_protocol](#input\_https\_protocol) | The standard HTTPS protocol | `string` | `"HTTPS"` | no |
 | <a name="input_load_balancer_type"></a> [load\_balancer\_type](#input\_load\_balancer\_type) | The type of load balancer to create. Possible values are application, gateway, or network. The default value is application | `string` | `"application"` | no |
-| <a name="input_internal"></a> [internal](#input\_internal) | Set to true for non-prod accounts that do have allowable internet egress | `bool` | n/a | yes |
-| <a name="input_load_balancer_type"></a> [load\_balancer\_type](#input\_load\_balancer\_type) | The type of load balancer to create. Possible values are application, gateway, or network. The default value is application | `string` | `"application"` | no |
-| <a name="input_program"></a> [program](#input\_program) | The name of the program (i.e. 'ccdi') | `string` | n/a | yes |
-| <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | The subnets associated with the load balancer | `set(string)` | n/a | yes |
-| <a name="input_security_group_id"></a> [security\_group\_id](#input\_security\_group\_id) | The ID of the security group associated with the load balancer | `set(string)` | n/a | yes |
-| <a name="input_tier"></a> [tier](#input\_tier) | The tier or environment (i.e. 'dev') - use 'terraform.workspace' for this variable | `string` | n/a | yes |
+| <a name="input_timeout_create"></a> [timeout\_create](#input\_timeout\_create) | The time allowed for timeout when creating the ALB resource. | `string` | `"10m"` | no |
 
 # Outputs
 

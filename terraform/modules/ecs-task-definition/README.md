@@ -21,4 +21,9 @@
 | <a name="input_family"></a> [family](#input\_family) | A unique name for the task definition | `string` | n/a | yes |
 | <a name="input_host_port"></a> [host\_port](#input\_host\_port) | n/a | `any` | n/a | yes |
 | <a name="input_memory"></a> [memory](#input\_memory) | Amount (in MiB) of memory used by the task | `string` | n/a | yes |
+| <a name="input_program"></a> [program](#input\_program) | The name of the program this app or project supports (i.e. ccdi) | `string` | n/a | yes |
+| <a name="input_task_role_arn"></a> [task\_role\_arn](#input\_task\_role\_arn) | ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services | `string` | n/a | yes |
+| <a name="input_tier"></a> [tier](#input\_tier) | The target tier or environment {i.e. dev}. Use terraform.workspace when applicable | `string` | n/a | yes |
+| <a name="input_network_mode"></a> [network\_mode](#input\_network\_mode) | Docker networking mode to use for the containers in the task. Valid values are none, bridge, awsvpc, and host. | `string` | `"awsvpc"` | no |
+| <a name="input_requires_compatibilities"></a> [requires\_compatibilities](#input\_requires\_compatibilities) | Launch type required by the task (EC2 or FARGATE) | `string` | `"FARGATE"` | no |
 <!-- END_TF_DOCS -->

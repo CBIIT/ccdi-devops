@@ -1,5 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
 
+
 # Resources
 
 | Name | Type |
@@ -14,6 +15,8 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | The name of the stack or application for this deployment | `string` | n/a | yes |
 | <a name="input_program"></a> [program](#input\_program) | The name of the program | `string` | n/a | yes |
+| <a name="input_tier"></a> [tier](#input\_tier) | The target tier that the secret(s) will be deployed into | `string` | n/a | yes |
+| <a name="input_secrets"></a> [secrets](#input\_secrets) | Map of secrets to keep in AWS Secrets Manager | `map(string)` | `{}` | no |
 
 # Outputs
 
