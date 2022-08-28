@@ -1,31 +1,20 @@
-variable "program" {
+##################################
+#  Required Variables ############
+##################################
 
+variable "account_id" {
+  type        = string
+  description = "Account ID for the deployment target - use 'data.aws_caller_identity.current.account_id"
 }
 
 variable "app" {
-
-}
-
-variable "level" {
-
-}
-
-variable "http_endpoint_url" {
   type        = string
-  description = "The HTTP endpoint URL to which Kinesis Firehose sends your data"
-  default     = "https://aws-api.newrelic.com/cloudwatch-metrics/v1"
+  description = "The name of the application (i.e. 'mtp')"
 }
 
-variable "destination" {
+variable "external_id" {
   type        = string
-  description = "the destination to where the data is delivered. The only options are extended_s3, redshift, elasticsearch, and http_endpoint"
-  default     = "http_endpoint"
-}
-
-variable "s3_backup_mode" {
-  type        = string
-  description = "Defines how documents should be delivered to Amazon S3. Valid values are FailedDataOnly and AllData"
-  default     = "FailedDataOnly"
+  description = "The external id for the delivery stream trust policy condition"
 }
 
 variable "http_endpoint_access_key" {
@@ -33,24 +22,24 @@ variable "http_endpoint_access_key" {
   description = "The access key required for Kinesis Firehose to authenticate with the HTTP endpoint selected as the destination"
 }
 
-variable "content_encoding" {
-  default = "GZIP"
-}
-
-variable "s3_object_prefix" {
-  type    = string
-  default = null
-}
-
-variable "s3_error_output_prefix" {
-  type    = string
-  default = null
-}
-
-variable "http_endpoint_name" {
+variable "level" {
   type        = string
-  description = "The HTTP endpoint name"
-  default     = "New Relic"
+  description = "The account level - either 'nonprod' or 'prod' are accepted"
+}
+
+variable "program" {
+  type        = string
+  description = "The name of the program (i.e. 'ccdi')"
+}
+
+##################################
+#  Optional Variables ############
+##################################
+
+variable "buffer_interval" {
+  type        = number
+  description = "Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination"
+  default     = 60
 }
 
 variable "buffer_size" {
@@ -59,13 +48,50 @@ variable "buffer_size" {
   default     = 1
 }
 
-variable "buffer_interval" {
-  type        = number
-  description = "Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination"
-  default     = 60
+variable "content_encoding" {
+  type        = string
+  description = "Kinesis Data Firehose uses the content encoding to compress the body of a request before sending the request to the destination - valid values are NONE and GZIP"
+  default     = "GZIP"
 }
 
-variable "external_id" {
+variable "destination" {
   type        = string
-  description = "The external id for the delivery stream trust policy condition"
+  description = "the destination to where the data is delivered. The only options are extended_s3, redshift, elasticsearch, and http_endpoint"
+  default     = "http_endpoint"
+}
+
+variable "http_endpoint_name" {
+  type        = string
+  description = "The HTTP endpoint name"
+  default     = "New Relic"
+}
+
+variable "http_endpoint_url" {
+  type        = string
+  description = "The HTTP endpoint URL to which Kinesis Firehose sends your data"
+  default     = "https://aws-api.newrelic.com/cloudwatch-metrics/v1"
+}
+
+variable "s3_backup_mode" {
+  type        = string
+  description = "Defines how documents should be delivered to Amazon S3. Valid values are FailedDataOnly and AllData"
+  default     = "FailedDataOnly"
+}
+
+variable "s3_compression_format" {
+  type        = string
+  description = "File compression format - values are 'GZIP', 'ZIP', 'Snappy', & 'HADOOP_SNAPPY'"
+  default     = "UNCOMPRESSED"
+}
+
+variable "s3_error_output_prefix" {
+  type        = string
+  description = "Prefix added to failed records before writing them to S3 - immediately follows bucket name"
+  default     = null
+}
+
+variable "s3_object_prefix" {
+  type        = string
+  description = "The 'YYYY/MM/DD/HH' time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix"
+  default     = null
 }
