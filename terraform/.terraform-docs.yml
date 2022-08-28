@@ -3,6 +3,18 @@ formatter: "md doc"
 recursive:
   enabled: true
 
+sections:
+  hide-all: true 
+  show:
+    - inputs
+    - modules
+    - resources 
+    - outputs
+
+sort:
+  enabled: true 
+  by: required
+
 output:
   file: README.md
   mode: inject
