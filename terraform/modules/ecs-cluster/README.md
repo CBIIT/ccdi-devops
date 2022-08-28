@@ -1,12 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
 
 
-# Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-
 # Resources
 
 | Name | Type |
@@ -18,9 +12,9 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | The name of the application, often times an acronym in all lower case characters (i.e. 'mtp') | `string` | n/a | yes |
-| <a name="input_container_insights_enabled"></a> [container\_insights\_enabled](#input\_container\_insights\_enabled) | Enables ECS container insights. Valid values are 'enabled' and 'disabled' | `string` | `"enabled"` | no |
 | <a name="input_program"></a> [program](#input\_program) | The name of the program that the ALB belongs to | `string` | n/a | yes |
 | <a name="input_tier"></a> [tier](#input\_tier) | n/a | `string` | n/a | yes |
+| <a name="input_container_insights_enabled"></a> [container\_insights\_enabled](#input\_container\_insights\_enabled) | Enables ECS container insights. Valid values are 'enabled' and 'disabled' | `string` | `"enabled"` | no |
 
 # Outputs
 
