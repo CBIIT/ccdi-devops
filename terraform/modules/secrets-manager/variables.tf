@@ -13,3 +13,8 @@ variable "tier" {
   type        = string
   description = "The target tier that the secret(s) will be deployed into"
 }
+
+variable "program" {
+  description = "The name of the program"
+  type        = string
+}
