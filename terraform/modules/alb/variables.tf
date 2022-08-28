@@ -4,7 +4,7 @@
 
 variable "app" {
   type        = string
-  description = "The name of the application that the load balancer belongs to"
+  description = "The name of the application (i.e. 'mtp')"
 }
 
 variable "internal" {
@@ -14,12 +14,12 @@ variable "internal" {
 
 variable "program" {
   type        = string
-  description = "The name of the program this app or project supports (i.e. ccdi)"
+  description = "The name of the program (i.e. 'ccdi')"
 }
 
 variable "tier" {
   type        = string
-  description = "The tier or environment that the load balancer belongs to"
+  description = "The tier or environment (i.e. 'dev') - use 'terraform.workspace' for this variable"
 }
 
 variable "security_group_id" {

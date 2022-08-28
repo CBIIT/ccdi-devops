@@ -24,6 +24,16 @@ module "alb" {
   tier                        = var.tier
 }
 
+module "security_group" {
+  source = "../../modules/security-groups/alb-sg/"
+
+  app                         = var.app
+  program                     = var.program
+  security_group_ingress_cidr = var.security_group_ingress_cidr
+  tier                        = var.tier
+  vpc_id                      = var.vpc_id
+}
+
 module "frontend_target_group" {
   source = "../../modules/target-group/"
 
@@ -68,14 +78,4 @@ module "backend_target_group" {
   tier                             = var.tier
   target_description               = var.backend_target_description
   vpc_id                           = var.vpc_id
-}
-
-module "security_group" {
-  source = "../../modules/security-groups/alb-sg/"
-
-  app                         = var.app
-  program                     = var.program
-  security_group_ingress_cidr = var.security_group_ingress_cidr
-  tier                        = var.tier
-  vpc_id                      = var.vpc_id
 }
