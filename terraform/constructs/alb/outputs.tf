@@ -6,7 +6,7 @@ output "alb_arn" {
   value = module.alb.arn
 }
 
-output "security_group_id" {
+output "securitygroup_id" {
   value = module.security_group.id
 }
 
