@@ -94,9 +94,9 @@ variable "ebs_enabled" {
 }
 
 variable "ebs_iops" {
-  type = number 
-  description = ""
-  default = 3000
+  type        = number
+  description = "The provisioned IOPS for each EBS volume"
+  default     = 3000
 }
 
 variable "ebs_volume_size" {
@@ -106,15 +106,15 @@ variable "ebs_volume_size" {
 }
 
 variable "ebs_volume_type" {
-  type = string 
-  description = "value"
-  default = "gp3"
+  type        = string
+  description = "The type of EBS volume"
+  default     = "gp3"
 }
 
 variable "ebs_throughput" {
-  type = number 
-  description = "value"
-  default = 125
+  type        = number
+  description = "The provisioned throughput for the EBS volumes"
+  default     = 125
 }
 
 variable "enable_os_application_logs" {

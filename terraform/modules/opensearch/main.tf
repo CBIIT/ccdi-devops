@@ -42,7 +42,7 @@ resource "aws_opensearch_domain" "os" {
     ebs_enabled = var.ebs_enabled
     volume_size = var.ebs_enabled ? var.ebs_volume_size : null
     iops        = var.ebs_iops
-    volume_type = var.ebs_volume_type 
+    volume_type = var.ebs_volume_type
     throughput  = var.ebs_throughput
   }
 
@@ -96,7 +96,7 @@ resource "aws_opensearch_domain_policy" "os" {
 
   lifecycle {
     ignore_changes = [
-      access_policies, 
+      access_policies,
     ]
   }
 }
