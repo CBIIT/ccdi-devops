@@ -93,10 +93,28 @@ variable "ebs_enabled" {
   default     = true
 }
 
+variable "ebs_iops" {
+  type = number 
+  description = ""
+  default = null
+}
+
 variable "ebs_volume_size" {
   type        = number
   description = "Specify the ebs volume size for each data node (in GiB)"
   default     = 30
+}
+
+variable "ebs_volume_type" {
+  type = string 
+  description = "value"
+  default = "gp3"
+}
+
+variable "ebs_throughput" {
+  type = number 
+  description = "value"
+  default = 125
 }
 
 variable "enable_os_application_logs" {
