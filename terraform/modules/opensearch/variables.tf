@@ -96,7 +96,7 @@ variable "ebs_enabled" {
 variable "ebs_iops" {
   type = number 
   description = ""
-  default = null
+  default = 3000
 }
 
 variable "ebs_volume_size" {
