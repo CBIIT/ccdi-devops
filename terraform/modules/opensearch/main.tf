@@ -41,9 +41,9 @@ resource "aws_opensearch_domain" "os" {
   ebs_options {
     ebs_enabled = var.ebs_enabled
     volume_size = var.ebs_enabled ? var.ebs_volume_size : null
-    iops        = var.ebs_iops
-    volume_type = var.ebs_volume_type
-    throughput  = var.ebs_throughput
+    iops        = var.ebs_enabled ? var.ebs_iops : null 
+    volume_type = var.ebs_enabled ? var.ebs_volume_type : null 
+    throughput  = var.ebs_enabled ? var.ebs_throughput : null
   }
 
   vpc_options {

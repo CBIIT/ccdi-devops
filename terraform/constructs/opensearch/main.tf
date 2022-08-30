@@ -20,7 +20,10 @@ module "opensearch" {
   create_domain_policy           = var.create_domain_policy
   custom_domain_endpoint_enabled = var.custom_domain_endpoint_enabled
   ebs_enabled                    = var.ebs_enabled
+  ebs_iops                       = var.ebs_iops 
+  ebs_throughput                 = var.ebs_throughput
   ebs_volume_size                = var.ebs_volume_size
+  ebs_volume_type                = var.ebs_volume_type
   enable_os_application_logs     = var.enable_os_application_logs
   enable_os_index_slow_logs      = var.enable_os_index_slow_logs
   enable_os_search_slow_logs     = var.enable_os_search_slow_logs
