@@ -34,10 +34,10 @@
 | <a name="input_create_domain_policy"></a> [create\_domain\_policy](#input\_create\_domain\_policy) | n/a | `bool` | `true` | no |
 | <a name="input_custom_domain_endpoint_enabled"></a> [custom\_domain\_endpoint\_enabled](#input\_custom\_domain\_endpoint\_enabled) | n/a | `bool` | `false` | no |
 | <a name="input_ebs_enabled"></a> [ebs\_enabled](#input\_ebs\_enabled) | Set to true to enable elastic block storage for your OpenSearch data nodes | `bool` | `true` | no |
-| <a name="input_ebs_iops"></a> [ebs\_iops](#input\_ebs\_iops) | n/a | `number` | `null` | no |
-| <a name="input_ebs_throughput"></a> [ebs\_throughput](#input\_ebs\_throughput) | value | `number` | `125` | no |
+| <a name="input_ebs_iops"></a> [ebs\_iops](#input\_ebs\_iops) | The provisioned IOPS for each EBS volume | `number` | `3000` | no |
+| <a name="input_ebs_throughput"></a> [ebs\_throughput](#input\_ebs\_throughput) | The provisioned throughput for the EBS volumes | `number` | `125` | no |
 | <a name="input_ebs_volume_size"></a> [ebs\_volume\_size](#input\_ebs\_volume\_size) | Specify the ebs volume size for each data node (in GiB) | `number` | `30` | no |
-| <a name="input_ebs_volume_type"></a> [ebs\_volume\_type](#input\_ebs\_volume\_type) | value | `string` | `"gp3"` | no |
+| <a name="input_ebs_volume_type"></a> [ebs\_volume\_type](#input\_ebs\_volume\_type) | The type of EBS volume | `string` | `"gp3"` | no |
 | <a name="input_enable_os_application_logs"></a> [enable\_os\_application\_logs](#input\_enable\_os\_application\_logs) | Set to true to forward application (error) logs to CloudWatch | `bool` | `true` | no |
 | <a name="input_enable_os_index_slow_logs"></a> [enable\_os\_index\_slow\_logs](#input\_enable\_os\_index\_slow\_logs) | Set to true to forward index slow logs to CloudWatch | `bool` | `true` | no |
 | <a name="input_enable_os_search_slow_logs"></a> [enable\_os\_search\_slow\_logs](#input\_enable\_os\_search\_slow\_logs) | Set to true to forward search slow logs to CloudWatch | `bool` | `true` | no |
