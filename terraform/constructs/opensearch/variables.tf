@@ -99,6 +99,12 @@ variable "ebs_enabled" {
   default     = true
 }
 
+variable "ebs_throughput" {
+  type        = number
+  description = "The provisioned throughput for the EBS volumes"
+  default     = 125
+}
+
 variable "ebs_iops" {
   type        = number
   description = "The provisioned IOPS for each EBS volume"
