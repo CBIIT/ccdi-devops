@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "secret"{
-  name         = "${var.program}-${var.app}-${terraform.workspace}-creds"
+  name         = "${var.program}_${var.app}_${terraform.workspace}_creds"
   description  = "Credentials used for monitoring and database services"
 }
 
