@@ -1,4 +1,4 @@
 locals {
   app                   = "ins"
-  secret_manager_name   = "${var.program}-${var.app}-${var.tier}-creds"
+  secret_manager_name   = "${var.program}_${var.app}_${var.tier}_creds"
 }
