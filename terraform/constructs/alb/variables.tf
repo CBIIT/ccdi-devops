@@ -120,7 +120,7 @@ variable "health_check_matcher" {
 
 variable "health_check_path" {
   type    = string
-  default = "/"
+  default = "/ping"
 }
 
 variable "health_check_port" {
