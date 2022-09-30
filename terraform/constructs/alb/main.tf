@@ -38,7 +38,7 @@ module "frontend_target_group" {
   source = "../../modules/target-group/"
 
   app                              = var.app
-  health_check_path                = var.health_check_path
+  health_check_path                = var.frontend_health_check_path
   health_check_protocol            = var.protocol
   health_check_port                = var.health_check_port
   health_check_matcher             = var.health_check_matcher
@@ -61,7 +61,7 @@ module "backend_target_group" {
   source = "../../modules/target-group/"
 
   app                              = var.app
-  health_check_path                = var.health_check_path
+  health_check_path                = var.backend_health_check_path
   health_check_protocol            = var.health_check_protocol
   health_check_port                = var.health_check_port
   health_check_matcher             = var.health_check_matcher

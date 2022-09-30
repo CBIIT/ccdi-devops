@@ -118,7 +118,12 @@ variable "health_check_matcher" {
   default = "200"
 }
 
-variable "health_check_path" {
+variable "frontend_health_check_path" {
+  type    = string
+  default = "/"
+}
+
+variable "backend_health_check_path" {
   type    = string
   default = "/ping"
 }
