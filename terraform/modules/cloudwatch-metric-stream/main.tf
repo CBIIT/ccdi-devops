@@ -17,7 +17,7 @@ resource "aws_iam_role" "cw_stream_to_firehose" {
   description           = "Allows CloudWatch Streams to send metric streams to Kinesis Data Firehose Delivery Streams"
   force_detach_policies = var.role_force_detach_policies
   assume_role_policy    = data.aws_iam_policy_document.cw_stream_to_firehose_assume_role.json
-  permissions_boundary  = local.permissions_boundary_arn
+  permissions_boundary  = local.permission_boundary_arn
 }
 
 resource "aws_iam_role_policy_attachment" "cw_stream_to_firehose" {
