@@ -14,6 +14,7 @@ module "cloudwatch_metric_stream" {
   output_format                = var.output_format
   role_force_detach_policies   = var.role_force_detach_policies
 
+  depends_on = [module.kinesis_firehose]
 }
 
 module "kinesis_firehose" {
