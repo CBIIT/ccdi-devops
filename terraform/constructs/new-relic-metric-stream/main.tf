@@ -35,6 +35,7 @@ module "kinesis_firehose" {
   destination            = var.destination
   http_endpoint_name     = var.http_endpoint_name
   http_endpoint_url      = var.http_endpoint_url
+  s3_bucket_arn          = var.s3_bucket_arn
   s3_backup_mode         = var.s3_backup_mode
   s3_compression_format  = var.s3_compression_format
   s3_error_output_prefix = var.s3_error_output_prefix

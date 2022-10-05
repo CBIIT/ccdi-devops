@@ -96,6 +96,11 @@ variable "role_force_detach_policies" {
   default     = false
 }
 
+variable "s3_bucket_arn" {
+  type        = string
+  description = "S3 bucket used for failed delivery from kinesis data firehose delivery stream"
+}
+
 variable "s3_backup_mode" {
   type        = string
   description = "Defines how documents should be delivered to Amazon S3. Valid values are FailedDataOnly and AllData"

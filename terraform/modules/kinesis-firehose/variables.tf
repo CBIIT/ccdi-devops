@@ -72,6 +72,11 @@ variable "http_endpoint_url" {
   default     = "https://aws-api.newrelic.com/cloudwatch-metrics/v1"
 }
 
+variable "s3_bucket_arn" {
+  type        = string
+  description = "S3 bucket used for failed delivery from kinesis data firehose delivery stream"
+}
+
 variable "s3_backup_mode" {
   type        = string
   description = "Defines how documents should be delivered to Amazon S3. Valid values are FailedDataOnly and AllData"
