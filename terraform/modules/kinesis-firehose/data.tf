@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "kinesis_assume_role" {
     condition {
       test     = "StringEquals"
       variable = "sts:ExternalId"
-      values    = var.external_id
+      values    = [var.external_id]
     }
   }
 }

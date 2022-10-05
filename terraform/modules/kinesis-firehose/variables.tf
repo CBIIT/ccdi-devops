@@ -36,6 +36,12 @@ variable "program" {
 #  Optional Variables ############
 ##################################
 
+variable "iam_prefix" {
+  type        = string
+  description = "The string prefix for IAM resource name attributes"
+  default     = "power-user"
+}
+
 variable "buffer_interval" {
   type        = number
   description = "Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination"
