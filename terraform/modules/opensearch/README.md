@@ -48,4 +48,13 @@
 | <a name="input_warm_node_count"></a> [warm\_node\_count](#input\_warm\_node\_count) | The number of warm nodes in the cluster. Valid values are between 2 and 150 | `number` | `2` | no |
 | <a name="input_warm_node_enabled"></a> [warm\_node\_enabled](#input\_warm\_node\_enabled) | Whether or not to enable warm nodes for the cluster | `bool` | `false` | no |
 | <a name="input_warm_node_type"></a> [warm\_node\_type](#input\_warm\_node\_type) | Instance type for the OpenSearch cluster's warm nodes. Valid values are ultrawarm1.medium.search, ultrawarm1.large.search and ultrawarm1.xlarge.search | `string` | `"ultrawarm1.large.search"` | no |
+
+# Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | n/a |
+| <a name="output_domain_id"></a> [domain\_id](#output\_domain\_id) | n/a |
+| <a name="output_domain_name"></a> [domain\_name](#output\_domain\_name) | n/a |
+| <a name="output_endpoint"></a> [endpoint](#output\_endpoint) | n/a |
 <!-- END_TF_DOCS -->

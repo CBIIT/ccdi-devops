@@ -69,7 +69,8 @@ variable "http_endpoint_name" {
 variable "http_endpoint_url" {
   type        = string
   description = "The HTTP endpoint URL to which Kinesis Firehose sends your data"
-  default     = "https://aws-api.newrelic.com/cloudwatch-metrics/v1"
+  default     = "https://gov-metric-api.newrelic.com/metric/v1"
+  #default     = "https://aws-api.newrelic.com/cloudwatch-metrics/v1"
 }
 
 variable "iam_prefix" {
