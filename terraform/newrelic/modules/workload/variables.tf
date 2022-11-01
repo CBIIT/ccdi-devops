@@ -10,9 +10,11 @@ variable "app" {
 }
 
 variable "tier" {
-  default = "prod"
+  type = string 
+  description = "the name of the tier or environment"
 }
 
 variable "new_relic_account_id" {
-  default = 2292606
+  type = number 
+  description = "the seven digit id of the new relic account"
 }
