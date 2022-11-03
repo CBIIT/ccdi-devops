@@ -2,12 +2,12 @@
 DevOps repo for CCDI
 
 ## Repository Structure
+
 root
 |-- terraform
 |-- |-- constructs
 |-- |-- modules
 |-- |-- |-- aws
-|-- |-- |-- gcp
 |-- |-- |-- newrelic
 
 ## Module Structure
@@ -16,6 +16,7 @@ root
 Modules are meant to be small and manageable. Each module should contain the least amount of unique resources as possible. Services like Simple Storage Service (S3) may contain multiple 
 
 ### Folder Structure
+
 
 ## Naming Conventions
 Naming conventions increase portfolio standardization, keep repositories organized, ensure resource interoperability, simplify component inventory management, and enhance observability capabilities. 
