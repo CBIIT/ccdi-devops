@@ -12,7 +12,7 @@ resource "aws_iam_service_linked_role" "os" {
 }
 
 resource "aws_opensearch_domain" "os" {
-  domain_name    = "${var.program}-${var.app}-${var.tier}-opensearch"
+  domain_name    = "${var.program}-${var.tier}-${var.app}-opensearch"
   engine_version = "OpenSearch_${var.engine_version}"
 
   cluster_config {
