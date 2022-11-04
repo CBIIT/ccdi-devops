@@ -1,6 +1,6 @@
 resource "newrelic_nrql_alert_condition" "foo" {
-  account_id                     = <Your Account ID>
-  policy_id                      = newrelic_alert_policy.foo.id
+  account_id                     = var.account_id
+  policy_id                      = var.policy_id
   type                           = "static"
   name                           = "foo"
   description                    = "Alert when transactions are taking too long"
