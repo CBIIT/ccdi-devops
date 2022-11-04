@@ -1,26 +1,37 @@
-resource "newrelic_nrql_alert_condition" "this" {
-    account_id = var.account_id 
-    policy_id = var.policy_id 
-    type = var.type 
-    name = var.name 
-    description = var.description 
-    runbook_url = var.runbook_url 
-    enabled = var.enabled 
-    violation_time_limit_seconds = var.violation_time_limit_seconds 
-    fill_option = var.fill_option
-    fill_value = var.fill_value
-    aggregation_window = var.aggregation_window 
-    aggregation_method = var.aggregation_method 
-    aggregation_delay = var.aggregation_delay 
-    expiration_duration = var.expiration_duration 
-    open_violation_on_expiration = var.open_violation_on_expiration 
-    close_violations_on_expiration = var.close_violations_on_expiration 
-    slide_by = var.slide_by
-    
-    
-}
+resource "newrelic_nrql_alert_condition" "foo" {
+  account_id                     = <Your Account ID>
+  policy_id                      = newrelic_alert_policy.foo.id
+  type                           = "static"
+  name                           = "foo"
+  description                    = "Alert when transactions are taking too long"
+  runbook_url                    = "https://www.example.com"
+  enabled                        = true
+  violation_time_limit_seconds   = 3600
+  fill_option                    = "static"
+  fill_value                     = 1.0
+  aggregation_window             = 60
+  aggregation_method             = "event_flow"
+  aggregation_delay              = 120
+  expiration_duration            = 120
+  open_violation_on_expiration   = true
+  close_violations_on_expiration = true
+  slide_by                       = 30
 
-variable "type" {
-    type = string 
-    description = "The type of condition - either apm_app_metric, apm_java_metric, apm_kt_metric, browser_metric, or mobile_metric"
+  nrql {
+    query = "SELECT average(duration) FROM Transaction where appName = 'Your App'"
+  }
+
+  critical {
+    operator              = "above"
+    threshold             = 5.5
+    threshold_duration    = 300
+    threshold_occurrences = "ALL"
+  }
+
+  warning {
+    operator              = "above"
+    threshold             = 3.5
+    threshold_duration    = 600
+    threshold_occurrences = "ALL"
+  }
 }
