@@ -18,7 +18,7 @@ resource "newrelic_nrql_alert_condition" "this" {
   slide_by                       = var.slide_by
 
   nrql {
-    query = "SELECT average(duration) FROM Transaction where appName = 'Your App'"
+    query = var.nrql_query
   }
 
   critical {
