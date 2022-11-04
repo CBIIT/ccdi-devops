@@ -77,6 +77,11 @@ variable "name" {
   sensitive   = false
 }
 
+variable "nrql_query" {
+  type      = string
+  sensitive = false
+}
+
 variable "open_violation_on_expiration" {
   type      = bool
   default   = true
