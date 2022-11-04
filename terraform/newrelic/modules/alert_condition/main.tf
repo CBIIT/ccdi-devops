@@ -1,15 +1,19 @@
+
+
+
+
 resource "newrelic_nrql_alert_condition" "foo" {
   account_id                     = var.account_id
   policy_id                      = var.policy_id
-  type                           = "static"
-  name                           = "foo"
-  description                    = "Alert when transactions are taking too long"
-  runbook_url                    = "https://www.example.com"
-  enabled                        = true
-  violation_time_limit_seconds   = 3600
-  fill_option                    = "static"
-  fill_value                     = 1.0
-  aggregation_window             = 60
+  type                           = var.type
+  name                           = ""
+  description                    = var.description
+  runbook_url                    = var.runbook_url
+  enabled                        = var.enabled
+  violation_time_limit_seconds   = var.violation_time_limit_seconds
+  fill_option                    = var.fill_option
+  fill_value                     = var.fill_value
+  aggregation_window             = var.aggregation_window
   aggregation_method             = "event_flow"
   aggregation_delay              = 120
   expiration_duration            = 120
