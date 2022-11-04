@@ -1,5 +1,5 @@
 output "name" {
-  value = newrelic_workload.this.name 
+  value = newrelic_workload.this.name
 }
 
 output "guid" {

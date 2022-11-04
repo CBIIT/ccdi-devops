@@ -1,20 +1,20 @@
 variable "program" {
-    type = string 
-    description = "the name of the program"
-  default = "ccdi"
+  type        = string
+  description = "the name of the program"
+  default     = "ccdi"
 }
 
 variable "app" {
-    type = string 
-    description = "the name of the application"
+  type        = string
+  description = "the name of the application"
 }
 
 variable "tier" {
-  type = string 
+  type        = string
   description = "the name of the tier or environment"
 }
 
 variable "new_relic_account_id" {
-  type = number 
+  type        = number
   description = "the seven digit id of the new relic account"
 }
