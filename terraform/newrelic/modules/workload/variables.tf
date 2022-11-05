@@ -13,8 +13,3 @@ variable "program" {
   description = "the name of the program"
   default     = "ccdi"
 }
-
-variable "tier" {
-  type        = string
-  description = "the name of the tier or environment"
-}
