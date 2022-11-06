@@ -1,7 +1,6 @@
-variable "program" {
-  type        = string
-  description = "the name of the program"
-  default     = "ccdi"
+variable "account_id" {
+  type        = number
+  description = "the seven digit id of the new relic account"
 }
 
 variable "app" {
@@ -9,12 +8,8 @@ variable "app" {
   description = "the name of the application"
 }
 
-variable "tier" {
+variable "program" {
   type        = string
-  description = "the name of the tier or environment"
-}
-
-variable "new_relic_account_id" {
-  type        = number
-  description = "the seven digit id of the new relic account"
+  description = "the name of the program"
+  default     = "ccdi"
 }

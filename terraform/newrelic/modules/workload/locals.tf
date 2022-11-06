@@ -1,3 +1,7 @@
 locals {
-  workload_query = "((name LIKE '${var.app}-' OR id = '${var.app}-' OR domainId = '${var.app}-') OR (name LIKE '-${var.app}' OR id = '-${var.app}' OR domainId = '-${var.app}')) AND (name LIKE '${var.tier}' OR id = '${var.tier}' OR domainId = '${var.tier}')"
+  query_dev = "((name LIKE '${var.app}-') OR (name like '-${var.app}')) AND ((name LIKE '-dev') OR (name LIKE 'dev-'))"
+  query_qa = "((name LIKE '${var.app}-') OR (name like '-${var.app}')) AND ((name LIKE '-qa') OR (name LIKE 'qa-'))"
+  query_stage = "((name LIKE '${var.app}-') OR (name like '-${var.app}')) AND ((name LIKE '-stage') OR (name LIKE 'stage-'))"
+  query_prod = "((name LIKE '${var.app}-') OR (name like '-${var.app}')) AND ((name LIKE '-prod') OR (name LIKE 'prod-'))"
 }
+
