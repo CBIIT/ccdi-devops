@@ -1,6 +1,6 @@
 resource "aws_ecr_repository" "ecr" {
   # checkov:skip=CKV_AWS_136: AES256 encryption used, KMS not necessary
-  name                 = "${var.program}-${var.app}-${var.account_level}-${var.repo_type}-repository"
+  name                 = "${var.program}-${var.account_level}-${var.app}-${var.repo_type}-repository"
   image_tag_mutability = var.image_tag_mutability
 
   encryption_configuration {
