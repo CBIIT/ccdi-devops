@@ -37,6 +37,11 @@ variable "access_logs_bucket" {
   description = "The log bucket to send S3 access logs to"
 }
 
+variable "access_logs_enabled" {
+  type        = bool
+  description = "set to true to enable alb access logs"
+}
+
 variable "alb_listener_ssl_policy" {
   type        = string
   description = "The ssl policy to associate with the HTTPS listener for the ALB"

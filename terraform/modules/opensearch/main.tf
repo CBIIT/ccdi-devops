@@ -124,24 +124,24 @@ data "aws_iam_policy_document" "os" {
 
 resource "aws_cloudwatch_log_group" "os_index_slow" {
   # checkov:skip=CKV_AWS_158: Do not need to encrypt these logs with KMS, already encrypted with AES-256
-  name              = "${var.program}-${var.app}-${var.tier}-opensearch-index-slow-logs"
+  name              = "${var.program}-${var.tier}-${var.app}-opensearch-index-slow-logs"
   retention_in_days = var.log_retention
 }
 
 resource "aws_cloudwatch_log_group" "os_search_slow" {
   # checkov:skip=CKV_AWS_158: Do not need to encrypt these logs with KMS, already encrypted with AES-256
-  name              = "${var.program}-${var.app}-${var.tier}-opensearch-search-slow-logs"
+  name              = "${var.program}-${var.tier}-${var.app}-opensearch-search-slow-logs"
   retention_in_days = var.log_retention
 }
 
 resource "aws_cloudwatch_log_group" "os_app" {
   # checkov:skip=CKV_AWS_158: Do not need to encrypt these logs with KMS, already encrypted with AES-256
-  name              = "${var.program}-${var.app}-${var.tier}-opensearch-application-logs"
+  name              = "${var.program}-${var.tier}-${var.app}-opensearch-application-logs"
   retention_in_days = var.log_retention
 }
 
 resource "aws_cloudwatch_log_resource_policy" "os" {
-  policy_name     = "${var.iam_prefix}-${var.program}-${var.app}-${var.tier}-opensearch-logs"
+  policy_name     = "${var.iam_prefix}-${var.program}-${var.tier}-${var.app}-opensearch-logs"
   policy_document = data.aws_iam_policy_document.cloudwatch.json
 }
 
