@@ -14,6 +14,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_logs_bucket"></a> [access\_logs\_bucket](#input\_access\_logs\_bucket) | The log bucket to send S3 access logs to | `string` | n/a | yes |
+| <a name="input_access_logs_enabled"></a> [access\_logs\_enabled](#input\_access\_logs\_enabled) | set to true to enable alb access logs | `bool` | n/a | yes |
 | <a name="input_alb_listener_ssl_policy"></a> [alb\_listener\_ssl\_policy](#input\_alb\_listener\_ssl\_policy) | The ssl policy to associate with the HTTPS listener for the ALB | `string` | n/a | yes |
 | <a name="input_app"></a> [app](#input\_app) | The name of the application (i.e. 'mtp') | `string` | n/a | yes |
 | <a name="input_domain_certificate_arn"></a> [domain\_certificate\_arn](#input\_domain\_certificate\_arn) | The ARN of the certificate manager domain certificate for the ALB | `string` | n/a | yes |
