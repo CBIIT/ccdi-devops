@@ -1,5 +1,5 @@
 resource "aws_ecs_service" "service" {
-  name                               = "${var.program}-${var.app}-${var.tier}-${var.ecs_service_name}-service"
+  name                               = "${var.program}-${var.tier}-${var.app}-${var.ecs_service_name}-service"
   cluster                            = var.cluster_id
   task_definition                    = var.task_definition
   desired_count                      = var.desired_count
