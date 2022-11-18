@@ -1,6 +1,6 @@
 resource "aws_lb" "alb" {
   # checkov:skip=CKV_AWS_152: ADD REASON
-  name                       = "${var.program}-${var.app}-${var.tier}-lb"
+  name                       = "${var.program}-${var.tier}-${var.app}-lb"
   internal                   = var.internal
   load_balancer_type         = var.load_balancer_type
   drop_invalid_header_fields = var.drop_invalid_header_fields
@@ -10,8 +10,7 @@ resource "aws_lb" "alb" {
 
   access_logs {
     bucket  = var.access_logs_bucket
-    prefix  = "${var.program}/${var.tier}/${var.app}/alb-access-logs"
-    enabled = true
+    enabled = var.access_logs_enabled
   }
 
   timeouts {
