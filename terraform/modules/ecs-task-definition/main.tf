@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "task" {
-  family                   = "${var.program}-${var.app}-${var.tier}-${var.family}"
+  family                   = "${var.program}-${var.tier}-${var.app}-${var.family}"
   requires_compatibilities = [var.requires_compatibilities]
   network_mode             = var.network_mode
   cpu                      = var.cpu
