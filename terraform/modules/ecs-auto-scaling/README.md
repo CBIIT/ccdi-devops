@@ -12,6 +12,5 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | The name of the associated cluster (i.e. aws\_ecs\_cluster.cluster.name) | `string` | n/a | yes |
-| <a name="input_service_name"></a> [service\_name](#input\_service\_name) | The name of the associated service (i.e. aws\_ecs\_service.service.name) | `string` | n/a | yes |
+| <a name="input_resource_id"></a> [resource\_id](#input\_resource\_id) | the resource type and unique identifier string for resource associated with the scaling policy | `string` | n/a | yes |
 <!-- END_TF_DOCS -->

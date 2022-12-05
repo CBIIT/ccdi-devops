@@ -1,10 +1,10 @@
 resource "aws_security_group" "alb" {
-  name        = "${var.program}-${var.app}-${var.tier}-alb"
+  name        = "${var.program}-${var.tier}-${var.app}-alb"
   description = "Associated with the ${var.app}-${var.tier} alb"
   vpc_id      = var.vpc_id
 
   tags = {
-    Name = "${var.program}-${var.app}-${var.tier}-alb"
+    Name = "${var.program}-${var.tier}-${var.app}-alb"
   }
 }
 
