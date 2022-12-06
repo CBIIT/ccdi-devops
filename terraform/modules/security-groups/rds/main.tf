@@ -1,7 +1,7 @@
 #creating security group for rds
 
 locals {
-    nih_cidrs          = terraform.workspace == "prod" || terraform.workspace == "stage" ? ["0.0.0.0/0"] : ["129.43.0.0/16", "137.187.0.0/16", "10.128.0.0/9", "165.112.0.0/16", "156.40.0.0/16", "10.208.0.0/21", "128.231.0.0/16", "130.14.0.0/16", "157.98.0.0/16", "10.133.0.0/16"]
+  nih_cidrs          = terraform.workspace == "prod" || terraform.workspace == "stage" ? ["0.0.0.0/0"] : ["129.43.0.0/16", "137.187.0.0/16", "10.128.0.0/9", "165.112.0.0/16", "156.40.0.0/16", "10.208.0.0/21", "128.231.0.0/16", "130.14.0.0/16", "157.98.0.0/16", "10.133.0.0/16"]
 }
 
 #create rds security group
@@ -18,7 +18,7 @@ resource "aws_security_group_rule" "allow_backend" {
   from_port         = 3306
   protocol          = "tcp"
   to_port           = 3306
-  cidr_blocks       = local.nih_cidr
+  cidr_blocks       = local.nih_cidrs
   security_group_id = aws_security_group.rds_sg.id
   type              = "ingress"
 }

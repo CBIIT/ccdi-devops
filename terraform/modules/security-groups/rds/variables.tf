@@ -17,3 +17,7 @@ variable "vpc_id" {
   type        = string
   description = "The target VPC associated with the alb security group"
 }
+variable "jenkins_ip" {
+  type = string
+  description = "to have connectivity from jenkins ec2 instance for data loading "
+}

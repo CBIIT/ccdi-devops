@@ -17,7 +17,6 @@ locals {
 resource "aws_db_instance" "default" {
 
   identifier            = var.identifier
-  name                  = var.database_name
   username              = var.database_user
   password              = var.database_password
   port                  = var.database_port
@@ -30,12 +29,7 @@ resource "aws_db_instance" "default" {
   storage_encrypted     = var.storage_encrypted
   kms_key_id            = var.kms_key_arn
 
-  vpc_security_group_ids = compact(
-    concat(
-      [join("", aws_security_group.default.*.id)],
-      var.associate_security_group_ids
-    )
-  )
+  vpc_security_group_ids = var.security_group_ids
 
   db_subnet_group_name = local.db_subnet_group_name
   availability_zone    = local.availability_zone
@@ -71,7 +65,7 @@ resource "aws_db_instance" "default" {
 
   depends_on = [
     aws_db_subnet_group.default,
-    aws_security_group.default,
+    var.security_group_ids,
     aws_db_parameter_group.default,
     aws_db_option_group.default
   ]
@@ -102,6 +96,16 @@ resource "aws_db_parameter_group" "default" {
     create_before_destroy = true
   }
 }
+
+
+
+resource "aws_db_subnet_group" "default" {
+
+  name       = var.db_subnet_id_name
+  subnet_ids = var.subnet_ids
+  tags       = var.tags
+}
+
 
 resource "aws_db_option_group" "default" {
 

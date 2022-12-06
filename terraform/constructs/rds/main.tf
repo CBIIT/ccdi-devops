@@ -3,7 +3,6 @@ module "rds_instance" {
   name                = var.rds_name
   identifier           = var.identifier
   security_group_ids   = [module.rds_security_group.id]
-  database_name        = var.database_name
   database_user        = var.database_user
   database_password    = var.database_pass
   database_port        = var.rds_port
@@ -28,9 +27,9 @@ module "rds_instance" {
   backup_window               = var.backup_window
 
   db_subnet_id_name = var.db_subnet_id_name
-
+  env               = var.tier
+  tags = var.tags
 }
-
 
 
 module "rds_security_group" {
