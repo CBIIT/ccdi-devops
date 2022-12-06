@@ -1,6 +1,5 @@
 module "rds_instance" {
   source = "../../modules/rds/"
-  name                = var.rds_name
   identifier           = var.identifier
   security_group_ids   = [module.rds_security_group.id]
   database_user        = var.database_user
