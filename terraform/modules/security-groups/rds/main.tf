@@ -23,15 +23,15 @@ resource "aws_security_group_rule" "allow_backend" {
   type              = "ingress"
 }
 
-resource "aws_security_group_rule" "allow_jenkins_host" {
-  count             = terraform.workspace == "prod" ? 1 : 0
-  from_port         = 3306
-  protocol          = "tcp"
-  to_port           = 3306
-  cidr_blocks       = flatten([var.jenkins_ip])
-  security_group_id = aws_security_group.rds_sg.id
-  type              = "ingress"
-}
+#resource "aws_security_group_rule" "allow_jenkins_host" {
+#  count             = terraform.workspace == "prod" ? 1 : 0
+#  from_port         = 3306
+#  protocol          = "tcp"
+#  to_port           = 3306
+#  cidr_blocks       = flatten([var.jenkins_ip])
+#  security_group_id = aws_security_group.rds_sg.id
+#  type              = "ingress"
+#}
 
 resource "aws_security_group_rule" "all_outbound_rds" {
   security_group_id = aws_security_group.rds_sg.id

@@ -39,5 +39,5 @@ module "rds_security_group" {
   program          = var.program
   tier             = var.tier
   vpc_id           = var.vpc_id
-  jenkins_ip       = var.jenkins_ip
+#  jenkins_ip       = var.jenkins_ip
 }
