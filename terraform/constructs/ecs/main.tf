@@ -29,10 +29,9 @@ module "ecs_service_frontend"{
   scheduling_strategy                = var.scheduling_strategy
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   deployment_maximum_percent         = var.deployment_maximum_percent
-  deployment_controller_type         = var.deployment_controller_type
   assign_public_ip                   = var.assign_public_ip
-  security_groups                    = [module.security_group.id]
-  subnets                            = var.webapp_subnets
+  security_group_ids                    = [module.security_group.ecs_security_group_id]
+  webapp_subnets                            = var.webapp_subnets
   target_group_arn                   = var.frontend_target_group_arn
   container_name                     = var.frontend_container_name
   container_port                     = var.frontend_container_port
@@ -40,7 +39,7 @@ module "ecs_service_frontend"{
 }
 
 module "ecs_service_backend"{
-  source                             = "../../modules/ecs-service/"
+  source                             = "../../modules/ecs-service"
   cluster_id                         = module.ecs_cluster.id
   program                            = var.program
   app                                = var.app
@@ -52,13 +51,12 @@ module "ecs_service_backend"{
   scheduling_strategy                = var.scheduling_strategy
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   deployment_maximum_percent         = var.deployment_maximum_percent
-  deployment_controller_type         = var.deployment_controller_type
   assign_public_ip                   = var.assign_public_ip
-  security_groups                    = [module.security_group.id]
-  subnets                            = var.webapp_subnets
+  security_group_ids                 = [module.security_group.ecs_security_group_id]
   target_group_arn                   = var.backend_target_group_arn
   container_name                     = var.backend_container_name
   container_port                     = var.backend_container_port
+  webapp_subnets                     = var.webapp_subnets
 }
 
 module "ecs_frontend_task_definition" {

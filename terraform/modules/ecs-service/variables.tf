@@ -75,18 +75,19 @@ variable "desired_count" {
   default = 2
 }
 
-variable "program" {
-
+variable "app" {
+  type        = string
+  description = "The name of the application, often times an acronym in all lower case characters (i.e. 'mtp')"
 }
 
-variable "app" {
-
+variable "program" {
+  type        = string
+  description = "The name of the program that the ALB belongs to"
 }
 
 variable "tier" {
-
+  type = string
 }
-
 variable "ecs_service_name" {
 
 }
