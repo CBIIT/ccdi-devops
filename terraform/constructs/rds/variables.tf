@@ -371,10 +371,6 @@ variable "env" {
   type        = string
 }
 
-variable "rds_name" {
-  type  = string
-  description = "name of the rds instance"
-}
 variable "database_pass" {
   default = ""
 }
