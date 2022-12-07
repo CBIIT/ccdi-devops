@@ -24,7 +24,8 @@ output "subnet_group_id" {
 }
 
 output "security_group_id" {
-  value       = join("", aws_security_group.default.*.id)
+  #value       = join("", aws_security_group.default.*.id)
+  value       = var.security_group_ids
   description = "ID of the Security Group"
 }
 
