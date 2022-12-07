@@ -3,8 +3,8 @@ module "rds_instance" {
   identifier           = var.identifier
   security_group_ids   = [module.rds_security_group.id]
   database_user        = var.database_user
-  database_password    = var.database_pass
-  database_port        = var.rds_port
+  database_password    = var.database_password
+  database_port        = var.database_port
   multi_az             = var.multi_az
   storage_type         = var.storage_type
   allocated_storage    = var.allocated_storage
