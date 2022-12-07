@@ -379,5 +379,5 @@ variable "rds_port" {
   type        = number
 }
 variable "db_subnet_ids" {
-  default = ""
+  default = []
 }
