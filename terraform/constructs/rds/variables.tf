@@ -375,7 +375,8 @@ variable "database_pass" {
   default = ""
 }
 variable "rds_port" {
-  default = ""
+  description = "rds port"
+  type        = number
 }
 variable "db_subnet_ids" {
   default = ""
