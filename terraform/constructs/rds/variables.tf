@@ -374,9 +374,10 @@ variable "env" {
 variable "database_pass" {
   default = ""
 }
+
 variable "rds_port" {
-  description = "rds port"
   type        = number
+  description = "Database port (_e.g._ `3306` for `MySQL`). Used in the DB Security Group to allow access to the DB instance from the provided `security_group_ids`"
 }
 variable "db_subnet_ids" {
   default = []
