@@ -7,6 +7,11 @@ variable "access_logs_bucket" {
   description = "The log bucket to send S3 access logs to"
 }
 
+variable "access_logs_enabled" {
+  type    = bool
+  default = true
+}
+
 variable "app" {
   type        = string
   description = "The name of the application that the load balancer belongs to"

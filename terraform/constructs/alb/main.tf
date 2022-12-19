@@ -2,6 +2,7 @@ module "alb" {
   source = "../../modules/alb/"
 
   access_logs_bucket          = var.access_logs_bucket
+  access_logs_enabled         = var.access_logs_enabled
   alb_listener_ssl_policy     = var.alb_listener_ssl_policy
   app                         = var.app
   domain_certificate_arn      = var.domain_certificate_arn
