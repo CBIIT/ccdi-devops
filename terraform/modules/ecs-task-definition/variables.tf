@@ -51,7 +51,7 @@ variable "container_definition_image" {
 }
 
 variable "container_definition_essential" {
-  type = string
+  type = bool
 
 }
 

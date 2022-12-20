@@ -14,15 +14,15 @@ resource "aws_ecs_task_definition" "task" {
 
   container_definitions = jsonencode([
     {
-      name      = "${var.container_definition_name}"
-      image     = "${var.container_definition_image}"
-      essential = "${var.container_definition_essential}"
+      name      = var.container_definition_name
+      image     = var.container_definition_image
+      essential = var.container_definition_essential
 
       portMappings = [
         {
           protocol      = "tcp"
-          containerPort = "${var.container_port}"
-          hostPort      = "${var.host_port}"
+          containerPort = var.container_port
+          hostPort      = var.host_port
         }
       ]
 
