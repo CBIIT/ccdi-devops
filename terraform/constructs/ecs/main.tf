@@ -65,7 +65,7 @@ module "ecs_frontend_task_definition" {
   app                                = var.app
   tier                               = var.tier
   family                             = "frontend"
-  requires_compatibilities           = ["FARGATE"]
+  requires_compatibilities           = "FARGATE"
   network_mode                       = var.ecs_network_mode
   cpu                                = var.frontend_cpu
   memory                             = var.frontend_memory
@@ -84,7 +84,7 @@ module "ecs_backend_task_definition" {
   app                                = var.app
   tier                               = var.tier
   family                             = "backend"
-  requires_compatibilities           = ["FARGATE"]
+  requires_compatibilities           = "FARGATE"
   network_mode                       = var.ecs_network_mode
   cpu                                = var.backend_cpu
   memory                             = var.backend_memory
