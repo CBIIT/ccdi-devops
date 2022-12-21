@@ -1,11 +1,11 @@
 module "ecs_autoscaling_frontend_target" {
   source             = "../../modules/ecs-auto-scaling/"
-  resource_id        = "service/module.ecs_cluster.name/module.ecs_service_frontend.name"
+  resource_id        = "service/${module.ecs_cluster.name}/${module.ecs_service_frontend.name}"
 }
 
 module "ecs_autoscaling_backend_target" {
   source             = "../../modules/ecs-auto-scaling/"
-  resource_id        = "service/module.ecs_cluster.name/module.ecs_service_backend.name"
+  resource_id        = "service/${module.ecs_cluster.name}/${module.ecs_service_backend.name}"
 }
 
 module "ecs_cluster" {
