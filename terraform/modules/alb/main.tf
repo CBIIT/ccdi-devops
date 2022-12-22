@@ -36,23 +36,23 @@ resource "aws_lb_listener" "http" {
     }
   }
 }
-
-resource "aws_lb_listener" "https" {
-  # checkov:skip=CKV_AWS_2: This listener is using HTTPS, just passed through variable
-  # checkov:skip=CKV_AWS_103: TLS policy added in the variable called alb_listener_ssl_policy
-  load_balancer_arn = aws_lb.alb.arn
-  port              = var.https_port
-  protocol          = var.https_protocol
-  ssl_policy        = var.alb_listener_ssl_policy
-  certificate_arn   = var.domain_certificate_arn
-
-  default_action {
-    type = "fixed-response"
-
-    fixed_response {
-      content_type = var.fixed_response_content_type
-      message_body = var.fixed_response_message_body
-      status_code  = var.fixed_response_status_code
-    }
-  }
-}
+#
+#resource "aws_lb_listener" "https" {
+#  # checkov:skip=CKV_AWS_2: This listener is using HTTPS, just passed through variable
+#  # checkov:skip=CKV_AWS_103: TLS policy added in the variable called alb_listener_ssl_policy
+#  load_balancer_arn = aws_lb.alb.arn
+#  port              = var.https_port
+#  protocol          = var.https_protocol
+#  ssl_policy        = var.alb_listener_ssl_policy
+#  certificate_arn   = var.domain_certificate_arn
+#
+#  default_action {
+#    type = "fixed-response"
+#
+#    fixed_response {
+#      content_type = var.fixed_response_content_type
+#      message_body = var.fixed_response_message_body
+#      status_code  = var.fixed_response_status_code
+#    }
+#  }
+#}

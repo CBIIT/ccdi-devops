@@ -30,8 +30,8 @@ module "ecs_service_frontend"{
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   deployment_maximum_percent         = var.deployment_maximum_percent
   assign_public_ip                   = var.assign_public_ip
-  security_group_ids                    = [module.security_group.ecs_security_group_id]
-  webapp_subnets                            = var.webapp_subnets
+  security_group_ids                 = [module.security_group.ecs_security_group_id]
+  webapp_subnets                     = var.webapp_subnets
   target_group_arn                   = var.frontend_target_group_arn
   container_name                     = var.frontend_container_name
   container_port                     = var.frontend_container_port

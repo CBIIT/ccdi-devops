@@ -14,10 +14,10 @@ output "security_group_arn" {
   value = module.security_group.arn
 }
 
-output "https_listener_arn" {
-  value       = module.alb.https_listener_arn
-  description = "The HTTPS listener ARN"
-}
+#output "https_listener_arn" {
+#  value       = module.alb.https_listener_arn
+#  description = "The HTTPS listener ARN"
+#}
 
 output "frontend_target_group_arn" {
   value = module.frontend_target_group.arn
