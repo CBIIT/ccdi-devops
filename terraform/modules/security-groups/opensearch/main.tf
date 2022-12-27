@@ -4,7 +4,7 @@ locals {
 
 resource "aws_security_group" "opensearch" {
   # checkov:skip=CKV2_AWS_5: No need to attach to another resource
-  name        = "${var.program}-${var.app}-${var.tier}-opensearch"
+  name        = "${var.program}-${var.tier}-${var.app}-opensearch"
   description = "Security group associated with the OpenSearch cluster"
   vpc_id      = var.vpc_id
 
