@@ -12,7 +12,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | The name of the application, use abbreviation (i.e. mtp) | `string` | n/a | yes |
-| <a name="input_container_definition_essential"></a> [container\_definition\_essential](#input\_container\_definition\_essential) | n/a | `string` | n/a | yes |
+| <a name="input_container_definition_essential"></a> [container\_definition\_essential](#input\_container\_definition\_essential) | n/a | `bool` | n/a | yes |
 | <a name="input_container_definition_image"></a> [container\_definition\_image](#input\_container\_definition\_image) | n/a | `string` | n/a | yes |
 | <a name="input_container_definition_name"></a> [container\_definition\_name](#input\_container\_definition\_name) | n/a | `string` | n/a | yes |
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | n/a | `any` | n/a | yes |
