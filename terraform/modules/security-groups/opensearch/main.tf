@@ -9,7 +9,7 @@ resource "aws_security_group" "opensearch" {
   vpc_id      = var.vpc_id
 
   tags = {
-    "Name" = "${var.program}-${var.app}-${var.tier}-opensearch"
+    "Name" = "${var.program}-${var.tier}-${var.app}-opensearch"
   }
 }
 
