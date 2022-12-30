@@ -5,15 +5,15 @@ module "alb" {
   source = "github.com/CBIIT/ccdi-devops/terraform/constructs/alb"
 
 # REQUIRED VARIABLES #####################
-  access_logs_bucket          =
-  app                         =
-  domain_certificate_arn      =
-  internal                    =
-  program                     =
-  public_subnets              =
-  security_group_ingress_cidr =
-  tier                        =
-  vpc_id                      =
+  access_logs_bucket                =
+  app                               =
+  domain_certificate_arn            =
+  internal                          =
+  program                           =
+  public_subnets                    =
+  security_group_ingress_cidr       =
+  tier                              =
+  vpc_id                            =
 
 # OPTIONAL VARIABLES #####################
   alb_listener_ssl_policy           =
