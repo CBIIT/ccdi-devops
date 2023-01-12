@@ -22,17 +22,6 @@ variable "domain_certificate_arn" {
   description = "The ARN of the certificate manager domain certificate for the ALB"
 }
 
-variable "frontend_port" {
-  type    = string
-  default = "80"
-}
-
-variable "frontend_target_description" {
-  type        = string
-  description = "Describing the target, such as frontend or backend"
-  default     = "frontend"
-}
-
 variable "internal" {
   type        = bool
   description = "Set to true for non-prod accounts that do have allowable internet egress"
@@ -111,6 +100,18 @@ variable "fixed_response_status_code" {
   type        = string
   description = "The fixed response status code"
   default     = "200"
+}
+
+variable "frontend_port" {
+  type    = string
+  description = "The port for the frontend container"
+  default = "80"
+}
+
+variable "frontend_target_description" {
+  type        = string
+  description = "Describing the target, such as frontend or backend"
+  default     = "frontend"
 }
 
 variable "health_check_interval" {
