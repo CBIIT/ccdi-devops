@@ -30,6 +30,6 @@
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | The S3 Bucket ARN |
 | <a name="output_bucket"></a> [bucket](#output\_bucket) | The S3 Bucket name (bucket) |
+| <a name="output_bucket_regional_domain_name"></a> [bucket\_regional\_domain\_name](#output\_bucket\_regional\_domain\_name) | the s3 bucket domain name |
 | <a name="output_id"></a> [id](#output\_id) | The S3 Bucket ID |
-| <a name="output_s3_bucket_domain_name"></a> [s3\_bucket\_domain\_name](#output\_s3\_bucket\_domain\_name) | The bucket domain name. Will be of format bucketname.s3.amazonaws.com. |
 <!-- END_TF_DOCS -->

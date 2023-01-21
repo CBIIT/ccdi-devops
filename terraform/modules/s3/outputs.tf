@@ -13,7 +13,8 @@ output "bucket" {
   description = "The S3 Bucket name (bucket)"
 }
 
-output "s3_bucket_domain_name" {
-  description = "The bucket domain name. Will be of format bucketname.s3.amazonaws.com."
-  value       = aws_s3_bucket.s3.bucket_domain_name
+
+output "bucket_regional_domain_name" {
+  value = aws_s3_bucket.s3.bucket_regional_domain_name 
+  description = "the s3 bucket domain name"
 }
