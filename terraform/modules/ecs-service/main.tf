@@ -26,8 +26,8 @@ resource "aws_ecs_service" "service" {
   }
 
   deployment_circuit_breaker {
-    enable   = deployment_circuit_breaker_enable
-    rollback = deployment_circuit_breaker_rollback
+    enable   = var.deployment_circuit_breaker_enable
+    rollback = var.deployment_circuit_breaker_rollback
   }
 
   lifecycle {

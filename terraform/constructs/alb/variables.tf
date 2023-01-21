@@ -7,6 +7,11 @@ variable "access_logs_bucket" {
   description = "The log bucket to send S3 access logs to"
 }
 
+variable "access_logs_enabled" {
+  type    = bool
+  default = true
+}
+
 variable "app" {
   type        = string
   description = "The name of the application that the load balancer belongs to"
@@ -111,7 +116,7 @@ variable "frontend_target_description" {
 
 variable "health_check_interval" {
   type    = number
-  default = 30
+  default = 100
 }
 
 variable "health_check_matcher" {
@@ -141,12 +146,12 @@ variable "health_check_protocol" {
 
 variable "health_check_timeout" {
   type    = number
-  default = 10
+  default = 60
 }
 
 variable "health_check_healthy_threshold" {
   type    = number
-  default = 5
+  default = 10
 }
 
 variable "http_port" {
@@ -210,7 +215,7 @@ variable "stickiness_type" {
 
 variable "health_check_unhealthy_threshold" {
   type    = number
-  default = 5
+  default = 10
 }
 
 variable "target_type" {

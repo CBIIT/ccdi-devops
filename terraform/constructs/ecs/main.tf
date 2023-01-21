@@ -1,11 +1,11 @@
 module "ecs_autoscaling_frontend_target" {
   source             = "../../modules/ecs-auto-scaling/"
-  resource_id        = "service/module.ecs_cluster.name/module.ecs_service_frontend.name"
+  resource_id        = "service/${module.ecs_cluster.name}/${module.ecs_service_frontend.name}"
 }
 
 module "ecs_autoscaling_backend_target" {
   source             = "../../modules/ecs-auto-scaling/"
-  resource_id        = "service/module.ecs_cluster.name/module.ecs_service_backend.name"
+  resource_id        = "service/${module.ecs_cluster.name}/${module.ecs_service_backend.name}"
 }
 
 module "ecs_cluster" {
@@ -30,8 +30,8 @@ module "ecs_service_frontend"{
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   deployment_maximum_percent         = var.deployment_maximum_percent
   assign_public_ip                   = var.assign_public_ip
-  security_group_ids                    = [module.security_group.ecs_security_group_id]
-  webapp_subnets                            = var.webapp_subnets
+  security_group_ids                 = [module.security_group.ecs_security_group_id]
+  webapp_subnets                     = var.webapp_subnets
   target_group_arn                   = var.frontend_target_group_arn
   container_name                     = var.frontend_container_name
   container_port                     = var.frontend_container_port
@@ -65,7 +65,7 @@ module "ecs_frontend_task_definition" {
   app                                = var.app
   tier                               = var.tier
   family                             = "frontend"
-  requires_compatibilities           = ["FARGATE"]
+  requires_compatibilities           = "FARGATE"
   network_mode                       = var.ecs_network_mode
   cpu                                = var.frontend_cpu
   memory                             = var.frontend_memory
@@ -84,7 +84,7 @@ module "ecs_backend_task_definition" {
   app                                = var.app
   tier                               = var.tier
   family                             = "backend"
-  requires_compatibilities           = ["FARGATE"]
+  requires_compatibilities           = "FARGATE"
   network_mode                       = var.ecs_network_mode
   cpu                                = var.backend_cpu
   memory                             = var.backend_memory

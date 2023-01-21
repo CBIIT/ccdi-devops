@@ -1,7 +1,7 @@
 resource "aws_security_group" "app_sg" {
-  name   =  "${var.program}-${var.app}-${var.tier}-app-sg"
+  name        = "${var.program}-${var.tier}-${var.app}-app-sg"
   description = "Associated with the ${var.app}-${var.tier} ecs"
-  vpc_id = var.vpc_id
+  vpc_id      = var.vpc_id
 
   tags = {
     Name = "${var.program}-${var.app}-${var.tier}-ecs"

@@ -7,7 +7,6 @@
 |------|------|
 | [aws_lb.alb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb) | resource |
 | [aws_lb_listener.http](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
-| [aws_lb_listener.https](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
 
 # Inputs
 
@@ -44,6 +43,5 @@
 | <a name="output_arn_suffix"></a> [arn\_suffix](#output\_arn\_suffix) | n/a |
 | <a name="output_dns_name"></a> [dns\_name](#output\_dns\_name) | n/a |
 | <a name="output_http_listener_arn"></a> [http\_listener\_arn](#output\_http\_listener\_arn) | The HTTP listener ARN |
-| <a name="output_https_listener_arn"></a> [https\_listener\_arn](#output\_https\_listener\_arn) | The HTTPS listener ARN |
 | <a name="output_id"></a> [id](#output\_id) | n/a |
 <!-- END_TF_DOCS -->
