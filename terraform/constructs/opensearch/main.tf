@@ -45,4 +45,5 @@ module "opensearch_security_group" {
   program          = var.program
   tier             = var.tier
   vpc_id           = var.vpc_id
+  ecs_security_group_id = var.ecs_security_group_id
 }

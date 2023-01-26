@@ -23,3 +23,14 @@ variable "vpc_id" {
   type        = string
   description = "The target VPC associated with the alb security group"
 }
+
+variable "ecs_security_group_id"{
+  type       = string
+  description = "ecs security group id"
+}
+
+variable "jenkins_ip" {
+  description = "jenkins slave IP"
+  default     = []
+  type        = list(string)
+}

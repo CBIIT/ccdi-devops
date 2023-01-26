@@ -17,3 +17,8 @@ variable "vpc_id" {
   type        = string
   description = "The target VPC associated with the alb security group"
 }
+
+variable "alb_security_group_id" {
+  type        = string
+  description = "alb security group id to receive traffic from"
+}

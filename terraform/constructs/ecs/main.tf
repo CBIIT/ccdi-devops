@@ -103,4 +103,5 @@ module "security_group" {
   program                     = var.program
   tier                        = var.tier
   vpc_id                      = var.vpc_id
+  alb_security_group_id       = var.alb_security_group_id
 }

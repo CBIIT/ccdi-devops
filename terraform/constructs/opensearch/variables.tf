@@ -182,3 +182,14 @@ variable "warm_node_type" {
   description = "Instance type for the OpenSearch cluster's warm nodes. Valid values are ultrawarm1.medium.search, ultrawarm1.large.search and ultrawarm1.xlarge.search"
   default     = "ultrawarm1.large.search"
 }
+
+variable "ecs_security_group_id"{
+  type       = string
+  description = "ecs security group id"
+}
+
+variable "jenkins_ip" {
+  description = "jenkins slave IP"
+  default     = []
+  type        = list(string)
+}
