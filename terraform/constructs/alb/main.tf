@@ -33,6 +33,7 @@ module "security_group" {
   security_group_ingress_cidr = var.security_group_ingress_cidr
   tier                        = var.tier
   vpc_id                      = var.vpc_id
+  security_group_nih_cidrs    = var.security_group_nih_cidrs
 }
 
 module "frontend_target_group" {

@@ -41,6 +41,10 @@ variable "security_group_ingress_cidr" {
   type = list(string)
 }
 
+variable "security_group_nih_cidrs" {
+  type = list(string)
+}
+
 variable "tier" {
   type        = string
   description = "The tier or environment that the load balancer belongs to"
