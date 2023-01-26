@@ -29,7 +29,7 @@ variable "ecs_security_group_id"{
   description = "ecs security group id"
 }
 
-variable "jenkins_ip" {
+variable "jenkins_IP" {
   description = "jenkins slave IP"
   default     = []
   type        = list(string)
