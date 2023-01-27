@@ -120,8 +120,8 @@ variable "vpc_id" {
   default     = ""
   description = "VPC ID"
 }
-
-variable "alb_security_group_id" {
-  type        = string
-  description = "alb security group id to receive traffic from"
-}
+//
+//variable "alb_security_group_id" {
+//  type        = string
+//  description = "alb security group id to receive traffic from"
+//}

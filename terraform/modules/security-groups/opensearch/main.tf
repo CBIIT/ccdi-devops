@@ -24,23 +24,34 @@ resource "aws_security_group_rule" "outbound_all" {
   ipv6_cidr_blocks  = ["::/0"]
 }
 
-resource "aws_security_group_rule" "inbound_ecs" {
-
-  security_group_id = aws_security_group.opensearch.id
-  description       = "Allowing access from ecs containers"
-  type              = "ingress"
-  from_port         = 443
-  protocol          = "tcp"
-  to_port           = 443
-  source_security_group_id = var.ecs_security_group_id
-}
-
 resource "aws_security_group_rule" "inbound_nih_network" {
+  count = var.allow_nih_access ? 1 : 0
   security_group_id = aws_security_group.opensearch.id
-  description       = "Allowing accessfrom jenkins slave for dataloading"
+  description       = "Allowing access over HTTPS from NIH Network"
   type              = "ingress"
   from_port         = 443
   protocol          = "tcp"
   to_port           = 443
-  cidr_blocks       = var.jenkins_IP
+  source_security_group_id = local.nih_cidr
 }
+//
+//resource "aws_security_group_rule" "inbound_ecs" {
+//
+//  security_group_id = aws_security_group.opensearch.id
+//  description       = "Allowing access from ecs containers"
+//  type              = "ingress"
+//  from_port         = 443
+//  protocol          = "tcp"
+//  to_port           = 443
+//  source_security_group_id = var.ecs_security_group_id
+//}
+//
+//resource "aws_security_group_rule" "inbound_nih_network" {
+//  security_group_id = aws_security_group.opensearch.id
+//  description       = "Allowing accessfrom jenkins slave for dataloading"
+//  type              = "ingress"
+//  from_port         = 443
+//  protocol          = "tcp"
+//  to_port           = 443
+//  cidr_blocks       = var.jenkins_IP
+//}
