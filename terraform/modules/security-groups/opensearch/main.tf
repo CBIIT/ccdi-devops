@@ -32,7 +32,7 @@ resource "aws_security_group_rule" "inbound_nih_network" {
   from_port         = 443
   protocol          = "tcp"
   to_port           = 443
-  source_security_group_id = local.nih_cidr
+  cidr_blocks       = local.nih_cidr
 }
 //
 //resource "aws_security_group_rule" "inbound_ecs" {
