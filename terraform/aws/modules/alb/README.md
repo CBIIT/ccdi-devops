@@ -15,7 +15,7 @@ The following provides an example of how to use this module by defining values f
 module "alb" {
   source = "git::https://github.com/NCI-CTOS/terraform-aws-alb?ref=vX.X.X"
 
-  access_logs_enabled         = true 
+  access_logs_enabled         = true
   access_logs_bucket          = aws_s3_bucket.log_bucket.id
   access_logs_prefix          = null
   app                         = "mtp"
