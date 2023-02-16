@@ -32,7 +32,7 @@ module "alb" {
   drop_invalid_header_fields  = true 
   enable_deletion_protection  = true 
   enable_http2                = true 
-  enable_waf_fail_open        = false 
+  enable_waf_fail_open        = false
   idle_timeout                = 60
   preserve_host_header        = true
   program                     = "ccdi" 
