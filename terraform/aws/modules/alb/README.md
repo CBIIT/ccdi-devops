@@ -35,7 +35,7 @@ module "alb" {
   enable_waf_fail_open        = false
   idle_timeout                = 60
   preserve_host_header        = true
-  program                     = "ccdi" 
+  program                     = "ccdi"
   security_groups             = [aws_security_group.alb.id]
   ssl_policy                  = "ELBSecurityPolicy-2016-08"
   subnets                     = data.aws_subnets.public.subnet_ids
