@@ -20,7 +20,7 @@ module "alb" {
   access_logs_prefix          = null
   app                         = "mtp"
   certificate_arn             = data.aws_acm_certificate.domain.arn
-  create_http_listener        = true 
+  create_http_listener        = true
   create_https_listener       = true
   env                         = terraform.workspace
   http_port                   = 80 
