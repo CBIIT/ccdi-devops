@@ -22,7 +22,7 @@ module "alb" {
   certificate_arn             = data.aws_acm_certificate.domain.arn
   create_http_listener        = true 
   create_https_listener       = true
-  env                         = terraform.workspace 
+  env                         = terraform.workspace
   http_port                   = 80 
   http_protocol               = "HTTP"
   https_port                  = 443
