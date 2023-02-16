@@ -1,5 +1,6 @@
 # Changes
 
+
 - Added ability to associate tags through a variable (optional)
 - Removed "type" variable - this module is designed to accomodate type of "application" only as the name suggests
 - Optionally create ALB listeners. This is helpful when working in environments without an ACM certificate or when preparing infrastructure in prod prior to go-live
