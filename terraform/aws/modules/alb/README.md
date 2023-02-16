@@ -31,7 +31,7 @@ module "alb" {
   https_protocol              = "HTTPS"
   internal                    = terraform.workspace == "dev" || terraform.workspace == "qa" ? true : false
   desync_mitigation_mode      = true
-  drop_invalid_header_fields  = true 
+  drop_invalid_header_fields  = true
   enable_deletion_protection  = true 
   enable_http2                = true 
   enable_waf_fail_open        = false
