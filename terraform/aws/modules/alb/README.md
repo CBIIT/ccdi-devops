@@ -34,7 +34,7 @@ module "alb" {
   enable_http2                = true 
   enable_waf_fail_open        = false 
   idle_timeout                = 60
-  preserve_host_header        = true 
+  preserve_host_header        = true
   program                     = "ccdi" 
   security_groups             = [aws_security_group.alb.id]
   ssl_policy                  = "ELBSecurityPolicy-2016-08"
