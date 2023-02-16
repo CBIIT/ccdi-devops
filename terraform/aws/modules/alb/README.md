@@ -18,7 +18,7 @@ module "alb" {
   access_logs_enabled         = true 
   access_logs_bucket          = aws_s3_bucket.log_bucket.id
   access_logs_prefix          = null
-  app                         = "mtp" 
+  app                         = "mtp"
   certificate_arn             = data.aws_acm_certificate.domain.arn
   create_http_listener        = true 
   create_https_listener       = true
