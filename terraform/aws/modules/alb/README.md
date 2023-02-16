@@ -5,6 +5,7 @@
 - Optionally create ALB listeners. This is helpful when working in environments without an ACM certificate or when preparing infrastructure in prod prior to go-live
 
 # Overview
+
 A module that creates an AWS Application Load Balancer and optionally creates a set of HTTP and HTTPS listeners. Assume that all outputs relate to the Application Load Balancer unless the name of the output is prefixed with `http_listener` or `https_listener`.
 
 This module does not contain AWS Security Group resources, and requires that the security groups are provided as an input variable. This module also does not create Load Balancer Listener Rules. In both cases, this decision was made to offer maximum configuration flexibility for each project.
