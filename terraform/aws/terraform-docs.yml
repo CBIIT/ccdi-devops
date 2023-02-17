@@ -4,12 +4,7 @@ recursive:
   enabled: true
 
 sections:
-  hide-all: true 
-  show:
-    - inputs
-    - modules
-    - resources 
-    - outputs
+  hide-all: false 
 
 sort:
   enabled: true 
