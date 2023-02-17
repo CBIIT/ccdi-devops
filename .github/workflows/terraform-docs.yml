@@ -1,6 +1,8 @@
 name: Documentation
 on:
-  - pull_request 
+  pull_request:
+    paths:
+      - terraform/aws/modules/**
 jobs:
   documentation:
     name: 'Documentation'
@@ -14,6 +16,6 @@ jobs:
     - name: Terraform Documentation
       uses: terraform-docs/gh-actions@v1.0.0
       with:
-        working-dir: ./terraform/aws
+        working-dir: ./terraform/aws/modules
         config-file: .terraform-docs.yml
         git-push: true
