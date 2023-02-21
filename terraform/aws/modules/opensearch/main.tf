@@ -131,7 +131,7 @@ resource "aws_cloudwatch_log_resource_policy" "cloudwatch" {
 resource "aws_iam_role" "manual_snapshot" {
   count = var.create_manual_snapshot_role ? 1 : 0
 
-  name               = "${local.stack}-${var.domain_name_suffix}-manual-snapshot-role"
+  name               = "power-user-${local.stack}-${var.domain_name_suffix}-manual-snapshot-role"
   description        = "role to enable opensearch manual snapshot operations"
   assume_role_policy = data.aws_iam_policy_document.manual_snapshot_assume_role[0].json
 }
@@ -139,7 +139,7 @@ resource "aws_iam_role" "manual_snapshot" {
 resource "aws_iam_policy" "manual_snapshot" {
   count = var.create_manual_snapshot_role ? 1 : 0
 
-  name        = "${local.stack}-${var.domain_name_suffix}-manual-snapshot-policy"
+  name        = "power-user-${local.stack}-${var.domain_name_suffix}-manual-snapshot-policy"
   description = "policy to enable opensearch manual snapshot operations"
   policy      = data.aws_iam_policy_document.manual_snapshot[0].json
 }
