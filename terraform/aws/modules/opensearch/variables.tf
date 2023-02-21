@@ -157,6 +157,12 @@ variable "instance_type" {
   description = "type of instance of the domain cluster"
 }
 
+variable "permissions_boundary_arn" {
+  type        = string
+  description = "arn of the permissions boundary to apply to the role - required when create_manual_snapshot_role is true"
+  default     = "null"
+}
+
 variable "security_group_ids" {
   type        = set(string)
   description = "id of the security group(s) to associate with the cluster"
