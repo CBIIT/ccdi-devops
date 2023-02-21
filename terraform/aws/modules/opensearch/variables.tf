@@ -61,7 +61,6 @@ variable "create_manual_snapshot_role" {
   default     = false
 }
 
-
 variable "create_service_linked_role" {
   type        = bool
   description = "whether to create a service linked role for OpenSearch - only one per account"
@@ -161,6 +160,12 @@ variable "instance_type" {
 variable "security_group_ids" {
   type        = set(string)
   description = "id of the security group(s) to associate with the cluster"
+}
+
+variable "snapshot_bucket_arn" {
+  type        = string
+  description = "arn of the bucket to store snapshots - required when create_manual_snapshot_role is true"
+  default     = "null"
 }
 
 variable "subnet_ids" {
