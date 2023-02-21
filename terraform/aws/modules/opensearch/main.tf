@@ -91,6 +91,7 @@ resource "aws_iam_service_linked_role" "this" {
 
   lifecycle {
     ignore_changes = [
+      tags,
       tags_all,
     ]
   }
@@ -100,21 +101,7 @@ resource "aws_opensearch_domain_policy" "this" {
   count = var.create_domain_policy ? 1 : 0
 
   domain_name     = aws_opensearch_domain.this.domain_name
-  access_policies = data.aws_iam_policy_document.this[0].json
-}
-
-data "aws_iam_policy_document" "this" {
-  count = var.create_domain_policy ? 1 : 0
-
-  statement {
-    effect  = "Allow"
-    actions = var.domain_policy_actions
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-    resources = ["${aws_opensearch_domain.this.arn}/*"]
-  }
+  access_policies = data.aws_iam_policy_document.domain_policy[0].json
 }
 
 resource "aws_cloudwatch_log_group" "index_slow" {
@@ -140,26 +127,26 @@ resource "aws_cloudwatch_log_resource_policy" "cloudwatch" {
   policy_document = data.aws_iam_policy_document.cloudwatch.json
 }
 
-data "aws_iam_policy_document" "cloudwatch" {
-  statement {
-    actions = [
-      "logs:PutLogEvents", 
-      "logs:PutLogEventsBatch", 
-      "logs:CreateLogStream" 
-    ]
-    resources = [
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.index_slow.name}",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.search_slow.name}",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.error.name}",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.index_slow.name}:log-stream:*",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.search_slow.name}:log-stream:*",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.error.name}:log-stream:*",
-    ]
-    principals {
-      type        = "Service"
-      identifiers = ["es.amazonaws.com"]
-    }
-  }
+
+resource "aws_iam_role" "manual_snapshot" {
+  count = var.create_manual_snapshot_role ? 1 : 0
+
+  name               = "${local.stack}-${var.domain_name_suffix}-manual-snapshot-role"
+  description        = "role to enable opensearch manual snapshot operations"
+  assume_role_policy = data.aws_iam_policy_document.manual_snapshot_assume_role[0].json
 }
 
-data "aws_caller_identity" "current" {}
+resource "aws_iam_policy" "manual_snapshot" {
+  count = var.create_manual_snapshot_role ? 1 : 0
+
+  name        = "${local.stack}-${var.domain_name_suffix}-manual-snapshot-policy"
+  description = "policy to enable opensearch manual snapshot operations"
+  policy      = data.aws_iam_policy_document.manual_snapshot[0].json
+}
+
+resource "aws_iam_role_policy_attachment" "manual_snapshot" {
+  count = var.create_manual_snapshot_role ? 1 : 0
+
+  role       = aws_iam_role.manual_snapshot[0].name
+  policy_arn = aws_iam_policy.manual_snapshot[0].arn
+}

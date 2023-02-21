@@ -1,5 +1,5 @@
 resource "aws_appautoscaling_target" "target" {
-  resource_id        = var.resource_id     #"service/${aws_ecs_cluster.ecs_cluster.name}/${aws_ecs_service.ecs_service_frontend.name}"
+  resource_id        = var.resource_id #"service/${aws_ecs_cluster.ecs_cluster.name}/${aws_ecs_service.ecs_service_frontend.name}"
   scalable_dimension = "ecs:service:DesiredCount"
   service_namespace  = "ecs"
   max_capacity       = 5

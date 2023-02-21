@@ -55,6 +55,13 @@ variable "create_domain_policy" {
   default     = true
 }
 
+variable "create_manual_snapshot_role" {
+  type        = bool
+  description = "whether to create a role to enable manual snapshot operations"
+  default     = false
+}
+
+
 variable "create_service_linked_role" {
   type        = bool
   description = "whether to create a service linked role for OpenSearch - only one per account"

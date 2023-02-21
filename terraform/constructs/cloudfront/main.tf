@@ -17,7 +17,7 @@ module "cloudfront" {
   tags                          = var.tags
   origin                        = var.origin
   origin_group                  = var.origin_group
-  viewer_certificate            =  var.viewer_certificate
+  viewer_certificate            = var.viewer_certificate
   geo_restriction               = var.geo_restriction
   logging_config                = var.logging_config
   custom_error_response         = var.custom_error_response
