@@ -36,7 +36,25 @@ data "aws_iam_policy_document" "cloudwatch" {
   }
 }
 
+data "aws_iam_policy_document" "manual_snapshot_assume_role" {
+  count = var.create_manual_snapshot_role ? 1 : 0
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "sts:AssumeRole"
+    ]
+    principals {
+      type        = "Service"
+      identifiers = ["es.amazonaws.com"]
+    }
+  }
+}
+
+
 data "aws_iam_policy_document" "manual_snapshot" {
+  count = var.create_manual_snapshot_role ? 1 : 0
+
   statement {
     effect = "Allow"
     actions = [
