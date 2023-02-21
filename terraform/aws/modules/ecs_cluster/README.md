@@ -22,9 +22,9 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | name of the application | `string` | n/a | yes |
+| <a name="input_container_insights_enabled"></a> [container\_insights\_enabled](#input\_container\_insights\_enabled) | Enables ECS container insights. Valid values are 'enabled' and 'disabled' | `string` | `"disabled"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | the tier or account level | `string` | n/a | yes |
 | <a name="input_program"></a> [program](#input\_program) | abbreviation of the ctos program | `string` | n/a | yes |
-| <a name="input_container_insights_enabled"></a> [container\_insights\_enabled](#input\_container\_insights\_enabled) | Enables ECS container insights. Valid values are 'enabled' and 'disabled' | `string` | `"disabled"` | no |
 
 # Outputs
 

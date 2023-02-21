@@ -75,14 +75,10 @@ module "alb" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
-| <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
-| <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | security group(s) to associate with the load balancer | `set(string)` | n/a | yes |
-| <a name="input_subnets"></a> [subnets](#input\_subnets) | the subnets to associate with the load balancer | `set(string)` | n/a | yes |
 | <a name="input_access_logs_bucket"></a> [access\_logs\_bucket](#input\_access\_logs\_bucket) | name of the destination bucket for load balancer access logs | `string` | `null` | no |
 | <a name="input_access_logs_enabled"></a> [access\_logs\_enabled](#input\_access\_logs\_enabled) | enables load balancer access logging | `bool` | `false` | no |
 | <a name="input_access_logs_prefix"></a> [access\_logs\_prefix](#input\_access\_logs\_prefix) | directory prefix to store load balancer access logs within - default is root directory | `string` | `null` | no |
+| <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_certificate_arn"></a> [certificate\_arn](#input\_certificate\_arn) | arn of the certificate for HTTPS listeners, not needed for HTTP listeners | `string` | `null` | no |
 | <a name="input_create_http_listener"></a> [create\_http\_listener](#input\_create\_http\_listener) | whether to create an HTTP listener | `bool` | `true` | no |
 | <a name="input_create_https_listener"></a> [create\_https\_listener](#input\_create\_https\_listener) | whether to create an HTTPS listener | `bool` | `true` | no |
@@ -91,6 +87,7 @@ module "alb" {
 | <a name="input_enable_deletion_protection"></a> [enable\_deletion\_protection](#input\_enable\_deletion\_protection) | prevents terraform from accidentally destroying the load balancer | `bool` | `true` | no |
 | <a name="input_enable_http2"></a> [enable\_http2](#input\_enable\_http2) | whether HTTP/2 is enabled in application load balancers | `bool` | `true` | no |
 | <a name="input_enable_waf_fail_open"></a> [enable\_waf\_fail\_open](#input\_enable\_waf\_fail\_open) | whether to allow a WAF-enabled load balancer to route requests to targets if it is unable to forward the requests to waf | `bool` | `false` | no |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
 | <a name="input_http_port"></a> [http\_port](#input\_http\_port) | port on which the load balancer is listening for HTTP requests | `number` | `80` | no |
 | <a name="input_http_protocol"></a> [http\_protocol](#input\_http\_protocol) | protocol on which the load balancer is listening for HTTP requests | `string` | `"HTTP"` | no |
 | <a name="input_https_port"></a> [https\_port](#input\_https\_port) | port on which the load balancer is listening for HTTPS requests | `number` | `443` | no |
@@ -98,7 +95,10 @@ module "alb" {
 | <a name="input_idle_timeout"></a> [idle\_timeout](#input\_idle\_timeout) | in seconds, the amount of time the connection is permitted to be idle | `number` | `60` | no |
 | <a name="input_internal"></a> [internal](#input\_internal) | whether the load balancer is internally facing | `bool` | `false` | no |
 | <a name="input_preserve_host_header"></a> [preserve\_host\_header](#input\_preserve\_host\_header) | whether the Application Load Balancer should preserve the Host header in the HTTP request and send it to the target without any change | `bool` | `true` | no |
+| <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | security group(s) to associate with the load balancer | `set(string)` | n/a | yes |
 | <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy) | the name of the SSL policy for the HTTPS listener | `string` | `"ELBSecurityPolicy-2016-08"` | no |
+| <a name="input_subnets"></a> [subnets](#input\_subnets) | the subnets to associate with the load balancer | `set(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | tags to apply to the load balancer and listeners (if created) | `map(string)` | `{}` | no |
 
 # Outputs
