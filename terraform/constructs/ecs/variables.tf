@@ -40,16 +40,16 @@ variable "assign_public_ip" {
 }
 
 variable "frontend_target_group_arn" {
-  type   = string
+  type = string
 }
 
 variable "frontend_container_name" {
-  type = string
+  type    = string
   default = "frontend"
 }
 
 variable "frontend_container_port" {
-  type = number
+  type    = number
   default = 80
 }
 
@@ -59,16 +59,16 @@ variable "webapp_subnets" {
 }
 
 variable "backend_target_group_arn" {
-    type = string
+  type = string
 }
 
 variable "backend_container_name" {
-  type = string
+  type    = string
   default = "backend"
 }
 
 variable "backend_container_port" {
-  type = number
+  type    = number
   default = 8080
 }
 
@@ -88,31 +88,31 @@ variable "backend_definition_image" {
 }
 
 variable "frontend_cpu" {
-  type        = string
-  default     = "256"
+  type    = string
+  default = "256"
 }
 
 variable "frontend_memory" {
-  type        = string
-  default     = "512"
+  type    = string
+  default = "512"
 }
 
 variable "execution_role_arn" {
-  type        = string
+  type = string
 }
 
 variable "task_role_arn" {
-  type        = string
+  type = string
 }
 
 variable "backend_cpu" {
-  type        = string
-  default     = "256"
+  type    = string
+  default = "256"
 }
 
 variable "backend_memory" {
-  type        = string
-  default     = "512"
+  type    = string
+  default = "512"
 }
 
 variable "vpc_id" {

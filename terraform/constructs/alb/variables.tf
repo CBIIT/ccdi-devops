@@ -107,9 +107,9 @@ variable "fixed_response_status_code" {
 }
 
 variable "frontend_port" {
-  type    = string
+  type        = string
   description = "The port for the frontend container"
-  default = "80"
+  default     = "80"
 }
 
 variable "frontend_target_description" {

@@ -23,22 +23,22 @@ variable "family" {
 }
 
 variable "memory" {
-  type = string
+  type        = string
   description = "Amount (in MiB) of memory used by the task"
 }
 
 variable "execution_role_arn" {
-  type = string 
+  type        = string
   description = "ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume"
 }
 
 variable "task_role_arn" {
-  type = string 
+  type        = string
   description = "ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services"
 }
 
 variable "cpu" {
-  type = string 
+  type        = string
   description = "Number of CPU units consumed by the task"
 }
 
@@ -56,11 +56,11 @@ variable "container_definition_essential" {
 }
 
 variable "container_port" {
-  
+
 }
 
 variable "host_port" {
-  
+
 }
 
 ##################################

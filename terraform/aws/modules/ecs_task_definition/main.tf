@@ -18,26 +18,26 @@ resource "aws_ecs_task_definition" "this" {
 }
 
 variable "cpu" {
-  type = number 
+  type        = number
   description = "Number of cpu units used by the task"
-  default = 1024
+  default     = 1024
 }
 
 variable "memory" {
-  type = number
+  type        = number
   description = "Amount (in MiB) of memory used by the task"
-  default = 2048
+  default     = 2048
 }
 
 variable "task_role_arn" {
-  type = string 
+  type        = string
   description = "ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services"
 }
 
 variable "skip_destroy" {
-  type = bool 
+  type        = bool
   description = "Whether to retain the old revision when the resource is destroyed or replacement is necessary"
-  default = false
+  default     = false
 }
 
 variable "execution_role_arn" {

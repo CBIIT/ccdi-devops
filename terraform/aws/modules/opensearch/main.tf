@@ -91,6 +91,7 @@ resource "aws_iam_service_linked_role" "this" {
 
   lifecycle {
     ignore_changes = [
+      tags,
       tags_all,
     ]
   }
@@ -100,21 +101,7 @@ resource "aws_opensearch_domain_policy" "this" {
   count = var.create_domain_policy ? 1 : 0
 
   domain_name     = aws_opensearch_domain.this.domain_name
-  access_policies = data.aws_iam_policy_document.this[0].json
-}
-
-data "aws_iam_policy_document" "this" {
-  count = var.create_domain_policy ? 1 : 0
-
-  statement {
-    effect  = "Allow"
-    actions = var.domain_policy_actions
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-    resources = ["${aws_opensearch_domain.this.arn}/*"]
-  }
+  access_policies = data.aws_iam_policy_document.domain_policy[0].json
 }
 
 resource "aws_cloudwatch_log_group" "index_slow" {
@@ -140,26 +127,4 @@ resource "aws_cloudwatch_log_resource_policy" "cloudwatch" {
   policy_document = data.aws_iam_policy_document.cloudwatch.json
 }
 
-data "aws_iam_policy_document" "cloudwatch" {
-  statement {
-    actions = [
-      "logs:PutLogEvents", 
-      "logs:PutLogEventsBatch", 
-      "logs:CreateLogStream" 
-    ]
-    resources = [
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.index_slow.name}",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.search_slow.name}",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.error.name}",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.index_slow.name}:log-stream:*",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.search_slow.name}:log-stream:*",
-        "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.error.name}:log-stream:*",
-    ]
-    principals {
-      type        = "Service"
-      identifiers = ["es.amazonaws.com"]
-    }
-  }
-}
 
-data "aws_caller_identity" "current" {}
