@@ -48,6 +48,18 @@ data "aws_iam_policy_document" "manual_snapshot_assume_role" {
       type        = "Service"
       identifiers = ["es.amazonaws.com"]
     }
+
+    condition {
+      test     = "StringEquals"
+      variable = "aws:SourceAccount"
+      values   = [data.aws_caller_identity.current.account_id]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "aws:SourceArn"
+      values   = [aws_opensearch_domain.this.arn]
+    }
   }
 }
 
