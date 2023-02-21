@@ -134,7 +134,7 @@ resource "aws_iam_role" "manual_snapshot" {
   name                 = "power-user-${local.stack}-${var.domain_name_suffix}-manual-snapshot-role"
   description          = "role to enable opensearch manual snapshot operations"
   assume_role_policy   = data.aws_iam_policy_document.manual_snapshot_assume_role[0].json
-  permissions_boundary = var.permissions_boundary
+  permissions_boundary = var.permissions_boundary_arn
 }
 
 resource "aws_iam_policy" "manual_snapshot" {
