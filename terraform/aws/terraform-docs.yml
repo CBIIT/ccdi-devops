@@ -8,7 +8,6 @@ sections:
 
 sort:
   enabled: true 
-  by: required
 
 output:
   file: README.md
