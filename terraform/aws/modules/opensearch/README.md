@@ -19,12 +19,17 @@
 | [aws_cloudwatch_log_group.index_slow](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.search_slow](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_resource_policy.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_resource_policy) | resource |
+| [aws_iam_policy.manual_snapshot](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.manual_snapshot](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.manual_snapshot](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_service_linked_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_service_linked_role) | resource |
 | [aws_opensearch_domain.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/opensearch_domain) | resource |
 | [aws_opensearch_domain_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/opensearch_domain_policy) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.domain_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.manual_snapshot](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.manual_snapshot_assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 # Inputs
 
@@ -48,6 +53,7 @@
 | <a name="input_cloudwatch_log_retention_in_days"></a> [cloudwatch\_log\_retention\_in\_days](#input\_cloudwatch\_log\_retention\_in\_days) | number of days to retain cloudwatch logs | `number` | `90` | no |
 | <a name="input_cold_storage_enabled"></a> [cold\_storage\_enabled](#input\_cold\_storage\_enabled) | whether to enable cold storage - master and ultrawarm nodes but be enabled for cold storage to be compatible | `bool` | `false` | no |
 | <a name="input_create_domain_policy"></a> [create\_domain\_policy](#input\_create\_domain\_policy) | create domain policy that allows aws principles to perform http requests to the domain | `bool` | `true` | no |
+| <a name="input_create_manual_snapshot_role"></a> [create\_manual\_snapshot\_role](#input\_create\_manual\_snapshot\_role) | whether to create a role to enable manual snapshot operations | `bool` | `false` | no |
 | <a name="input_custom_endpoint_enabled"></a> [custom\_endpoint\_enabled](#input\_custom\_endpoint\_enabled) | create custom endpoint for the domain cluster | `bool` | `false` | no |
 | <a name="input_domain_name_suffix"></a> [domain\_name\_suffix](#input\_domain\_name\_suffix) | the domain name suffix that follows the stack name | `string` | `"opensearch"` | no |
 | <a name="input_domain_policy_actions"></a> [domain\_policy\_actions](#input\_domain\_policy\_actions) | The actions that the domain policy allows | `set(string)` | <pre>[<br>  "es:ESHttpPut",<br>  "es:ESHttpPost",<br>  "es:ESHttpPatch",<br>  "es:ESHttpHead",<br>  "es:ESHttpGet",<br>  "es:ESHttpDelete"<br>]</pre> | no |
