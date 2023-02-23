@@ -70,6 +70,8 @@ module "alb" {
 | [aws_lb.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb) | resource |
 | [aws_lb_listener.http](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
 | [aws_lb_listener.https](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
+| [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group_rule.inbound](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 
 # Inputs
 
@@ -82,6 +84,7 @@ module "alb" {
 | <a name="input_certificate_arn"></a> [certificate\_arn](#input\_certificate\_arn) | arn of the certificate for HTTPS listeners, not needed for HTTP listeners | `string` | `null` | no |
 | <a name="input_create_http_listener"></a> [create\_http\_listener](#input\_create\_http\_listener) | whether to create an HTTP listener | `bool` | `true` | no |
 | <a name="input_create_https_listener"></a> [create\_https\_listener](#input\_create\_https\_listener) | whether to create an HTTPS listener | `bool` | `true` | no |
+| <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | whether to create a security group with default security group rules | `bool` | `true` | no |
 | <a name="input_desync_mitigation_mode"></a> [desync\_mitigation\_mode](#input\_desync\_mitigation\_mode) | how the load balancer handles requests that might pose a security risk to an application due to HTTP desync, either monitor, defensive, or strictest | `string` | `"strictest"` | no |
 | <a name="input_drop_invalid_header_fields"></a> [drop\_invalid\_header\_fields](#input\_drop\_invalid\_header\_fields) | whether HTTP headers with header fields that are not valid are removed by the load balancer | `bool` | `true` | no |
 | <a name="input_enable_deletion_protection"></a> [enable\_deletion\_protection](#input\_enable\_deletion\_protection) | prevents terraform from accidentally destroying the load balancer | `bool` | `true` | no |
@@ -96,10 +99,11 @@ module "alb" {
 | <a name="input_internal"></a> [internal](#input\_internal) | whether the load balancer is internally facing | `bool` | `false` | no |
 | <a name="input_preserve_host_header"></a> [preserve\_host\_header](#input\_preserve\_host\_header) | whether the Application Load Balancer should preserve the Host header in the HTTP request and send it to the target without any change | `bool` | `true` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
-| <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | security group(s) to associate with the load balancer | `set(string)` | n/a | yes |
+| <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | security group(s) to associate with the load balancer | `list(string)` | `[]` | no |
 | <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy) | the name of the SSL policy for the HTTPS listener | `string` | `"ELBSecurityPolicy-2016-08"` | no |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | the subnets to associate with the load balancer | `set(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | tags to apply to the load balancer and listeners (if created) | `map(string)` | `{}` | no |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | id of the vpc for the alb | `string` | n/a | yes |
 
 # Outputs
 
@@ -114,5 +118,6 @@ module "alb" {
 | <a name="output_https_listener_id"></a> [https\_listener\_id](#output\_https\_listener\_id) | id of the https listener |
 | <a name="output_id"></a> [id](#output\_id) | id of the load balancer |
 | <a name="output_name"></a> [name](#output\_name) | name of the load balancer |
-| <a name="output_security_groups"></a> [security\_groups](#output\_security\_groups) | security groups attached to the load balancer |
+| <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | arn of the security group if created by this module |
+| <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | id of the security group if created by this module |
 <!-- END_TF_DOCS -->
