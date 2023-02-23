@@ -27,6 +27,9 @@
 | [aws_iam_service_linked_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_service_linked_role) | resource |
 | [aws_opensearch_domain.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/opensearch_domain) | resource |
 | [aws_opensearch_domain_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/opensearch_domain_policy) | resource |
+| [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group_rule.inbound](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.outbound](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.domain_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -44,6 +47,7 @@
 | <a name="input_cold_storage_enabled"></a> [cold\_storage\_enabled](#input\_cold\_storage\_enabled) | whether to enable cold storage - master and ultrawarm nodes but be enabled for cold storage to be compatible | `bool` | `false` | no |
 | <a name="input_create_domain_policy"></a> [create\_domain\_policy](#input\_create\_domain\_policy) | create domain policy that allows aws principles to perform http requests to the domain | `bool` | `true` | no |
 | <a name="input_create_manual_snapshot_role"></a> [create\_manual\_snapshot\_role](#input\_create\_manual\_snapshot\_role) | whether to create a role to enable manual snapshot operations | `bool` | `false` | no |
+| <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | whether to create a security group with default ingress and egress rules | `bool` | `true` | no |
 | <a name="input_create_service_linked_role"></a> [create\_service\_linked\_role](#input\_create\_service\_linked\_role) | whether to create a service linked role for OpenSearch - only one per account | `bool` | n/a | yes |
 | <a name="input_custom_endpoint_enabled"></a> [custom\_endpoint\_enabled](#input\_custom\_endpoint\_enabled) | create custom endpoint for the domain cluster | `bool` | `false` | no |
 | <a name="input_dedicated_master_count"></a> [dedicated\_master\_count](#input\_dedicated\_master\_count) | number of dedicated master nodes in the cluster | `number` | n/a | yes |
@@ -63,10 +67,11 @@
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | type of instance of the domain cluster | `string` | n/a | yes |
 | <a name="input_permissions_boundary_arn"></a> [permissions\_boundary\_arn](#input\_permissions\_boundary\_arn) | arn of the permissions boundary to apply to the role - required when create\_manual\_snapshot\_role is true | `string` | `"null"` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
-| <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | id of the security group(s) to associate with the cluster | `set(string)` | n/a | yes |
+| <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | id of the security group(s) to associate with the cluster | `list(string)` | `[]` | no |
 | <a name="input_snapshot_bucket_arn"></a> [snapshot\_bucket\_arn](#input\_snapshot\_bucket\_arn) | arn of the bucket to store snapshots - required when create\_manual\_snapshot\_role is true | `string` | `"null"` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | ids of the target subnet(s) for the opensearch cluster deployment | `list(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | tags to apply to the load balancer and listeners (if created) | `map(string)` | `{}` | no |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | id of the vpc the cluster is deployed to | `string` | `null` | no |
 | <a name="input_warm_count"></a> [warm\_count](#input\_warm\_count) | number of warm nodes in the domain cluster | `number` | `null` | no |
 | <a name="input_warm_enabled"></a> [warm\_enabled](#input\_warm\_enabled) | whether to enable warm storage | `bool` | `false` | no |
 | <a name="input_warm_type"></a> [warm\_type](#input\_warm\_type) | instance type for warm nodes - valid values are ultrawarm1.medium.search, ultrawarm1.large.search and ultrawarm1.xlarge.search | `string` | `null` | no |
@@ -81,4 +86,6 @@
 | <a name="output_domain_name"></a> [domain\_name](#output\_domain\_name) | domain name of the opensearch domain |
 | <a name="output_endpoint"></a> [endpoint](#output\_endpoint) | domain-specific endpoint used to submit index, search, and data upload requests |
 | <a name="output_id"></a> [id](#output\_id) | id of the opensearch domain |
+| <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | arn of the security group if created by this module |
+| <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | id of the security group if created by this module |
 <!-- END_TF_DOCS -->
