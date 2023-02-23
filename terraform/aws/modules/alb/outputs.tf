@@ -43,7 +43,12 @@ output "name" {
   description = "name of the load balancer"
 }
 
-output "security_groups" {
-  value       = aws_lb.this.security_groups
-  description = "security groups attached to the load balancer"
+output "security_group_arn" {
+  value       = aws_security_group.this[0].arn
+  description = "arn of the security group if created by this module"
+}
+
+output "security_group_id" {
+  value       = aws_security_group.this[0].id
+  description = "id of the security group if created by this module"
 }

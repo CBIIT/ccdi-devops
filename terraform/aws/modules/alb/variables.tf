@@ -61,6 +61,12 @@ variable "create_https_listener" {
   default     = true
 }
 
+variable "create_security_group" {
+  type        = bool
+  description = "whether to create a security group with default security group rules"
+  default     = true
+}
+
 variable "desync_mitigation_mode" {
   type        = string
   description = "how the load balancer handles requests that might pose a security risk to an application due to HTTP desync, either monitor, defensive, or strictest"
@@ -134,9 +140,10 @@ variable "preserve_host_header" {
   default     = true
 }
 
-variable "security_groups" {
-  type        = set(string)
+variable "security_group_ids" {
+  type        = list(string)
   description = "security group(s) to associate with the load balancer"
+  default     = []
 }
 
 variable "ssl_policy" {
@@ -154,4 +161,9 @@ variable "tags" {
   type        = map(string)
   description = "tags to apply to the load balancer and listeners (if created)"
   default     = {}
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "id of the vpc for the alb"
 }
