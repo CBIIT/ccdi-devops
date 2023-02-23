@@ -61,6 +61,12 @@ variable "create_manual_snapshot_role" {
   default     = false
 }
 
+variable "create_security_group" {
+  type        = bool
+  description = "whether to create a security group with default ingress and egress rules"
+  default     = true
+}
+
 variable "create_service_linked_role" {
   type        = bool
   description = "whether to create a service linked role for OpenSearch - only one per account"
@@ -164,8 +170,9 @@ variable "permissions_boundary_arn" {
 }
 
 variable "security_group_ids" {
-  type        = set(string)
+  type        = list(string)
   description = "id of the security group(s) to associate with the cluster"
+  default     = []
 }
 
 variable "snapshot_bucket_arn" {
@@ -206,4 +213,10 @@ variable "tags" {
   type        = map(string)
   description = "tags to apply to the load balancer and listeners (if created)"
   default     = {}
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "id of the vpc the cluster is deployed to"
+  default     = null
 }
