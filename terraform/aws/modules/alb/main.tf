@@ -9,7 +9,7 @@ resource "aws_lb" "this" {
   idle_timeout               = var.idle_timeout
   load_balancer_type         = "application"
   preserve_host_header       = var.preserve_host_header
-  security_groups            = var.security_groups
+  security_groups            = var.create_security_group ? [aws_security_group.this[0].id] : var.security_group_ids
   subnets                    = var.subnets
 
   access_logs {
@@ -66,4 +66,28 @@ resource "aws_lb_listener" "https" {
   }
 
   tags = var.tags
+}
+
+resource "aws_security_group" "this" {
+  count = var.create_security_group ? 1 : 0
+
+  name        = "${local.stack}-alb-sg"
+  description = "security group associated with the alb named ${local.stack}-alb"
+  vpc_id      = var.vpc_id
+
+  tags = {
+    Name = "${local.stack}-alb-sg"
+  }
+}
+
+resource "aws_security_group_rule" "inbound" {
+  count = var.create_security_group ? 1 : 0
+
+  type              = "ingress"
+  description       = "allow inbound traffic all origins"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "tcp"
+  security_group_id = aws_security_group.this[0].id
+  cidr_blocks       = ["0.0.0.0/0"]
 }
