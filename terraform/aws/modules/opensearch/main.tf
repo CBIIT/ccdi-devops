@@ -35,7 +35,7 @@ resource "aws_opensearch_domain" "this" {
 
   vpc_options {
     subnet_ids         = var.zone_awareness_enabled ? var.subnet_ids : [element(var.subnet_ids, 0)]
-    security_group_ids = var.security_group_ids
+    security_group_ids = var.create_security_group ? [aws_security_group.this[0].id] : var.security_group_ids
   }
 
   snapshot_options {
@@ -150,4 +150,38 @@ resource "aws_iam_role_policy_attachment" "manual_snapshot" {
 
   role       = aws_iam_role.manual_snapshot[0].name
   policy_arn = aws_iam_policy.manual_snapshot[0].arn
+}
+
+resource "aws_security_group" "this" {
+  count = var.create_security_group ? 1 : 0
+
+  name        = "${local.stack}-${var.domain_name_suffix}-security-group"
+  description = "security group associated with the opensearch cluster named ${local.stack}-${var.domain_name_suffix}"
+  vpc_id      = var.vpc_id
+
+  tags = {
+    Name = "${local.stack}-${var.domain_name_suffix}-security-group"
+  }
+}
+
+resource "aws_security_group_rule" "inbound" {
+  count = var.create_security_group ? 1 : 0
+
+  type              = "ingress"
+  description       = "allow inbound traffic from the nih network"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "HTTPS"
+  security_group_id = aws_security_group.this[0].id
+}
+
+resource "aws_security_group_rule" "outbound" {
+  count = var.create_security_group ? 1 : 0
+
+  type              = "egress"
+  description       = "allow outbound traffic to all destinations"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "all"
+  security_group_id = aws_security_group.this[0].id
 }
