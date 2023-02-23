@@ -173,6 +173,7 @@ resource "aws_security_group_rule" "inbound" {
   to_port           = 443
   protocol          = "HTTPS"
   security_group_id = aws_security_group.this[0].id
+  cidr_blocks       = local.ranges
 }
 
 resource "aws_security_group_rule" "outbound" {
@@ -184,4 +185,5 @@ resource "aws_security_group_rule" "outbound" {
   to_port           = 0
   protocol          = "all"
   security_group_id = aws_security_group.this[0].id
+  cidr_blocks       = ["0.0.0.0/0"]
 }
