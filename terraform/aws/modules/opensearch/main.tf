@@ -171,7 +171,7 @@ resource "aws_security_group_rule" "inbound" {
   description       = "allow inbound traffic from the nih network"
   from_port         = 443
   to_port           = 443
-  protocol          = "HTTPS"
+  protocol          = "tcp"
   security_group_id = aws_security_group.this[0].id
   cidr_blocks       = local.ranges
 }
