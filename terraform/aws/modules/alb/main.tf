@@ -89,5 +89,5 @@ resource "aws_security_group_rule" "inbound" {
   to_port           = 0
   protocol          = "tcp"
   security_group_id = aws_security_group.this[0].id
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = var.security_group_ingress_cidr #["0.0.0.0/0"]
 }
