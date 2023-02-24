@@ -5,12 +5,12 @@ output "public_all_ids" {
 
 output "public_1_id" {
   value       = data.aws_subnet.public_1.id
-  description = ""
+  description = "the id of the first subnet in the set of public subnets"
 }
 
 output "public_2_id" {
   value       = data.aws_subnet.public_2.id
-  description = ""
+  description = "the id of the second subnet in the set of public subnets"
 }
 
 output "webapp_all_ids" {
@@ -20,12 +20,12 @@ output "webapp_all_ids" {
 
 output "webapp_1_id" {
   value       = data.aws_subnet.webapp_1.id
-  description = ""
+  description = "the id of the first subnet in the set of webapp subnets"
 }
 
 output "webapp_2_id" {
   value       = data.aws_subnet.webapp_2.id
-  description = ""
+  description = "the id of the second subnet in the set of webapp subnets"
 }
 
 output "database_all_ids" {
@@ -35,10 +35,10 @@ output "database_all_ids" {
 
 output "database_1_id" {
   value       = data.aws_subnet.database_1.id
-  description = ""
+  description = "the id of the first subnet in the set of database subnets"
 }
 
 output "database_2_id" {
   value       = data.aws_subnet.database_2.id
-  description = ""
+  description = "the id of the second subnet in the set of database subnets"
 }
