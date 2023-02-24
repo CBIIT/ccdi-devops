@@ -35,6 +35,7 @@ The following code block is provided for engineers to copy into project reposito
   preserve_host_header        = 
   program                     = 
   security_group_ids          = 
+  security_group_ingress_cidr = 
   ssl_policy                  = 
   subnets                     = 
   vpc_id                      = 
@@ -58,7 +59,7 @@ The variable named `create_https_listener` allows engineers to specify whether t
 - A deployment is executed in an environment that is not intended to be live at time of the deployment
 
 ### Security Group Resource
-The variable named `create_security_group` allows engineers to specify whether the module should produce an AWS Security Group. If created, the security group is automatically associated with the Application Load Balancer, and is accompanied by a Security Group Rule that allows inbound traffic over any protocol to the Load Balancer. If `create_security_group` is set to true, engineers do not need to provide a value for the `security_group_ids` variable. Otherwise, engineers must create a Security Group at the project-level and provide the ID of that security group to the `security_group_ids` argument. 
+The variable named `create_security_group` allows engineers to specify whether the module should produce an AWS Security Group. If created, the security group is automatically associated with the Application Load Balancer, and is accompanied by a Security Group Rule that allows inbound traffic over any protocol to the Load Balancer from the CIDR range specified in the `security_group_ingress_cidr` variable. If `create_security_group` is set to true, engineers do not need to provide a value for the `security_group_ids` variable, but are required to set a value for `security_group_ingress_cidr`. Otherwise, engineers must create a Security Group at the project-level and provide the ID of that security group to the `security_group_ids` argument. 
 
 Please note that NCI restricts traffic to the non-production account environments to only permit origins from within the NIH network. Even though the default rule allows traffic from any IP over any protocol, only requests originating from the NIH network will be able to reach the non-production load balancers.
 
