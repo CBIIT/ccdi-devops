@@ -1,7 +1,9 @@
 # Overview
+
 A module that creates an AWS Application Load Balancer based on standards and conventions established by the program. Remember to pin the version based on the release tag to prevent configuration-related challenges as future changes to the module are applied. Load Balancer Listener Rules are not created by this module. 
 
 # Usage 
+
 The following provides an example of how to use this module by defining values for all required and optional variables. In the example, both HTTP and HTTPS listeners are also being created. Remember to pin the release version using the `?ref` reference trailing the url in the `source` argument.
 
 ## Module Template
@@ -32,7 +34,7 @@ The following code block is provided for engineers to copy into project reposito
   idle_timeout                = 
   preserve_host_header        = 
   program                     = 
-  security_groups             = 
+  security_group_ids          = 
   ssl_policy                  = 
   subnets                     = 
   vpc_id                      = 
@@ -49,13 +51,16 @@ Based on intended usage of this module, some resources and configurations are co
 
 ### Application Load Balancer HTTP Listener Resource
 The variable named `create_http_listener` allows engineers to specify whether the module should produce an HTTP Listener. If created, the Listener is automatically associated with the Application Load Balancer, and is configured with a default rule that redirects HTTP traffic to the HTTPS Listener associated with the Load Balancer. Engineers are advised to provide a value of `true` for this argument unless project-level requirements specify a different default rule. 
+
 ### Application Load Balancer HTTPS Listener Resource
 The variable named `create_https_listener` allows engineers to specify whether the module should produce an HTTP Listener. If created, the Listener is automatically associated with the Application Load Balancer, and is configured with a default rule that establishes a fixed response and error code if the inbound traffic does not align with any of the listener rules defined at the project level. There are two circumstances where an engineer may not want the Listener rule to be created:
 - A valid SSL certificate is not available in the account to associate with the HTTPS Listener
 - A deployment is executed in an environment that is not intended to be live at time of the deployment
 
 ### Security Group Resource
+The variable named `create_security_group` allows engineers to specify whether the module should produce an AWS Security Group. If created, the security group is automatically associated with the Application Load Balancer, and is accompanied by a Security Group Rule that allows inbound traffic over any protocol to the Load Balancer. If `create_security_group` is set to true, engineers do not need to provide a value for the `security_group_ids` variable. Otherwise, engineers must create a Security Group at the project-level and provide the ID of that security group to the `security_group_ids` argument. 
 
+Please note that NCI restricts traffic to the non-production account environments to only permit origins from within the NIH network. Even though the default rule allows traffic from any IP over any protocol, only requests originating from the NIH network will be able to reach the non-production load balancers.
 
 <!-- BEGIN_TF_DOCS -->
 # Requirements
