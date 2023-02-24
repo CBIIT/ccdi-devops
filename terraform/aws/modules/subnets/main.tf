@@ -13,11 +13,11 @@ data "aws_subnets" "public" {
   }
 }
 
-data "aws_subnet" "public-1" {
+data "aws_subnet" "public_1" {
   id = element(sort(tolist(data.aws_subnets.public.ids)), 0)
 }
 
-data "aws_subnet" "public-2" {
+data "aws_subnet" "public_2" {
   id = element(sort(tolist(data.aws_subnets.public.ids)), 1)
 }
 
@@ -37,11 +37,11 @@ data "aws_subnets" "webapp" {
   }
 }
 
-data "aws_subnet" "webapp-1" {
+data "aws_subnet" "webapp_1" {
   id = element(sort(tolist(data.aws_subnets.webapp.ids)), 0)
 }
 
-data "aws_subnet" "webapp-2" {
+data "aws_subnet" "webapp_2" {
   id = element(sort(tolist(data.aws_subnets.webapp.ids)), 1)
 }
 
@@ -61,10 +61,10 @@ data "aws_subnets" "database" {
   }
 }
 
-data "aws_subnet" "database-1" {
+data "aws_subnet" "database_1" {
   id = element(sort(tolist(data.aws_subnets.database.ids)), 0)
 }
 
-data "aws_subnet" "database-2" {
+data "aws_subnet" "database_2" {
   id = element(sort(tolist(data.aws_subnets.database.ids)), 1)
 }

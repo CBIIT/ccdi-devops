@@ -4,11 +4,13 @@ output "public_all_ids" {
 }
 
 output "public_1_id" {
-
+  value       = data.aws_subnet.public_1.id
+  description = ""
 }
 
 output "public_2_id" {
-
+  value       = data.aws_subnet.public_2.id
+  description = ""
 }
 
 output "webapp_all_ids" {
@@ -17,11 +19,13 @@ output "webapp_all_ids" {
 }
 
 output "webapp_1_id" {
-
+  value       = data.aws_subnet.webapp_1.id
+  description = ""
 }
 
 output "webapp_2_id" {
-
+  value       = data.aws_subnet.webapp_2.id
+  description = ""
 }
 
 output "database_all_ids" {
@@ -30,9 +34,11 @@ output "database_all_ids" {
 }
 
 output "database_1_id" {
-
+  value       = data.aws_subnet.database_1.id
+  description = ""
 }
 
 output "database_2_id" {
-
+  value       = data.aws_subnet.database_2.id
+  description = ""
 }
