@@ -1,10 +1,5 @@
 # Overview
-
-A module that creates an AWS Application Load Balancer based on standards and conventions established by the program. Remember to pin the version based on the release tag to prevent configuration-related challenges as future changes to the module are applied. 
-
- and optionally creates a set of HTTP and HTTPS listeners. Assume that all outputs relate to the Application Load Balancer unless the name of the output is prefixed with `http_listener` or `https_listener`.
-
-This module does not contain AWS Security Group resources, and requires that the security groups are provided as an input variable. This module also does not create Load Balancer Listener Rules. In both cases, this decision was made to offer maximum configuration flexibility for each project.
+A module that creates an AWS Application Load Balancer based on standards and conventions established by the program. Remember to pin the version based on the release tag to prevent configuration-related challenges as future changes to the module are applied. Load Balancer Listener Rules are not created by this module. 
 
 # Usage 
 The following provides an example of how to use this module by defining values for all required and optional variables. In the example, both HTTP and HTTPS listeners are also being created. Remember to pin the release version using the `?ref` reference trailing the url in the `source` argument.
