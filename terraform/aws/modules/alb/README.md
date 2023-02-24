@@ -35,6 +35,7 @@ The following code block is provided for engineers to copy into project reposito
   preserve_host_header        = 
   program                     = 
   security_group_ids          = 
+  security_group_ingress_cidr = 
   ssl_policy                  = 
   subnets                     = 
   vpc_id                      = 
