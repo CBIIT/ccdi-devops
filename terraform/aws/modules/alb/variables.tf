@@ -157,6 +157,12 @@ variable "subnets" {
   description = "the subnets to associate with the load balancer"
 }
 
+variable "security_group_ingress_cidr" {
+  type        = list(string)
+  description = "CIDR block to be configured for the ALB inbound"
+  default     = []
+}
+
 variable "tags" {
   type        = map(string)
   description = "tags to apply to the load balancer and listeners (if created)"
