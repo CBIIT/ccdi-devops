@@ -48,6 +48,20 @@ The following code block is provided for engineers to copy into project reposito
   }
 }</code></pre>
 
+## Conditional Resources
+
+Based on intended usage of this module, some resources and configurations are conditionally set to offer maximum flexibility and support a broader range of use cases. 
+
+### Application Load Balancer HTTP Listener Resource
+The variable named `create_http_listener` allows engineers to specify whether the module should produce an HTTP Listener. If created, the Listener is automatically associated with the Application Load Balancer, and is configured with a default rule that redirects HTTP traffic to the HTTPS Listener associated with the Load Balancer. Engineers are advised to provide a value of `true` for this argument unless project-level requirements specify a different default rule. 
+### Application Load Balancer HTTPS Listener Resource
+The variable named `create_https_listener` allows engineers to specify whether the module should produce an HTTP Listener. If created, the Listener is automatically associated with the Application Load Balancer, and is configured with a default rule that establishes a fixed response and error code if the inbound traffic does not align with any of the listener rules defined at the project level. There are two circumstances where an engineer may not want the Listener rule to be created:
+- A valid SSL certificate is not available in the account to associate with the HTTPS Listener
+- A deployment is executed in an environment that is not intended to be live at time of the deployment
+
+### Security Group Resource
+
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
