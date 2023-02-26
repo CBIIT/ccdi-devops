@@ -15,10 +15,18 @@ data "aws_subnets" "public" {
 
 data "aws_subnet" "public_1" {
   id = element(sort(tolist(data.aws_subnets.public.ids)), 0)
+
+  depends_on = [
+    data.aws_subnets.public
+  ]
 }
 
 data "aws_subnet" "public_2" {
   id = element(sort(tolist(data.aws_subnets.public.ids)), 1)
+
+  depends_on = [
+    data.aws_subnets.public
+  ]
 }
 
 #############################################################
@@ -39,6 +47,10 @@ data "aws_subnets" "webapp" {
 
 data "aws_subnet" "webapp_1" {
   id = element(sort(tolist(data.aws_subnets.webapp.ids)), 0)
+
+  depends_on = [
+    data.aws_subnets.webapp
+  ]
 }
 
 data "aws_subnet" "webapp_2" {
