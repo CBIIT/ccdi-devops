@@ -4,7 +4,7 @@
 
 data "aws_subnets" "public" {
   filter {
-    name   = "vpc_id"
+    name   = "vpc-id"
     values = [var.vpc_id]
   }
 
