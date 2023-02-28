@@ -96,6 +96,12 @@ variable "inventory_destination_bucket_arn" {
   default     = null
 }
 
+variable "inventory_destination_format" {
+  type        = string
+  description = "format of the bucket inventory file - can be 'CSV', 'ORC', or 'Parquet'"
+  default     = null
+}
+
 variable "logging_target_bucket" {
   type        = string
   description = "destination bucket name for access logs"

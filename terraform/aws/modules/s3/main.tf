@@ -21,6 +21,7 @@ resource "aws_s3_bucket_inventory" "this" {
   destination {
     bucket {
       bucket_arn = var.enable_bucket_inventory ? var.inventory_destination_bucket_arn : null
+      format     = var.enable_bucket_inventory ? var.inventory_destination_format : null
     }
   }
 }
