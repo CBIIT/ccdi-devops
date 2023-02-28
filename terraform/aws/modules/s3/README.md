@@ -38,10 +38,20 @@
 | <a name="input_expire_objects_after_days"></a> [expire\_objects\_after\_days](#input\_expire\_objects\_after\_days) | required if expire\_objects is true - number of days to retain objects in the bucket | `number` | `90` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | force terraform to destroy bucket and all objects within bucket | `bool` | `false` | no |
 | <a name="input_inventory_destination_bucket_arn"></a> [inventory\_destination\_bucket\_arn](#input\_inventory\_destination\_bucket\_arn) | n/a | `string` | `null` | no |
-| <a name="input_inventory_filter_prefix"></a> [inventory\_filter\_prefix](#input\_inventory\_filter\_prefix) | n/a | `string` | `null` | no |
+| <a name="input_inventory_filter_prefix"></a> [inventory\_filter\_prefix](#input\_inventory\_filter\_prefix) | name of the directory to narrow inventory scope to | `string` | `null` | no |
 | <a name="input_inventory_included_object_versions"></a> [inventory\_included\_object\_versions](#input\_inventory\_included\_object\_versions) | use 'ALL' to inventory objects and histoical versions or 'CURRENT' for only current versions | `string` | `null` | no |
 | <a name="input_inventory_schedule_frequency"></a> [inventory\_schedule\_frequency](#input\_inventory\_schedule\_frequency) | Daily or Weekly | `string` | `null` | no |
-| <a name="input_logging_target_bucket"></a> [logging\_target\_bucket](#input\_logging\_target\_bucket) | n/a | `any` | n/a | yes |
-| <a name="input_logging_target_prefix"></a> [logging\_target\_prefix](#input\_logging\_target\_prefix) | n/a | `any` | n/a | yes |
+| <a name="input_logging_target_bucket"></a> [logging\_target\_bucket](#input\_logging\_target\_bucket) | destination bucket name for access logs | `string` | `null` | no |
+| <a name="input_logging_target_prefix"></a> [logging\_target\_prefix](#input\_logging\_target\_prefix) | prefix of the access logs in the destination bucket | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+
+# Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | arn of the s3 bucket |
+| <a name="output_bucket"></a> [bucket](#output\_bucket) | name of the s3 bucket |
+| <a name="output_bucket_domain_name"></a> [bucket\_domain\_name](#output\_bucket\_domain\_name) | domain name of the s3 bucket |
+| <a name="output_bucket_regional_domain_name"></a> [bucket\_regional\_domain\_name](#output\_bucket\_regional\_domain\_name) | regional domain name of the s3 bucket |
+| <a name="output_id"></a> [id](#output\_id) | id of the s3 bucket |
 <!-- END_TF_DOCS -->
