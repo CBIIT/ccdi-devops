@@ -161,7 +161,7 @@ variable "subnets" {
 variable "security_group_ingress_cidr" {
   type        = list(string)
   description = "CIDR block to be configured for the ALB inbound"
-  default     = [ "0.0.0.0/0" ]
+  default     = ["0.0.0.0/0"]
 }
 
 variable "tags" {

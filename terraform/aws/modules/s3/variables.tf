@@ -80,7 +80,7 @@ variable "inventory_included_object_versions" {
 
 variable "inventory_filter_prefix" {
   type        = string
-  description = ""
+  description = "name of the directory to narrow inventory scope to"
   default     = null
 }
 
@@ -97,10 +97,14 @@ variable "inventory_destination_bucket_arn" {
 }
 
 variable "logging_target_bucket" {
-
+  type        = string
+  description = "destination bucket name for access logs"
+  default     = null
 }
 
 variable "logging_target_prefix" {
-
+  type        = string
+  description = "prefix of the access logs in the destination bucket"
+  default     = null
 }
 
