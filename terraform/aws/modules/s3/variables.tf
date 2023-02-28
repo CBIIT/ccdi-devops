@@ -37,6 +37,12 @@ variable "bucket_suffix" {
   description = ""
 }
 
+variable "enable_access_logging" {
+  type        = bool
+  description = "whether to enable access logging for the bucket"
+  default     = false
+}
+
 variable "enable_bucket_inventory" {
   type        = bool
   description = "whether to enable s3 bucket inventory feature"
@@ -93,6 +99,12 @@ variable "inventory_schedule_frequency" {
 variable "inventory_destination_bucket_arn" {
   type        = string
   description = ""
+  default     = null
+}
+
+variable "inventory_destination_format" {
+  type        = string
+  description = "format of the bucket inventory file - can be 'CSV', 'ORC', or 'Parquet'"
   default     = null
 }
 

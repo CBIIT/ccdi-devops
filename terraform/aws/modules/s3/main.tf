@@ -21,6 +21,7 @@ resource "aws_s3_bucket_inventory" "this" {
   destination {
     bucket {
       bucket_arn = var.enable_bucket_inventory ? var.inventory_destination_bucket_arn : null
+      format     = var.enable_bucket_inventory ? var.inventory_destination_format : null
     }
   }
 }
@@ -35,7 +36,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "this" {
     status = var.enable_object_expiration ? "Enabled" : null
 
     expiration {
-      days = var.expire_enable_object_expirationobjects ? var.expire_objects_after_days : null
+      days = var.expire_enable_object_expiration ? var.expire_objects_after_days : null
     }
   }
 }
