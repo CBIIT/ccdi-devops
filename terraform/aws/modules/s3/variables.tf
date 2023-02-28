@@ -37,6 +37,12 @@ variable "bucket_suffix" {
   description = ""
 }
 
+variable "enable_access_logging" {
+  type        = bool
+  description = "whether to enable access logging for the bucket"
+  default     = false
+}
+
 variable "enable_bucket_inventory" {
   type        = bool
   description = "whether to enable s3 bucket inventory feature"
