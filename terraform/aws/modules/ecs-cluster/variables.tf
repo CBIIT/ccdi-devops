@@ -30,4 +30,5 @@ variable "container_insights_enabled" {
   type        = bool
   description = "whether to enable container insights for ecs services running on this cluster"
   default     = false
+  sensitive   = false
 }
