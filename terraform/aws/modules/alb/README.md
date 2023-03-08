@@ -35,6 +35,7 @@ The following code block is provided for engineers to copy into project reposito
   preserve_host_header        = 
   program                     = 
   security_group_ids          = 
+  security_group_ingress_cidr = 
   ssl_policy                  = 
   subnets                     = 
   vpc_id                      = 
@@ -58,7 +59,7 @@ The variable named `create_https_listener` allows engineers to specify whether t
 - A deployment is executed in an environment that is not intended to be live at time of the deployment
 
 ### Security Group Resource
-The variable named `create_security_group` allows engineers to specify whether the module should produce an AWS Security Group. If created, the security group is automatically associated with the Application Load Balancer, and is accompanied by a Security Group Rule that allows inbound traffic over any protocol to the Load Balancer. If `create_security_group` is set to true, engineers do not need to provide a value for the `security_group_ids` variable. Otherwise, engineers must create a Security Group at the project-level and provide the ID of that security group to the `security_group_ids` argument. 
+The variable named `create_security_group` allows engineers to specify whether the module should produce an AWS Security Group. If created, the security group is automatically associated with the Application Load Balancer, and is accompanied by a Security Group Rule that allows inbound traffic over any protocol to the Load Balancer from the CIDR range specified in the `security_group_ingress_cidr` variable. If `create_security_group` is set to true, engineers do not need to provide a value for the `security_group_ids` variable, but are required to set a value for `security_group_ingress_cidr`. Otherwise, engineers must create a Security Group at the project-level and provide the ID of that security group to the `security_group_ids` argument. 
 
 Please note that NCI restricts traffic to the non-production account environments to only permit origins from within the NIH network. Even though the default rule allows traffic from any IP over any protocol, only requests originating from the NIH network will be able to reach the non-production load balancers.
 
@@ -83,7 +84,8 @@ Please note that NCI restricts traffic to the non-production account environment
 | [aws_lb_listener.http](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
 | [aws_lb_listener.https](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
 | [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_security_group_rule.inbound](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.inbound_http](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.inbound_https](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 
 # Inputs
 
@@ -112,7 +114,7 @@ Please note that NCI restricts traffic to the non-production account environment
 | <a name="input_preserve_host_header"></a> [preserve\_host\_header](#input\_preserve\_host\_header) | whether the Application Load Balancer should preserve the Host header in the HTTP request and send it to the target without any change | `bool` | `true` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | security group(s) to associate with the load balancer | `list(string)` | `[]` | no |
-| <a name="input_security_group_ingress_cidr"></a> [security\_group\_ingress\_cidr](#input\_security\_group\_ingress\_cidr) | CIDR block to be configured for the ALB inbound | `list(string)` | `[]` | no |
+| <a name="input_security_group_ingress_cidr"></a> [security\_group\_ingress\_cidr](#input\_security\_group\_ingress\_cidr) | CIDR block to be configured for the ALB inbound | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy) | the name of the SSL policy for the HTTPS listener | `string` | `"ELBSecurityPolicy-2016-08"` | no |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | the subnets to associate with the load balancer | `set(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | tags to apply to the load balancer and listeners (if created) | `map(string)` | `{}` | no |
