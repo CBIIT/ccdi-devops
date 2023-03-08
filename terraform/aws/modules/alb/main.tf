@@ -85,9 +85,9 @@ resource "aws_security_group_rule" "inbound_http" {
 
   description = "allow inbound traffic from http"
   from_port   = "80"
-  protocol    = local.tcp_protocol
+  protocol    = "tcp"
   to_port     = "80"
-  cidr_blocks = var.security_group_ingress_cidr 
+  cidr_blocks = var.create_security_group ? var.security_group_ingress_cidr : null
   
   security_group_id = aws_security_group.this[0].id
   type              = "ingress"
@@ -98,9 +98,9 @@ resource "aws_security_group_rule" "inbound_https" {
 
   description = "allow inbound traffic from https"
   from_port   = "443"
-  protocol    = local.tcp_protocol
+  protocol    = "tcp"
   to_port     = "443"
-  cidr_blocks = var.security_group_ingress_cidr 
+  cidr_blocks = var.create_security_group ? var.security_group_ingress_cidr : null
 
   security_group_id = aws_security_group.this[0].id
   type              = "ingress"
