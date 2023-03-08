@@ -80,14 +80,29 @@ resource "aws_security_group" "this" {
   }
 }
 
-resource "aws_security_group_rule" "inbound" {
+resource "aws_security_group_rule" "inbound_http" {
   count = var.create_security_group ? 1 : 0
 
-  type              = "ingress"
-  description       = "allow inbound traffic all origins"
-  from_port         = 0
-  to_port           = 0
-  protocol          = "tcp"
+  description = "allow inbound traffic from http"
+  from_port   = "80"
+  protocol    = local.tcp_protocol
+  to_port     = "80"
+  cidr_blocks = var.create_security_group ? var.security_group_ingress_cidr : null
+  
   security_group_id = aws_security_group.this[0].id
+  type              = "ingress"
+}
+
+resource "aws_security_group_rule" "inbound_https" {
+  count = var.create_security_group ? 1 : 0
+
+  description = "allow inbound traffic from https"
+  from_port   = "443"
+  protocol    = local.tcp_protocol
+  to_port     = "443"
+  security_group_id = aws_security_group.this[0].id
+
+  type              = "ingress"
   cidr_blocks       = var.create_security_group ? var.security_group_ingress_cidr : null
+
 }
