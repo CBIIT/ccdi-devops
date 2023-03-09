@@ -8,6 +8,7 @@ resource "aws_ecs_service" "service" {
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   deployment_maximum_percent         = var.deployment_maximum_percent
   enable_ecs_managed_tags            = var.enable_ecs_managed_tags
+  enable_execute_command             = true
 
   deployment_controller {
     type = var.deployment_controller_type
