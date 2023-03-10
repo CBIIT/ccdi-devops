@@ -1,4 +1,4 @@
-![Frederick National Laboratory](./assets/banner4.svg)
+![Frederick National Laboratory](./assets/banner.svg)
 
 <!-- BEGIN_TF_DOCS -->
 # Requirements
