@@ -40,12 +40,12 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_arn"></a> [arn](#output\_arn) | n/a |
-| <a name="output_id"></a> [id](#output\_id) | n/a |
-| <a name="output_kms_key_id"></a> [kms\_key\_id](#output\_kms\_key\_id) | value |
-| <a name="output_name"></a> [name](#output\_name) | value |
-| <a name="output_version_arn"></a> [version\_arn](#output\_version\_arn) | value |
-| <a name="output_version_id"></a> [version\_id](#output\_version\_id) | value |
-| <a name="output_version_secret_string"></a> [version\_secret\_string](#output\_version\_secret\_string) | n/a |
-| <a name="output_version_version_id"></a> [version\_version\_id](#output\_version\_version\_id) | n/a |
+| <a name="output_arn"></a> [arn](#output\_arn) | arn of the secret |
+| <a name="output_id"></a> [id](#output\_id) | id of the secret |
+| <a name="output_kms_key_id"></a> [kms\_key\_id](#output\_kms\_key\_id) | id of the kms key used to encrypt the secret (if specified) |
+| <a name="output_name"></a> [name](#output\_name) | name of the secret |
+| <a name="output_version_arn"></a> [version\_arn](#output\_version\_arn) | arn of the secret version |
+| <a name="output_version_id"></a> [version\_id](#output\_version\_id) | id of the secret version |
+| <a name="output_version_secret_string"></a> [version\_secret\_string](#output\_version\_secret\_string) | secret key-value pairs |
+| <a name="output_version_version_id"></a> [version\_version\_id](#output\_version\_version\_id) | version id of the secret version |
 <!-- END_TF_DOCS -->
