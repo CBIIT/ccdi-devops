@@ -1,3 +1,5 @@
+![Frederick National Laboratory](./assets/banner.svg)
+
 # Overview
 
 A module that creates an AWS Application Load Balancer based on standards and conventions established by the program. Remember to pin the version based on the release tag to prevent configuration-related challenges as future changes to the module are applied. Load Balancer Listener Rules are not created by this module. 
