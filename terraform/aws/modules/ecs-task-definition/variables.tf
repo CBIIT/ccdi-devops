@@ -46,36 +46,42 @@ variable "memory" {
   description = "amount (MiB) of memory used by the task"
 }
 
+variable "microservice" {
+  type        = string
+  description = "name of the microservice this task supports - i.e. backend, frontend, files"
+  sensitive   = false
+}
+
 variable "network_mode" {
   type        = string
   description = "docker networking mode to use for the containers in the task - either 'host', 'bridge', 'awsvpc' or 'none'"
   default     = "awsvpc"
+  sensitive   = false
 }
 
 variable "operating_system_family" {
   type        = string
   description = "if requires_compatibilities is FARGATE this field is required"
   default     = "LINUX"
+  sensitive   = false
 }
 
 variable "cpu_architecture" {
   type        = string
   description = "ust be set to either 'X86_64' or 'ARM64'"
   default     = "X86_64"
+  sensitive   = false
 }
 
 variable "requires_compatibilities" {
   type        = set(string)
   description = "et of launch types required by the task - can be 'EC2' and/or 'FARGATE'"
   default     = ["FARGATE"]
-}
-
-variable "task_name" {
-  type        = string
-  description = "name of the task - i.e. backend, frontend, files"
+  sensitive   = false
 }
 
 variable "task_role_arn" {
   type        = string
   description = "arn of role the task uses to call other aws services"
+  sensitive   = false
 }

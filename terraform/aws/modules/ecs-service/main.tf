@@ -1,5 +1,5 @@
 resource "aws_ecs_service" "this" {
-  name                               = "${local.stack}-${var.resource_name_suffix}"
+  name                               = "${local.stack}-${var.microservice}"
   cluster                            = var.cluster
   task_definition                    = var.task_definition
   launch_type                        = var.launch_type

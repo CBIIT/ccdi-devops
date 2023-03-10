@@ -48,6 +48,7 @@ variable "desired_count" {
   type        = number
   description = "desired number of containers for the service to run"
   default     = 1
+  sensitive   = false
 }
 
 variable "deployment_controller_type" {
@@ -92,6 +93,12 @@ variable "launch_type" {
   sensitive   = false
 }
 
+variable "microservice" {
+  type        = string
+  description = "the name to microservice that this ecs service orchestrates (i.e. 'frontend')"
+  sensitive   = false
+}
+
 variable "platform_version" {
   type        = string
   description = "platform version on which to run your service - only applicable for launch_type set to FARGATE"
@@ -103,12 +110,6 @@ variable "propagate_tags" {
   type        = string
   description = "determines whether tasks inherit tags from the TASK_DEFINITION or the SERVICE"
   default     = "SERVICE"
-  sensitive   = false
-}
-
-variable "resource_name_suffix" {
-  type        = string
-  description = "the name to append to the ecs service after the stack name (i.e. 'frontend')"
   sensitive   = false
 }
 
@@ -128,14 +129,17 @@ variable "security_groups" {
 variable "subnets" {
   type        = set(string)
   description = "ids of the target subnets for the ecs deployment"
+  sensitive   = false
 }
 
 variable "target_group_arn" {
   type        = string
   description = "arn of the associated target group for the services"
+  sensitive   = false
 }
 
 variable "task_definition" {
   type        = string
   description = "arn of the task definition associated with the service"
+  sensitive   = false
 }

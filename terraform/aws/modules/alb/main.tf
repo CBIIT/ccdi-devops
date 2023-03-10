@@ -88,7 +88,7 @@ resource "aws_security_group_rule" "inbound_http" {
   protocol    = "tcp"
   to_port     = "80"
   cidr_blocks = var.create_security_group ? var.security_group_ingress_cidr : null
-  
+
   security_group_id = aws_security_group.this[0].id
   type              = "ingress"
 }

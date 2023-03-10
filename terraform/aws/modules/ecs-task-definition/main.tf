@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "this" {
-  family                   = "${local.stack}-${var.task_name}"
+  family                   = "${local.stack}-${var.microservice}"
   requires_compatibilities = var.requires_compatibilities
   container_definitions    = var.container_definitions
   network_mode             = var.network_mode
