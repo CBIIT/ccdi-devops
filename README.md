@@ -9,7 +9,7 @@ root
 |-- |-- |-- modules
 |-- |-- newrelic
 |-- |-- |-- modules
-</code><pre>
+</code></pre>
 
 ## Module Structure
 
