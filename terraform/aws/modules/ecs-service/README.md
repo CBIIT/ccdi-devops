@@ -1,4 +1,4 @@
-![Frederick National Laboratory](./assets/banner.svg)
+![Frederick National Laboratory](./assets/fnl.svg)
 
 # Overview
 
