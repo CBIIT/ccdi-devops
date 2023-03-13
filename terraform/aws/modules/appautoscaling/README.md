@@ -4,6 +4,26 @@
 
 # Usage
 
+<pre><code>
+module "autoscaling_frontend" {
+  source = "github.com/CBIIT/ccdi-devops/terraform/aws/modules/appautoscaling"
+
+  app                    = 
+  ecs_cluster_name       = 
+  ecs_service_name       = 
+  env                    = 
+  max_capacity           = 
+  microservice           = 
+  min_capacity           = 
+  policy_type            = 
+  predefined_metric_type = 
+  program                = 
+  scalable_dimension     = 
+  service_namespace      =
+  target_value           = 
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
