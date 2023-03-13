@@ -1,10 +1,12 @@
+![Frederick National Laboratory](./assets/fnl.svg)
+
 # Overview 
 
 # Usage 
 
 <pre><code>
 module "kinesis_firehose_delivery_stream" {
-  source = "git::https://github.com/NCI-CRDC/terraform-aws-kinesis-firehose-delivery-stream?ref=v1.0.0"
+  source = "github.com/CBIIT/ccdi-devops/terraform/aws/modules/kinesis-firehose-delivery-stream"
 
   app                      = 
   env                      = 
