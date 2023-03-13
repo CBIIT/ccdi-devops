@@ -1,3 +1,32 @@
+# Overview 
+
+# Usage 
+
+<pre><code>
+module "kinesis_firehose_delivery_stream" {
+  source = "git::https://github.com/NCI-CRDC/terraform-aws-kinesis-firehose-delivery-stream?ref=v1.0.0"
+
+  app                      = 
+  env                      = 
+  program                  = 
+  buffer_interval          = 
+  buffer_size              = 
+  content_encoding         = 
+  delivery_stream_suffix   = 
+  destination              = 
+  http_endpoint_access_key = 
+  http_endpoint_name       = 
+  http_endpoint_url        = 
+  resource_suffix          = 
+  role_arn                 = 
+  s3_backup_mode           = 
+  s3_bucket_arn            = 
+  s3_compression_format    = 
+  s3_error_output_prefix   = 
+  s3_object_prefix         = 
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
