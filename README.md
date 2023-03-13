@@ -2,13 +2,14 @@
 DevOps repo for CCDI
 
 ## Repository Structure
-
+<pre><code>
 root
 |-- terraform
-|-- |-- constructs
-|-- |-- modules
-|-- |-- |-- aws
-|-- |-- |-- newrelic
+|-- | -- aws
+|-- |-- |-- modules
+|-- |-- newrelic
+|-- |-- |-- modules
+</code><pre>
 
 ## Module Structure
 
