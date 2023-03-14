@@ -42,6 +42,7 @@ variable "enable_secret_policy" {
 variable "enable_secret_rotation" {
   type        = bool
   description = "whether to enable automated secret rotation"
+  default     = false
   sensitive   = false
 }
 
