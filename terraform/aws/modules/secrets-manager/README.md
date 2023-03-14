@@ -58,7 +58,7 @@ module "this" {
 | <a name="input_rotation_automatically_after_days"></a> [rotation\_automatically\_after\_days](#input\_rotation\_automatically\_after\_days) | number of days to wait before invoking automated rotation facilitated by lambda | `number` | `null` | no |
 | <a name="input_rotation_lambda_arn"></a> [rotation\_lambda\_arn](#input\_rotation\_lambda\_arn) | arn of the lambda function that can rotate the secret | `string` | `null` | no |
 | <a name="input_secret_policy"></a> [secret\_policy](#input\_secret\_policy) | provide an optional access policy for the secret | `string` | `null` | no |
-| <a name="input_secret_string"></a> [secret\_string](#input\_secret\_string) | provide the map of key value pairs as the secret value - the module encodes the argument as json | `map()` | n/a | yes |
+| <a name="input_secret_string"></a> [secret\_string](#input\_secret\_string) | provide the map of key value pairs as the secret value - the module encodes the argument as json | `map(any)` | n/a | yes |
 
 # Outputs
 
