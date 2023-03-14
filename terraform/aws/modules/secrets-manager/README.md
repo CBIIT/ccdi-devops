@@ -4,6 +4,24 @@
 
 # Usage
 
+<pre><code>
+module "this" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/secrets-manager?ref=v3.0.1"
+
+  app                               = 
+  description                       = 
+  enable_secret_policy              = 
+  enable_secret_rotation            = 
+  env                               =
+  program                           =
+  recovery_window_in_days           =
+  rotation_automatically_after_days = 
+  rotation_lambda_arn               =
+  secret_policy                     = 
+  secret_string                     =
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
