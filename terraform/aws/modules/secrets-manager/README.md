@@ -19,6 +19,7 @@ module "this" {
   rotation_lambda_arn               =
   secret_policy                     = 
   secret_string                     =
+  secret_suffix                     = 
 }
 </code></pre>
 
