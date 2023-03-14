@@ -5,7 +5,7 @@ resource "aws_ecr_repository" "this" {
 
   encryption_configuration {
     encryption_type = var.encryption_type
-    kms_key         = var.kms_key_arn
+    kms_key         = var.var.encryption_type == "AES256" ? null : kms_key_arn
   }
 
   image_scanning_configuration {
@@ -16,8 +16,10 @@ resource "aws_ecr_repository" "this" {
 }
 
 resource "aws_ecr_repository_policy" "this" {
+  count = var.create_repository_policy ? 1 : 0
+
   repository = aws_ecr_lifecycle_policy.this.name
-  policy     = var.is_base_image ? data.aws_iam_policy_document.base.json : data.aws_iam_policy_document.app.json
+  policy     = data.aws_iam_policy_document.this[0].json
 }
 
 resource "aws_ecr_lifecycle_policy" "this" {
