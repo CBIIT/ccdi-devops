@@ -51,7 +51,7 @@ module "this" {
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | description of the secret | `string` | n/a | yes |
 | <a name="input_enable_secret_policy"></a> [enable\_secret\_policy](#input\_enable\_secret\_policy) | whether to provide and attach a secret access policy | `bool` | `false` | no |
-| <a name="input_enable_secret_rotation"></a> [enable\_secret\_rotation](#input\_enable\_secret\_rotation) | whether to enable automated secret rotation | `bool` | n/a | yes |
+| <a name="input_enable_secret_rotation"></a> [enable\_secret\_rotation](#input\_enable\_secret\_rotation) | whether to enable automated secret rotation | `bool` | `false` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_recovery_window_in_days"></a> [recovery\_window\_in\_days](#input\_recovery\_window\_in\_days) | days to wait before deleting the secret - can be 0, or between 7 and 30 | `number` | `0` | no |
