@@ -60,6 +60,7 @@ module "this" {
 | <a name="input_rotation_lambda_arn"></a> [rotation\_lambda\_arn](#input\_rotation\_lambda\_arn) | arn of the lambda function that can rotate the secret | `string` | `null` | no |
 | <a name="input_secret_policy"></a> [secret\_policy](#input\_secret\_policy) | provide an optional access policy for the secret | `string` | `null` | no |
 | <a name="input_secret_string"></a> [secret\_string](#input\_secret\_string) | provide the map of key value pairs as the secret value - the module encodes the argument as json | `map(any)` | n/a | yes |
+| <a name="input_secret_suffix"></a> [secret\_suffix](#input\_secret\_suffix) | provide a suffix to append to the secret name after the stack name | `string` | n/a | yes |
 
 # Outputs
 
