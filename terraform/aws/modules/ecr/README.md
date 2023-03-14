@@ -24,8 +24,7 @@
 | [aws_ecr_lifecycle_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository_policy) | resource |
-| [aws_iam_policy_document.app](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.base](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 # Inputs
 
@@ -33,6 +32,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_create_lifecycle_policy"></a> [create\_lifecycle\_policy](#input\_create\_lifecycle\_policy) | if true, applies a lifecycle policy that only keeps the last 30 images | `bool` | `true` | no |
+| <a name="input_create_repository_policy"></a> [create\_repository\_policy](#input\_create\_repository\_policy) | if true, applies a repository policy that allows access to the repository from specified ecs and jenkins roles | `bool` | `false` | no |
 | <a name="input_encryption_type"></a> [encryption\_type](#input\_encryption\_type) | encryption type to use for the repository - either AES256 or KMS - if KMS, must provide arn of the key | `string` | `"AES256"` | no |
 | <a name="input_force_delete"></a> [force\_delete](#input\_force\_delete) | whether to allow terraform to delete a repository, even if contains images | `bool` | `false` | no |
 | <a name="input_image_name"></a> [image\_name](#input\_image\_name) | name of the image, such as 'frontend', 'backend', or 'files' | `string` | n/a | yes |
@@ -41,6 +41,7 @@
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | arn of the kms key used to encrypt images - required if encryption type is KMS | `string` | `null` | no |
 | <a name="input_product_family"></a> [product\_family](#input\_product\_family) | if is\_base\_image is true, then provide a product family or archetype (i.e. 'bento') | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_repository_policy_principal"></a> [repository\_policy\_principal](#input\_repository\_policy\_principal) | arn values for roles allowed to access the repository - only required if create\_repository\_policy is true | `set(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | the map of key value pairs to provide as tags | `map(any)` | `{}` | no |
 
 # Outputs
