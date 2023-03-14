@@ -79,3 +79,9 @@ variable "secret_string" {
   description = "provide the map of key value pairs as the secret value - the module encodes the argument as json"
   sensitive   = true
 }
+
+variable "secret_suffix" {
+  type        = string
+  description = "provide a suffix to append to the secret name after the stack name"
+  sensitive   = false
+}
