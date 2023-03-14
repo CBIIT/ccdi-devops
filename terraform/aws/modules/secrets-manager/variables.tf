@@ -75,7 +75,7 @@ variable "secret_policy" {
 }
 
 variable "secret_string" {
-  type        = map()
+  type        = map(any)
   description = "provide the map of key value pairs as the secret value - the module encodes the argument as json"
   sensitive   = true
 }
