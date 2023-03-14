@@ -89,4 +89,3 @@ variable "repository_policy_principal" {
   default     = []
   sensitive   = false
 }
-
