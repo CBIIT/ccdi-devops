@@ -36,9 +36,17 @@ variable "cpu" {
   description = "number of cpu units used by the task"
 }
 
+variable "cpu_architecture" {
+  type        = string
+  description = "ust be set to either 'X86_64' or 'ARM64'"
+  default     = "X86_64"
+  sensitive   = false
+}
+
 variable "execution_role_arn" {
   type        = string
   description = "arn of the role the task assigns to the ECS container agent and the Docker daemon"
+  sensitive   = false
 }
 
 variable "memory" {
@@ -63,13 +71,6 @@ variable "operating_system_family" {
   type        = string
   description = "if requires_compatibilities is FARGATE this field is required"
   default     = "LINUX"
-  sensitive   = false
-}
-
-variable "cpu_architecture" {
-  type        = string
-  description = "ust be set to either 'X86_64' or 'ARM64'"
-  default     = "X86_64"
   sensitive   = false
 }
 
