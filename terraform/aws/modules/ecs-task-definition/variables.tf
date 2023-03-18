@@ -46,7 +46,6 @@ variable "cpu_architecture" {
 variable "execution_role_arn" {
   type        = string
   description = "arn of the role the task assigns to the ECS container agent and the Docker daemon"
-  default     = null
   sensitive   = false
 }
 
