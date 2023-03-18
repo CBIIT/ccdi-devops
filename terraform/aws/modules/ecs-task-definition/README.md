@@ -4,9 +4,6 @@
 
 # Usage 
 
-## Task Execution Role 
-The task execution role grants the Amazon ECS container and Fargate agents permission to make AWS API calls on your behalf. The task execution IAM role is required depending on the requirements of your task. You can have multiple task execution roles for different purposes and services associated with your account.
-
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
