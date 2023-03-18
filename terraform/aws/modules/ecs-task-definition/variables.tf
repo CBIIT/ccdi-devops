@@ -60,9 +60,18 @@ variable "cpu_architecture" {
   sensitive   = false
 }
 
-variable "execution_role_arn" {
-  type        = string
-  description = "arn of the role the task assigns to the ECS container agent and the Docker daemon"
+variable "enable_ecs_exec" {
+  type        = bool
+  description = "whether to enable ecs exec for the task"
+  default     = false
+  sensitive   = false
+}
+
+variable "enable_opensearch_access" {
+  type        = bool
+  description = "whether to enable access to opensearch for the task"
+  default     = false
+  sensitive   = false
 }
 
 variable "memory" {
@@ -83,6 +92,13 @@ variable "network_mode" {
   sensitive   = false
 }
 
+variable "opensearch_domain_arn" {
+  type        = string
+  description = "arn of the opensearch domain to grant access to"
+  default     = null
+  sensitive   = false
+}
+
 variable "operating_system_family" {
   type        = string
   description = "if requires_compatibilities is FARGATE this field is required"
@@ -94,6 +110,13 @@ variable "requires_compatibilities" {
   type        = set(string)
   description = "et of launch types required by the task - can be 'EC2' and/or 'FARGATE'"
   default     = ["FARGATE"]
+  sensitive   = false
+}
+
+variable "task_execution_role_arn" {
+  type        = string
+  description = "arn of the role the task assigns to the ECS container agent and the Docker daemon"
+  default     = null
   sensitive   = false
 }
 

@@ -117,7 +117,7 @@ data "aws_iam_policy_document" "opensearch" {
       "es:ESHttpPut"
     ]
     resources = [
-      "arn:aws:es:us-east-1:${var.account_id}:domain/*"
+      var.opensearch_domain_arn
     ]
   }
 }

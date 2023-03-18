@@ -5,17 +5,13 @@ resource "aws_ecs_task_definition" "this" {
   network_mode             = var.network_mode
   cpu                      = var.cpu
   memory                   = var.memory
-  # execution_role_arn       = var.task_role_arn
-  # task_role_arn            = var.execution_role_arn
+  execution_role_arn       = var.create_task_execution_role ? aws_iam_role.task_execution[0].arn : var.task_execution_role_arn
+  task_role_arn            = var.create_task_role ? aws_iam_role.task[0].arn : var.task_role_arn
 
   runtime_platform {
     operating_system_family = var.operating_system_family
     cpu_architecture        = var.cpu_architecture
   }
-}
-
-resource "aws_cloudwatch_log_group" "name" {
-  
 }
 
 resource "aws_iam_role" "task_execution" {
