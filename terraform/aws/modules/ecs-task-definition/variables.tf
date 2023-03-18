@@ -26,6 +26,23 @@ variable "program" {
   }
 }
 
+variable "account_id" {
+  type        = string
+  description = "the aws account it - use data.aws_caller_identity.current.account_id to dynamically provide account id"
+}
+
+variable "create_task_execution_role" {
+  type        = bool
+  description = "whether to create a task execution role for the task definition"
+  default     = true
+}
+
+variable "create_task_role" {
+  type        = bool
+  description = "whether to create a task role for the task definition"
+  default     = true
+}
+
 variable "container_definitions" {
   type        = string
   description = "provide the json document that defines the container definitions for this task"
@@ -34,6 +51,13 @@ variable "container_definitions" {
 variable "cpu" {
   type        = string
   description = "number of cpu units used by the task"
+}
+
+variable "cpu_architecture" {
+  type        = string
+  description = "ust be set to either 'X86_64' or 'ARM64'"
+  default     = "X86_64"
+  sensitive   = false
 }
 
 variable "execution_role_arn" {
@@ -63,13 +87,6 @@ variable "operating_system_family" {
   type        = string
   description = "if requires_compatibilities is FARGATE this field is required"
   default     = "LINUX"
-  sensitive   = false
-}
-
-variable "cpu_architecture" {
-  type        = string
-  description = "ust be set to either 'X86_64' or 'ARM64'"
-  default     = "X86_64"
   sensitive   = false
 }
 
