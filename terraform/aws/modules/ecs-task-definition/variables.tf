@@ -26,23 +26,6 @@ variable "program" {
   }
 }
 
-variable "account_id" {
-  type        = string
-  description = "the aws account it - use data.aws_caller_identity.current.account_id to dynamically provide account id"
-}
-
-variable "create_task_execution_role" {
-  type        = bool
-  description = "whether to create a task execution role for the task definition"
-  default     = true
-}
-
-variable "create_task_role" {
-  type        = bool
-  description = "whether to create a task role for the task definition"
-  default     = true
-}
-
 variable "container_definitions" {
   type        = string
   description = "provide the json document that defines the container definitions for this task"
@@ -60,17 +43,10 @@ variable "cpu_architecture" {
   sensitive   = false
 }
 
-variable "enable_ecs_exec" {
-  type        = bool
-  description = "whether to enable ecs exec for the task"
-  default     = false
-  sensitive   = false
-}
-
-variable "enable_opensearch_access" {
-  type        = bool
-  description = "whether to enable access to opensearch for the task"
-  default     = false
+variable "execution_role_arn" {
+  type        = string
+  description = "arn of the role the task assigns to the ECS container agent and the Docker daemon"
+  default     = null
   sensitive   = false
 }
 
@@ -92,13 +68,6 @@ variable "network_mode" {
   sensitive   = false
 }
 
-variable "opensearch_domain_arn" {
-  type        = string
-  description = "arn of the opensearch domain to grant access to"
-  default     = null
-  sensitive   = false
-}
-
 variable "operating_system_family" {
   type        = string
   description = "if requires_compatibilities is FARGATE this field is required"
@@ -110,13 +79,6 @@ variable "requires_compatibilities" {
   type        = set(string)
   description = "et of launch types required by the task - can be 'EC2' and/or 'FARGATE'"
   default     = ["FARGATE"]
-  sensitive   = false
-}
-
-variable "task_execution_role_arn" {
-  type        = string
-  description = "arn of the role the task assigns to the ECS container agent and the Docker daemon"
-  default     = null
   sensitive   = false
 }
 
