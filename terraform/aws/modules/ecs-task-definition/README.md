@@ -35,7 +35,7 @@ The task execution role grants the Amazon ECS container and Fargate agents permi
 | <a name="input_cpu"></a> [cpu](#input\_cpu) | number of cpu units used by the task | `string` | n/a | yes |
 | <a name="input_cpu_architecture"></a> [cpu\_architecture](#input\_cpu\_architecture) | ust be set to either 'X86\_64' or 'ARM64' | `string` | `"X86_64"` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
-| <a name="input_execution_role_arn"></a> [execution\_role\_arn](#input\_execution\_role\_arn) | arn of the role the task assigns to the ECS container agent and the Docker daemon | `string` | n/a | yes |
+| <a name="input_execution_role_arn"></a> [execution\_role\_arn](#input\_execution\_role\_arn) | arn of the role the task assigns to the ECS container agent and the Docker daemon | `string` | `null` | no |
 | <a name="input_memory"></a> [memory](#input\_memory) | amount (MiB) of memory used by the task | `string` | n/a | yes |
 | <a name="input_microservice"></a> [microservice](#input\_microservice) | name of the microservice this task supports - i.e. backend, frontend, files | `string` | n/a | yes |
 | <a name="input_network_mode"></a> [network\_mode](#input\_network\_mode) | docker networking mode to use for the containers in the task - either 'host', 'bridge', 'awsvpc' or 'none' | `string` | `"awsvpc"` | no |
