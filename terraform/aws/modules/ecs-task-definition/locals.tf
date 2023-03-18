@@ -1,3 +1,3 @@
 locals {
-  stack                    = "${var.program}-${var.env}-${var.app}"
+  stack = "${var.program}-${var.env}-${var.app}"
 }
