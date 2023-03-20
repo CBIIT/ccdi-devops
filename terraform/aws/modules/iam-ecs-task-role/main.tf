@@ -5,13 +5,3 @@ resource "aws_iam_role" "this" {
   permissions_boundary = local.permissions_boundary_arn
 }
 
-resource "aws_iam_policy" "this" {
-  name        = "power-user-${local.stack}-task-policy-${var.microservice}"
-  description = "ecs task policy for ${var.microservice} in the ${var.env} tier"
-  policy      = data.aws_iam_policy_document.policy.json
-}
-
-resource "aws_iam_role_policy_attachment" "this" {
-  role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.this.arn
-}
