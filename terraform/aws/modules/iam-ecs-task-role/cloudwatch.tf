@@ -6,6 +6,13 @@ resource "aws_iam_policy" "cloudwatch" {
   policy      = data.aws_iam_policy_document.cloudwatch[0].json
 }
 
+resource "aws_iam_role_policy_attachment" "cloudwatch" {
+  count = var.attach_cloudwatch_policy ? 1 : 0
+
+  role       = aws_iam_role.this.name
+  policy_arn = aws_iam_policy.cloudwatch[0].arn
+}
+
 
 data "aws_iam_policy_document" "cloudwatch" {
   count = var.attach_cloudwatch_policy ? 1 : 0
