@@ -39,6 +39,6 @@ data "aws_iam_policy_document" "ecs_exec" {
       "kms:Decrypt",
       "kms:GenerateDataKey"
     ]
-    resources = [ var.kms_key_arn ]
+    resources = [var.kms_key_arn]
   }
 }
