@@ -25,3 +25,15 @@ variable "program" {
     error_message = "valid values for program are 'crdc', 'ccdi', and 'ctos'"
   }
 }
+
+variable "ecr_repositories" {
+  type = list(string)
+  description = "a list of ECR repository ARNs to which the task execution role will have access"
+  sensitive   = false
+}
+
+variable "microservice" {
+  type        = string
+  description = "the name of the microservice"
+  sensitive   = false
+}
