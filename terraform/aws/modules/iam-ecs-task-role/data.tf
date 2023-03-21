@@ -74,12 +74,14 @@ data "aws_iam_policy_document" "secrets_manager" {
   count = var.attach_secrets_manager_policy ? 1 : 0
 
   statement {
+    effect = "Allow"
     actions = [
       "secretsmanager:GetSecretValue",
       "secretsmanager:DescribeSecret",
       "secretsmanager:ListSecretVersionIds",
-      "secretsmanager:ListSecrets",
+      "secretsmanager:ListSecrets"
     ]
+    resources = var.secret_arns
   }
 }
 

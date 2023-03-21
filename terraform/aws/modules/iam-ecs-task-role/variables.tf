@@ -61,9 +61,29 @@ variable "attach_secrets_manager_policy" {
   sensitive   = false
 }
 
+variable "ecs_cluster_arn" {
+  type        = string
+  description = "the arn of the ecs cluster that the task will be running on - required if attach_ecs_exec_policy is true"
+  default     = null
+  sensitive   = false
+}
+
+variable "kms_key_arn" {
+  type        = string
+  description = "the arn of the kms key that will be used to encrypt the data channel - required if attach_ecs_exec_policy is true"
+  default     = null
+  sensitive   = false
+}
+
 variable "microservice" {
   type        = string
   description = "the name to microservice that this role is attached to (i.e. 'frontend')"
   sensitive   = false
 }
 
+variable "secret_arns" {
+  type        = set(string)
+  description = "a set of secret arns that the role should have access to - required if attach_secrets_manager_policy is true"
+  default     = []
+  sensitive   = false
+}
