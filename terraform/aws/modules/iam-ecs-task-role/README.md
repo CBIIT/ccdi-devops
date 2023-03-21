@@ -54,6 +54,7 @@
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | the arn of the kms key that will be used to encrypt the data channel - required if attach\_ecs\_exec\_policy is true | `string` | `null` | no |
 | <a name="input_microservice"></a> [microservice](#input\_microservice) | the name to microservice that this role is attached to (i.e. 'frontend') | `string` | n/a | yes |
+| <a name="input_opensearch_domain_arn"></a> [opensearch\_domain\_arn](#input\_opensearch\_domain\_arn) | the arn of the opensearch domain that the role should have access to - required if attach\_opensearch\_policy is true | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_secret_arns"></a> [secret\_arns](#input\_secret\_arns) | a set of secret arns that the role should have access to - required if attach\_secrets\_manager\_policy is true | `set(string)` | `[]` | no |
 
@@ -61,9 +62,6 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_task_policy_arn"></a> [task\_policy\_arn](#output\_task\_policy\_arn) | arn of the task policy if one was created |
-| <a name="output_task_policy_id"></a> [task\_policy\_id](#output\_task\_policy\_id) | id of the task policy if one was created |
-| <a name="output_task_policy_name"></a> [task\_policy\_name](#output\_task\_policy\_name) | name of the task policy if one was created |
 | <a name="output_task_role_arn"></a> [task\_role\_arn](#output\_task\_role\_arn) | arn of the task role if one was created |
 | <a name="output_task_role_id"></a> [task\_role\_id](#output\_task\_role\_id) | id of the task role if one was created |
 | <a name="output_task_role_name"></a> [task\_role\_name](#output\_task\_role\_name) | name of the task role if one was created |

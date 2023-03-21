@@ -81,6 +81,13 @@ variable "microservice" {
   sensitive   = false
 }
 
+variable "opensearch_domain_arn" {
+  type = string
+  description = "the arn of the opensearch domain that the role should have access to - required if attach_opensearch_policy is true"
+  default     = null
+  sensitive   = false
+}
+
 variable "secret_arns" {
   type        = set(string)
   description = "a set of secret arns that the role should have access to - required if attach_secrets_manager_policy is true"
