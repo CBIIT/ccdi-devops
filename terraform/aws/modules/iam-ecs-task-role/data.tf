@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 data "aws_iam_policy_document" "trust" {
   statement {
     effect  = "Allow"
@@ -11,43 +13,48 @@ data "aws_iam_policy_document" "trust" {
     condition {
       test     = "ArnEquals"
       variable = "aws:SourceArn"
-      values   = ["arn:aws:ecs:us-east-1:${var.account_id}:*"]
+      values   = ["arn:aws:ecs:us-east-1:${data.aws_caller_identity.current.account_id}:*"]
     }
 
     condition {
       test     = "StringEquals"
       variable = "aws:SourceAccount"
-      values   = [var.account_id]
+      values   = data.aws_caller_identity.current.account_id
     }
   }
 }
 
-data "aws_iam_policy_document" "policy" {
-  source_policy_documents = [
-    aws_iam_policy_document.ecs_exec[0].json,
-    aws_iam_policy_document.kms[0].json,
-    aws_iam_policy_document.opensearch[0].json,
-    aws_iam_policy_document.ssm[0].json
-  ]
+data "aws_iam_policy_document" "ecr" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "ecr:GetAuthorizationToken"
+    ]
+    resources = ["*"]
+  }
 }
 
-data "aws_iam_policy_document" "kms" {
-  count = var.enable_ecs_exec ? 1 : 0
+data "aws_iam_policy_document" "cloudwatch" {
+  count = var.attach_cloudwatch_policy ? 1 : 0
 
   statement {
     effect = "Allow"
     actions = [
-      "kms:Decrypt",
-      "kms:GenerateDataKey"
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+      "logs:DescribeLogStreams",
+      "logs:DescribeLogGroups"
     ]
     resources = [
-      "arn:aws:kms:us-east-1:${var.account_id}:key/*"
+      "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:*",
+      "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:*:log-stream:*"
     ]
   }
 }
 
 data "aws_iam_policy_document" "opensearch" {
-  count = var.enable_opensearch_access ? 1 : 0
+  count = var.attach_opensearch_policy ? 1 : 0
 
   statement {
     effect = "Allow"
@@ -59,14 +66,33 @@ data "aws_iam_policy_document" "opensearch" {
       "es:ESHttpPost",
       "es:ESHttpPut"
     ]
-    resources = [
-      var.opensearch_domain_arn
-    ]
+    resources = ["${var.opensearch_domain_arn}/*"]
   }
 }
 
-data "aws_iam_policy_document" "ssm" {
-  count = var.enable_ecs_exec ? 1 : 0
+data "aws_iam_policy_document" "secrets_manager" {
+  count = var.attach_secrets_manager_policy ? 1 : 0
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "secretsmanager:GetSecretValue",
+      "secretsmanager:DescribeSecret",
+      "secretsmanager:ListSecretVersionIds",
+      "secretsmanager:ListSecrets"
+    ]
+    resources = var.secret_arns
+  }
+}
+
+data "aws_iam_policy_document" "ecs_exec" {
+  count = var.attach_ecs_exec_policy ? 1 : 0
+
+  statement {
+    effect    = "Allow"
+    actions   = ["ecs:ExecuteCommand"]
+    resources = [var.ecs_cluster_arn]
+  }
 
   statement {
     effect = "Allow"
@@ -78,13 +104,13 @@ data "aws_iam_policy_document" "ssm" {
     ]
     resources = ["*"]
   }
-}
-
-data "aws_iam_policy_document" "ecs_exec" {
-  count = var.enable_ecs_exec ? 1 : 0
 
   statement {
-    effect  = "Allow"
-    actions = ["ecs:ExecuteCommand"]
+    effect = "Allow"
+    actions = [
+      "kms:Decrypt",
+      "kms:GenerateDataKey"
+    ]
+    resources = [var.kms_key_arn]
   }
 }
