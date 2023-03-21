@@ -13,13 +13,13 @@ data "aws_iam_policy_document" "trust" {
     condition {
       test     = "ArnEquals"
       variable = "aws:SourceArn"
-      values   = ["arn:aws:ecs:us-east-1:${var.account_id}:*"]
+      values   = ["arn:aws:ecs:us-east-1:${data.aws_caller_identity.current.account_id}:*"]
     }
 
     condition {
       test     = "StringEquals"
       variable = "aws:SourceAccount"
-      values   = [var.account_id]
+      values   = data.aws_caller_identity.current.account_id
     }
   }
 }
@@ -74,12 +74,12 @@ data "aws_iam_policy_document" "secrets_manager" {
   count = var.attach_secrets_manager_policy ? 1 : 0
 
   statement {
-    actions = [ 
+    actions = [
       "secretsmanager:GetSecretValue",
       "secretsmanager:DescribeSecret",
       "secretsmanager:ListSecretVersionIds",
       "secretsmanager:ListSecrets",
-     ]
+    ]
   }
 }
 

@@ -26,15 +26,38 @@ variable "program" {
   }
 }
 
-variable "account_id" {
-  type        = string
-  description = "the aws account id"
+variable "attach_cloudwatch_policy" {
+  type        = bool
+  description = "whether to attach the cloudwatch policy to the role"
+  default     = false
+  sensitive   = false
+}
+
+variable "attach_ecs_exec_policy" {
+  type        = bool
+  description = "whether to attach the ecs exec policy to the role"
+  default     = false
+  sensitive   = false
+}
+
+variable "attach_opensearch_policy" {
+  type        = bool
+  description = "whether to attach the opensearch policy to the role"
+  default     = false
   sensitive   = false
 }
 
 variable "attach_permissions_boundary" {
   type        = bool
   description = "whether or not to attach a permissions boundary to the role"
+  default     = false
+  sensitive   = false
+}
+
+variable "attach_secrets_manager_policy" {
+  type        = bool
+  description = "whether to attach the secrets manager policy to the role"
+  default     = false
   sensitive   = false
 }
 
