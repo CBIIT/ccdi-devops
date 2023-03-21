@@ -1,5 +1,6 @@
+data "aws_caller_identity" "current" {}
+
 data "aws_iam_policy_document" "trust" {
-  count = var.create_task_execution_role || var.create_task_role ? 1 : 0
 
   statement {
     effect  = "Allow"
@@ -13,18 +14,18 @@ data "aws_iam_policy_document" "trust" {
     condition {
       test     = "ArnEquals"
       variable = "aws:SourceArn"
-      values   = ["arn:aws:ecs:us-east-1:${var.account_id}:*"]
+      values   = ["arn:aws:ecs:us-east-1:${data.aws_caller_identity.current.account_id}:*"]
     }
 
     condition {
       test     = "StringEquals"
       variable = "aws:SourceAccount"
-      values   = [var.account_id]
+      values   = [data.aws_caller_identity.current.account_id]
     }
   }
 }
 
-data "aws_iam_policy_document" "policy" {
+data "aws_iam_policy_document" "this" {
   statement {
     effect = "Allow"
     actions = [
@@ -55,7 +56,7 @@ data "aws_iam_policy_document" "policy" {
       "logs:DescribeLogGroup"
     ]
     resources = [
-      "arn:aws:logs:us-east-1:${var.account_id}:log-group:*"
+      "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:*"
     ]
   }
 
@@ -66,7 +67,7 @@ data "aws_iam_policy_document" "policy" {
       "logs:PutLogEvents"
     ]
     resources = [
-      "arn:aws:logs:us-east-1:${var.account_id}:log-group:*:log-stream:*"
+      "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:*:log-stream:*"
     ]
   }
 }

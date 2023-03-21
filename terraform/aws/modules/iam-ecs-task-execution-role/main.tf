@@ -8,7 +8,7 @@ resource "aws_iam_role" "this" {
 resource "aws_iam_policy" "this" {
   name        = "power-user-${local.stack}-task-execution-policy-${var.microservice}"
   description = "ecs task execution policy for ${var.microservice} in the ${var.env} tier"
-  policy      = data.aws_iam_policy_document.policy.json
+  policy      = data.aws_iam_policy_document.this.json
 }
 
 resource "aws_iam_role_policy_attachment" "this" {
