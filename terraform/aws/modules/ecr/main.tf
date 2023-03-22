@@ -5,7 +5,7 @@ resource "aws_ecr_repository" "this" {
 
   encryption_configuration {
     encryption_type = var.encryption_type
-    kms_key         = var.var.encryption_type == "AES256" ? null : kms_key_arn
+    kms_key         = var.encryption_type == "AES256" ? null : var.kms_key_arn
   }
 
   image_scanning_configuration {
