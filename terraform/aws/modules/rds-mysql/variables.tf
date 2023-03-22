@@ -89,6 +89,12 @@ variable "create_db_subnet_group" {
   sensitive   = false
 }
 
+variable "db_name" {
+  type        = string
+  description = "name of the database within RDS to create"
+  sensitive   = false
+}
+
 variable "db_subnet_group_name" {
   type        = string
   description = "name of the db subnet group - required if create_db_subnet_group is false"
@@ -121,6 +127,20 @@ variable "engine_version" {
   type        = string
   description = "database engine version to use - if auto_minor_version_upgrade is true, no need to specify patch version"
   default     = "8.0"
+  sensitive   = false
+}
+
+variable "iam_database_authentication_enabled" {
+  type        = bool
+  description = "whether to enable iam database authentication"
+  default     = false
+  sensitive   = false
+}
+
+variable "instance_class" {
+  type        = string
+  description = "rds instance class to use"
+  default     = "db.t3.medium"
   sensitive   = false
 }
 

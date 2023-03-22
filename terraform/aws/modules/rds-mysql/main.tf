@@ -8,18 +8,17 @@ resource "aws_db_instance" "this" {
   backup_window                         = var.backup_window
   ca_cert_identifier                    = var.ca_cert_identifier
   copy_tags_to_snapshot                 = true
-  db_name                               = "${local.stack}-${var.rds_suffix}"
+  db_name                               = var.db_name
   db_subnet_group_name                  = var.create_db_subnet_group ? aws_db_subnet_group.this[0].name : var.db_subnet_group_name
   delete_automated_backups              = true
   deletion_protection                   = var.deletion_protection
   enabled_cloudwatch_logs_exports       = var.enabled_cloudwatch_logs_exports
   engine                                = "mysql"
   engine_version                        = var.engine_version
-  final_snapshot_identifier             = ""
-  iam_database_authentication_enabled   = ""
-  identifier                            = ""
-  identifier_prefix                     = ""
-  instance_class                        = ""
+  final_snapshot_identifier             = "${local.stack}-rds-snapshot-final"
+  iam_database_authentication_enabled   = var.iam_database_authentication_enabled
+  identifier                            = "${local.stack}-${var.rds_suffix}"
+  instance_class                        = var.instance_class
   iops                                  = ""
   kms_key_id                            = ""
   license_model                         = ""
@@ -58,8 +57,7 @@ resource "aws_db_instance" "this" {
     source_engine_version = ""
     ingestion_role_arn    = ""
   }
-  skip_final_snapshot       = ""
-  snapshot_identifier       = ""
+  skip_final_snapshot       = false
   storage_encrypted         = ""
   storage_type              = ""
   storage_throughput        = ""
