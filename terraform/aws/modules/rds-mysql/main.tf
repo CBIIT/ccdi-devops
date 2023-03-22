@@ -19,26 +19,20 @@ resource "aws_db_instance" "this" {
   iam_database_authentication_enabled   = var.iam_database_authentication_enabled
   identifier                            = "${local.stack}-${var.rds_suffix}"
   instance_class                        = var.instance_class
-  iops                                  = ""
+  iops                                  = var.iops
   kms_key_id                            = ""
-  license_model                         = ""
-  maintenance_window                    = ""
-  max_allocated_storage                 = ""
-  monitoring_interval                   = ""
-  monitoring_role_arn                   = ""
-  multi_az                              = ""
-  nchar_character_set_name              = null
+  maintenance_window                    = var.maintenance_window
+  monitoring_interval                   = var.monitoring_interval
+  monitoring_role_arn                   = var.enable_enhanced_monitoring ? aws_iam_role.this[0].arn : null
+  multi_az                              = var.multi-az
   netwok_type                           = "IPV4"
-  option_group_name                     = ""
   parameter_group_name                  = ""
-  password                              = ""
+  password                              = var.password
   performance_insights_enabled          = var.performance_insights_enabled
   performance_insights_kms_key_id       = ""
-  performance_insights_retention_period = ""
-  port                                  = ""
-  publicly_accessible                   = ""
-  replica_mode                          = ""
-  replica_source_db                     = ""
+  performance_insights_retention_period = var.performance_insights_retention_period
+  port                                  = 3306
+  publicly_accessible                   = false
 
   blue_green_update {
     enabled = true
@@ -59,7 +53,7 @@ resource "aws_db_instance" "this" {
   }
   skip_final_snapshot       = false
   storage_encrypted         = ""
-  storage_type              = ""
+  storage_type              = var.storage_type
   storage_throughput        = ""
   tags                      = ""
   timezone                  = ""
@@ -78,4 +72,27 @@ resource "aws_db_subnet_group" "this" {
   tags = {
     Name = "${local.stack}-rds-subnet-group"
   }
+}
+
+resource "aws_iam_role" "this" {
+  count = var.enable_enhanced_monitoring ? 1 : 0
+
+  name                 = "power-user-${local.stack}-rds-enhanced-monitoring-role"
+  description          = "role for enhanced monitoring of ${local.stack} rds instance"
+  assume_role_policy   = data.aws_iam_policy_document.trust[0].json
+  permissions_boundary = local.permissions_boundary_arn
+}
+
+resource "aws_iam_policy" "this" {
+  count       = var.enable_enhanced_monitoring ? 1 : 0
+  name        = "power-user-${local.stack}-rds-enhanced-monitoring-policy"
+  description = "policy for enhanced monitoring of ${local.stack} rds instance"
+  policy      = data.aws_iam_policy_document.this[0].json
+}
+
+resource "aws_iam_role_policy_attachment" "this" {
+  count = var.enable_enhanced_monitoring ? 1 : 0
+
+  policy_arn = aws_iam_policy.this[0].arn
+  role       = aws_iam_role.this[0].name
 }
