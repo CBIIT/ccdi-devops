@@ -1,4 +1,7 @@
 # ccdi-devops
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5dbdeea2d17647068f0889737a5f9066)](https://app.codacy.com/gh/CBIIT/ccdi-devops?utm_source=github.com&utm_medium=referral&utm_content=CBIIT/ccdi-devops&utm_campaign=Badge_Grade)
+
 DevOps repo for CCDI
 
 ## Repository Structure
