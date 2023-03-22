@@ -9,14 +9,12 @@ resource "aws_db_instance" "this" {
   ca_cert_identifier                    = var.ca_cert_identifier
   copy_tags_to_snapshot                 = true
   db_name                               = "${local.stack}-${var.rds_suffix}"
-  db_subnet_group_name                  = ""
+  db_subnet_group_name                  = var.create_db_subnet_group ? aws_db_subnet_group.this[0].name : var.db_subnet_group_name
   delete_automated_backups              = true
   deletion_protection                   = var.deletion_protection
-  domain                                = null
-  domain_iam_role_name                  = null
-  enabled_cloudwatch_logs_exports       = ""
-  engine                                = ""
-  engine_version                        = ""
+  enabled_cloudwatch_logs_exports       = var.enabled_cloudwatch_logs_exports
+  engine                                = "mysql"
+  engine_version                        = var.engine_version
   final_snapshot_identifier             = ""
   iam_database_authentication_enabled   = ""
   identifier                            = ""
@@ -42,6 +40,11 @@ resource "aws_db_instance" "this" {
   publicly_accessible                   = ""
   replica_mode                          = ""
   replica_source_db                     = ""
+
+  blue_green_update {
+    enabled = true
+  }
+
   restore_to_point_in_time {
     source_db_identifier       = ""
     restore_time               = ""
@@ -65,4 +68,16 @@ resource "aws_db_instance" "this" {
   username                  = ""
   vpc_security_group_ids    = ["value"]
   customer_owned_ip_enabled = ""
+}
+
+resource "aws_db_subnet_group" "this" {
+  count = var.create_db_subnet_group ? 1 : 0
+
+  name        = "${local.stack}-rds-subnet-group"
+  description = "Subnet group for ${local.stack} RDS instance"
+  subnet_ids  = var.db_subnet_group_subnet_ids
+
+  tags = {
+    Name = "${local.stack}-rds-subnet-group"
+  }
 }

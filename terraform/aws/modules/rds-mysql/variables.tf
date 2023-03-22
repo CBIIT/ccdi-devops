@@ -82,6 +82,56 @@ variable "ca_cert_identifier" {
   sensitive   = false
 }
 
+variable "create_db_subnet_group" {
+  type        = bool
+  description = "whether to create a db subnet group"
+  default     = true
+  sensitive   = false
+}
+
+variable "db_subnet_group_name" {
+  type        = string
+  description = "name of the db subnet group - required if create_db_subnet_group is false"
+  default     = null
+  sensitive   = false
+}
+
+variable "db_subnet_ids" {
+  type        = list(string)
+  description = "list of subnet ids to place the instance in - required if create_db_subnet_group is true"
+  default     = []
+  sensitive   = false
+}
+
+variable "enabled_cloudwatch_logs_exports" {
+  type        = list(string)
+  description = "list of log types to export to cloudwatch"
+  default     = ["audit", "error", "general", "slowquery"]
+  sensitive   = false
+}
+
+variable "engine" {
+  type        = string
+  description = "database engine to use"
+  default     = "mysql"
+  sensitive   = false
+}
+
+variable "engine_version" {
+  type        = string
+  description = "database engine version to use - if auto_minor_version_upgrade is true, no need to specify patch version"
+  default     = "8.0"
+  sensitive   = false
+}
+
+
+variable "performance_insights_enabled" {
+  type        = bool
+  description = "whether to enable performance insights"
+  default     = true
+  sensitive   = false
+}
+
 variable "rds_suffix" {
   type        = string
   description = "suffix to append to the rds instance name"
