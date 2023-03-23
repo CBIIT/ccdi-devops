@@ -18,7 +18,7 @@ resource "aws_ecr_repository" "this" {
 resource "aws_ecr_repository_policy" "this" {
   count = var.create_repository_policy ? 1 : 0
 
-  repository = aws_ecr_lifecycle_policy.this[0].name
+  repository = aws_ecr_repository.this.name
   policy     = data.aws_iam_policy_document.this[0].json
 }
 
