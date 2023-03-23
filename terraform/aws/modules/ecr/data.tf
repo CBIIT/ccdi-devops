@@ -3,7 +3,10 @@ data "aws_iam_policy_document" "this" {
 
   statement {
     effect    = "Allow"
-    principals = var.repository_policy_principal
+    principals {
+      identifiers = var.repository_policy_principal
+      type        = "AWS"
+    }
     actions = [
       "ecr:GetDownloadUrlForLayer",
       "ecr:BatchGetImage",
