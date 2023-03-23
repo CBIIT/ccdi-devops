@@ -18,14 +18,14 @@ resource "aws_ecr_repository" "this" {
 resource "aws_ecr_repository_policy" "this" {
   count = var.create_repository_policy ? 1 : 0
 
-  repository = aws_ecr_lifecycle_policy.this.name
+  repository = aws_ecr_lifecycle_policy.this[0].name
   policy     = data.aws_iam_policy_document.this[0].json
 }
 
 resource "aws_ecr_lifecycle_policy" "this" {
   count = var.create_lifecycle_policy ? 1 : 0
 
-  repository = aws_ecr_repository.this.name
+  repository = aws_ecr_repository.this[0].name
   policy     = <<EOF
 {
     "rules": [
