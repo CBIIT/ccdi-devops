@@ -180,6 +180,10 @@ resource "aws_security_group_rule" "inbound" {
   protocol          = "tcp"
   security_group_id = aws_security_group.this[0].id
   cidr_blocks       = local.ranges
+
+  tags = {
+    Name = "${local.stack}-${var.domain_name_suffix}-inbound"
+  }
 }
 
 resource "aws_security_group_rule" "outbound" {
@@ -192,4 +196,8 @@ resource "aws_security_group_rule" "outbound" {
   protocol          = "all"
   security_group_id = aws_security_group.this[0].id
   cidr_blocks       = ["0.0.0.0/0"]
+
+  tags = {
+    Name = "${local.stack}-${var.domain_name_suffix}-outbound"
+  }
 }
