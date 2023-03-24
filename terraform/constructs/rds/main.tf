@@ -24,6 +24,7 @@ module "rds_instance" {
   copy_tags_to_snapshot       = var.copy_tags_to_snapshot
   backup_retention_period     = var.backup_retention_period
   backup_window               = var.backup_window
+  iops                        = var.iops
 
   db_subnet_id_name = var.db_subnet_id_name
   env               = var.tier
