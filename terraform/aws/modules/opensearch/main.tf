@@ -133,7 +133,6 @@ resource "aws_cloudwatch_log_resource_policy" "cloudwatch" {
   policy_document = data.aws_iam_policy_document.cloudwatch.json
 }
 
-
 resource "aws_iam_role" "manual_snapshot" {
   count = var.create_manual_snapshot_role ? 1 : 0
 

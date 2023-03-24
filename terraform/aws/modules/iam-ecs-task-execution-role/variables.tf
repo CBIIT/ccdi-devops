@@ -27,7 +27,7 @@ variable "program" {
 }
 
 variable "ecr_repositories" {
-  type = list(string)
+  type        = list(string)
   description = "a list of ECR repository ARNs to which the task execution role will have access"
   sensitive   = false
 }
