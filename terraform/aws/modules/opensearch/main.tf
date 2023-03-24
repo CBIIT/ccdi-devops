@@ -102,6 +102,12 @@ resource "aws_opensearch_domain_policy" "this" {
 
   domain_name     = aws_opensearch_domain.this.domain_name
   access_policies = data.aws_iam_policy_document.domain_policy[0].json
+
+  lifecycle {
+    ignore_changes = [
+      access_policies,
+    ]
+  }
 }
 
 resource "aws_cloudwatch_log_group" "index_slow" {
@@ -126,7 +132,6 @@ resource "aws_cloudwatch_log_resource_policy" "cloudwatch" {
   policy_name     = "${local.stack}-opensearch-log-resource-policy"
   policy_document = data.aws_iam_policy_document.cloudwatch.json
 }
-
 
 resource "aws_iam_role" "manual_snapshot" {
   count = var.create_manual_snapshot_role ? 1 : 0
@@ -174,6 +179,10 @@ resource "aws_security_group_rule" "inbound" {
   protocol          = "tcp"
   security_group_id = aws_security_group.this[0].id
   cidr_blocks       = local.ranges
+
+  tags = {
+    Name = "${local.stack}-${var.domain_name_suffix}-inbound"
+  }
 }
 
 resource "aws_security_group_rule" "outbound" {
@@ -186,4 +195,8 @@ resource "aws_security_group_rule" "outbound" {
   protocol          = "all"
   security_group_id = aws_security_group.this[0].id
   cidr_blocks       = ["0.0.0.0/0"]
+
+  tags = {
+    Name = "${local.stack}-${var.domain_name_suffix}-outbound"
+  }
 }

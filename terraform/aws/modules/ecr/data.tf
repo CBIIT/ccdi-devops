@@ -2,7 +2,7 @@ data "aws_iam_policy_document" "this" {
   count = var.create_repository_policy ? 1 : 0
 
   statement {
-    effect    = "Allow"
+    effect = "Allow"
     principals {
       identifiers = var.repository_policy_principal
       type        = "AWS"

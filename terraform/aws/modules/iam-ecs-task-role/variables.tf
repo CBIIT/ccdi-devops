@@ -82,7 +82,7 @@ variable "microservice" {
 }
 
 variable "opensearch_domain_arn" {
-  type = string
+  type        = string
   description = "the arn of the opensearch domain that the role should have access to - required if attach_opensearch_policy is true"
   default     = null
   sensitive   = false
