@@ -102,6 +102,12 @@ resource "aws_opensearch_domain_policy" "this" {
 
   domain_name     = aws_opensearch_domain.this.domain_name
   access_policies = data.aws_iam_policy_document.domain_policy[0].json
+
+  lifecycle {
+    ignore_changes = [
+      access_policies,
+    ]
+  }
 }
 
 resource "aws_cloudwatch_log_group" "index_slow" {
