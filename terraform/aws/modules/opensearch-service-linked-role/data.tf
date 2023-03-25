@@ -34,9 +34,9 @@ data "aws_iam_policy_document" "service_linked_role_policy" {
     ]
 
     resources = [
-      "arn:aws:ec2:*:*:network-interface/*",
-      "arn:aws:ec2:*:*:subnet/*",
-      "arn:aws:ec2:*:*:security-group/*"
+      "arn:aws:ec2:us-east-1:*:network-interface/*",
+      "arn:aws:ec2:us-east-1:*:subnet/*",
+      "arn:aws:ec2:us-east-1:*:security-group/*"
     ]
   }
 
@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "service_linked_role_policy" {
       "ec2:CreateTags"
     ]
     resources = [
-      "arn:aws:ec2:*:*:network-interface/*"
+      "arn:aws:ec2:us-east-1:*:network-interface/*"
     ]
   }
 
@@ -59,8 +59,8 @@ data "aws_iam_policy_document" "service_linked_role_policy" {
       "ec2:ModifyNetworkInterfaceAttribute"
     ]
     resources = [
-      "arn:aws:ec2:*:*:network-interface/*",
-      "arn:aws:ec2:*:*:security-group/*"
+      "arn:aws:ec2:us-east-1:*:network-interface/*",
+      "arn:aws:ec2:us-east-1:*:security-group/*"
     ]
   }
 
@@ -147,7 +147,7 @@ data "aws_iam_policy_document" "service_linked_role_policy" {
       "ec2:DeleteVpcEndpoints"
     ]
     resources = [
-      "arn:aws:ec2:*:*:vpc-endpoint/*"
+      "arn:aws:ec2:us-east-1:*:vpc-endpoint/*"
     ]
   }
 
@@ -157,7 +157,7 @@ data "aws_iam_policy_document" "service_linked_role_policy" {
       "ec2:CreateTags"
     ]
     resources = [
-      "arn:aws:ec2:*:*:vpc-endpoint/*"
+      "arn:aws:ec2:us-east-1:*:vpc-endpoint/*"
     ]
     condition {
       test     = "StringEquals"

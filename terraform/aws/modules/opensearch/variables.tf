@@ -55,21 +55,10 @@ variable "create_domain_policy" {
   default     = true
 }
 
-variable "create_manual_snapshot_role" {
-  type        = bool
-  description = "whether to create a role to enable manual snapshot operations"
-  default     = false
-}
-
 variable "create_security_group" {
   type        = bool
   description = "whether to create a security group with default ingress and egress rules"
   default     = true
-}
-
-variable "create_service_linked_role" {
-  type        = bool
-  description = "whether to create a service linked role for OpenSearch - only one per account"
 }
 
 variable "custom_endpoint_enabled" {
@@ -97,19 +86,6 @@ variable "domain_name_suffix" {
   type        = string
   description = "the domain name suffix that follows the stack name"
   default     = "opensearch"
-}
-
-variable "domain_policy_actions" {
-  type        = set(string)
-  description = "The actions that the domain policy allows"
-  default = [
-    "es:ESHttpPut",
-    "es:ESHttpPost",
-    "es:ESHttpPatch",
-    "es:ESHttpHead",
-    "es:ESHttpGet",
-    "es:ESHttpDelete"
-  ]
 }
 
 variable "ebs_enabled" {
@@ -163,22 +139,10 @@ variable "instance_type" {
   description = "type of instance of the domain cluster"
 }
 
-variable "permissions_boundary_arn" {
-  type        = string
-  description = "arn of the permissions boundary to apply to the role - required when create_manual_snapshot_role is true"
-  default     = "null"
-}
-
 variable "security_group_ids" {
   type        = list(string)
-  description = "id of the security group(s) to associate with the cluster"
+  description = "id of the security group(s) to associate with the cluster - required if create_security_group is false"
   default     = []
-}
-
-variable "snapshot_bucket_arn" {
-  type        = string
-  description = "arn of the bucket to store snapshots - required when create_manual_snapshot_role is true"
-  default     = "null"
 }
 
 variable "subnet_ids" {
