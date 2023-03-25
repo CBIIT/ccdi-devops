@@ -83,20 +83,6 @@ resource "aws_opensearch_domain" "this" {
   )
 }
 
-resource "aws_iam_service_linked_role" "this" {
-  count = var.create_service_linked_role ? 1 : 0
-
-  aws_service_name = "opensearchservice.amazonaws.com"
-  description      = "creates the AWSServiceRoleForAmazonOpenSearchService role"
-
-  lifecycle {
-    ignore_changes = [
-      tags,
-      tags_all,
-    ]
-  }
-}
-
 resource "aws_opensearch_domain_policy" "this" {
   count = var.create_domain_policy ? 1 : 0
 
@@ -131,30 +117,6 @@ resource "aws_cloudwatch_log_group" "error" {
 resource "aws_cloudwatch_log_resource_policy" "cloudwatch" {
   policy_name     = "${local.stack}-opensearch-log-resource-policy"
   policy_document = data.aws_iam_policy_document.cloudwatch.json
-}
-
-resource "aws_iam_role" "manual_snapshot" {
-  count = var.create_manual_snapshot_role ? 1 : 0
-
-  name                 = "power-user-${local.stack}-${var.domain_name_suffix}-manual-snapshot-role"
-  description          = "role to enable opensearch manual snapshot operations"
-  assume_role_policy   = data.aws_iam_policy_document.manual_snapshot_assume_role[0].json
-  permissions_boundary = var.permissions_boundary_arn
-}
-
-resource "aws_iam_policy" "manual_snapshot" {
-  count = var.create_manual_snapshot_role ? 1 : 0
-
-  name        = "power-user-${local.stack}-${var.domain_name_suffix}-manual-snapshot-policy"
-  description = "policy to enable opensearch manual snapshot operations"
-  policy      = data.aws_iam_policy_document.manual_snapshot[0].json
-}
-
-resource "aws_iam_role_policy_attachment" "manual_snapshot" {
-  count = var.create_manual_snapshot_role ? 1 : 0
-
-  role       = aws_iam_role.manual_snapshot[0].name
-  policy_arn = aws_iam_policy.manual_snapshot[0].arn
 }
 
 resource "aws_security_group" "this" {
