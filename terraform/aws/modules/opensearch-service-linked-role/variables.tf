@@ -45,12 +45,6 @@ variable "domain_name_suffix" {
   default     = "opensearch"
 }
 
-variable "permissions_boundary_arn" {
-  type        = string
-  description = "arn of the permissions boundary to apply to the role - required when create_manual_snapshot_role is true"
-  default     = "null"
-}
-
 variable "snapshot_bucket_arn" {
   type        = string
   description = "arn of the bucket to store snapshots - required when create_manual_snapshot_role is true"
