@@ -2,7 +2,7 @@ resource "aws_iam_role" "this" {
   name                 = "power-user-${local.stack}-${var.domain_name_suffix}-role"
   description          = "role to enable creation of opensearch and routine opensearch operations"
   assume_role_policy   = data.aws_iam_policy_document.trust.json
-  permissions_boundary = local.permissions_boundary
+  permissions_boundary = local.permissions_boundary_arn
 }
 
 resource "aws_iam_policy" "service-linked-role-policy" {
