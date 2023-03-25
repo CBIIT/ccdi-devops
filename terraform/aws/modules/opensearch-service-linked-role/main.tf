@@ -5,7 +5,7 @@ resource "aws_iam_role" "this" {
   permissions_boundary = local.permissions_boundary_arn
 }
 
-resource "aws_iam_policy" "service-linked-role-policy" {
+resource "aws_iam_policy" "service_linked_role_policy" {
   name        = "power-user-${local.stack}-${var.domain_name_suffix}-service-linked-role-policy"
   description = "policy to enable creation of opensearch and routine opensearch operations"
   policy      = data.aws_iam_policy_document.service_linked_role_policy.json
