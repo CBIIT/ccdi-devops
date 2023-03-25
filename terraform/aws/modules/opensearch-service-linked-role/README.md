@@ -10,6 +10,7 @@ placeholder
 
 <!-- BEGIN_TF_DOCS -->
 
+
 # Providers
 
 | Name | Version |
@@ -42,4 +43,12 @@ placeholder
 | <a name="input_permissions_boundary_arn"></a> [permissions\_boundary\_arn](#input\_permissions\_boundary\_arn) | arn of the permissions boundary to apply to the role - required when create\_manual\_snapshot\_role is true | `string` | `"null"` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_snapshot_bucket_arn"></a> [snapshot\_bucket\_arn](#input\_snapshot\_bucket\_arn) | arn of the bucket to store snapshots - required when create\_manual\_snapshot\_role is true | `string` | `"null"` | no |
+
+# Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | arn of the opensearch role |
+| <a name="output_id"></a> [id](#output\_id) | id of the opensearch role |
+| <a name="output_name"></a> [name](#output\_name) | name of the opensearch role |
 <!-- END_TF_DOCS -->
