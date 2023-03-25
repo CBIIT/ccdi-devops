@@ -4,8 +4,15 @@ data "aws_iam_policy_document" "domain_policy" {
   count = var.create_domain_policy ? 1 : 0
 
   statement {
-    effect  = "Allow"
-    actions = var.domain_policy_actions
+    effect = "Allow"
+    actions = [
+      "es:ESHttpPut",
+      "es:ESHttpPost",
+      "es:ESHttpPatch",
+      "es:ESHttpHead",
+      "es:ESHttpGet",
+      "es:ESHttpDelete"
+    ]
     principals {
       type        = "AWS"
       identifiers = ["*"]
