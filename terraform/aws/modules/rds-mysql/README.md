@@ -26,6 +26,9 @@
 | [aws_iam_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group_rule.inbound](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.outbound](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.trust](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -45,6 +48,7 @@
 | <a name="input_backup_window"></a> [backup\_window](#input\_backup\_window) | backup window in UTC - format hh24:mi-hh24:mi | `string` | `"02:00-04:00"` | no |
 | <a name="input_ca_cert_identifier"></a> [ca\_cert\_identifier](#input\_ca\_cert\_identifier) | identifier of the ca cert for the rds instance | `string` | `null` | no |
 | <a name="input_create_db_subnet_group"></a> [create\_db\_subnet\_group](#input\_create\_db\_subnet\_group) | whether to create a db subnet group | `bool` | `true` | no |
+| <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create a security group for the rds instance | `bool` | `true` | no |
 | <a name="input_db_name"></a> [db\_name](#input\_db\_name) | name of the database within RDS to create | `string` | n/a | yes |
 | <a name="input_db_subnet_group_name"></a> [db\_subnet\_group\_name](#input\_db\_subnet\_group\_name) | name of the db subnet group - required if create\_db\_subnet\_group is false | `string` | `null` | no |
 | <a name="input_db_subnet_ids"></a> [db\_subnet\_ids](#input\_db\_subnet\_ids) | list of subnet ids to place the instance in - required if create\_db\_subnet\_group is true | `list(string)` | `[]` | no |
@@ -68,7 +72,8 @@
 | <a name="input_storage_type"></a> [storage\_type](#input\_storage\_type) | type of ebs block storage to associate with the instance - either 'standard', 'gp2', 'gp3', or 'io1' | `string` | `"gp3"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | map of tags to apply to the instance | `map(string)` | `{}` | no |
 | <a name="input_username"></a> [username](#input\_username) | username for the database | `string` | n/a | yes |
-| <a name="input_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#input\_vpc\_security\_group\_ids) | list of security group ids to associate with the instance | `list(string)` | `[]` | no |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | id of the vpc to create the security group in - required if create\_security\_group is true | `string` | `null` | no |
+| <a name="input_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#input\_vpc\_security\_group\_ids) | list of security group ids to associate with the instance - required if create\_security\_group is false | `list(string)` | `[]` | no |
 
 # Outputs
 
@@ -89,6 +94,7 @@
 | <a name="output_name"></a> [name](#output\_name) | name of the instance |
 | <a name="output_port"></a> [port](#output\_port) | port of the instance |
 | <a name="output_resource_id"></a> [resource\_id](#output\_resource\_id) | resource id of the instance |
-| <a name="output_security_group_names"></a> [security\_group\_names](#output\_security\_group\_names) | a list of security group names associated with the instance |
-| <a name="output_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#output\_vpc\_security\_group\_ids) | a list of security group ids associated with the instance |
+| <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | arn of the security group - if create\_security\_group is true |
+| <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | id of the security group - if create\_security\_group is true |
+| <a name="output_security_group_name"></a> [security\_group\_name](#output\_security\_group\_name) | name of the security group - if create\_security\_group is true |
 <!-- END_TF_DOCS -->
