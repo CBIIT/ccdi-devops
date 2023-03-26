@@ -172,7 +172,6 @@ variable "multi_az" {
   sensitive   = false
 }
 
-
 variable "password" {
   type        = string
   description = "password for the database"
