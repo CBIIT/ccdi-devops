@@ -20,46 +20,27 @@ resource "aws_db_instance" "this" {
   identifier                            = "${local.stack}-${var.rds_suffix}"
   instance_class                        = var.instance_class
   iops                                  = var.iops
-  kms_key_id                            = ""
   maintenance_window                    = var.maintenance_window
   monitoring_interval                   = var.monitoring_interval
   monitoring_role_arn                   = var.enable_enhanced_monitoring ? aws_iam_role.this[0].arn : null
   multi_az                              = var.multi-az
   netwok_type                           = "IPV4"
-  parameter_group_name                  = ""
   password                              = var.password
   performance_insights_enabled          = var.performance_insights_enabled
-  performance_insights_kms_key_id       = ""
   performance_insights_retention_period = var.performance_insights_retention_period
   port                                  = 3306
   publicly_accessible                   = false
+  skip_final_snapshot                   = false
+  storage_encrypted                     = true
+  storage_type                          = var.storage_type
+  storage_throughput                    = var.allocated_storage > 399 ? var.storage_throughput : null
+  tags                                  = var.tags
+  username                              = var.username
+  vpc_security_group_ids                = var.vpc_security_group_ids
 
   blue_green_update {
     enabled = true
   }
-
-  restore_to_point_in_time {
-    source_db_identifier       = ""
-    restore_time               = ""
-    use_latest_restorable_time = ""
-  }
-  s3_import {
-    bucket_name           = ""
-    bucket_prefix         = ""
-    ingestion_role        = ""
-    source_engine         = ""
-    source_engine_version = ""
-    ingestion_role_arn    = ""
-  }
-  skip_final_snapshot       = false
-  storage_encrypted         = ""
-  storage_type              = var.storage_type
-  storage_throughput        = ""
-  tags                      = ""
-  timezone                  = ""
-  username                  = ""
-  vpc_security_group_ids    = ["value"]
-  customer_owned_ip_enabled = ""
 }
 
 resource "aws_db_subnet_group" "this" {
