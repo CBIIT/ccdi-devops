@@ -102,6 +102,13 @@ variable "db_subnet_group_name" {
   sensitive   = false
 }
 
+variable "deletion_protection" {
+  type        = bool
+  description = "whether to enable deletion protection"
+  default     = true
+  sensitive   = false
+}
+
 variable "enable_enhanced_monitoring" {
   type        = bool
   description = "whether to enable enhanced monitoring"
