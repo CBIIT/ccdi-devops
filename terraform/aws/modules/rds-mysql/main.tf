@@ -3,10 +3,8 @@ resource "aws_db_instance" "this" {
   allow_major_version_upgrade           = var.allow_major_version_upgrade
   apply_immediately                     = var.apply_immediately
   auto_minor_version_upgrade            = var.auto_minor_version_upgrade
-  availability_zone                     = var.availability_zone
   backup_retention_period               = var.backup_retention_period
   backup_window                         = var.backup_window
-  ca_cert_identifier                    = var.ca_cert_identifier
   copy_tags_to_snapshot                 = true
   db_name                               = var.db_name
   db_subnet_group_name                  = var.create_db_subnet_group ? aws_db_subnet_group.this[0].name : var.db_subnet_group_name
@@ -48,7 +46,7 @@ resource "aws_db_subnet_group" "this" {
 
   name        = "${local.stack}-rds-subnet-group"
   description = "Subnet group for ${local.stack} RDS instance"
-  subnet_ids  = var.db_subnet_group_subnet_ids
+  subnet_ids  = var.subnet_ids
 
   tags = {
     Name = "${local.stack}-rds-subnet-group"
