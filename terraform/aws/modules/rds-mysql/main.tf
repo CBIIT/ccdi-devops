@@ -34,7 +34,7 @@ resource "aws_db_instance" "this" {
   storage_throughput                    = var.allocated_storage > 399 ? var.storage_throughput : null
   tags                                  = var.tags
   username                              = var.username
-  vpc_security_group_ids                = var.create_security_group ? [aws_security_group.this.id] : var.vpc_security_group_ids
+  vpc_security_group_ids                = var.create_security_group ? [aws_security_group.this[0].id] : var.vpc_security_group_ids
 
   blue_green_update {
     enabled = true
