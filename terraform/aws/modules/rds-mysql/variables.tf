@@ -61,13 +61,6 @@ variable "auto_minor_version_upgrade" {
   sensitive   = false
 }
 
-variable "availability_zone" {
-  type        = string
-  description = "availability zone to place the instance in"
-  default     = null
-  sensitive   = false
-}
-
 variable "backup_retention_period" {
   type        = number
   description = "backup retention period in days - between 0 and 35"
@@ -79,13 +72,6 @@ variable "backup_window" {
   type        = string
   description = "backup window in UTC - format hh24:mi-hh24:mi"
   default     = "02:00-04:00"
-  sensitive   = false
-}
-
-variable "ca_cert_identifier" {
-  type        = string
-  description = "identifier of the ca cert for the rds instance"
-  default     = null
   sensitive   = false
 }
 
@@ -113,13 +99,6 @@ variable "db_subnet_group_name" {
   type        = string
   description = "name of the db subnet group - required if create_db_subnet_group is false"
   default     = null
-  sensitive   = false
-}
-
-variable "db_subnet_ids" {
-  type        = list(string)
-  description = "list of subnet ids to place the instance in - required if create_db_subnet_group is true"
-  default     = []
   sensitive   = false
 }
 
@@ -232,6 +211,13 @@ variable "storage_type" {
   type        = string
   description = "type of ebs block storage to associate with the instance - either 'standard', 'gp2', 'gp3', or 'io1'"
   default     = "gp3"
+  sensitive   = false
+}
+
+variable "subnet_ids" {
+  type        = list(string)
+  description = "list of subnet ids to place the instance in - required if create_db_subnet_group is true"
+  default     = []
   sensitive   = false
 }
 

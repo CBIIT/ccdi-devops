@@ -43,15 +43,12 @@
 | <a name="input_apply_immediately"></a> [apply\_immediately](#input\_apply\_immediately) | whether to apply changes immediately or wait until next maintenance window | `bool` | `true` | no |
 | <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether to attach a permissions boundary to the role - required if enable\_enhanced\_monitoring is true | `bool` | `null` | no |
 | <a name="input_auto_minor_version_upgrade"></a> [auto\_minor\_version\_upgrade](#input\_auto\_minor\_version\_upgrade) | whether minor database modifications are automatically applied during maintenance windows | `bool` | `true` | no |
-| <a name="input_availability_zone"></a> [availability\_zone](#input\_availability\_zone) | availability zone to place the instance in | `string` | `null` | no |
 | <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | backup retention period in days - between 0 and 35 | `number` | `7` | no |
 | <a name="input_backup_window"></a> [backup\_window](#input\_backup\_window) | backup window in UTC - format hh24:mi-hh24:mi | `string` | `"02:00-04:00"` | no |
-| <a name="input_ca_cert_identifier"></a> [ca\_cert\_identifier](#input\_ca\_cert\_identifier) | identifier of the ca cert for the rds instance | `string` | `null` | no |
 | <a name="input_create_db_subnet_group"></a> [create\_db\_subnet\_group](#input\_create\_db\_subnet\_group) | whether to create a db subnet group | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create a security group for the rds instance | `bool` | `true` | no |
 | <a name="input_db_name"></a> [db\_name](#input\_db\_name) | name of the database within RDS to create | `string` | n/a | yes |
 | <a name="input_db_subnet_group_name"></a> [db\_subnet\_group\_name](#input\_db\_subnet\_group\_name) | name of the db subnet group - required if create\_db\_subnet\_group is false | `string` | `null` | no |
-| <a name="input_db_subnet_ids"></a> [db\_subnet\_ids](#input\_db\_subnet\_ids) | list of subnet ids to place the instance in - required if create\_db\_subnet\_group is true | `list(string)` | `[]` | no |
 | <a name="input_enable_enhanced_monitoring"></a> [enable\_enhanced\_monitoring](#input\_enable\_enhanced\_monitoring) | whether to enable enhanced monitoring | `bool` | `true` | no |
 | <a name="input_enabled_cloudwatch_logs_exports"></a> [enabled\_cloudwatch\_logs\_exports](#input\_enabled\_cloudwatch\_logs\_exports) | list of log types to export to cloudwatch | `list(string)` | <pre>[<br>  "audit",<br>  "error",<br>  "general",<br>  "slowquery"<br>]</pre> | no |
 | <a name="input_engine"></a> [engine](#input\_engine) | database engine to use | `string` | `"mysql"` | no |
@@ -70,6 +67,7 @@
 | <a name="input_rds_suffix"></a> [rds\_suffix](#input\_rds\_suffix) | suffix to append to the rds instance name | `string` | `"rds"` | no |
 | <a name="input_storage_throughput"></a> [storage\_throughput](#input\_storage\_throughput) | storage throughput in gibibytes per second - only valid for 'gp3' storage type | `number` | `125` | no |
 | <a name="input_storage_type"></a> [storage\_type](#input\_storage\_type) | type of ebs block storage to associate with the instance - either 'standard', 'gp2', 'gp3', or 'io1' | `string` | `"gp3"` | no |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | list of subnet ids to place the instance in - required if create\_db\_subnet\_group is true | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | map of tags to apply to the instance | `map(string)` | `{}` | no |
 | <a name="input_username"></a> [username](#input\_username) | username for the database | `string` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | id of the vpc to create the security group in - required if create\_security\_group is true | `string` | `null` | no |
