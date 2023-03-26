@@ -70,12 +70,6 @@ output "monitoring_role_arn" {
   sensitive   = false
 }
 
-output "name" {
-  value       = aws_db_instance.this.name
-  description = "name of the instance"
-  sensitive   = false
-}
-
 output "port" {
   value       = aws_db_instance.this.port
   description = "port of the instance"

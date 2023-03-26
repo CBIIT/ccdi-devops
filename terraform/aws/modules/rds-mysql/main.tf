@@ -17,7 +17,7 @@ resource "aws_db_instance" "this" {
   iam_database_authentication_enabled   = var.iam_database_authentication_enabled
   identifier                            = "${local.stack}-${var.rds_suffix}"
   instance_class                        = var.instance_class
-  iops                                  = var.iops
+  iops                                  = var.allocated storage > 399 var.iops ? null
   maintenance_window                    = var.maintenance_window
   monitoring_interval                   = var.monitoring_interval
   monitoring_role_arn                   = var.enable_enhanced_monitoring ? aws_iam_role.this[0].arn : null
