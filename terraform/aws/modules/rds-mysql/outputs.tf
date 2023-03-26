@@ -88,14 +88,20 @@ output "resource_id" {
   sensitive   = false
 }
 
-output "security_group_names" {
-  value       = aws_db_instance.this.security_group_names
-  description = "a list of security group names associated with the instance"
+output "security_group_arn" {
+  value       = aws_security_group.this[0].arn
+  description = "arn of the security group - if create_security_group is true"
   sensitive   = false
 }
 
-output "vpc_security_group_ids" {
-  value       = aws_db_instance.this.vpc_security_group_ids
-  description = "a list of security group ids associated with the instance"
+output "security_group_id" {
+  value       = aws_security_group.this[0].id
+  description = "id of the security group - if create_security_group is true"
+  sensitive   = false
+}
+
+output "security_group_name" {
+  value       = aws_security_group.this[0].name
+  description = "name of the security group - if create_security_group is true"
   sensitive   = false
 }
