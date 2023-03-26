@@ -96,6 +96,13 @@ variable "create_db_subnet_group" {
   sensitive   = false
 }
 
+variable "create_security_group" {
+  type        = bool
+  description = "Whether to create a security group for the rds instance"
+  default     = true
+  sensitive   = false
+}
+
 variable "db_name" {
   type        = string
   description = "name of the database within RDS to create"
@@ -243,7 +250,14 @@ variable "username" {
 
 variable "vpc_security_group_ids" {
   type        = list(string)
-  description = "list of security group ids to associate with the instance"
+  description = "list of security group ids to associate with the instance - required if create_security_group is false"
   default     = []
+  sensitive   = false
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "id of the vpc to create the security group in - required if create_security_group is true"
+  default     = null
   sensitive   = false
 }

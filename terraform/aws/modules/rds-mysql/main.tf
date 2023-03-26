@@ -36,7 +36,7 @@ resource "aws_db_instance" "this" {
   storage_throughput                    = var.allocated_storage > 399 ? var.storage_throughput : null
   tags                                  = var.tags
   username                              = var.username
-  vpc_security_group_ids                = var.vpc_security_group_ids
+  vpc_security_group_ids                = var.create_security_group ? [aws_security_group.this.id] : var.vpc_security_group_ids
 
   blue_green_update {
     enabled = true
@@ -76,4 +76,39 @@ resource "aws_iam_role_policy_attachment" "this" {
 
   policy_arn = aws_iam_policy.this[0].arn
   role       = aws_iam_role.this[0].name
+}
+
+resource "aws_security_group" "this" {
+  count = var.create_security_group ? 1 : 0
+
+  name        = "${local.stack}-${var.rds_suffix}"
+  description = "controls ingress and egress traffic for the ${local.stack} rds instance"
+  vpc_id      = var.vpc_id
+
+  tags = {
+    Name = "${local.stack}-${var.rds_suffix}"
+  }
+}
+
+resource "aws_security_group_rule" "inbound" {
+  count = var.create_security_group ? 1 : 0
+
+  security_group_id = aws_security_group.this[0].id
+  type              = "ingress"
+  from_port         = 3306
+  to_port           = 3306
+  protocol          = "tcp"
+  cidr_blocks       = local.ranges
+}
+
+resource "aws_security_group_rule" "outbound" {
+  count = var.create_security_group ? 1 : 0
+
+  security_group_id = aws_security_group.this[0].id
+  type              = "egress"
+  description       = "allow outbound traffic to all destinations"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "all"
+  cidr_blocks       = ["0.0.0.0/0"]
 }
