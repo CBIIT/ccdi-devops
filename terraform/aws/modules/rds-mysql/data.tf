@@ -20,7 +20,6 @@ data "aws_iam_policy_document" "this" {
   count = var.enable_enhanced_monitoring ? 1 : 0
 
   statement {
-    sid    = "EnableCreationAndManagementOfRDSCloudwatchLogGroups"
     effect = "Allow"
     actions = [
       "logs:CreateLogGroup",
@@ -32,7 +31,6 @@ data "aws_iam_policy_document" "this" {
   }
 
   statement {
-    sid    = "EnableCreationAndManagementOfRDSCloudwatchLogStreams"
     effect = "Allow"
     actions = [
       "logs:CreateLogStream",
@@ -44,5 +42,18 @@ data "aws_iam_policy_document" "this" {
       "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:RDS*:log-stream:*"
     ]
   }
-}
 
+  statement {
+    effect = "Allow"
+    actions = [
+      "kms:Decrypt",
+      "kms:GenerateDataKey"
+    ]
+    resources = ["*"]
+    condition {
+      test     = "StringEquals"
+      variable = "kms:ViaService"
+      values   = ["rds.us-east-1.amazonaws.com"]
+    }
+  }
+}

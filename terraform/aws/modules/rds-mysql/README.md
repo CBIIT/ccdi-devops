@@ -58,5 +58,31 @@
 | <a name="input_performance_insights_retention_period"></a> [performance\_insights\_retention\_period](#input\_performance\_insights\_retention\_period) | performance insights retention period in days - between 7 and 731 with a multiple of 31 | `number` | `7` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_rds_suffix"></a> [rds\_suffix](#input\_rds\_suffix) | suffix to append to the rds instance name | `string` | `"rds"` | no |
+| <a name="input_storage_throughput"></a> [storage\_throughput](#input\_storage\_throughput) | storage throughput in gibibytes per second - only valid for 'gp3' storage type | `number` | `125` | no |
 | <a name="input_storage_type"></a> [storage\_type](#input\_storage\_type) | type of ebs block storage to associate with the instance - either 'standard', 'gp2', 'gp3', or 'io1' | `string` | `"gp3"` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | map of tags to apply to the instance | `map(string)` | `{}` | no |
+| <a name="input_username"></a> [username](#input\_username) | username for the database | `string` | n/a | yes |
+| <a name="input_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#input\_vpc\_security\_group\_ids) | list of security group ids to associate with the instance | `list(string)` | `[]` | no |
+
+# Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_address"></a> [address](#output\_address) | address of the instance |
+| <a name="output_arn"></a> [arn](#output\_arn) | arn of the instance |
+| <a name="output_availability_zone"></a> [availability\_zone](#output\_availability\_zone) | availability zone of the instance |
+| <a name="output_db_name"></a> [db\_name](#output\_db\_name) | name of the database |
+| <a name="output_db_subnet_group_name"></a> [db\_subnet\_group\_name](#output\_db\_subnet\_group\_name) | name of the subnet group |
+| <a name="output_domain"></a> [domain](#output\_domain) | domain of the instance |
+| <a name="output_endpoint"></a> [endpoint](#output\_endpoint) | endpoint of the instance |
+| <a name="output_hosted_zone_id"></a> [hosted\_zone\_id](#output\_hosted\_zone\_id) | hosted zone id of the instance |
+| <a name="output_id"></a> [id](#output\_id) | id of the instance |
+| <a name="output_identifier"></a> [identifier](#output\_identifier) | identifier of the instance |
+| <a name="output_identifier_prefix"></a> [identifier\_prefix](#output\_identifier\_prefix) | identifier prefix of the instance |
+| <a name="output_monitoring_role_arn"></a> [monitoring\_role\_arn](#output\_monitoring\_role\_arn) | monitoring role arn of the instance |
+| <a name="output_name"></a> [name](#output\_name) | name of the instance |
+| <a name="output_port"></a> [port](#output\_port) | port of the instance |
+| <a name="output_resource_id"></a> [resource\_id](#output\_resource\_id) | resource id of the instance |
+| <a name="output_security_group_names"></a> [security\_group\_names](#output\_security\_group\_names) | a list of security group names associated with the instance |
+| <a name="output_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#output\_vpc\_security\_group\_ids) | a list of security group ids associated with the instance |
 <!-- END_TF_DOCS -->

@@ -214,6 +214,13 @@ variable "rds_suffix" {
   sensitive   = false
 }
 
+variable "storage_throughput" {
+  type        = number
+  description = "storage throughput in gibibytes per second - only valid for 'gp3' storage type"
+  default     = 125
+  sensitive   = false
+}
+
 variable "storage_type" {
   type        = string
   description = "type of ebs block storage to associate with the instance - either 'standard', 'gp2', 'gp3', or 'io1'"
@@ -221,3 +228,22 @@ variable "storage_type" {
   sensitive   = false
 }
 
+variable "tags" {
+  type        = map(string)
+  description = "map of tags to apply to the instance"
+  default     = {}
+  sensitive   = false
+}
+
+variable "username" {
+  type        = string
+  description = "username for the database"
+  sensitive   = false
+}
+
+variable "vpc_security_group_ids" {
+  type        = list(string)
+  description = "list of security group ids to associate with the instance"
+  default     = []
+  sensitive   = false
+}
