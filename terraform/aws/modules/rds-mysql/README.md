@@ -90,7 +90,6 @@
 | <a name="output_identifier"></a> [identifier](#output\_identifier) | identifier of the instance |
 | <a name="output_identifier_prefix"></a> [identifier\_prefix](#output\_identifier\_prefix) | identifier prefix of the instance |
 | <a name="output_monitoring_role_arn"></a> [monitoring\_role\_arn](#output\_monitoring\_role\_arn) | monitoring role arn of the instance |
-| <a name="output_name"></a> [name](#output\_name) | name of the instance |
 | <a name="output_port"></a> [port](#output\_port) | port of the instance |
 | <a name="output_resource_id"></a> [resource\_id](#output\_resource\_id) | resource id of the instance |
 | <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | arn of the security group - if create\_security\_group is true |
