@@ -21,7 +21,7 @@ resource "aws_db_instance" "this" {
   maintenance_window                    = var.maintenance_window
   monitoring_interval                   = var.monitoring_interval
   monitoring_role_arn                   = var.enable_enhanced_monitoring ? aws_iam_role.this[0].arn : null
-  multi_az                              = var.multi-az
+  multi_az                              = var.multi_az
   netwok_type                           = "IPV4"
   password                              = var.password
   performance_insights_enabled          = var.performance_insights_enabled
