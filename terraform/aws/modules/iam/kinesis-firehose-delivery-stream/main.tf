@@ -1,12 +1,12 @@
 resource "aws_iam_role" "this" {
-  name                 = "power-user-${local.stack}-kinesis-firehose-delivery-stream-role"
+  name                 = "power-user-${local.stack}-kinesis-firehose-delivery-stream"
   assume_role_policy   = data.aws_iam_policy_document.trust.json
   description          = "role attached to the kinesis firehose delivery stream resource"
   permissions_boundary = local.permissions_boundary_arn
 }
 
 resource "aws_iam_policy" "this" {
-  name        = "power-user-${local.stack}-kinesis-firehose-delivery-stream-policy"
+  name        = "power-user-${local.stack}-kinesis-firehose-delivery-stream"
   description = "allow kinesis firehose delivery stream to send failed messages to s3"
   policy      = data.aws_iam_policy_document.this.json
 }
