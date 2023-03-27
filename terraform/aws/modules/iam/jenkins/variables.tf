@@ -26,6 +26,13 @@ variable "program" {
   }
 }
 
+variable "attach_permissions_boundary" {
+  type        = bool
+  description = "whether to attach permissions boundary to jenkins instance profile role"
+  default     = true
+  sensitive   = false
+}
+
 variable "enable_ecr_access" {
   type        = bool
   description = "allow jenkins to pull and push from specified ecr repositories"

@@ -1,9 +1,15 @@
 resource "aws_iam_instance_profile" "this" {
   name = "power-user-${local.stack}-jenkins-instance-profile-role"
+  role = aws_iam_role.this.name
+  tags = var.tags
 }
 
 resource "aws_iam_role" "this" {
-  name = "power-user-${local.stack}-jenkins-instance-profile-role"
+  name                 = "power-user-${local.stack}-jenkins-instance-profile-role"
+  description          = "power user role for jenkins instance profile"
+  assume_role_policy   = data.aws_iam_policy_document.trust.json
+  permissions_boundary = local.permissions_boundary_arn
+  tags                 = var.tags
 }
 
 resource "aws_iam_policy" "ecr" {
