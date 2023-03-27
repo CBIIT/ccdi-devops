@@ -26,6 +26,13 @@ variable "program" {
   }
 }
 
+variable "attach_permissions_boundary" {
+  type        = bool
+  description = "whether or not to attach the permissions boundary to the role"
+  default     = true
+  sensitive   = false
+}
+
 variable "new_relic_external_id" {
   type        = string
   description = "the external id for the new relic account - seven digit number retrieved from the new relic account"
