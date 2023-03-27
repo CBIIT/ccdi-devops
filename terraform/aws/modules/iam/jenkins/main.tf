@@ -17,7 +17,7 @@ resource "aws_iam_policy" "ecr" {
 
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-ecr"
   description = "allow jenkins to pull and push from specified ecr repositories"
-  policy      = data.aws_iam_policy_document[0].ecr
+  policy      = data.aws_iam_policy_document.ecr[0].json
   tags        = var.tags
 }
 
@@ -55,7 +55,6 @@ resource "aws_iam_role_policy_attachment" "iam" {
   role       = aws_iam_role.this.name
   policy_arn = aws_iam_policy.iam.arn
 }
-
 
 resource "aws_iam_policy" "opensearch" {
   count = var.enable_opensearch_access ? 1 : 0
