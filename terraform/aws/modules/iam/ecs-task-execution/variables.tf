@@ -26,6 +26,12 @@ variable "program" {
   }
 }
 
+variable "attach_permissions_boundary" {
+  type        = bool
+  description = "whether or not to attach the permissions boundary to the role"
+  sensitive   = false
+}
+
 variable "ecr_repositories" {
   type        = list(string)
   description = "a list of ECR repository ARNs to which the task execution role will have access"
