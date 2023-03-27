@@ -18,6 +18,25 @@ data "aws_iam_policy_document" "trust" {
 
 }
 
+data "aws_iam_policy_document" "cloudwatch_agent" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "cloudwatch:PutMetricData",
+      "ec2:DescribeVolumes",
+      "ec2:DescribeTags",
+      "logs:PutLogEvents",
+      "logs:DescribeLogStreams",
+      "logs:DescribeLogGroups",
+      "logs:CreateLogStream",
+      "logs:CreateLogGroup"
+    ]
+    resources = [
+      "*"
+    ]
+  }
+}
+
 data "aws_iam_policy_document" "ecr" {
   count = var.enable_ecr_access ? 1 : 0
 
@@ -179,6 +198,18 @@ data "aws_iam_policy_document" "iam" {
   }
 }
 
+data "aws_iam_policy_document" "kms" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "kms:Decrypt",
+    ]
+    resources = [
+      "*"
+    ]
+  }
+}
+
 data "aws_iam_policy_document" "opensearch" {
   count = var.enable_opensearch_access ? 1 : 0
 
@@ -217,7 +248,6 @@ data "aws_iam_policy_document" "s3" {
 
 data "aws_iam_policy_document" "secrets" {
   count = var.enable_secrets_manager_access ? 1 : 0
-
   statement {
     effect = "Allow"
     actions = [
@@ -231,5 +261,51 @@ data "aws_iam_policy_document" "secrets" {
       "secretsmanager:RestoreSecret"
     ]
     resources = var.secrets_manager_secret_arns
+  }
+}
+
+data "aws_iam_policy_document" "ssm" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "ssm:GetParameters"
+    ]
+    resources = [
+      "arn:aws:ssm:us-east-1:*:parameter/AmazonCloudWatch-*"
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "ssm:DescribeAssociation",
+      "ssm:GetDeployablePatchSnapshotForInstance",
+      "ssm:GetDocument",
+      "ssm:DescribeDocument",
+      "ssm:GetManifest",
+      "ssm:GetParameter",
+      "ssm:GetParameters",
+      "ssm:ListAssociations",
+      "ssm:ListInstanceAssociations",
+      "ssm:PutInventory",
+      "ssm:PutComplianceItems",
+      "ssm:PutConfigurePackageResult",
+      "ssm:UpdateAssociationStatus",
+      "ssm:UpdateInstanceAssociationStatus",
+      "ssm:UpdateInstanceInformation",
+      "ssmmessages:CreateControlChannel",
+      "ssmmessages:CreateDataChannel",
+      "ssmmessages:OpenControlChannel",
+      "ssmmessages:OpenDataChannel",
+      "ec2messages:AcknowledgeMessage",
+      "ec2messages:DeleteMessage",
+      "ec2messages:FailMessage",
+      "ec2messages:GetEndpoint",
+      "ec2messages:GetMessages",
+      "ec2messages:SendReply"
+    ]
+    resources = [
+      "*"
+    ]
   }
 }
