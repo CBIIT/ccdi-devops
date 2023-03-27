@@ -1,4 +1,4 @@
-resource "aws_iam_role" "cloudwatch_metric_stream" {
+resource "aws_iam_role" "this" {
   name                 = "power-user-${local.stack}-cloudwatch-metric-stream-role"
   description          = "allow cloudwatch metric stream to publish payloads to kinesis firehose delivery streams"
   assume_role_policy   = data.aws_iam_policy_document.trust.json
