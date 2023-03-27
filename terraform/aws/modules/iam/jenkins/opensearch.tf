@@ -2,7 +2,7 @@ resource "aws_iam_policy" "opensearch" {
   count = var.enable_opensearch_access ? 1 : 0
 
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-opensearch"
-  description = ""
+  description = "allow jenkins to perform etl activities on specified opensearch clusters"
   policy      = data.aws_iam_policy_document.opensearch[0].json
   tags        = var.tags
 

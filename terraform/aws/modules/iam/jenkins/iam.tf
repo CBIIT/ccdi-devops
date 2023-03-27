@@ -1,6 +1,6 @@
 resource "aws_iam_policy" "iam" {
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-iam"
-  description = ""
+  description = "allow jenkins to get and pass iam roles required for deployment operations"
   policy      = data.aws_iam_policy_document.iam.json
   tags        = var.tags
 

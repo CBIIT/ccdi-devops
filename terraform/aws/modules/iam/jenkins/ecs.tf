@@ -2,7 +2,7 @@ resource "aws_iam_policy" "ecs" {
   count = var.enable_ecs_access ? 1 : 0
 
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-ecs"
-  description = ""
+  description = "allow jenkins to access specified ecs clusters to perform deployment operations"
   policy      = data.aws_iam_policy_document.ecs[0].json
   tags        = var.tags
 

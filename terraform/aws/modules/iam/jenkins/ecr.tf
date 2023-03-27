@@ -2,7 +2,7 @@ resource "aws_iam_policy" "ecr" {
   count = var.enable_ecr_access ? 1 : 0
 
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-ecr"
-  description = ""
+  description = "allow jenkins to pull and push from specified ecr repositories"
   policy      = data.aws_iam_policy_document[0].ecr
   tags        = var.tags
 
@@ -33,6 +33,6 @@ data "aws_iam_policy_document" "ecr" {
 
 variable "enable_ecr_access" {
   type        = bool
-  description = "allow jenkins to read from specified ecr repositories"
+  description = "allow jenkins to pull and push from specified ecr repositories"
   sensitive   = false
 }

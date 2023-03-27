@@ -2,7 +2,7 @@ resource "aws_iam_policy" "secrets" {
   count = var.enable_secrets_manager_access ? 1 : 0
 
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-secrets"
-  description = ""
+  description = "allow jenkins to read from specified secrets manager secrets"
   policy      = data.aws_iam_policy_document.secrets[0].json
   tags        = var.tags
 

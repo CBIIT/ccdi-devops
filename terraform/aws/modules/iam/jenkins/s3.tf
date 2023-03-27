@@ -2,7 +2,7 @@ resource "aws_iam_policy" "s3" {
   count = var.enable_s3_access ? 1 : 0
 
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-s3"
-  description = ""
+  description = "allow jenkins to read from specified s3 buckets"
   policy      = data.aws_iam_policy_document.s3[0].json
   tags        = var.tags
 
