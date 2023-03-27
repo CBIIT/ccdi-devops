@@ -52,7 +52,7 @@
 | <a name="input_attach_secrets_manager_policy"></a> [attach\_secrets\_manager\_policy](#input\_attach\_secrets\_manager\_policy) | whether to attach the secrets manager policy to the role | `bool` | `false` | no |
 | <a name="input_ecs_cluster_arn"></a> [ecs\_cluster\_arn](#input\_ecs\_cluster\_arn) | the arn of the ecs cluster that the task will be running on - required if attach\_ecs\_exec\_policy is true | `string` | `null` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
-| <a name="input_microservice"></a> [microservice](#input\_microservice) | the name to microservice that this role is attached to (i.e. 'frontend') | `string` | n/a | yes |
+| <a name="input_microservice"></a> [microservice](#input\_microservice) | the name to microservice that this role is attached to (i.e. 'frontend') | `string` | `null` | no |
 | <a name="input_opensearch_domain_arn"></a> [opensearch\_domain\_arn](#input\_opensearch\_domain\_arn) | the arn of the opensearch domain that the role should have access to - required if attach\_opensearch\_policy is true | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_secret_arns"></a> [secret\_arns](#input\_secret\_arns) | a set of secret arns that the role should have access to - required if attach\_secrets\_manager\_policy is true | `set(string)` | `[]` | no |

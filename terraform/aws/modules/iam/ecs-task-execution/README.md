@@ -32,7 +32,7 @@
 | <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether or not to attach the permissions boundary to the role | `bool` | n/a | yes |
 | <a name="input_ecr_repositories"></a> [ecr\_repositories](#input\_ecr\_repositories) | a list of ECR repository ARNs to which the task execution role will have access | `list(string)` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
-| <a name="input_microservice"></a> [microservice](#input\_microservice) | the name of the microservice | `string` | n/a | yes |
+| <a name="input_microservice"></a> [microservice](#input\_microservice) | the name of the microservice | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 
 # Outputs
