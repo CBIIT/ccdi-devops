@@ -31,16 +31,3 @@ data "aws_iam_policy_document" "opensearch" {
     resources = var.opensearch_domain_arns
   }
 }
-
-variable "enable_opensearch_access" {
-  type        = bool
-  description = "allow jenkins to perform etl activities on specified opensearch clusters"
-  sensitive   = false
-}
-
-variable "opensearch_domain_arns" {
-  type        = list(string)
-  description = "list of opensearch domain arns to allow jenkins to perform etl activities on"
-  default     = []
-  sensitive   = false
-}

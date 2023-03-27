@@ -46,15 +46,4 @@ data "aws_iam_policy_document" "ecr" {
   }
 }
 
-variable "enable_ecr_access" {
-  type        = bool
-  description = "allow jenkins to pull and push from specified ecr repositories"
-  sensitive   = false
-}
 
-variable "ecr_repository_arns" {
-  type        = list(string)
-  description = "list of ecr repository arns to allow jenkins to pull and push from"
-  default     = []
-  sensitive   = false
-}

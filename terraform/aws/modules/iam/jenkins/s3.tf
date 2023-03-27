@@ -33,17 +33,3 @@ data "aws_iam_policy_document" "s3" {
     resources = var.s3_bucket_arns
   }
 }
-
-variable "enable_s3_access" {
-  type        = bool
-  description = "allow jenkins to read from specified s3 buckets"
-  default     = false
-  sensitive   = false
-}
-
-variable "s3_bucket_arns" {
-  type        = list(string)
-  description = "list of s3 bucket arns to allow jenkins to read from"
-  default     = []
-  sensitive   = false
-}

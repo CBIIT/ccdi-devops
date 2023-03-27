@@ -33,17 +33,3 @@ data "aws_iam_policy_document" "secrets" {
     resources = var.secrets_manager_secret_arns
   }
 }
-
-variable "enable_secrets_manager_access" {
-  type        = bool
-  description = "allow jenkins to read from specified secrets manager secrets"
-  default     = false
-  sensitive   = false
-}
-
-variable "secrets_manager_secret_arns" {
-  type        = list(string)
-  description = "list of secrets manager secret arns to allow jenkins to read from"
-  default     = []
-  sensitive   = false
-}

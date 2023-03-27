@@ -122,10 +122,3 @@ data "aws_iam_policy_document" "ecs" {
     resources = ["*"]
   }
 }
-
-variable "enable_ecs_access" {
-  type        = bool
-  description = "allow jenkins to access specified ecs clusters to perform deployment operations"
-  default     = false
-  sensitive   = false
-}
