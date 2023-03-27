@@ -158,8 +158,6 @@ data "aws_iam_policy_document" "ecs" {
 }
 
 data "aws_iam_policy_document" "iam" {
-  count = terraform.workspace == "dev" || terraform.workspace == "stage" ? 1 : 0
-
   statement {
     effect = "Allow"
     actions = [
