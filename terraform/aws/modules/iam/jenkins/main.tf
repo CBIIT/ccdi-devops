@@ -12,6 +12,18 @@ resource "aws_iam_role" "this" {
   tags                 = var.tags
 }
 
+resource "aws_iam_policy" "cloudwatch_agent" {
+  name        = "power-user-${local.stack}-jenkins-instance-profile-role-cloudwatch-agent"
+  description = "allow jenkins to install cloudwatch agent - part of cbiit-managed default policy"
+  policy      = data.aws_iam_policy_document.cloudwatch_agent.json
+  tags        = var.tags
+}
+
+resource "aws_iam_role_policy_attachment" "cloudwatch_agent" {
+  role       = aws_iam_role.this.name
+  policy_arn = aws_iam_policy.cloudwatch_agent.arn
+}
+
 resource "aws_iam_policy" "ecr" {
   count = var.enable_ecr_access ? 1 : 0
 
@@ -72,6 +84,18 @@ resource "aws_iam_role_policy_attachment" "opensearch" {
   policy_arn = aws_iam_policy.opensearch[0].arn
 }
 
+resource "aws_iam_policy" "kms" {
+  name        = "power-user-${local.stack}-jenkins-instance-profile-role-kms"
+  description = "allow jenkins to decrypt kms keys - part of cbiit-managed default policy"
+  policy      = data.aws_iam_policy_document.kms.json
+  tags        = var.tags
+}
+
+resource "aws_iam_role_policy_attachment" "kms" {
+  role       = aws_iam_role.this.name
+  policy_arn = aws_iam_policy.kms.arn
+}
+
 resource "aws_iam_policy" "s3" {
   count = var.enable_s3_access ? 1 : 0
 
@@ -103,3 +127,18 @@ resource "aws_iam_role_policy_attachment" "secrets" {
   role       = aws_iam_role.this.name
   policy_arn = aws_iam_policy.secrets[0].arn
 }
+
+
+
+resource "aws_iam_policy" "ssm" {
+  name        = "power-user-${local.stack}-jenkins-instance-profile-role-cloudwatch-ssm"
+  description = "allow jenkins to retrieve ssm parameters - part of cbiit-managed default policy"
+  policy      = data.aws_iam_policy_document.cloudwatch_logs.json
+  tags        = var.tags
+}
+
+resource "aws_iam_role_policy_attachment" "ssm" {
+  role       = aws_iam_role.this.name
+  policy_arn = aws_iam_policy.ssm.arn
+}
+
