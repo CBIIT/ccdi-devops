@@ -128,12 +128,10 @@ resource "aws_iam_role_policy_attachment" "secrets" {
   policy_arn = aws_iam_policy.secrets[0].arn
 }
 
-
-
 resource "aws_iam_policy" "ssm" {
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-cloudwatch-ssm"
   description = "allow jenkins to retrieve ssm parameters - part of cbiit-managed default policy"
-  policy      = data.aws_iam_policy_document.cloudwatch_logs.json
+  policy      = data.aws_iam_policy_document.ssm.json
   tags        = var.tags
 }
 
