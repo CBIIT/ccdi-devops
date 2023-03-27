@@ -1,17 +1,23 @@
 resource "aws_iam_policy" "ecr" {
+  count = var.enable_ecr_access ? 1 : 0
+
   name        = "power-user-${local.stack}-jenkins-instance-profile-role-ecr"
   description = ""
-  policy      = data.aws_iam_policy_document.ecr
+  policy      = data.aws_iam_policy_document[0].ecr
   tags        = var.tags
 
 }
 
 resource "aws_iam_role_policy_attachment" "ecr" {
+  count = var.enable_ecr_access ? 1 : 0
+
   role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.ecr.arn
+  policy_arn = aws_iam_policy.ecr[0].arn
 }
 
 data "aws_iam_policy_document" "ecr" {
+  count = var.enable_ecr_access ? 1 : 0
+
   statement {
     effect    = "Allow"
     actions   = []
@@ -23,4 +29,10 @@ data "aws_iam_policy_document" "ecr" {
     actions   = []
     resources = []
   }
+}
+
+variable "enable_ecr_access" {
+  type        = bool
+  description = "allow jenkins to read from specified ecr repositories"
+  sensitive   = false
 }
