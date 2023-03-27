@@ -19,20 +19,28 @@ data "aws_iam_policy_document" "opensearch" {
   count = var.enable_opensearch_access ? 1 : 0
 
   statement {
-    effect    = "Allow"
-    actions   = []
-    resources = []
-  }
-
-  statement {
-    effect    = "Allow"
-    actions   = []
-    resources = []
+    effect = "Allow"
+    actions = [
+      "es:ESHttpDelete",
+      "es:ESHttpGet",
+      "es:ESHttpHead",
+      "es:ESHttpPatch",
+      "es:ESHttpPost",
+      "es:ESHttpPut"
+    ]
+    resources = var.opensearch_domain_arns
   }
 }
 
 variable "enable_opensearch_access" {
   type        = bool
   description = "allow jenkins to perform etl activities on specified opensearch clusters"
+  sensitive   = false
+}
+
+variable "opensearch_domain_arns" {
+  type        = list(string)
+  description = "list of opensearch domain arns to allow jenkins to perform etl activities on"
+  default     = []
   sensitive   = false
 }

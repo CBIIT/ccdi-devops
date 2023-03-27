@@ -19,20 +19,42 @@ data "aws_iam_policy_document" "ecr" {
   count = var.enable_ecr_access ? 1 : 0
 
   statement {
-    effect    = "Allow"
-    actions   = []
-    resources = []
+    effect = "Allow"
+    actions = [
+      "ecr:DescribeRegistry",
+      "ecr:GetAuthorizationToken",
+      "ecr:GetRegistryPolicy"
+    ]
+    resources = ["*"]
   }
 
   statement {
-    effect    = "Allow"
-    actions   = []
-    resources = []
+    effect = "Allow"
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:CompleteLayerUpload",
+      "ecr:DescribeImages",
+      "ecr:DescribeRepositories",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:InitiateLayerUpload",
+      "ecr:ListImages",
+      "ecr:PutImage",
+      "ecr:UploadLayerPart"
+    ]
+    resources = var.ecr_repository_arns
   }
 }
 
 variable "enable_ecr_access" {
   type        = bool
   description = "allow jenkins to pull and push from specified ecr repositories"
+  sensitive   = false
+}
+
+variable "ecr_repository_arns" {
+  type        = list(string)
+  description = "list of ecr repository arns to allow jenkins to pull and push from"
+  default     = []
   sensitive   = false
 }
