@@ -71,6 +71,7 @@ variable "ecs_cluster_arn" {
 variable "microservice" {
   type        = string
   description = "the name to microservice that this role is attached to (i.e. 'frontend')"
+  default     = null
   sensitive   = false
 }
 

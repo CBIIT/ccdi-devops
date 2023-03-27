@@ -41,5 +41,6 @@ variable "ecr_repositories" {
 variable "microservice" {
   type        = string
   description = "the name of the microservice"
+  default     = null
   sensitive   = false
 }
