@@ -93,3 +93,10 @@ variable "opensearch_domain_arns" {
   default     = []
   sensitive   = false
 }
+
+variable "tags" {
+  type        = map(string)
+  description = "tags to apply to resources"
+  default     = {}
+  sensitive   = false
+}
