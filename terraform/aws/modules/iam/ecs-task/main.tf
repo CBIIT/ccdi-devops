@@ -8,7 +8,7 @@ resource "aws_iam_role" "this" {
 resource "aws_iam_policy" "ecr" {
   name        = "power-user-${local.stack}-task-policy-ecr-${var.microservice}"
   description = "enables ecr access for the ${var.microservice} service in the ${var.env} tier"
-  policy      = data.aws_iam_policy_document.ecr[0].json
+  policy      = data.aws_iam_policy_document.ecr.json
 }
 
 resource "aws_iam_role_policy_attachment" "ecr" {
