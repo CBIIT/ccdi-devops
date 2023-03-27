@@ -1,5 +1,5 @@
 resource "aws_iam_role" "new_relic_read_only" {
-  name                  = "${local.stack_iam}-new-relic-read-only-role"
+  name                  = "power-user-${local.stack}-new-relic-read-only-role"
   assume_role_policy    = data.aws_iam_policy_document.trust.json
   description           = "allow new relic to retrieve observability data from cloudwatch"
   force_detach_policies = false
