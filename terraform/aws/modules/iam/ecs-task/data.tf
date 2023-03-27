@@ -111,6 +111,6 @@ data "aws_iam_policy_document" "ecs_exec" {
       "kms:Decrypt",
       "kms:GenerateDataKey"
     ]
-    resources = [var.kms_key_arn]
+    resources = ["arn:aws:kms:us-east-1:${data.aws_caller_identity.current.account_id}:key/*"]
   }
 }

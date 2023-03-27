@@ -68,13 +68,6 @@ variable "ecs_cluster_arn" {
   sensitive   = false
 }
 
-variable "kms_key_arn" {
-  type        = string
-  description = "the arn of the kms key that will be used to encrypt the data channel - required if attach_ecs_exec_policy is true"
-  default     = null
-  sensitive   = false
-}
-
 variable "microservice" {
   type        = string
   description = "the name to microservice that this role is attached to (i.e. 'frontend')"
