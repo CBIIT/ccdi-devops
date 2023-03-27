@@ -7,6 +7,6 @@ resource "aws_iam_role" "new_relic_read_only" {
 }
 
 resource "aws_iam_role_policy_attachment" "new_relic_read_only" {
-  role       = aws_iam_role.new_relic_read_only[0].name
+  role       = aws_iam_role.new_relic_read_only.name
   policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
 }
