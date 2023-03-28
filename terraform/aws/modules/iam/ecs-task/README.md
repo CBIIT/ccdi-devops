@@ -61,7 +61,7 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_task_role_arn"></a> [task\_role\_arn](#output\_task\_role\_arn) | arn of the task role if one was created |
-| <a name="output_task_role_id"></a> [task\_role\_id](#output\_task\_role\_id) | id of the task role if one was created |
-| <a name="output_task_role_name"></a> [task\_role\_name](#output\_task\_role\_name) | name of the task role if one was created |
+| <a name="output_arn"></a> [arn](#output\_arn) | arn of the task role if one was created |
+| <a name="output_id"></a> [id](#output\_id) | id of the task role if one was created |
+| <a name="output_name"></a> [name](#output\_name) | name of the task role if one was created |
 <!-- END_TF_DOCS -->
