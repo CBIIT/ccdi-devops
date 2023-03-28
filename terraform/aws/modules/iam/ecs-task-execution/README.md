@@ -39,7 +39,7 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_role_arn"></a> [role\_arn](#output\_role\_arn) | arn of the task execution role if one was created |
-| <a name="output_role_id"></a> [role\_id](#output\_role\_id) | id of the task execution role if one was created |
-| <a name="output_role_name"></a> [role\_name](#output\_role\_name) | name of the task execution role if one was created |
+| <a name="output_arn"></a> [arn](#output\_arn) | arn of the task execution role if one was created |
+| <a name="output_id"></a> [id](#output\_id) | id of the task execution role if one was created |
+| <a name="output_name"></a> [name](#output\_name) | name of the task execution role if one was created |
 <!-- END_TF_DOCS -->
