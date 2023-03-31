@@ -1,3 +1,21 @@
+![Frederick National Laboratory](./assets/fnl.svg)
+
+# Overview
+
+# Usage
+
+<pre><code>
+module "load_balancer_listener_rule" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/alb-listener-rule?ref=v?.?.?"
+
+  condition_host_header  = []
+  condition_path_pattern = []
+  listener_arn           = 
+  priority               = 
+  target_group_arn       = 
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
