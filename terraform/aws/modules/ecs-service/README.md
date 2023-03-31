@@ -4,6 +4,32 @@
 
 # Usage
 
+<pre><code>
+module "ecs_service" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecs-service?ref=v3.0.10"
+
+  app                                = 
+  env                                = 
+  program                            = 
+  cluster                            = 
+  container_name                     = 
+  container_port                     = 
+  deployment_maximum_percent         = 
+  deployment_minimum_healthy_percent = 
+  desired_count                      = 
+  health_check_grace_period_seconds  = 
+  launch_type                        = 
+  platform_version                   = 
+  propagate_tags                     = 
+  microservice                       = 
+  scheduling_strategy                = 
+  security_groups                    = []
+  subnets                            = []
+  target_group_arn                   = 
+  task_definition                    = 
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 

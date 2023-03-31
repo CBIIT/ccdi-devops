@@ -4,6 +4,26 @@
 
 # Usage 
 
+<pre><code>
+module "ecs_task_definition_frontend" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecs-task-definition?ref=v3.0.4"
+
+  app                      = 
+  env                      = 
+  program                  = 
+  container_definitions    = 
+  cpu                      = 
+  cpu_architecture         = 
+  execution_role_arn       = 
+  memory                   = 
+  network_mode             = 
+  operating_system_family  = 
+  requires_compatibilities = []
+  microservice             = 
+  task_role_arn            = 
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
