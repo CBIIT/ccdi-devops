@@ -1,8 +1,9 @@
 ![Frederick National Laboratory](./assets/fnl.svg)
 
 # Overview
-
+A module that creates an AWS Load Balancer Listener Rule, which defines logic for how AWS Load Balancer Listener resources determine request routes to targets in one or more target groups. Prior to configuring Listener Rules, ensure that you have configurations in place for an Application Load Balancer, Load Balancer Listeners, and Target Group resources. 
 # Usage
+The following provides an example of how to use this module by defining values for all required and optional variables. Remember to pin the release version using the `?ref` reference trailing the url in the `source` argument.
 
 <pre><code>
 module "load_balancer_listener_rule" {
