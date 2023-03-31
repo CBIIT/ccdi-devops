@@ -4,6 +4,46 @@
 
 # Usage
 
+<pre><code>
+module "opensearch" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/opensearch?ref=v?.?.?"
+
+  app                              = 
+  automated_snapshot_start_hour    = 
+  availability_zone_count          = 
+  cloudwatch_log_retention_in_days = 
+  cold_storage_enabled             = 
+  create_domain_policy             = 
+  create_service_linked_role       = 
+  create_manual_snapshot_role      = 
+  create_security_group            = 
+  custom_endpoint_enabled          = 
+  dedicated_master_count           = 
+  dedicated_master_enabled         = 
+  dedicated_master_type            = 
+  domain_name_suffix               = 
+  ebs_enabled                      = 
+  ebs_iops                         = 
+  ebs_throughput                   = 
+  ebs_volume_size                  = 
+  ebs_volume_type                  = 
+  enforce_https                    = 
+  engine_version                   = 
+  env                              = 
+  instance_count                   = 
+  instance_type                    = 
+  program                          = 
+  snapshot_bucket_arn              = 
+  subnet_ids                       = []
+  vpc_id                           = 
+  warm_count                       = 
+  warm_enabled                     = 
+  warm_type                        = 
+  zone_awareness_enabled           = 
+
+  domain_policy_actions = []
+}
+</code></pre>
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
