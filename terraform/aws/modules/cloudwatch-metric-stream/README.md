@@ -1,3 +1,24 @@
+![Frederick National Laboratory](./assets/fnl.svg)
+
+# Overview 
+
+# Usage
+
+<pre><code>
+module "cloudwatch_metric_stream" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-metric-stream?ref=v?.?.?"
+
+  app             = 
+  env             = 
+  program         = 
+  firehose_arn    = 
+  include_filter  = []
+  output_format   = 
+  resource_suffix = 
+  role_arn        = 
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
