@@ -12,7 +12,7 @@ The following provides an example of how to use this module by defining values f
 The following code block is provided for engineers to copy into project repositories that intend to call this module. Keep in mind that all arguments are declared in the code block. Depending on intended use, some arguments may not be necessary to define at the project level. See the Conditional Resources section for more details. 
 
 <pre><code> module "alb" {
-  source = "git::https://github.com/CBIIT/terraform/aws/modules/alb?ref=vX.X.X"
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/alb?ref=v?.?.?"
 
   access_logs_enabled         = 
   access_logs_bucket          = 
