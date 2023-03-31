@@ -2,7 +2,7 @@
 
 # Overview
 
-A module that creates an AWS Application Load Balancer based on standards and conventions established by the program. Remember to pin the version based on the release tag to prevent configuration-related challenges as future changes to the module are applied. Load Balancer Listener Rules are not created by this module. 
+A module that creates an AWS Application Load Balancer based on standards and conventions established by the program. Load Balancer Listener Rules and Target Groups are not created by this module. 
 
 # Usage 
 
@@ -12,7 +12,7 @@ The following provides an example of how to use this module by defining values f
 The following code block is provided for engineers to copy into project repositories that intend to call this module. Keep in mind that all arguments are declared in the code block. Depending on intended use, some arguments may not be necessary to define at the project level. See the Conditional Resources section for more details. 
 
 <pre><code> module "alb" {
-  source = "git::https://github.com/CBIIT/terraform/aws/modules/alb?ref=vX.X.X"
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/alb?ref=v?.?.?"
 
   access_logs_enabled         = 
   access_logs_bucket          = 

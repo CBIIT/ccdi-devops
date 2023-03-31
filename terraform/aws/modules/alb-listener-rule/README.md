@@ -1,3 +1,25 @@
+![Frederick National Laboratory](./assets/fnl.svg)
+
+# Overview
+A module that creates an AWS Load Balancer Listener Rule, which defines logic for how AWS Load Balancer Listener resources determine request routes to targets in one or more target groups. Prior to configuring Listener Rules, ensure that you have configurations in place for an Application Load Balancer, Load Balancer Listeners, and Target Group resources. 
+# Usage
+The following provides an example of how to use this module by defining values for all required and optional variables. Remember to pin the release version using the `?ref` reference trailing the url in the `source` argument.
+
+<pre><code>
+module "load_balancer_listener_rule" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/alb-listener-rule?ref=v?.?.?"
+
+  condition_host_header  = []
+  condition_path_pattern = []
+  listener_arn           = 
+  priority               = 
+  target_group_arn       = 
+}
+</code></pre>
+
+## Conditional Resources
+This module does not have any resources that are created conditionally.
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 

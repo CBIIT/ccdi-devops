@@ -4,6 +4,17 @@
 
 # Usage
 
+<pre><code>
+module "ecs_cluster" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecs-cluster?ref=v?.?.?"
+
+  app                        = 
+  env                        = 
+  program                    = 
+  container_insights_enabled = 
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 

@@ -6,7 +6,7 @@
 
 <pre><code>
 module "autoscaling_frontend" {
-  source = "github.com/CBIIT/ccdi-devops/terraform/aws/modules/appautoscaling"
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/appautoscaling?ref=v?.?.?"
 
   app                    = 
   ecs_cluster_name       = 
