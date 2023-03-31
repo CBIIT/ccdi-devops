@@ -17,6 +17,9 @@ module "load_balancer_listener_rule" {
 }
 </code></pre>
 
+## Conditional Resources
+This module does not have any resources that are created conditionally.
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
