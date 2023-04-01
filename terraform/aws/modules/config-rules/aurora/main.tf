@@ -1,7 +1,7 @@
 resource "aws_config_config_rule" "aurora_last_backup_recovery_point_created" {
   count = var.enable_periodic_rules ? 1 : 0
 
-  name = "aurora-last-backup-recovery-point-created"
+  name        = "aurora-last-backup-recovery-point-created"
   description = "Checks whether the last backup recovery point was created for the Amazon Aurora database cluster."
 
   source {
@@ -15,7 +15,7 @@ resource "aws_config_config_rule" "aurora_last_backup_recovery_point_created" {
 }
 
 resource "aws_config_config_rule" "aurora_mysql_backtracking_enabled" {
-  name = "aurora-mysql-backtracking-enabled"
+  name        = "aurora-mysql-backtracking-enabled"
   description = "Checks whether the backtracking is enabled for the Amazon Aurora MySQL database cluster."
 
   source {
@@ -30,8 +30,8 @@ resource "aws_config_config_rule" "aurora_mysql_backtracking_enabled" {
 
 resource "aws_config_config_rule" "aurora_resources_protected_by_backup_plan" {
   count = var.enable_periodic_rules ? 1 : 0
-  
-  name = "aurora-resources-protected-by-backup-plan"
+
+  name        = "aurora-resources-protected-by-backup-plan"
   description = "Checks whether the Amazon Aurora database cluster is protected by a backup plan."
 
   source {

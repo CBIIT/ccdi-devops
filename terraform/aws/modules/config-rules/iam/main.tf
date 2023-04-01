@@ -1,3 +1,13 @@
+resource "aws_config_config_rule" "access_keys_rotated" {
+  name        = "access-keys-rotated"
+  description = "Checks whether access keys are rotated every 90 days."
+
+  source {
+    owner             = "AWS"
+    source_identifier = "ACCESS_KEYS_ROTATED"
+  }
+}
+
 resource "aws_config_config_rule" "iam_customer_policy_blocked_kms_actions" {
   name = "iam-customer-policy-blocked-kms-actions"
 
