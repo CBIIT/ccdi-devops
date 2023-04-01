@@ -2,7 +2,12 @@ resource "aws_config_config_rule" "access_keys_rotated" {
     name = "access-keys-rotated" source { owner = "AWS" source_identifier = "ACCESS_KEYS_ROTATED" } }
 
 resource "aws_config_config_rule" "acm_certificate_expiration_check" { 
-    name = "acm-certificate-expiration-check" source { owner = "AWS" source_identifier = "ACM_CERTIFICATE_EXPIRATION_CHECK" } }
+    name = "acm-certificate-expiration-check" 
+    
+    source { owner = "AWS" source_identifier = "ACM_CERTIFICATE_EXPIRATION_CHECK" 
+    }
+    }
+    
 resource "aws_config_config_rule" "backup_plan_min_frequency_and_min_retention_check" { name = "backup-plan-min-frequency-and-min-retention-check" source { owner = "AWS" source_identifier = "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK" } }
 resource "aws_config_config_rule" "backup_recovery_point_encrypted" { name = "backup-recovery-point-encrypted" source { owner = "AWS" source_identifier = "BACKUP_RECOVERY_POINT_ENCRYPTED" } }
 resource "aws_config_config_rule" "backup_recovery_point_manual_deletion_disabled" { name = "backup-recovery-point-manual-deletion-disabled" source { owner = "AWS" source_identifier = "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED" } }
@@ -46,7 +51,6 @@ resource "aws_config_config_rule" "virtualmachine_resources_protected_by_backup_
 resource "aws_config_config_rule" "vpc_default_security_group_closed" { name = "vpc-default-security-group-closed" source { owner = "AWS" source_identifier = "VPC_DEFAULT_SECURITY_GROUP_CLOSED" } }
 resource "aws_config_config_rule" "vpc_flow_logs_enabled" { name = "vpc-flow-logs-enabled" source { owner = "AWS" source_identifier = "VPC_FLOW_LOGS_ENABLED" } }
 resource "aws_config_config_rule" "vpc_network_acl_unused_check" { name = "vpc-network-acl-unused-check" source { owner = "AWS" source_identifier = "VPC_NETWORK_ACL_UNUSED_CHECK" } }
-resource "aws_config_config_rule" "vpc_peering_dns_resolution_check" { name = "vpc-peering-dns-resolution-check" source { owner = "AWS" source_identifier = "VPC_PEERING_DNS_RESOLUTION_CHECK" } }
 resource "aws_config_config_rule" "vpc_sg_open_only_to_authorized_ports" { 
     name = "vpc-sg-open-only-to-authorized-ports" source { owner = "AWS" source_identifier = "VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS" } }
 resource "aws_config_config_rule" "vpc_vpn_2_tunnels_up" { 
