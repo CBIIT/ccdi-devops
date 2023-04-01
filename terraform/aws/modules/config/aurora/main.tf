@@ -1,0 +1,3 @@
+resource "aws_config_config_rule" "aurora_last_backup_recovery_point_created" { name = "aurora-last-backup-recovery-point-created" source { owner = "AWS" source_identifier = "AURORA_LAST_BACKUP_RECOVERY_POINT_CREATED" } }
+resource "aws_config_config_rule" "aurora_mysql_backtracking_enabled" { name = "aurora-mysql-backtracking-enabled" source { owner = "AWS" source_identifier = "AURORA_MYSQL_BACKTRACKING_ENABLED" } }
+resource "aws_config_config_rule" "aurora_resources_protected_by_backup_plan" { name = "aurora-resources-protected-by-backup-plan" source { owner = "AWS" source_identifier = "AURORA_RESOURCES_PROTECTED_BY_BACKUP_PLAN" } }
