@@ -1,0 +1,23 @@
+name: Documentation
+on:
+  pull_request:
+    paths:
+      - terraform/aws/modules/iam/**
+jobs:
+  documentation:
+    name: 'Documentation'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone Repository
+      id: checkout
+      uses: actions/checkout@master
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+    - name: Terraform Documentation
+      uses: terraform-docs/gh-actions@v1.0.0
+      with:
+        working-dir: ./terraform/aws
+        config-file: terraform-docs.yml
+        git-push: true
+        recursive: true 
+        recursive-path: modules/iam
