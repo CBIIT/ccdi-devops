@@ -31,4 +31,10 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_s3_bucket_arn"></a> [s3\_bucket\_arn](#input\_s3\_bucket\_arn) | arn of the s3 bucket to attach the policy to | `string` | n/a | yes |
 | <a name="input_s3_bucket_id"></a> [s3\_bucket\_id](#input\_s3\_bucket\_id) | id of the s3 bucket to attach the policy to | `string` | n/a | yes |
+
+# Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_policy"></a> [policy](#output\_policy) | standard json policy document rendered based on the module inputs |
 <!-- END_TF_DOCS -->
