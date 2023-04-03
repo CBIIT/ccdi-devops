@@ -19,5 +19,3 @@ jobs:
         working-dir: ./terraform/aws
         config-file: terraform-docs.yml
         git-push: true
-        recursive: true 
-        recursive-path: modules/iam
