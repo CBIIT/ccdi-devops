@@ -38,3 +38,47 @@ variable "enable_config" {
   default     = true
   sensitive   = false
 }
+
+variable "recording_group_resouce_types" {
+  type        = list(string)
+  description = "the resource types to record"
+  default     = [
+    "AWS::AutoScaling::AutoScalingGroup",
+    "AWS::AutoScaling::ScalingPolicy",
+    "AWS::AutoScaling::ScheduledAction",
+    "AWS::ACM::Certificate",
+    "AWS::CloudFront::Distribution",
+    "AWS::CloudTrail::Trail",
+    "AWS::CloudWatch::Alarm",
+    "AWS::EC2::Host",
+    "AWS::EC2::Instance",
+    "AWS::EC2::SecurityGroup",
+    "AWS::EC2::Volume",
+    "AWS::EC2::VPC",
+    "AWS::ECR::Repository",
+    "AWS::ECR::RegistryPolicy",
+    "AWS::ECS::Cluster", 
+    "AWS::ECS::Service",
+    "AWS::ECS::TaskDefinition",
+    "AWS::ElasticLoadBalancingV2::LoadBalancer",
+    "AWS::ElasticLoadBalancingV2::Listener",
+    "AWS::ElasticSearch::Domain",
+    "AWS::IAM::Policy",
+    "AWS::IAM::Role",
+    "AWS::Kinesis::Stream",
+    "AWS::KMS::Key",
+    "AWS::Lambda::Function",
+    "AWS::OpenSearch::Domain",
+    "AWS::RDS::DBCluster",
+    "AWS::RDS::DBClusterSnapshot",
+    "AWS::RDS::DBInstance",
+    "AWS::RDS::DBSecurityGroup",
+    "AWS::RDS::DBSnapshot",
+    "AWS::RDS::DBSubnetGroup",
+    "AWS::SecretsManager::Secret",
+    "AWS::SQS::Queue",
+    "AWS::S3::Bucket",
+    "AWS::S3::AccountPublicAccessBlock"
+  ]
+  sensitive   = false
+}
