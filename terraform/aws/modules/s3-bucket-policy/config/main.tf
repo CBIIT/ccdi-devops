@@ -4,12 +4,11 @@ data "aws_iam_policy_document" "this" {
   statement {
     effect = "Allow"
 
-
-
     actions = [
       "s3:GetBucketAcl",
       "s3:ListBucket",
     ]
+
     resources = [var.s3_bucket_arn]
 
     principals {
@@ -28,6 +27,7 @@ data "aws_iam_policy_document" "this" {
     effect = "Allow"
 
     actions   = ["s3:PutObject"]
+    
     resources = ["${var.s3_bucket_arn}/*"]
 
     principals {
