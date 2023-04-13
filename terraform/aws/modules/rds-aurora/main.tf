@@ -14,7 +14,7 @@ resource "aws_rds_cluster" "this" {
   port                                =  3306
   storage_encrypted                   =  true
   allow_major_version_upgrade         =  var.allow_major_version_upgrade
-  enabled_cloudwatch_logs_exports     =  var.enabled_cloudwatch_logs_exports
+  enabled_cloudwatch_logs_exports     =  ["audit", "error", "general", "slowquery"]
   deletion_protection                 =  var.deletion_protection
   db_subnet_group_name                =  var.create_db_subnet_group ? aws_db_subnet_group.this[0].name : var.db_subnet_group_name
   vpc_security_group_ids              =  var.create_security_group ? [aws_security_group.this[0].id] : var.vpc_security_group_ids
@@ -23,8 +23,6 @@ resource "aws_rds_cluster" "this" {
     max_capacity =  var.max_capacity
     min_capacity =  var.min_capacity
   }
-  tags = var.tags
-
   lifecycle {
     ignore_changes = [
       kms_key_id
@@ -37,7 +35,6 @@ resource "aws_rds_cluster_instance" "this" {
   instance_class     = var.db_instance_class
   engine             = aws_rds_cluster.this.engine
   engine_version     = aws_rds_cluster.this.engine_version
-  tags               = var.tags
 }
 
 resource "aws_db_subnet_group" "this" {
@@ -72,7 +69,6 @@ resource "aws_security_group" "this" {
   name  =  "${local.stack}-rds-aurora-sg"
   vpc_id      = var.vpc_id
   description = "Allow traffic to/from RDS Aurora"
-  tags = var.tags
 }
 
 resource "aws_security_group_rule" "rds_inbound" {
@@ -98,4 +94,28 @@ resource "aws_security_group_rule" "egress" {
   protocol          = "all"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id =  aws_security_group.this[0].id
+}
+
+
+resource "aws_iam_role" "this" {
+  count = var.enable_enhanced_monitoring ? 1 : 0
+
+  name                 = "power-user-${local.stack}-rds-enhanced-monitoring-role"
+  description          = "role for enhanced monitoring of ${local.stack} rds instance"
+  assume_role_policy   = data.aws_iam_policy_document.trust[0].json
+  permissions_boundary = local.permissions_boundary_arn
+}
+
+resource "aws_iam_policy" "this" {
+  count       = var.enable_enhanced_monitoring ? 1 : 0
+  name        = "power-user-${local.stack}-rds-enhanced-monitoring-policy"
+  description = "policy for enhanced monitoring of ${local.stack} rds instance"
+  policy      = data.aws_iam_policy_document.this[0].json
+}
+
+resource "aws_iam_role_policy_attachment" "this" {
+  count = var.enable_enhanced_monitoring ? 1 : 0
+
+  policy_arn = aws_iam_policy.this[0].arn
+  role       = aws_iam_role.this[0].name
 }

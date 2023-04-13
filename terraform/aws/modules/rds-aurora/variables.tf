@@ -64,7 +64,6 @@ variable "master_username" {
   type        = string
   description = "username for the database"
   sensitive   = false
-  default = ""
 }
 variable "backup_retention_period" {
   type        = number
@@ -86,12 +85,6 @@ variable "allow_major_version_upgrade" {
   description = "Enable to allow major engine version upgrades when changing engine versions"
   type        = bool
   default     = false
-}
-variable "enabled_cloudwatch_logs_exports" {
-  type        = list(string)
-  description = "list of log types to export to cloudwatch"
-  default     = ["audit", "error", "general", "slowquery"]
-  sensitive   = false
 }
 variable "deletion_protection" {
   description = "prevent deletion"
