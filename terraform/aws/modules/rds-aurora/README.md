@@ -38,6 +38,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_allow_major_version_upgrade"></a> [allow\_major\_version\_upgrade](#input\_allow\_major\_version\_upgrade) | Enable to allow major engine version upgrades when changing engine versions | `bool` | `false` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
+| <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether to attach a permissions boundary to the role - required if enable\_enhanced\_monitoring is true | `bool` | `null` | no |
 | <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | backup retention period in days - between 0 and 35 | `number` | `35` | no |
 | <a name="input_backup_window"></a> [backup\_window](#input\_backup\_window) | ideal time to perform backups.backup window in UTC - format hh24:mi-hh24:mi | `string` | `"04:00-05:00"` | no |
 | <a name="input_create_db_subnet_group"></a> [create\_db\_subnet\_group](#input\_create\_db\_subnet\_group) | whether to create a db subnet group | `bool` | `true` | no |
