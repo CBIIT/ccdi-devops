@@ -156,3 +156,10 @@ variable "enable_enhanced_monitoring" {
   default     = true
   sensitive   = false
 }
+
+variable "attach_permissions_boundary" {
+  type        = bool
+  description = "whether to attach a permissions boundary to the role - required if enable_enhanced_monitoring is true"
+  default     = null
+  sensitive   = false
+}
