@@ -3,7 +3,7 @@ resource "aws_rds_cluster" "this" {
   engine                              =  var.db_engine_type
   engine_version                      =  var.db_engine_version
   engine_mode                         =  var.db_engine_mode
-  database_name                       =   var.database_name
+  database_name                       =  var.database_name
   master_username                     =  var.master_username
   master_password                     =  random_password.master_password.result
   final_snapshot_identifier           =  local.snapshot_name
@@ -20,8 +20,8 @@ resource "aws_rds_cluster" "this" {
   vpc_security_group_ids              =  var.create_security_group ? [aws_security_group.this[0].id] : var.vpc_security_group_ids
   kms_key_id                          =  data.aws_kms_alias.kms.id
   serverlessv2_scaling_configuration {
-    max_capacity =  var.max_capacity
-    min_capacity =  var.min_capacity
+    max_capacity = var.max_capacity
+    min_capacity = var.min_capacity
   }
   lifecycle {
     ignore_changes = [
@@ -52,7 +52,7 @@ resource "random_password" "master_password" {
   length  = var.master_password_length
   special = false
   keepers = {
-    Name =  var.master_username
+    Name = var.master_username
   }
 }
 
@@ -66,7 +66,7 @@ resource "random_id" "snapshot" {
 resource "aws_security_group" "this" {
   count = var.create_security_group ? 1 : 0
 
-  name  =  "${local.stack}-rds-aurora-sg"
+  name        = "${local.stack}-rds-aurora-sg"
   vpc_id      = var.vpc_id
   description = "Allow traffic to/from RDS Aurora"
 }
@@ -74,13 +74,13 @@ resource "aws_security_group" "this" {
 resource "aws_security_group_rule" "rds_inbound" {
   count = var.create_security_group ? 1 : 0
 
-  description              = "From allowed SGs"
-  type                     = "ingress"
-  from_port                = 3306
-  to_port                  = 3306
-  protocol                 = "tcp"
-  cidr_blocks              = local.ranges
-  security_group_id        = aws_security_group.this[0].id
+  description       = "From allowed SGs"
+  type              = "ingress"
+  from_port         = 3306
+  to_port           = 3306
+  protocol          = "tcp"
+  cidr_blocks       = local.ranges
+  security_group_id = aws_security_group.this[0].id
 }
 
 
@@ -93,7 +93,7 @@ resource "aws_security_group_rule" "egress" {
   to_port           = 0
   protocol          = "all"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id =  aws_security_group.this[0].id
+  security_group_id = aws_security_group.this[0].id
 }
 
 

@@ -146,8 +146,8 @@ variable "db_subnet_ids" {
 
 variable "master_password_length" {
   description = "length of master user password"
-  type = number
-  default = 15
+  type        = number
+  default     = 15
 }
 
 variable "enable_enhanced_monitoring" {
