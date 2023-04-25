@@ -49,13 +49,6 @@ resource "aws_s3_bucket_logging" "this" {
   target_prefix = var.enable_access_logging ? var.logging_target_prefix : null
 }
 
-resource "aws_s3_bucket_policy" "this" {
-  count = var.enable_bucket_policy ? 1 : 0
-
-  bucket = var.enable_bucket_policy ? aws_s3_bucket.this.id : null
-  policy = var.enable_bucket_policy ? var.bucket_policy : null
-}
-
 resource "aws_s3_bucket_public_access_block" "this" {
   bucket                  = aws_s3_bucket.this.id
   block_public_acls       = true

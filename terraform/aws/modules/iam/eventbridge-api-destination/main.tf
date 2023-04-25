@@ -2,7 +2,7 @@ resource "aws_iam_role" "this" {
   name                 = "power-user-${local.stack}-eventbridge-api-destination-${var.api_destination_name}"
   description          = "allows the eventbridge service to publish events to an api destination"
   assume_role_policy   = data.aws_iam_policy_document.trust.json
-  permissions_boundary = local.permissions_boundary
+  permissions_boundary = local.permissions_boundary_arn
 
 }
 
