@@ -26,4 +26,13 @@
 | <a name="input_http_method"></a> [http\_method](#input\_http\_method) | http method for api destination | `string` | `"POST"` | no |
 | <a name="input_invocation_rate_limit_per_second"></a> [invocation\_rate\_limit\_per\_second](#input\_invocation\_rate\_limit\_per\_second) | invocation rate limit per second for api destination | `number` | `300` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+
+# Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | arn of the api destination |
+| <a name="output_connection_arn"></a> [connection\_arn](#output\_connection\_arn) | arn of the connection to be used for the api destination |
+| <a name="output_id"></a> [id](#output\_id) | id of the api destination |
+| <a name="output_name"></a> [name](#output\_name) | name of the api destination |
 <!-- END_TF_DOCS -->

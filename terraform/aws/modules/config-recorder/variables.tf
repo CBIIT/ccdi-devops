@@ -42,7 +42,7 @@ variable "enable_config" {
 variable "recording_group_resouce_types" {
   type        = list(string)
   description = "the resource types to record"
-  default     = [
+  default = [
     "AWS::AutoScaling::AutoScalingGroup",
     "AWS::AutoScaling::ScalingPolicy",
     "AWS::AutoScaling::ScheduledAction",
@@ -60,7 +60,7 @@ variable "recording_group_resouce_types" {
     "AWS::EC2::VPC",
     "AWS::ECR::Repository",
     "AWS::ECR::RegistryPolicy",
-    "AWS::ECS::Cluster", 
+    "AWS::ECS::Cluster",
     "AWS::ECS::Service",
     "AWS::ECS::TaskDefinition",
     "AWS::ElasticLoadBalancingV2::LoadBalancer",
@@ -83,5 +83,5 @@ variable "recording_group_resouce_types" {
     "AWS::S3::Bucket",
     "AWS::S3::AccountPublicAccessBlock"
   ]
-  sensitive   = false
+  sensitive = false
 }
