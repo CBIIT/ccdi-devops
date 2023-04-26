@@ -22,7 +22,7 @@
 | <a name="input_api_key_value"></a> [api\_key\_value](#input\_api\_key\_value) | api key value for api destination | `string` | n/a | yes |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_destination_endpoint"></a> [destination\_endpoint](#input\_destination\_endpoint) | destination endpoint for api destination | `string` | n/a | yes |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_http_method"></a> [http\_method](#input\_http\_method) | http method for api destination | `string` | `"POST"` | no |
 | <a name="input_invocation_rate_limit_per_second"></a> [invocation\_rate\_limit\_per\_second](#input\_invocation\_rate\_limit\_per\_second) | invocation rate limit per second for api destination | `number` | `300` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |

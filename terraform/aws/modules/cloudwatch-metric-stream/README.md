@@ -43,7 +43,7 @@ module "cloudwatch_metric_stream" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_firehose_arn"></a> [firehose\_arn](#input\_firehose\_arn) | arn of the kinesis firehose delivery stream to use for the metric stream | `string` | n/a | yes |
 | <a name="input_include_filter"></a> [include\_filter](#input\_include\_filter) | Specify the service namespaces to include in metric stream in a list | `set(string)` | <pre>[<br>  "AWS/ES",<br>  "AWS/ApplicationELB",<br>  "AWS/ECS"<br>]</pre> | no |
 | <a name="input_output_format"></a> [output\_format](#input\_output\_format) | output format of the metric stream data - either 'json' or 'opentelemetry0.7' | `string` | `"opentelemetry0.7"` | no |

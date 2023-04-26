@@ -24,7 +24,7 @@
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | description of the rule | `string` | n/a | yes |
 | <a name="input_enable"></a> [enable](#input\_enable) | whether to enable the rule | `bool` | `true` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_event_bus_name"></a> [event\_bus\_name](#input\_event\_bus\_name) | name of the event bus to create the rule on | `string` | `"default"` | no |
 | <a name="input_event_pattern"></a> [event\_pattern](#input\_event\_pattern) | event pattern for the rule | `any` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |

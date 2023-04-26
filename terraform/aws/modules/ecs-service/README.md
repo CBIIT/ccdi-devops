@@ -62,7 +62,7 @@ module "ecs_service" {
 | <a name="input_deployment_minimum_healthy_percent"></a> [deployment\_minimum\_healthy\_percent](#input\_deployment\_minimum\_healthy\_percent) | lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment | `number` | `100` | no |
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | desired number of containers for the service to run | `number` | `1` | no |
 | <a name="input_enable_ecs_managed_tags"></a> [enable\_ecs\_managed\_tags](#input\_enable\_ecs\_managed\_tags) | whether to enable Amazon ECS managed tags for the tasks within the service | `bool` | `true` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_health_check_grace_period_seconds"></a> [health\_check\_grace\_period\_seconds](#input\_health\_check\_grace\_period\_seconds) | number of seconds to wait until evaluating that a deployment is unhealthy | `number` | `300` | no |
 | <a name="input_launch_type"></a> [launch\_type](#input\_launch\_type) | launch type of the service - either EC2, FARGATE, or EXTERNAL | `string` | `"FARGATE"` | no |
 | <a name="input_microservice"></a> [microservice](#input\_microservice) | the name to microservice that this ecs service orchestrates (i.e. 'frontend') | `string` | n/a | yes |
