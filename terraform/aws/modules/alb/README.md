@@ -106,7 +106,7 @@ Please note that NCI restricts traffic to the non-production account environment
 | <a name="input_enable_deletion_protection"></a> [enable\_deletion\_protection](#input\_enable\_deletion\_protection) | prevents terraform from accidentally destroying the load balancer | `bool` | `true` | no |
 | <a name="input_enable_http2"></a> [enable\_http2](#input\_enable\_http2) | whether HTTP/2 is enabled in application load balancers | `bool` | `true` | no |
 | <a name="input_enable_waf_fail_open"></a> [enable\_waf\_fail\_open](#input\_enable\_waf\_fail\_open) | whether to allow a WAF-enabled load balancer to route requests to targets if it is unable to forward the requests to waf | `bool` | `false` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_http_port"></a> [http\_port](#input\_http\_port) | port on which the load balancer is listening for HTTP requests | `number` | `80` | no |
 | <a name="input_http_protocol"></a> [http\_protocol](#input\_http\_protocol) | protocol on which the load balancer is listening for HTTP requests | `string` | `"HTTP"` | no |
 | <a name="input_https_port"></a> [https\_port](#input\_https\_port) | port on which the load balancer is listening for HTTPS requests | `number` | `443` | no |

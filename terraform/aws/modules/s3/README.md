@@ -38,7 +38,7 @@
 | <a name="input_enable_bucket_inventory"></a> [enable\_bucket\_inventory](#input\_enable\_bucket\_inventory) | whether to enable s3 bucket inventory feature | `bool` | `false` | no |
 | <a name="input_enable_object_expiration"></a> [enable\_object\_expiration](#input\_enable\_object\_expiration) | whether to expire objects after 90 days with lifecycle rules | `bool` | `false` | no |
 | <a name="input_enable_object_versioning"></a> [enable\_object\_versioning](#input\_enable\_object\_versioning) | whether to enable versioning for objects in the bucket | `bool` | `true` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_expire_objects_after_days"></a> [expire\_objects\_after\_days](#input\_expire\_objects\_after\_days) | required if expire\_objects is true - number of days to retain objects in the bucket | `number` | `90` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | force terraform to destroy bucket and all objects within bucket | `bool` | `false` | no |
 | <a name="input_inventory_destination_bucket_arn"></a> [inventory\_destination\_bucket\_arn](#input\_inventory\_destination\_bucket\_arn) | n/a | `string` | `null` | no |
