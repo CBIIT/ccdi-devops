@@ -59,7 +59,7 @@
 | <a name="input_enable_opensearch_access"></a> [enable\_opensearch\_access](#input\_enable\_opensearch\_access) | allow jenkins to perform etl activities on specified opensearch clusters | `bool` | n/a | yes |
 | <a name="input_enable_s3_access"></a> [enable\_s3\_access](#input\_enable\_s3\_access) | allow jenkins to read from specified s3 buckets | `bool` | `false` | no |
 | <a name="input_enable_secrets_manager_access"></a> [enable\_secrets\_manager\_access](#input\_enable\_secrets\_manager\_access) | allow jenkins to read from specified secrets manager secrets | `bool` | `false` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_opensearch_domain_arns"></a> [opensearch\_domain\_arns](#input\_opensearch\_domain\_arns) | list of opensearch domain arns to allow jenkins to perform etl activities on | `list(string)` | `[]` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_s3_bucket_arns"></a> [s3\_bucket\_arns](#input\_s3\_bucket\_arns) | list of s3 bucket arns to allow jenkins to read from | `list(string)` | `[]` | no |
