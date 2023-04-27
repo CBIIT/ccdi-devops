@@ -32,3 +32,9 @@ variable "attach_permissions_boundary" {
   default     = false
   sensitive   = false
 }
+
+variable "config_s3_bucket_name" {
+  type        = string
+  description = "the name of the S3 bucket to store the config data"
+  sensitive   = false
+}

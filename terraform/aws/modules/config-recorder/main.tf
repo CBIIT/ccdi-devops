@@ -1,6 +1,7 @@
 resource "aws_config_configuration_recorder" "this" {
   name     = "${local.stack}-config-recorder"
-  role_arn = aws_iam_role.r.arn
+  role_arn = module.role.arn
+
   recording_group {
     all_supported  = false
     resource_types = var.recording_group_resouce_types
@@ -29,4 +30,5 @@ module "role" {
   env                         = var.env
   program                     = var.program
   attach_permissions_boundary = var.attach_permissions_boundary
+  config_s3_bucket_name       = var.config_s3_bucket_name
 }
