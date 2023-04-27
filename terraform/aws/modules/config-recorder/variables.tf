@@ -43,6 +43,12 @@ variable "enable_config" {
   sensitive   = false
 }
 
+variable "manager_account_id" {
+  type        = string
+  description = "the manager account id to authorize aggregation"
+  sensitive   = false
+}
+
 variable "recording_group_resouce_types" {
   type        = list(string)
   description = "the resource types to record"

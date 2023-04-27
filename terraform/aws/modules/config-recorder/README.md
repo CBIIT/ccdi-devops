@@ -20,6 +20,7 @@ The following provides an example of how to use this module by defining values f
     config_s3_bucket_name           =
     enable_config                   =
     env                             =
+    manager_account_id              = 
     program                         =
     recording_group_resource_types  =
 }</code></pre>

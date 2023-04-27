@@ -27,6 +27,11 @@ resource "aws_config_delivery_channel" "this" {
   ]
 }
 
+resource "aws_config_aggregate_authorization" "this" {
+  account_id = var.manager_account_id
+  region     = "us-east-1"
+}
+
 module "role" {
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/config-recorder"
 
