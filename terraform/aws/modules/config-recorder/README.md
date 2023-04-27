@@ -6,7 +6,9 @@ A module that creates an AWS Config Recorder resource, an AWS Config Delivery Ch
 
 # Usage 
 
-The ratio of resources defined in this module and the target accounts for the resources to be provisioned into is a 1:1 ratio. It is advised to use the `count` terraform meta argument to conditionally create the resources in the module when the target tier is `dev` or `stage`.
+# Usage
+
+As a best practice, consider using the values of `nonprod` or `prod` for the argument passed to the module called `env`, rather than providing the `terraform.workspace`. See examples for more information.
 
 ## Module Template
 
@@ -15,13 +17,13 @@ The following provides an example of how to use this module by defining values f
 <pre><code>module "config_recorder" {
     source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/config-recorder?ref=v?.?.?"
 
-    app                             = 
-    attach_permissions_boundary     = 
-    config_s3_bucket_name           = 
-    enable_config                   = 
-    env                             = 
-    program                         = 
-    recording_group_resource_types  = 
+    app                             =
+    attach_permissions_boundary     =
+    config_s3_bucket_name           =
+    enable_config                   =
+    env                             =
+    program                         =
+    recording_group_resource_types  =
 }</code></pre>
 
 <!-- BEGIN_TF_DOCS -->
