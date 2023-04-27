@@ -1,10 +1,6 @@
 data "aws_caller_identity" "current" {
 }
 
-data "aws_s3_bucket" "this" {
-  bucket = var.config_s3_bucket_name
-}
-
 data "aws_iam_policy_document" "trust" {
   statement {
     effect  = "Allow"
@@ -30,7 +26,7 @@ data "aws_iam_policy_document" "this" {
       "s3:PutObject",
       "s3:PutObjectAcl"
     ]
-    resources = ["${data.aws_s3_bucket.this.arn}/config/AWSLogs/${data.aws_caller_identity.current.account_id}/*"]
+    resources = ["arn:aws:s3:::${var.config_s3_bucket_name}/config/AWSLogs/${data.aws_caller_identity.current.account_id}/*"]
   }
 
   statement {
@@ -39,6 +35,6 @@ data "aws_iam_policy_document" "this" {
       "s3:GetBucketAcl",
       "s3:ListBucket"
     ]
-    resources = [data.aws_s3_bucket.this.arn]
+    resources = ["arn:aws:s3:::${var.config_s3_bucket_name}"]
   }
 }
