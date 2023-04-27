@@ -39,6 +39,6 @@ data "aws_iam_policy_document" "this" {
       "s3:GetBucketAcl",
       "s3:ListBucket"
     ]
-    resources = [data.data.aws_s3_bucket.this.arn]
+    resources = [data.aws_s3_bucket.this.arn]
   }
 }
