@@ -6,5 +6,5 @@ resource "aws_config_conformance_pack" "this" {
 resource "aws_s3_object" "this" {
   bucket = var.config_s3_bucket_name
   key    = "templates/nist-800-53-rev-5.yaml"
-  source = "nist-800-53-rev-5.yaml"
+  source = "${path.module}/nist-800-53-rev-5.yaml"
 }
