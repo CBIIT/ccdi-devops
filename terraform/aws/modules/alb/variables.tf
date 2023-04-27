@@ -6,7 +6,7 @@ variable "app" {
 
 variable "env" {
   type        = string
-  description = "the target tier ('dev', 'qa', 'stage', or 'prod'.)"
+  description = "the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.)"
   sensitive   = false
 
   validation {
@@ -21,8 +21,8 @@ variable "program" {
   sensitive   = false
 
   validation {
-    condition     = contains(["crdc", "ccdi", "ctos"], var.program)
-    error_message = "valid values for program are 'crdc', 'ccdi', and 'ctos'"
+    condition     = contains(["crdc", "ccdi", "ctos", "fnl"], var.program)
+    error_message = "valid values for program are 'crdc', 'ccdi', 'fnl' and 'ctos'"
   }
 }
 
@@ -170,7 +170,7 @@ variable "security_group_ids" {
 variable "ssl_policy" {
   type        = string
   description = "the name of the SSL policy for the HTTPS listener"
-  default     = "ELBSecurityPolicy-2016-08"
+  default     = "ELBSecurityPolicy-TLS13-1-2-2021-06"
   sensitive   = false
 }
 

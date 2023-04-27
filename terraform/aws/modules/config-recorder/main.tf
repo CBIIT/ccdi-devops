@@ -1,6 +1,7 @@
 resource "aws_config_configuration_recorder" "this" {
   name     = "${local.stack}-config-recorder"
-  role_arn = aws_iam_role.r.arn
+  role_arn = module.role.arn
+
   recording_group {
     all_supported  = false
     resource_types = var.recording_group_resouce_types
@@ -20,26 +21,23 @@ resource "aws_config_delivery_channel" "this" {
   name           = "example"
   s3_bucket_name = var.config_s3_bucket_name
   s3_key_prefix  = "config"
+
+  depends_on = [
+    aws_config_delivery_channel.this
+  ]
 }
 
-resource "aws_iam_role" "this" {
-  name               = "power-user-${local.stack}-config-role"
-  description        = "config role for ${local.stack}"
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+resource "aws_config_aggregate_authorization" "this" {
+  account_id = var.manager_account_id
+  region     = "us-east-1"
 }
 
-resource "aws_iam_role_policy_attachment" "this" {
-  role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.this.arn
-}
+module "role" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/config-recorder"
 
-resource "aws_iam_policy" "this" {
-  name        = "power-user-${local.stack}-config-role-policy"
-  description = "config role policy for ${local.stack}"
-  policy      = data.aws_iam_policy_document.this.json
-}
-
-resource "aws_iam_role_policy_attachment" "aws_managed" {
-  role       = aws_iam_role.this.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWS_ConfigRole"
+  app                         = var.app
+  env                         = var.env
+  program                     = var.program
+  attach_permissions_boundary = var.attach_permissions_boundary
+  config_s3_bucket_name       = var.config_s3_bucket_name
 }

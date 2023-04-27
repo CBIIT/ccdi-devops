@@ -106,7 +106,7 @@ Please note that NCI restricts traffic to the non-production account environment
 | <a name="input_enable_deletion_protection"></a> [enable\_deletion\_protection](#input\_enable\_deletion\_protection) | prevents terraform from accidentally destroying the load balancer | `bool` | `true` | no |
 | <a name="input_enable_http2"></a> [enable\_http2](#input\_enable\_http2) | whether HTTP/2 is enabled in application load balancers | `bool` | `true` | no |
 | <a name="input_enable_waf_fail_open"></a> [enable\_waf\_fail\_open](#input\_enable\_waf\_fail\_open) | whether to allow a WAF-enabled load balancer to route requests to targets if it is unable to forward the requests to waf | `bool` | `false` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_http_port"></a> [http\_port](#input\_http\_port) | port on which the load balancer is listening for HTTP requests | `number` | `80` | no |
 | <a name="input_http_protocol"></a> [http\_protocol](#input\_http\_protocol) | protocol on which the load balancer is listening for HTTP requests | `string` | `"HTTP"` | no |
 | <a name="input_https_port"></a> [https\_port](#input\_https\_port) | port on which the load balancer is listening for HTTPS requests | `number` | `443` | no |
@@ -117,7 +117,7 @@ Please note that NCI restricts traffic to the non-production account environment
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | security group(s) to associate with the load balancer | `list(string)` | `[]` | no |
 | <a name="input_security_group_ingress_cidr"></a> [security\_group\_ingress\_cidr](#input\_security\_group\_ingress\_cidr) | CIDR block to be configured for the ALB inbound | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
-| <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy) | the name of the SSL policy for the HTTPS listener | `string` | `"ELBSecurityPolicy-2016-08"` | no |
+| <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy) | the name of the SSL policy for the HTTPS listener | `string` | `"ELBSecurityPolicy-TLS13-1-2-2021-06"` | no |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | the subnets to associate with the load balancer | `set(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | tags to apply to the load balancer and listeners (if created) | `map(string)` | `{}` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | id of the vpc for the alb | `string` | n/a | yes |

@@ -6,7 +6,7 @@ variable "app" {
 
 variable "env" {
   type        = string
-  description = "the target tier ('dev', 'qa', 'stage', or 'prod'.)"
+  description = "the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.)"
   sensitive   = false
 
   validation {
@@ -21,15 +21,9 @@ variable "program" {
   sensitive   = false
 
   validation {
-    condition     = contains(["crdc", "ccdi", "ctos"], var.program)
-    error_message = "valid values for program are 'crdc', 'ccdi', and 'ctos'"
+    condition     = contains(["crdc", "ccdi", "ctos", "fnl"], var.program)
+    error_message = "valid values for program are 'crdc', 'ccdi', 'fnl' and 'ctos'"
   }
-}
-
-variable "bucket_policy" {
-  type        = string
-  description = "required if enable_bucket_policy is true - provide the json document containing the bucket policy"
-  default     = null
 }
 
 variable "bucket_suffix" {
@@ -47,11 +41,6 @@ variable "enable_bucket_inventory" {
   type        = bool
   description = "whether to enable s3 bucket inventory feature"
   default     = false
-}
-
-variable "enable_bucket_policy" {
-  type        = bool
-  description = "whether to create a bucket policy resource to enable policies provided to be associated with the bucket"
 }
 
 variable "enable_object_expiration" {

@@ -25,7 +25,6 @@
 | [aws_s3_bucket_inventory.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_inventory) | resource |
 | [aws_s3_bucket_lifecycle_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration) | resource |
 | [aws_s3_bucket_logging.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_logging) | resource |
-| [aws_s3_bucket_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_versioning.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
 
@@ -34,14 +33,12 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
-| <a name="input_bucket_policy"></a> [bucket\_policy](#input\_bucket\_policy) | required if enable\_bucket\_policy is true - provide the json document containing the bucket policy | `string` | `null` | no |
 | <a name="input_bucket_suffix"></a> [bucket\_suffix](#input\_bucket\_suffix) | n/a | `string` | n/a | yes |
 | <a name="input_enable_access_logging"></a> [enable\_access\_logging](#input\_enable\_access\_logging) | whether to enable access logging for the bucket | `bool` | `false` | no |
 | <a name="input_enable_bucket_inventory"></a> [enable\_bucket\_inventory](#input\_enable\_bucket\_inventory) | whether to enable s3 bucket inventory feature | `bool` | `false` | no |
-| <a name="input_enable_bucket_policy"></a> [enable\_bucket\_policy](#input\_enable\_bucket\_policy) | whether to create a bucket policy resource to enable policies provided to be associated with the bucket | `bool` | n/a | yes |
 | <a name="input_enable_object_expiration"></a> [enable\_object\_expiration](#input\_enable\_object\_expiration) | whether to expire objects after 90 days with lifecycle rules | `bool` | `false` | no |
 | <a name="input_enable_object_versioning"></a> [enable\_object\_versioning](#input\_enable\_object\_versioning) | whether to enable versioning for objects in the bucket | `bool` | `true` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_expire_objects_after_days"></a> [expire\_objects\_after\_days](#input\_expire\_objects\_after\_days) | required if expire\_objects is true - number of days to retain objects in the bucket | `number` | `90` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | force terraform to destroy bucket and all objects within bucket | `bool` | `false` | no |
 | <a name="input_inventory_destination_bucket_arn"></a> [inventory\_destination\_bucket\_arn](#input\_inventory\_destination\_bucket\_arn) | n/a | `string` | `null` | no |

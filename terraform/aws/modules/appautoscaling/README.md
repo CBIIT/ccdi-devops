@@ -51,7 +51,7 @@ module "autoscaling_frontend" {
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_ecs_cluster_name"></a> [ecs\_cluster\_name](#input\_ecs\_cluster\_name) | name of the ecs cluster that the autoscaling target belongs to | `string` | n/a | yes |
 | <a name="input_ecs_service_name"></a> [ecs\_service\_name](#input\_ecs\_service\_name) | name of the ecs service that the autoscaling target belongs to | `string` | n/a | yes |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_max_capacity"></a> [max\_capacity](#input\_max\_capacity) | max capacity of the scalable target | `number` | `4` | no |
 | <a name="input_microservice"></a> [microservice](#input\_microservice) | the name of the microservice for the app autoscaling policy and target - i.e. frontend, backend, etc. | `string` | n/a | yes |
 | <a name="input_min_capacity"></a> [min\_capacity](#input\_min\_capacity) | minimum capacity of the scalable target | `number` | `1` | no |
