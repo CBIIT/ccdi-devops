@@ -30,5 +30,5 @@ module "role" {
   env                         = var.env
   program                     = var.program
   attach_permissions_boundary = var.attach_permissions_boundary
-  config_s3_bucket_arn        = var.config_s3_bucket_name
+  config_s3_bucket_name       = var.config_s3_bucket_name
 }
