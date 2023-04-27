@@ -70,3 +70,8 @@ output "rds_cluster_instance_port" {
   value     = aws_rds_cluster_instance.this.port
   sensitive = false
 }
+
+output "rds_password" {
+  value = random_password.master_password.result
+  sensitive = true
+}

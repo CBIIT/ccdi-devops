@@ -11,7 +11,7 @@ resource "aws_rds_cluster" "this" {
   backup_retention_period             =  var.backup_retention_period
   preferred_backup_window             =  var.backup_window
   preferred_maintenance_window        =  var.maintenance_window
-  port                                =  3306
+  port                                =  var.rds_port
   storage_encrypted                   =  true
   allow_major_version_upgrade         =  var.allow_major_version_upgrade
   enabled_cloudwatch_logs_exports     =  ["audit", "error", "general", "slowquery"]
@@ -76,8 +76,8 @@ resource "aws_security_group_rule" "rds_inbound" {
 
   description       = "From allowed SGs"
   type              = "ingress"
-  from_port         = 3306
-  to_port           = 3306
+  from_port         = var.rds_port
+  to_port           = var.rds_port
   protocol          = "tcp"
   cidr_blocks       = local.ranges
   security_group_id = aws_security_group.this[0].id

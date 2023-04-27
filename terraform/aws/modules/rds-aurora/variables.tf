@@ -65,6 +65,12 @@ variable "master_username" {
   description = "username for the database"
   sensitive   = false
 }
+variable "rds_port" {
+  type        = number
+  description = "rds aurora database port"
+  sensitive   = false
+  default     = 3306
+}
 variable "backup_retention_period" {
   type        = number
   description = "backup retention period in days - between 0 and 35"
