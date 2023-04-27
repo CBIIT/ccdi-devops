@@ -1,3 +1,29 @@
+![Frederick National Laboratory](./assets/fnl.svg)
+
+# Overview
+
+A module that creates an AWS Config Recorder resource, an AWS Config Delivery Channel resource, and an IAM Role that is assumed by the AWS Config service. The Config Recorder resource defines the scope of services that the Config service can monitor. The default value (expressed as a list) for the variable `recording_group_resource_types` defines the scope for all services that we want to monitor, and ommits resources that are either (a) not relevant; or (b) not managed by FNL/CTOS and do not relate to services managed by FNL/CTOS.
+
+# Usage 
+
+The ratio of resources defined in this module and the target accounts for the resources to be provisioned into is a 1:1 ratio. It is advised to use the `count` terraform meta argument to conditionally create the resources in the module when the target tier is `dev` or `stage`.
+
+## Module Template
+
+The following provides an example of how to use this module by defining values for all required and optional variables. Remember to pin the release version using the `?ref` reference trailing the url in the `source` argument.
+
+<pre><code>module "config_recorder" {
+    source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/config-recorder?ref=v?.?.?"
+
+    app                             = 
+    attach_permissions_boundary     = 
+    config_s3_bucket_name           = 
+    enable_config                   = 
+    env                             = 
+    program                         = 
+    recording_group_resource_types  = 
+}</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
