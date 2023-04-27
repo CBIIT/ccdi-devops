@@ -163,3 +163,4 @@ variable "recording_group_resouce_types" {
   ]
   sensitive = false
 }
+
