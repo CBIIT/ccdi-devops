@@ -59,6 +59,7 @@
 | <a name="input_max_capacity"></a> [max\_capacity](#input\_max\_capacity) | The maximum capacity. | `number` | `2` | no |
 | <a name="input_min_capacity"></a> [min\_capacity](#input\_min\_capacity) | The minimum capacity. | `number` | `1` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_rds_port"></a> [rds\_port](#input\_rds\_port) | rds aurora database port | `number` | `3306` | no |
 | <a name="input_rds_suffix"></a> [rds\_suffix](#input\_rds\_suffix) | suffix to append to the rds instance name | `string` | `"rds"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | map of tags to apply to the instance | `map(string)` | `{}` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | id of the vpc to create the security group in - required if create\_security\_group is true | `string` | `null` | no |
@@ -81,6 +82,7 @@
 | <a name="output_rds_cluster_instance_port"></a> [rds\_cluster\_instance\_port](#output\_rds\_cluster\_instance\_port) | n/a |
 | <a name="output_rds_cluster_master_username"></a> [rds\_cluster\_master\_username](#output\_rds\_cluster\_master\_username) | n/a |
 | <a name="output_rds_cluster_port"></a> [rds\_cluster\_port](#output\_rds\_cluster\_port) | n/a |
+| <a name="output_rds_password"></a> [rds\_password](#output\_rds\_password) | n/a |
 | <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | arn of the security group - if create\_security\_group is true |
 | <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | id of the security group - if create\_security\_group is true |
 | <a name="output_security_group_name"></a> [security\_group\_name](#output\_security\_group\_name) | name of the security group - if create\_security\_group is true |

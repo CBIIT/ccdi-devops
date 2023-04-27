@@ -1,8 +1,3 @@
-output "db_password" {
-  value     = random_password.master_password.result
-  sensitive = true
-
-}
 
 output "security_group_arn" {
   value       = aws_security_group.this[0].arn
