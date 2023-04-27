@@ -21,6 +21,10 @@ resource "aws_config_delivery_channel" "this" {
   name           = "example"
   s3_bucket_name = var.config_s3_bucket_name
   s3_key_prefix  = "config"
+
+  depends_on = [
+    aws_config_delivery_channel.this
+  ]
 }
 
 module "role" {
