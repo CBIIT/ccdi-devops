@@ -5,6 +5,6 @@ resource "aws_config_conformance_pack" "this" {
 
 resource "aws_s3_object" "this" {
   bucket = var.config_s3_bucket_name
-  key    = "templates/NIST-800-53-REV-5.yml"
-  source = "templates/NIST-800-53-REV-5.yml"
+  key    = "templates/nist-800-53-rev-5.yml"
+  source = "templates/nist-800-53-rev-5.yml"
 }
