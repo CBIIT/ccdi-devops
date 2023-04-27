@@ -6,8 +6,6 @@ A module that creates an AWS Config Recorder resource, an AWS Config Delivery Ch
 
 # Usage
 
-# Usage
-
 As a best practice, consider using the values of `nonprod` or `prod` for the argument passed to the module called `env`, rather than providing the `terraform.workspace`. See examples for more information.
 
 ## Module Template
