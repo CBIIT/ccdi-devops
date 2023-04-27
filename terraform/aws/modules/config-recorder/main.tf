@@ -24,11 +24,11 @@ resource "aws_config_delivery_channel" "this" {
 }
 
 module "role" {
-  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/config-recorder?ref=v3.0.12"
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/config-recorder"
 
   app                         = var.app
   env                         = var.env
   program                     = var.program
   attach_permissions_boundary = var.attach_permissions_boundary
-  config_s3_bucket_name       = var.config_s3_bucket_name
+  config_s3_bucket_arn        = var.config_s3_bucket_name
 }
