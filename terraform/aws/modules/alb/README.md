@@ -2,11 +2,11 @@
 
 # Overview
 
-A module that creates an AWS Application Load Balancer based on standards and conventions established by the program. Load Balancer Listener Rules and Target Groups are not created by this module. 
+A module that creates an AWS Application Load Balancer (ALB) based on standards and conventions established by the program. Load Balancer Listener Rules and Target Groups are not created by this module. The ALB automatically sends server-side access logs to the central management account, simplifying implementation while conforming to observability best practices.
 
 # Usage 
 
-The following provides an example of how to use this module by defining values for all required and optional variables. In the example, both HTTP and HTTPS listeners are also being created. Remember to pin the release version using the `?ref` reference trailing the url in the `source` argument.
+The following provides an example of how to use this module by defining values for all required and optional variables. Remember to pin the release version using the `?ref` reference trailing the url in the `source` argument.
 
 ## Module Template
 The following code block is provided for engineers to copy into project repositories that intend to call this module. Keep in mind that all arguments are declared in the code block. Depending on intended use, some arguments may not be necessary to define at the project level. See the Conditional Resources section for more details. 
