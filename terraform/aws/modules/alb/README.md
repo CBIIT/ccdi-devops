@@ -85,9 +85,6 @@ Please note that NCI restricts traffic to the non-production account environment
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_access_logs_bucket"></a> [access\_logs\_bucket](#input\_access\_logs\_bucket) | name of the destination bucket for load balancer access logs | `string` | `null` | no |
-| <a name="input_access_logs_enabled"></a> [access\_logs\_enabled](#input\_access\_logs\_enabled) | enables load balancer access logging | `bool` | `false` | no |
-| <a name="input_access_logs_prefix"></a> [access\_logs\_prefix](#input\_access\_logs\_prefix) | directory prefix to store load balancer access logs within - default is root directory | `string` | `null` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_certificate_arn"></a> [certificate\_arn](#input\_certificate\_arn) | arn of the certificate for HTTPS listeners, not needed for HTTP listeners | `string` | `null` | no |
 | <a name="input_create_http_listener"></a> [create\_http\_listener](#input\_create\_http\_listener) | whether to create an HTTP listener | `bool` | `true` | no |
@@ -107,11 +104,10 @@ Please note that NCI restricts traffic to the non-production account environment
 | <a name="input_internal"></a> [internal](#input\_internal) | whether the load balancer is internally facing | `bool` | `false` | no |
 | <a name="input_preserve_host_header"></a> [preserve\_host\_header](#input\_preserve\_host\_header) | whether the Application Load Balancer should preserve the Host header in the HTTP request and send it to the target without any change | `bool` | `true` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
-| <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | security group(s) to associate with the load balancer | `list(string)` | `[]` | no |
+| <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | security group(s) to associate with the load balancer - required if create\_security\_group is false | `list(string)` | `[]` | no |
 | <a name="input_security_group_ingress_cidr"></a> [security\_group\_ingress\_cidr](#input\_security\_group\_ingress\_cidr) | CIDR block to be configured for the ALB inbound | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy) | the name of the SSL policy for the HTTPS listener | `string` | `"ELBSecurityPolicy-TLS13-1-2-2021-06"` | no |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | the subnets to associate with the load balancer | `set(string)` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | tags to apply to the load balancer and listeners (if created) | `map(string)` | `{}` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | id of the vpc for the alb | `string` | n/a | yes |
 
 # Outputs
