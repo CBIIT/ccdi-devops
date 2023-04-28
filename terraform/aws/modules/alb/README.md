@@ -14,9 +14,6 @@ The following code block is provided for engineers to copy into project reposito
 <pre><code> module "alb" {
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/alb?ref=v?.?.?"
 
-  access_logs_enabled         = 
-  access_logs_bucket          = 
-  access_logs_prefix          = 
   app                         = 
   certificate_arn             = 
   create_http_listener        = 
@@ -41,11 +38,6 @@ The following code block is provided for engineers to copy into project reposito
   ssl_policy                  = 
   subnets                     = 
   vpc_id                      = 
-
-  tags = {
-    key   = "value",
-    key2  = "value2"
-  }
 }</code></pre>
 
 ## Conditional Resources
