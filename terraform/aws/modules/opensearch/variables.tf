@@ -29,7 +29,7 @@ variable "program" {
 variable "automated_snapshot_start_hour" {
   type        = number
   description = "the hour in which snapshots will occur"
-  default     = 23
+  default     = 22
 }
 
 variable "availability_zone_count" {
@@ -53,12 +53,26 @@ variable "create_domain_policy" {
   type        = bool
   description = "create domain policy that allows aws principles to perform http requests to the domain"
   default     = true
+  sensitive   = false
 }
 
 variable "create_security_group" {
   type        = bool
   description = "whether to create a security group with default ingress and egress rules"
   default     = true
+  sensitive   = false
+}
+
+variable "custom_endpoint_certificate_arn" {
+  type        = string
+  description = "the arn of the certificate to use for the custom endpoint"
+  sensitive   = false
+}
+
+variable "custom_endpoint" {
+  type        = bool
+  description = "fully-qualified domain for the custom endpoint"
+  default     = null
 }
 
 variable "custom_endpoint_enabled" {
@@ -118,12 +132,6 @@ variable "ebs_volume_type" {
   default     = "gp3"
 }
 
-variable "enforce_https" {
-  type        = bool
-  description = "enforce traffic to be over https protocol only"
-  default     = true
-}
-
 variable "engine_version" {
   type        = string
   description = "the opensearch engine version"
@@ -166,11 +174,6 @@ variable "warm_type" {
   type        = string
   description = "instance type for warm nodes - valid values are ultrawarm1.medium.search, ultrawarm1.large.search and ultrawarm1.xlarge.search"
   default     = null
-}
-
-variable "zone_awareness_enabled" {
-  type        = bool
-  description = "enable multi-availability zone deployments"
 }
 
 variable "tags" {
