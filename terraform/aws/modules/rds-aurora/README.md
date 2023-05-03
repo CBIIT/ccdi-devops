@@ -69,7 +69,6 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_db_password"></a> [db\_password](#output\_db\_password) | n/a |
 | <a name="output_rds_cluster_arn"></a> [rds\_cluster\_arn](#output\_rds\_cluster\_arn) | n/a |
 | <a name="output_rds_cluster_db_name"></a> [rds\_cluster\_db\_name](#output\_rds\_cluster\_db\_name) | n/a |
 | <a name="output_rds_cluster_endpoint"></a> [rds\_cluster\_endpoint](#output\_rds\_cluster\_endpoint) | n/a |
