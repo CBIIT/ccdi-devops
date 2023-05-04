@@ -18,10 +18,10 @@ resource "aws_opensearch_domain" "this" {
       enabled = var.cold_storage_enabled
     }
 
-    zone_awareness_enabled = var.zone_awareness_enabled
+    zone_awareness_enabled = var.availability_zone_count == 2 ? true : false
 
     zone_awareness_config {
-      availability_zone_count = var.zone_awareness_enabled ? var.availability_zone_count : null
+      availability_zone_count = var.availability_zone_count
     }
   }
 
@@ -43,9 +43,11 @@ resource "aws_opensearch_domain" "this" {
   }
 
   domain_endpoint_options {
-    enforce_https           = var.enforce_https
-    tls_security_policy     = var.enforce_https ? "Policy-Min-TLS-1-2-2019-07" : null
-    custom_endpoint_enabled = var.custom_endpoint_enabled
+    enforce_https                   = true
+    tls_security_policy             = "Policy-Min-TLS-1-2-2019-07"
+    custom_endpoint_enabled         = var.custom_endpoint_enabled
+    custom_endpoint                 = var.custom_endpoint_enabled ? var.custom_endpoint : null
+    custom_endpoint_certificate_arn = var.custom_endpoint_enabled ? var.custom_endpoint_certificate_arn : null
   }
 
   encrypt_at_rest {
@@ -73,27 +75,15 @@ resource "aws_opensearch_domain" "this" {
     cloudwatch_log_group_arn = aws_cloudwatch_log_group.error.arn
     log_type                 = "ES_APPLICATION_LOGS"
   }
-
-  tags = merge(
-
-    {
-      "Name" = "${local.stack}-${var.domain_name_suffix}"
-    },
-    var.tags
-  )
 }
 
 resource "aws_opensearch_domain_policy" "this" {
   count = var.create_domain_policy ? 1 : 0
 
-  domain_name     = aws_opensearch_domain.this.domain_name
-  access_policies = data.aws_iam_policy_document.domain_policy[0].json
+  source = "git::https://github.com/CBIIT/ccdi-devops//terraform/aws/modules/opensearch-domain-policy"
 
-  lifecycle {
-    ignore_changes = [
-      access_policies,
-    ]
-  }
+  opensearch_domain_arn  = aws_opensearch_domain.this.arn
+  opensearch_domain_name = aws_opensearch_domain.this.domain_name
 }
 
 resource "aws_cloudwatch_log_group" "index_slow" {
