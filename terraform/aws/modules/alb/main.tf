@@ -13,17 +13,9 @@ resource "aws_lb" "this" {
   subnets                    = var.subnets
 
   access_logs {
-    enabled = var.access_logs_enabled
-    bucket  = var.access_logs_enabled ? var.access_logs_bucket : null
-    prefix  = var.access_logs_enabled ? var.access_logs_prefix : null
+    enabled = true
+    bucket  = "fnl-nonprod-manager-alb-server-access-logs"
   }
-
-  tags = merge(
-    {
-      "Name" = "${local.stack}-alb"
-    },
-    var.tags
-  )
 }
 
 resource "aws_lb_listener" "http" {
@@ -42,8 +34,6 @@ resource "aws_lb_listener" "http" {
       status_code = "HTTP_301"
     }
   }
-
-  tags = var.tags
 }
 
 resource "aws_lb_listener" "https" {
@@ -64,8 +54,6 @@ resource "aws_lb_listener" "https" {
       status_code  = "503"
     }
   }
-
-  tags = var.tags
 }
 
 resource "aws_security_group" "this" {
@@ -83,26 +71,23 @@ resource "aws_security_group" "this" {
 resource "aws_security_group_rule" "inbound_http" {
   count = var.create_security_group ? 1 : 0
 
-  description = "allow inbound traffic from http"
-  from_port   = "80"
-  protocol    = "tcp"
-  to_port     = "80"
-  cidr_blocks = var.create_security_group ? var.security_group_ingress_cidr : null
-
   security_group_id = aws_security_group.this[0].id
+  description       = "allow inbound traffic from http"
   type              = "ingress"
+  from_port         = "80"
+  protocol          = "tcp"
+  to_port           = "80"
+  cidr_blocks       = var.create_security_group ? var.security_group_ingress_cidr : null
 }
 
 resource "aws_security_group_rule" "inbound_https" {
   count = var.create_security_group ? 1 : 0
 
-  description = "allow inbound traffic from https"
-  from_port   = "443"
-  protocol    = "tcp"
-  to_port     = "443"
-
   security_group_id = aws_security_group.this[0].id
+  description       = "allow inbound traffic from https"
   type              = "ingress"
+  from_port         = "443"
+  protocol          = "tcp"
+  to_port           = "443"
   cidr_blocks       = var.create_security_group ? var.security_group_ingress_cidr : null
-
 }

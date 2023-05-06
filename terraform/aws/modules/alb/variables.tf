@@ -26,27 +26,6 @@ variable "program" {
   }
 }
 
-variable "access_logs_enabled" {
-  type        = bool
-  description = "enables load balancer access logging"
-  default     = false
-  sensitive   = false
-}
-
-variable "access_logs_bucket" {
-  type        = string
-  description = "name of the destination bucket for load balancer access logs"
-  default     = null
-  sensitive   = false
-}
-
-variable "access_logs_prefix" {
-  type        = string
-  description = "directory prefix to store load balancer access logs within - default is root directory"
-  default     = null
-  sensitive   = false
-}
-
 variable "certificate_arn" {
   type        = string
   description = "arn of the certificate for HTTPS listeners, not needed for HTTP listeners"
@@ -138,7 +117,6 @@ variable "https_protocol" {
   sensitive   = false
 }
 
-
 variable "idle_timeout" {
   type        = number
   description = "in seconds, the amount of time the connection is permitted to be idle"
@@ -162,7 +140,7 @@ variable "preserve_host_header" {
 
 variable "security_group_ids" {
   type        = list(string)
-  description = "security group(s) to associate with the load balancer"
+  description = "security group(s) to associate with the load balancer - required if create_security_group is false"
   default     = []
   sensitive   = false
 }
@@ -184,13 +162,6 @@ variable "security_group_ingress_cidr" {
   type        = list(string)
   description = "CIDR block to be configured for the ALB inbound"
   default     = ["0.0.0.0/0"]
-  sensitive   = false
-}
-
-variable "tags" {
-  type        = map(string)
-  description = "tags to apply to the load balancer and listeners (if created)"
-  default     = {}
   sensitive   = false
 }
 
