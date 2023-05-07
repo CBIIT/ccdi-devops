@@ -15,6 +15,7 @@ resource "aws_lb" "this" {
   access_logs {
     enabled = true
     bucket  = "fnl-nonprod-manager-alb-server-access-logs"
+    prefix = "${var.program}/${var.env}/${var.app}/alb-access-logs"
   }
 }
 
