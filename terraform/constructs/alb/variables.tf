@@ -2,6 +2,11 @@
 #  Required Variables ############
 ##################################
 
+variable "security_group_id" {
+  type = list(string) 
+  
+}
+
 variable "access_logs_bucket" {
   type        = string
   description = "The log bucket to send S3 access logs to"
