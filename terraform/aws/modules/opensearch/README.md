@@ -4,6 +4,28 @@
 
 # Usage
 
+The following template represents the minimum configuration required to implement the module.
+
+<pre><code>
+module "opensearch" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/opensearch?ref=v?.?.?"
+
+  app                       = 
+  availability_zone_count   = 
+  dedicated_master_count    = 
+  dedicated_master_enabled  = 
+  dedicated_master_type     = 
+  engine_version            = 
+  instance_count            = 
+  instance_type             = 
+  subnet_ids                = 
+  vpc_id                    = 
+}
+</code></pre>
+
+
+The following template represents all arguments available to configure the module.
+
 <pre><code>
 module "opensearch" {
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/opensearch?ref=v?.?.?"
@@ -14,9 +36,9 @@ module "opensearch" {
   cloudwatch_log_retention_in_days = 
   cold_storage_enabled             = 
   create_domain_policy             = 
-  create_service_linked_role       = 
-  create_manual_snapshot_role      = 
   create_security_group            = 
+  custom_endpoint_certificate_arn  = 
+  custom_endpoint                  = 
   custom_endpoint_enabled          = 
   dedicated_master_count           = 
   dedicated_master_enabled         = 
@@ -33,15 +55,12 @@ module "opensearch" {
   instance_count                   = 
   instance_type                    = 
   program                          = 
-  snapshot_bucket_arn              = 
+  security_group_ids               = []
   subnet_ids                       = []
   vpc_id                           = 
   warm_count                       = 
   warm_enabled                     = 
   warm_type                        = 
-  zone_awareness_enabled           = 
-
-  domain_policy_actions = []
 }
 </code></pre>
 <!-- BEGIN_TF_DOCS -->

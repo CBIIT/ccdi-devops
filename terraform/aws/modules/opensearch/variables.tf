@@ -179,6 +179,19 @@ variable "subnet_ids" {
   sensitive   = false
 }
 
+variable "tags" {
+  type        = map(string)
+  description = "tags to apply to the load balancer and listeners (if created)"
+  default     = {}
+  sensitive   = false
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "id of the vpc the cluster is deployed to"
+  sensitive   = false
+}
+
 variable "warm_count" {
   type        = number
   description = "number of warm nodes in the domain cluster"
@@ -196,20 +209,6 @@ variable "warm_enabled" {
 variable "warm_type" {
   type        = string
   description = "instance type for warm nodes - valid values are ultrawarm1.medium.search, ultrawarm1.large.search and ultrawarm1.xlarge.search"
-  default     = null
-  sensitive   = false
-}
-
-variable "tags" {
-  type        = map(string)
-  description = "tags to apply to the load balancer and listeners (if created)"
-  default     = {}
-  sensitive   = false
-}
-
-variable "vpc_id" {
-  type        = string
-  description = "id of the vpc the cluster is deployed to"
   default     = null
   sensitive   = false
 }
