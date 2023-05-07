@@ -1,3 +1,20 @@
+![Frederick National Laboratory](./assets/fnl.svg)
+
+# Overview 
+
+# Usage
+
+<pre><code>
+module "securityhub" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/security-hub?ref=v?.?.?"
+
+  manager_account_id          = 
+  enable_cis_standard         = 
+  enable_foundations_standard = 
+  enable_nist_standard        =
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
@@ -17,9 +34,9 @@
 |------|------|
 | [aws_securityhub_account.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/securityhub_account) | resource |
 | [aws_securityhub_invite_accepter.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/securityhub_invite_accepter) | resource |
+| [aws_securityhub_standards_subscription.cis](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/securityhub_standards_subscription) | resource |
 | [aws_securityhub_standards_subscription.foundations](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/securityhub_standards_subscription) | resource |
 | [aws_securityhub_standards_subscription.nist](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/securityhub_standards_subscription) | resource |
-| [aws_securityhub_standards_subscriptions.cis](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/securityhub_standards_subscriptions) | resource |
 
 # Inputs
 
