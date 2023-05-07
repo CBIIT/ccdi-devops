@@ -1,58 +1,17 @@
 resource "aws_lb" "alb" {
-  # checkov:skip=CKV_AWS_152: ADD REASON
-  name                       = "${var.program}-${var.tier}-${var.app}-lb"
+  name                       = "${var.program}-${var.app}-${var.env}-lb"
   internal                   = var.internal
-  load_balancer_type         = var.load_balancer_type
-  drop_invalid_header_fields = var.drop_invalid_header_fields
-  enable_deletion_protection = var.enable_deletion_protection
+  load_balancer_type         = "application"
+  drop_invalid_header_fields = true
+  desync_mitigation_mode     = "strictest"
+  enable_deletion_protection = true
+  enable_http2               = true
+  enable_waf_fail_open       = false
   security_groups            = var.security_group_id
-  subnets                    = var.public_subnets
+  subnets                    = var.subnets
 
   access_logs {
     bucket  = var.access_logs_bucket
-    enabled = var.access_logs_enabled
-  }
-
-  timeouts {
-    create = var.timeout_create
+    enabled = true
   }
 }
-
-resource "aws_lb_listener" "http" {
-  # checkov:skip=CKV_AWS_2: No need to only allow HTTPS, this rule redirects to HTTPS listener
-  # checkov:skip=CKV_AWS_103: No need to enforce TLS 1.2, this listener redirects to HTTPS listener
-  load_balancer_arn = aws_lb.alb.arn
-  port              = var.http_port
-  protocol          = var.http_protocol
-
-
-  default_action {
-    type = "redirect"
-
-    redirect {
-      port        = var.https_port
-      protocol    = var.https_protocol
-      status_code = var.http_redirect_status_code
-    }
-  }
-}
-#
-#resource "aws_lb_listener" "https" {
-#  # checkov:skip=CKV_AWS_2: This listener is using HTTPS, just passed through variable
-#  # checkov:skip=CKV_AWS_103: TLS policy added in the variable called alb_listener_ssl_policy
-#  load_balancer_arn = aws_lb.alb.arn
-#  port              = var.https_port
-#  protocol          = var.https_protocol
-#  ssl_policy        = var.alb_listener_ssl_policy
-#  certificate_arn   = var.domain_certificate_arn
-#
-#  default_action {
-#    type = "fixed-response"
-#
-#    fixed_response {
-#      content_type = var.fixed_response_content_type
-#      message_body = var.fixed_response_message_body
-#      status_code  = var.fixed_response_status_code
-#    }
-#  }
-#}
