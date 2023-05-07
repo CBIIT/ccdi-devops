@@ -36,48 +36,48 @@ module "security_group" {
   //  security_group_nih_cidrs    = var.security_group_nih_cidrs
 }
 
-module "frontend_target_group" {
-  source = "../../modules/target-group/"
+# module "frontend_target_group" {
+#   source = "../../modules/target-group/"
 
-  app                              = var.app
-  health_check_path                = var.frontend_health_check_path
-  health_check_protocol            = var.protocol
-  health_check_port                = var.health_check_port
-  health_check_matcher             = var.health_check_matcher
-  health_check_interval            = var.health_check_interval
-  health_check_timeout             = var.health_check_timeout
-  health_check_healthy_threshold   = var.health_check_healthy_threshold
-  health_check_unhealthy_threshold = var.health_check_unhealthy_threshold
-  protocol                         = var.protocol
-  stickiness_cookie_duration       = var.stickiness_cookie_duration
-  stickiness_enabled               = var.stickiness_enabled
-  stickiness_type                  = var.stickiness_type
-  port                             = var.frontend_port
-  program                          = var.program
-  tier                             = var.tier
-  target_description               = var.frontend_target_description
-  vpc_id                           = var.vpc_id
-}
+#   app                              = var.app
+#   health_check_path                = var.frontend_health_check_path
+#   health_check_protocol            = var.protocol
+#   health_check_port                = var.health_check_port
+#   health_check_matcher             = var.health_check_matcher
+#   health_check_interval            = var.health_check_interval
+#   health_check_timeout             = var.health_check_timeout
+#   health_check_healthy_threshold   = var.health_check_healthy_threshold
+#   health_check_unhealthy_threshold = var.health_check_unhealthy_threshold
+#   protocol                         = var.protocol
+#   stickiness_cookie_duration       = var.stickiness_cookie_duration
+#   stickiness_enabled               = var.stickiness_enabled
+#   stickiness_type                  = var.stickiness_type
+#   port                             = var.frontend_port
+#   program                          = var.program
+#   tier                             = var.tier
+#   target_description               = var.frontend_target_description
+#   vpc_id                           = var.vpc_id
+# }
 
-module "backend_target_group" {
-  source = "../../modules/target-group/"
+# module "backend_target_group" {
+#   source = "../../modules/target-group/"
 
-  app                              = var.app
-  health_check_path                = var.backend_health_check_path
-  health_check_protocol            = var.health_check_protocol
-  health_check_port                = var.health_check_port
-  health_check_matcher             = var.health_check_matcher
-  health_check_interval            = var.health_check_interval
-  health_check_timeout             = var.health_check_timeout
-  health_check_healthy_threshold   = var.health_check_healthy_threshold
-  health_check_unhealthy_threshold = var.health_check_unhealthy_threshold
-  protocol                         = var.protocol
-  stickiness_cookie_duration       = var.stickiness_cookie_duration
-  stickiness_enabled               = var.stickiness_enabled
-  stickiness_type                  = var.stickiness_type
-  port                             = var.backend_port
-  program                          = var.program
-  tier                             = var.tier
-  target_description               = var.backend_target_description
-  vpc_id                           = var.vpc_id
-}
+#   app                              = var.app
+#   health_check_path                = var.backend_health_check_path
+#   health_check_protocol            = var.health_check_protocol
+#   health_check_port                = var.health_check_port
+#   health_check_matcher             = var.health_check_matcher
+#   health_check_interval            = var.health_check_interval
+#   health_check_timeout             = var.health_check_timeout
+#   health_check_healthy_threshold   = var.health_check_healthy_threshold
+#   health_check_unhealthy_threshold = var.health_check_unhealthy_threshold
+#   protocol                         = var.protocol
+#   stickiness_cookie_duration       = var.stickiness_cookie_duration
+#   stickiness_enabled               = var.stickiness_enabled
+#   stickiness_type                  = var.stickiness_type
+#   port                             = var.backend_port
+#   program                          = var.program
+#   tier                             = var.tier
+#   target_description               = var.backend_target_description
+#   vpc_id                           = var.vpc_id
+# }
