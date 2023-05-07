@@ -179,13 +179,6 @@ variable "subnet_ids" {
   sensitive   = false
 }
 
-variable "tags" {
-  type        = map(string)
-  description = "tags to apply to the load balancer and listeners (if created)"
-  default     = {}
-  sensitive   = false
-}
-
 variable "vpc_id" {
   type        = string
   description = "id of the vpc the cluster is deployed to"
