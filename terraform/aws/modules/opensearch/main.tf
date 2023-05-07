@@ -89,19 +89,16 @@ resource "aws_opensearch_domain_policy" "this" {
 resource "aws_cloudwatch_log_group" "index_slow" {
   name              = "${local.stack}-${var.domain_name_suffix}-index-slow-logs"
   retention_in_days = var.cloudwatch_log_retention_in_days
-  tags              = var.tags
 }
 
 resource "aws_cloudwatch_log_group" "search_slow" {
   name              = "${local.stack}-${var.domain_name_suffix}-search-slow-logs"
   retention_in_days = var.cloudwatch_log_retention_in_days
-  tags              = var.tags
 }
 
 resource "aws_cloudwatch_log_group" "error" {
   name              = "${local.stack}-${var.domain_name_suffix}-error-logs"
   retention_in_days = var.cloudwatch_log_retention_in_days
-  tags              = var.tags
 }
 
 resource "aws_cloudwatch_log_resource_policy" "cloudwatch" {
