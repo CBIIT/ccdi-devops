@@ -19,22 +19,22 @@ module "alb" {
   internal                    = var.internal
   load_balancer_type          = var.load_balancer_type
   program                     = var.program
-  security_group_id           = [module.security_group.id]
+  security_group_id           = var.security_group_id
   timeout_create              = var.timeout_create
   public_subnets              = var.public_subnets
   tier                        = var.tier
 }
 
-module "security_group" {
-  source = "../../modules/security-groups/alb-sg/"
+# module "security_group" {
+#   source = "../../modules/security-groups/alb-sg/"
 
-  app                         = var.app
-  program                     = var.program
-  security_group_ingress_cidr = var.security_group_ingress_cidr
-  tier                        = var.tier
-  vpc_id                      = var.vpc_id
-  //  security_group_nih_cidrs    = var.security_group_nih_cidrs
-}
+#   app                         = var.app
+#   program                     = var.program
+#   security_group_ingress_cidr = var.security_group_ingress_cidr
+#   tier                        = var.tier
+#   vpc_id                      = var.vpc_id
+#   //  security_group_nih_cidrs    = var.security_group_nih_cidrs
+# }
 
 # module "frontend_target_group" {
 #   source = "../../modules/target-group/"
