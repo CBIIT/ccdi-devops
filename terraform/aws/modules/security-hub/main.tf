@@ -30,7 +30,7 @@ resource "aws_securityhub_standards_subscription" "foundations" {
   ]
 }
 
-resource "aws_securityhub_standards_subscriptions" "cis" {
+resource "aws_securityhub_standards_subscription" "cis" {
   count         = var.enable_cis_standard ? 1 : 0
   standards_arn = "arn:aws:securityhub:us-east-1::standards/cis-aws-foundations-benchmark/v/1.4.0"
 

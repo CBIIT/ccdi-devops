@@ -1,3 +1,20 @@
+![Frederick National Laboratory](./assets/fnl.svg)
+
+# Overview 
+
+# Usage
+
+<pre><code>
+module "securityhub" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/security-hub?ref=v?.?.?"
+
+  manager_account_id          = 
+  enable_cis_standard         = 
+  enable_foundations_standard = 
+  enable_nist_standard        =
+}
+</code></pre>
+
 <!-- BEGIN_TF_DOCS -->
 # Requirements
 
