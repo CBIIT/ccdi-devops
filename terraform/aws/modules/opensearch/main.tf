@@ -77,7 +77,7 @@ resource "aws_opensearch_domain" "this" {
   }
 }
 
-resource "aws_opensearch_domain_policy" "this" {
+module "opensearch_domain_policy" {
   count = var.create_domain_policy ? 1 : 0
 
   source = "git::https://github.com/CBIIT/ccdi-devops//terraform/aws/modules/opensearch-domain-policy"
