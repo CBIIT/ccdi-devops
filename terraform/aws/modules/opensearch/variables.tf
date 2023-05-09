@@ -199,6 +199,13 @@ variable "warm_enabled" {
   sensitive   = false
 }
 
+variable "zone_awareness_enabled"{
+  type        = bool
+  description = "whether to enable zone awareness"
+  default     = false
+  sensitive   = false
+}
+
 variable "warm_type" {
   type        = string
   description = "instance type for warm nodes - valid values are ultrawarm1.medium.search, ultrawarm1.large.search and ultrawarm1.xlarge.search"

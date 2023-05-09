@@ -18,7 +18,7 @@ resource "aws_opensearch_domain" "this" {
       enabled = var.cold_storage_enabled
     }
 
-    zone_awareness_enabled = var.availability_zone_count == 2 ? true : false
+    zone_awareness_enabled = var.zone_awareness_enabled #var.availability_zone_count == 2 ? true : false
 
     zone_awareness_config {
       availability_zone_count = var.availability_zone_count
