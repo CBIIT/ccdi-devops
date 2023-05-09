@@ -3,8 +3,8 @@ resource "aws_config_configuration_recorder" "this" {
   role_arn = module.role.arn
 
   recording_group {
-    all_supported  = false
-    resource_types = var.recording_group_resouce_types
+    all_supported  = true
+    include_global = true
   }
 }
 
