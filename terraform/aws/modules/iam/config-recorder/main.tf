@@ -16,7 +16,12 @@ resource "aws_iam_policy" "this" {
   policy      = data.aws_iam_policy_document.this.json
 }
 
-resource "aws_iam_role_policy_attachment" "aws_managed" {
+resource "aws_iam_role_policy_attachment" "aws_managed_1" {
   role       = aws_iam_role.this.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWS_ConfigRole"
+}
+
+resource "aws_iam_role_policy_attachment" "aws_managed_2" {
+  role       = aws_iam_role.this.name
+  policy_arn = "arn:aws:iam::aws:policy/aws-service-role/AWSConfigServiceRolePolicy"
 }
