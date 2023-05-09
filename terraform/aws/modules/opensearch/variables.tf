@@ -199,7 +199,7 @@ variable "warm_enabled" {
   sensitive   = false
 }
 
-variable "zone_awareness_enabled"{
+variable "zone_awareness_enabled" {
   type        = bool
   description = "whether to enable zone awareness"
   default     = false
