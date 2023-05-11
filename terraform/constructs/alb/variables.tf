@@ -23,7 +23,7 @@ variable "program" {
 }
 
 variable "security_group_id" {
-  type = list(string)  
+  type = list(string)
 }
 
 variable "subnets" {
