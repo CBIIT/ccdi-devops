@@ -41,15 +41,16 @@ resource "aws_kms_alias" "this" {
 }
 
 module "lifecycle_policy" {
+  count  = var.create_lifecycle_policy ? 1 : 0
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-lifecycle-policy"
 
   repository_name = aws_ecr_repository.this.name
 }
 
 module "access_policy" {
-  count = var.create_access_policy ? 1 : 0
+  count  = var.create_access_policy ? 1 : 0
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-access-policy"
 
-  source             = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-access-policy"
   app                = var.app
   nonprod_account_id = var.nonprod_account_id
   prod_account_id    = var.prod_account_id

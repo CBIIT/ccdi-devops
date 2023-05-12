@@ -22,6 +22,13 @@ variable "create_access_policy" {
   sensitive   = false
 }
 
+variable "create_lifecycle_policy" {
+  type        = bool
+  description = "whether to create a lifecycle policy for the ecr repository with standard expiration rules"
+  default     = true
+  sensitive   = false
+}
+
 variable "customer_master_key_spec" {
   type        = string
   description = "whether the key contains a symmetric key or an asymmetric key pair and the encryption algorithms or signing algorithms that the key supports"
