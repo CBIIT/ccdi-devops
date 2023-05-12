@@ -15,17 +15,24 @@ variable "program" {
   }
 }
 
-variable "create_lifecycle_policy" {
+variable "create_access_policy" {
   type        = bool
-  description = "if true, applies a lifecycle policy that only keeps the last 30 images"
+  description = "whether to create an access policy for the ecr repository with default permissions"
   default     = true
   sensitive   = false
 }
 
-variable "create_repository_policy" {
-  type        = bool
-  description = "if true, applies a repository policy that allows access to the repository from specified ecs and jenkins roles"
-  default     = false
+variable "customer_master_key_spec" {
+  type        = string
+  description = "whether the key contains a symmetric key or an asymmetric key pair and the encryption algorithms or signing algorithms that the key supports"
+  default     = "SYMMETRIC_DEFAULT"
+  sensitive   = false
+}
+
+variable "deletion_window_in_days" {
+  type        = number
+  description = "days before the key is permanently deleted after destruction of the resource"
+  default     = 7
   sensitive   = false
 }
 
@@ -36,56 +43,29 @@ variable "force_delete" {
   sensitive   = false
 }
 
-variable "encryption_type" {
+variable "image_tag_mutability" {
   type        = string
-  description = "encryption type to use for the repository - either AES256 or KMS - if KMS, must provide arn of the key"
-  default     = "AES256"
+  description = "tag mutability setting for the repository - must be 'MUTABLE' or 'IMMUTABLE'"
+  default     = "IMMUTABLE"
   sensitive   = false
 }
 
-variable "image_name" {
+variable "microservice" {
   type        = string
   description = "name of the image, such as 'frontend', 'backend', or 'files'"
   sensitive   = false
 }
 
-variable "image_tag_mutability" {
+variable "nonprod_account_id" {
   type        = string
-  description = "tag mutability setting for the repository - must be 'MUTABLE' or 'IMMUTABLE'"
-  default     = "MUTABLE"
-  sensitive   = false
-}
-
-variable "is_base_image" {
-  type        = bool
-  description = "whether the repository is used to manage a base image"
-  sensitive   = false
-}
-
-variable "kms_key_arn" {
-  type        = string
-  description = "arn of the kms key used to encrypt images - required if encryption type is KMS"
+  description = "the nonprod project account id - required if create_access_policy is true"
   default     = null
-  sensitive   = false
+  sensitive   = true
 }
 
-variable "product_family" {
+variable "prod_account_id" {
   type        = string
-  description = "if is_base_image is true, then provide a product family or archetype (i.e. 'bento')"
+  description = "the prod project account id - required if create_access_policy is true"
   default     = null
-  sensitive   = false
-}
-
-variable "tags" {
-  type        = map(any)
-  description = "the map of key value pairs to provide as tags"
-  default     = {}
-  sensitive   = false
-}
-
-variable "repository_policy_principal" {
-  type        = set(string)
-  description = "arn values for roles allowed to access the repository - only required if create_repository_policy is true"
-  default     = []
-  sensitive   = false
+  sensitive   = true
 }
