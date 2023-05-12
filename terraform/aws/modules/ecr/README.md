@@ -17,13 +17,20 @@
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.0 |
 
+# Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_access_policy"></a> [access\_policy](#module\_access\_policy) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-access-policy | n/a |
+| <a name="module_lifecycle_policy"></a> [lifecycle\_policy](#module\_lifecycle\_policy) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-lifecycle-policy | n/a |
+
 # Resources
 
 | Name | Type |
 |------|------|
-| [aws_ecr_lifecycle_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
-| [aws_ecr_repository_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository_policy) | resource |
+| [aws_kms_alias.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
+| [aws_kms_key.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
 | [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 # Inputs
@@ -31,18 +38,15 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
-| <a name="input_create_lifecycle_policy"></a> [create\_lifecycle\_policy](#input\_create\_lifecycle\_policy) | if true, applies a lifecycle policy that only keeps the last 30 images | `bool` | `true` | no |
-| <a name="input_create_repository_policy"></a> [create\_repository\_policy](#input\_create\_repository\_policy) | if true, applies a repository policy that allows access to the repository from specified ecs and jenkins roles | `bool` | `false` | no |
-| <a name="input_encryption_type"></a> [encryption\_type](#input\_encryption\_type) | encryption type to use for the repository - either AES256 or KMS - if KMS, must provide arn of the key | `string` | `"AES256"` | no |
+| <a name="input_create_access_policy"></a> [create\_access\_policy](#input\_create\_access\_policy) | whether to create an access policy for the ecr repository with default permissions | `bool` | `true` | no |
+| <a name="input_customer_master_key_spec"></a> [customer\_master\_key\_spec](#input\_customer\_master\_key\_spec) | whether the key contains a symmetric key or an asymmetric key pair and the encryption algorithms or signing algorithms that the key supports | `string` | `"SYMMETRIC_DEFAULT"` | no |
+| <a name="input_deletion_window_in_days"></a> [deletion\_window\_in\_days](#input\_deletion\_window\_in\_days) | days before the key is permanently deleted after destruction of the resource | `number` | `7` | no |
 | <a name="input_force_delete"></a> [force\_delete](#input\_force\_delete) | whether to allow terraform to delete a repository, even if contains images | `bool` | `false` | no |
-| <a name="input_image_name"></a> [image\_name](#input\_image\_name) | name of the image, such as 'frontend', 'backend', or 'files' | `string` | n/a | yes |
-| <a name="input_image_tag_mutability"></a> [image\_tag\_mutability](#input\_image\_tag\_mutability) | tag mutability setting for the repository - must be 'MUTABLE' or 'IMMUTABLE' | `string` | `"MUTABLE"` | no |
-| <a name="input_is_base_image"></a> [is\_base\_image](#input\_is\_base\_image) | whether the repository is used to manage a base image | `bool` | n/a | yes |
-| <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | arn of the kms key used to encrypt images - required if encryption type is KMS | `string` | `null` | no |
-| <a name="input_product_family"></a> [product\_family](#input\_product\_family) | if is\_base\_image is true, then provide a product family or archetype (i.e. 'bento') | `string` | `null` | no |
+| <a name="input_image_tag_mutability"></a> [image\_tag\_mutability](#input\_image\_tag\_mutability) | tag mutability setting for the repository - must be 'MUTABLE' or 'IMMUTABLE' | `string` | `"IMMUTABLE"` | no |
+| <a name="input_microservice"></a> [microservice](#input\_microservice) | name of the image, such as 'frontend', 'backend', or 'files' | `string` | n/a | yes |
+| <a name="input_nonprod_account_id"></a> [nonprod\_account\_id](#input\_nonprod\_account\_id) | the nonprod project account id - required if create\_access\_policy is true | `string` | `null` | no |
+| <a name="input_prod_account_id"></a> [prod\_account\_id](#input\_prod\_account\_id) | the prod project account id - required if create\_access\_policy is true | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
-| <a name="input_repository_policy_principal"></a> [repository\_policy\_principal](#input\_repository\_policy\_principal) | arn values for roles allowed to access the repository - only required if create\_repository\_policy is true | `set(string)` | `[]` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | the map of key value pairs to provide as tags | `map(any)` | `{}` | no |
 
 # Outputs
 
