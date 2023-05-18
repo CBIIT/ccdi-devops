@@ -22,7 +22,7 @@ module "lifecycle_policy" {
   count  = var.create_lifecycle_policy ? 1 : 0
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-lifecycle-policy"
 
-  repository_name = aws_ecr_repository.this.name 
+  repository_name = aws_ecr_repository.this.name
 }
 
 module "access_policy" {
