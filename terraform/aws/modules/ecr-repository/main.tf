@@ -26,7 +26,7 @@ module "lifecycle_policy" {
 }
 
 module "access_policy" {
-  count  = var.create_access_policy ? 1 : 0
+  count  = (var.access_policy_type != null) ? 1 : 0
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-access-policy"
 
   app                = var.app
@@ -34,4 +34,5 @@ module "access_policy" {
   prod_account_id    = var.prod_account_id
   program            = var.program
   repository_name    = aws_ecr_repository.this.name
+  access_policy_type = var.access_policy_type
 }

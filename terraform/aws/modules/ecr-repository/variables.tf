@@ -15,11 +15,16 @@ variable "program" {
   }
 }
 
-variable "create_access_policy" {
-  type        = bool
+variable "access_policy_type" {
   description = "whether to create an access policy for the ecr repository with default permissions"
-  default     = true
-  sensitive   = false
+  type        = string
+  description = "whether to create an access policy for the ecr repository with default permission(standard), alternate or none"
+  default     = "standard"
+
+  validation {
+    condition     = var.my_variable == "standard" || var.my_variable == "alternate" || var.my_variable == "none"
+    error_message = "Invalid value for access_policy_type. Allowed options are: standard, alternate, none."
+  }
 }
 
 variable "create_lifecycle_policy" {
