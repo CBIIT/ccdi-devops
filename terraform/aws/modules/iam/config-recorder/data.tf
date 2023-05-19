@@ -26,7 +26,7 @@ data "aws_iam_policy_document" "this" {
       "s3:PutObject",
       "s3:PutObjectAcl"
     ]
-    resources = ["arn:aws:s3:::${var.config_s3_bucket_name}/config/AWSLogs/${data.aws_caller_identity.current.account_id}/*"]
+    resources = ["arn:aws:s3:::${var.config_s3_bucket_name}/*"]
   }
 
   statement {

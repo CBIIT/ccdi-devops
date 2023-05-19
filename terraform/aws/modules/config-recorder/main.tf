@@ -19,8 +19,8 @@ resource "aws_config_configuration_recorder_status" "this" {
 
 resource "aws_config_delivery_channel" "this" {
   name           = "example"
-  s3_bucket_name = var.config_s3_bucket_name
-  s3_key_prefix  = "config"
+  s3_bucket_name = "ctos-nonprod-manager-config"
+  s3_key_prefix  = "${var.program}/${var.env}/${var.app}/config"
 
   depends_on = [
     aws_config_delivery_channel.this
@@ -39,5 +39,5 @@ module "role" {
   env                         = var.env
   program                     = var.program
   attach_permissions_boundary = var.attach_permissions_boundary
-  config_s3_bucket_name       = var.config_s3_bucket_name
+  config_s3_bucket_name       = "ctos-nonprod-manager-config"
 }

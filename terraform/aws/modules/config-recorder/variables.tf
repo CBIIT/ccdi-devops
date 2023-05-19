@@ -30,12 +30,6 @@ variable "attach_permissions_boundary" {
   sensitive   = false
 }
 
-variable "config_s3_bucket_name" {
-  type        = string
-  description = "the name of the s3 bucket to store aws config data"
-  sensitive   = false
-}
-
 variable "enable_config" {
   type        = bool
   description = "whether to enable aws config"
