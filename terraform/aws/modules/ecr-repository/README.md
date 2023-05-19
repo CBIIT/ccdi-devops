@@ -34,8 +34,9 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_access_policy_type"></a> [access\_policy\_type](#input\_access\_policy\_type) | access policy type is to define what kind of policy to apply either standard or alternate | `string` | `"standard"` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
-| <a name="input_create_access_policy"></a> [create\_access\_policy](#input\_create\_access\_policy) | whether to create an access policy for the ecr repository with default permissions | `bool` | `true` | no |
+| <a name="input_create_access_policy"></a> [create\_access\_policy](#input\_create\_access\_policy) | whether to create an ecr repository policy to control access | `bool` | `true` | no |
 | <a name="input_create_lifecycle_policy"></a> [create\_lifecycle\_policy](#input\_create\_lifecycle\_policy) | whether to create a lifecycle policy for the ecr repository with standard expiration rules | `bool` | `true` | no |
 | <a name="input_customer_master_key_spec"></a> [customer\_master\_key\_spec](#input\_customer\_master\_key\_spec) | whether the key contains a symmetric key or an asymmetric key pair and the encryption algorithms or signing algorithms that the key supports | `string` | `"SYMMETRIC_DEFAULT"` | no |
 | <a name="input_deletion_window_in_days"></a> [deletion\_window\_in\_days](#input\_deletion\_window\_in\_days) | days before the key is permanently deleted after destruction of the resource | `number` | `7` | no |
