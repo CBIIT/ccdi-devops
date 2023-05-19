@@ -59,7 +59,6 @@ The following provides an example of how to use this module by defining values f
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether or not to attach a permissions boundary to the role created for the config service | `bool` | n/a | yes |
-| <a name="input_config_s3_bucket_name"></a> [config\_s3\_bucket\_name](#input\_config\_s3\_bucket\_name) | the name of the s3 bucket to store aws config data | `string` | n/a | yes |
 | <a name="input_enable_config"></a> [enable\_config](#input\_enable\_config) | whether to enable aws config | `bool` | `true` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_manager_account_id"></a> [manager\_account\_id](#input\_manager\_account\_id) | the manager account id to authorize aggregation | `string` | n/a | yes |
