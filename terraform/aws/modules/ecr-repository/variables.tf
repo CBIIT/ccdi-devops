@@ -16,20 +16,27 @@ variable "program" {
 }
 
 variable "access_policy_type" {
-  description = "whether to create an access policy for the ecr repository with default permissions"
   type        = string
-  description = "whether to create an access policy for the ecr repository with default permission(standard), alternate or none"
+  description = "access policy type is to define what kind of policy to apply either standard or alternate"
   default     = "standard"
+  sensitive   = false
 
   validation {
-    condition     = var.my_variable == "standard" || var.my_variable == "alternate" || var.my_variable == "none"
-    error_message = "Invalid value for access_policy_type. Allowed options are: standard, alternate, none."
+    condition     = contains(["standard", "alternate"], var.access_policy_type)
+    error_message = "Invalid value for access_policy_type. Allowed options are: standard or alternate"
   }
 }
 
 variable "create_lifecycle_policy" {
   type        = bool
   description = "whether to create a lifecycle policy for the ecr repository with standard expiration rules"
+  default     = true
+  sensitive   = false
+}
+
+variable "create_access_policy" {
+  type        = bool
+  description = "whether to create an ecr repository policy to control access"
   default     = true
   sensitive   = false
 }

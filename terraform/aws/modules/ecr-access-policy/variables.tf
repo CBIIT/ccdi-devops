@@ -15,6 +15,18 @@ variable "program" {
   }
 }
 
+variable "access_policy_type" {
+  type        = string
+  description = "access policy type is to define what kind of policy to apply either standard or alternate"
+  default     = "standard"
+  sensitive   = false
+
+  validation {
+    condition     = contains(["standard", "alternate"], var.access_policy_type)
+    error_message = "Invalid value for access_policy_type. Allowed options are: standard or alternate"
+  }
+}
+
 variable "nonprod_account_id" {
   type        = string
   description = "the nonprod project account id"
@@ -31,15 +43,4 @@ variable "repository_name" {
   type        = string
   description = "the name of the ecr repository to associate the repository resource policy with"
   sensitive   = false
-}
-
-variable "access_policy_type" {
-  type        = string
-  description = "access policy type is to define what kind of policy to apply either standard, alternate or none"
-  default     = "standard"
-
-  validation {
-    condition     = var.my_variable == "standard" || var.my_variable == "alternate" || var.my_variable == "none"
-    error_message = "Invalid value for access_policy_type. Allowed options are: standard, alternate, none."
-  }
 }

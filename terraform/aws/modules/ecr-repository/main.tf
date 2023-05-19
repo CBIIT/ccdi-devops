@@ -26,7 +26,8 @@ module "lifecycle_policy" {
 }
 
 module "access_policy" {
-  count  = (var.access_policy_type != null) ? 1 : 0
+  count = var.create_access_policy ? 1 : 0
+
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-access-policy"
 
   app                = var.app
