@@ -12,12 +12,14 @@
 | Name | Type |
 |------|------|
 | [aws_ecr_repository_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository_policy) | resource |
-| [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.alternate](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.standard](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 # Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_access_policy_type"></a> [access\_policy\_type](#input\_access\_policy\_type) | access policy type is to define what kind of policy to apply either standard or alternate | `string` | `"standard"` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_nonprod_account_id"></a> [nonprod\_account\_id](#input\_nonprod\_account\_id) | the nonprod project account id | `string` | n/a | yes |
 | <a name="input_prod_account_id"></a> [prod\_account\_id](#input\_prod\_account\_id) | the prod project account id | `string` | n/a | yes |
