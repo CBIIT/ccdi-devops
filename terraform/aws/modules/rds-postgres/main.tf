@@ -35,9 +35,9 @@ resource "aws_db_instance" "this" {
   username                              = var.username
   vpc_security_group_ids                = var.create_security_group ? [aws_security_group.this[0].id] : var.vpc_security_group_ids
 
-  blue_green_update {
-    enabled = true
-  }
+//  blue_green_update {
+//    enabled = true
+//  }
 }
 
 resource "aws_iam_role" "this" {
