@@ -88,6 +88,13 @@ variable "db_name" {
   sensitive   = false
 }
 
+variable "db_subnet_group_name" {
+  type        = string
+  description = "name of the db subnet group - required if create_db_subnet_group is false"
+  default     = null
+  sensitive   = false
+}
+
 variable "deletion_protection" {
   type        = bool
   description = "whether or not to enable deletion protection for the rds instance"
