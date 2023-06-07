@@ -35,12 +35,14 @@
 | <a name="input_allow_major_version_upgrade"></a> [allow\_major\_version\_upgrade](#input\_allow\_major\_version\_upgrade) | whether to allow major version upgrades | `bool` | `false` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_apply_immediately"></a> [apply\_immediately](#input\_apply\_immediately) | whether or not to apply changes immediately | `bool` | `true` | no |
+| <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether to attach a permissions boundary to the role - required if enable\_enhanced\_monitoring is true | `bool` | `null` | no |
 | <a name="input_auto_minor_version_upgrade"></a> [auto\_minor\_version\_upgrade](#input\_auto\_minor\_version\_upgrade) | whether to automatically upgrade to the latest minor version of the postgres database engine | `bool` | `false` | no |
 | <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | the number of days to retain backups for the rds instance | `number` | `1` | no |
 | <a name="input_backup_window"></a> [backup\_window](#input\_backup\_window) | the backup window for the rds instance in UTC time | `string` | `"02:00-03:00"` | no |
 | <a name="input_create_db_subnet_group"></a> [create\_db\_subnet\_group](#input\_create\_db\_subnet\_group) | whether to create a db subnet group for the rds instance | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | whether to create a security group for the rds instance | `bool` | `true` | no |
 | <a name="input_db_name"></a> [db\_name](#input\_db\_name) | name of the database thats created with the instance (defaults to 'postgres' if null) | `string` | `null` | no |
+| <a name="input_db_subnet_group_name"></a> [db\_subnet\_group\_name](#input\_db\_subnet\_group\_name) | name of the db subnet group - required if create\_db\_subnet\_group is false | `string` | `null` | no |
 | <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | whether or not to enable deletion protection for the rds instance | `bool` | `true` | no |
 | <a name="input_enable_enhanced_monitoring"></a> [enable\_enhanced\_monitoring](#input\_enable\_enhanced\_monitoring) | whether to enable enhanced monitoring for the rds instance | `bool` | `false` | no |
 | <a name="input_enabled_cloudwatch_logs_exports"></a> [enabled\_cloudwatch\_logs\_exports](#input\_enabled\_cloudwatch\_logs\_exports) | list of log types to export to cloudwatch | `list(string)` | <pre>[<br>  "postgresql",<br>  "upgrade"<br>]</pre> | no |
