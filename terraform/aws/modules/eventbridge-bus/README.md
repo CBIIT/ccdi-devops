@@ -33,7 +33,7 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_"></a> [](#output\_) | arn of the custom event bus |
+| <a name="output_arn"></a> [arn](#output\_arn) | arn of the custom event bus |
 | <a name="output_id"></a> [id](#output\_id) | id of the custom event bus |
 | <a name="output_name"></a> [name](#output\_name) | name of the custom event bus |
 <!-- END_TF_DOCS -->
