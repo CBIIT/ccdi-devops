@@ -1,4 +1,4 @@
-output "" {
+output "arn" {
   value       = aws_cloudwatch_event_bus.this.arn
   description = "arn of the custom event bus"
   sensitive   = false
