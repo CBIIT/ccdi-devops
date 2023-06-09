@@ -35,7 +35,7 @@
 | <a name="input_allow_major_version_upgrade"></a> [allow\_major\_version\_upgrade](#input\_allow\_major\_version\_upgrade) | whether to allow major version upgrades | `bool` | `false` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_apply_immediately"></a> [apply\_immediately](#input\_apply\_immediately) | whether or not to apply changes immediately | `bool` | `true` | no |
-| <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether to attach a permissions boundary to the role | `bool` | `null` | no |
+| <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether to attach a permissions boundary to the role - required if enable\_enhanced\_monitoring is true | `bool` | `null` | no |
 | <a name="input_auto_minor_version_upgrade"></a> [auto\_minor\_version\_upgrade](#input\_auto\_minor\_version\_upgrade) | whether to automatically upgrade to the latest minor version of the postgres database engine | `bool` | `false` | no |
 | <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | the number of days to retain backups for the rds instance | `number` | `1` | no |
 | <a name="input_backup_window"></a> [backup\_window](#input\_backup\_window) | the backup window for the rds instance in UTC time | `string` | `"02:00-03:00"` | no |
