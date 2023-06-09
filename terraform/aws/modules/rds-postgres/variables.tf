@@ -52,6 +52,7 @@ variable "attach_permissions_boundary" {
   sensitive   = false
 }
 
+
 variable "auto_minor_version_upgrade" {
   type        = bool
   description = "whether to automatically upgrade to the latest minor version of the postgres database engine"
