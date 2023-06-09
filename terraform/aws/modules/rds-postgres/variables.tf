@@ -46,6 +46,12 @@ variable "allow_major_version_upgrade" {
   sensitive   = false
 }
 
+variable "attach_permissions_boundary" {
+  type        = bool
+  description = "whether to attach a permissions boundary to the role"
+  sensitive   = false
+}
+
 variable "auto_minor_version_upgrade" {
   type        = bool
   description = "whether to automatically upgrade to the latest minor version of the postgres database engine"
