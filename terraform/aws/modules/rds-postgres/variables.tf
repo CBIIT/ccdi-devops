@@ -48,10 +48,10 @@ variable "allow_major_version_upgrade" {
 
 variable "attach_permissions_boundary" {
   type        = bool
-  description = "whether to attach a permissions boundary to the role"
+  description = "whether to attach a permissions boundary to the role - required if enable_enhanced_monitoring is true"
+  default     = null
   sensitive   = false
 }
-
 
 variable "auto_minor_version_upgrade" {
   type        = bool
@@ -234,12 +234,5 @@ variable "vpc_security_group_ids" {
   type        = list(string)
   description = "list of security group ids to associate with the rds instance - only necessary if create_security_group is false"
   default     = []
-  sensitive   = false
-}
-
-variable "attach_permissions_boundary" {
-  type        = bool
-  description = "whether to attach a permissions boundary to the role - required if enable_enhanced_monitoring is true"
-  default     = null
   sensitive   = false
 }
