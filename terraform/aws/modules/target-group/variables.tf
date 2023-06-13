@@ -90,7 +90,7 @@ variable "health_check_healthy_threshold" {
 variable "health_check_unhealthy_threshold" {
   type        = number
   description = "The number of consecutive health check failures required before considering a target unhealthy"
-  default     = 5
+  default     = 2
   sensitive   = false
 }
 
