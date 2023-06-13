@@ -36,7 +36,7 @@
 | <a name="input_health_check_port"></a> [health\_check\_port](#input\_health\_check\_port) | The port the load balancer uses when performing health checks on targets | `string` | `"traffic-port"` | no |
 | <a name="input_health_check_protocol"></a> [health\_check\_protocol](#input\_health\_check\_protocol) | The protocol the load balancer uses when performing health checks on targets | `string` | `"HTTP"` | no |
 | <a name="input_health_check_timeout"></a> [health\_check\_timeout](#input\_health\_check\_timeout) | The amount of time, in seconds, during which no response means a failed health check | `number` | `20` | no |
-| <a name="input_health_check_unhealthy_threshold"></a> [health\_check\_unhealthy\_threshold](#input\_health\_check\_unhealthy\_threshold) | The number of consecutive health check failures required before considering a target unhealthy | `number` | `5` | no |
+| <a name="input_health_check_unhealthy_threshold"></a> [health\_check\_unhealthy\_threshold](#input\_health\_check\_unhealthy\_threshold) | The number of consecutive health check failures required before considering a target unhealthy | `number` | `2` | no |
 | <a name="input_port"></a> [port](#input\_port) | port on which targets receive traffic, unless overridden when registering a specific target | `number` | n/a | yes |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_protocol"></a> [protocol](#input\_protocol) | The protocol to use for routing traffic to the targets | `string` | `"HTTP"` | no |
