@@ -22,3 +22,4 @@ resource "aws_kms_key" "this" {
   customer_master_key_spec = "SYMMETRIC_DEFAULT"
   multi_region             = false
 }
+
