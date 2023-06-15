@@ -17,6 +17,12 @@
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0 |
 
+# Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_encryption"></a> [encryption](#module\_encryption) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3-bucket-encryption | main |
+
 # Resources
 
 | Name | Type |
@@ -38,6 +44,10 @@
 | <a name="input_enable_bucket_inventory"></a> [enable\_bucket\_inventory](#input\_enable\_bucket\_inventory) | whether to enable s3 bucket inventory feature | `bool` | `false` | no |
 | <a name="input_enable_object_expiration"></a> [enable\_object\_expiration](#input\_enable\_object\_expiration) | whether to expire objects after 90 days with lifecycle rules | `bool` | `false` | no |
 | <a name="input_enable_object_versioning"></a> [enable\_object\_versioning](#input\_enable\_object\_versioning) | whether to enable versioning for objects in the bucket | `bool` | `true` | no |
+| <a name="input_encryption_deletion_window_in_days"></a> [encryption\_deletion\_window\_in\_days](#input\_encryption\_deletion\_window\_in\_days) | number of days to wait before deleting an encryption key - required if encryption\_enabled is true and encryption\_sse\_algorithm is aws:kms | `number` | `7` | no |
+| <a name="input_encryption_enable_key_rotation"></a> [encryption\_enable\_key\_rotation](#input\_encryption\_enable\_key\_rotation) | enable key rotation - required if encryption is true encryption\_sse\_algorithm is aws:kms | `bool` | `false` | no |
+| <a name="input_encryption_enabled"></a> [encryption\_enabled](#input\_encryption\_enabled) | enable s3 object encryption | `bool` | `false` | no |
+| <a name="input_encryption_sse_algorithm"></a> [encryption\_sse\_algorithm](#input\_encryption\_sse\_algorithm) | server-side encryption algorithm - required if encryption\_enabled is true | `string` | `"AES256"` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_expire_objects_after_days"></a> [expire\_objects\_after\_days](#input\_expire\_objects\_after\_days) | required if expire\_objects is true - number of days to retain objects in the bucket | `number` | `90` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | force terraform to destroy bucket and all objects within bucket | `bool` | `false` | no |

@@ -18,7 +18,7 @@ variable "enable_key_rotation" {
   sensitive   = false
 }
 
-variable "ss3_algorithm" {
+variable "sse_algorithm" {
   type        = string
   description = "the server-side encryption algorithm to use - either 'AES256' and 'aws:kms'"
   sensitive   = false

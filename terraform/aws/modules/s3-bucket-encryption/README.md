@@ -25,7 +25,7 @@
 | <a name="input_bucket_id"></a> [bucket\_id](#input\_bucket\_id) | the id of the bucket to apply encryption to | `string` | n/a | yes |
 | <a name="input_deletion_window_in_days"></a> [deletion\_window\_in\_days](#input\_deletion\_window\_in\_days) | The duration in days after which the key is deleted after destruction of the resource - required if ss3\_algorithm is 'aws:kms' | `number` | `7` | no |
 | <a name="input_enable_key_rotation"></a> [enable\_key\_rotation](#input\_enable\_key\_rotation) | Specifies whether key rotation is enabled - required if ss3\_algorithm is 'aws:kms' | `bool` | `true` | no |
-| <a name="input_ss3_algorithm"></a> [ss3\_algorithm](#input\_ss3\_algorithm) | the server-side encryption algorithm to use - either 'AES256' and 'aws:kms' | `string` | n/a | yes |
+| <a name="input_sse_algorithm"></a> [sse\_algorithm](#input\_sse\_algorithm) | the server-side encryption algorithm to use - either 'AES256' and 'aws:kms' | `string` | n/a | yes |
 
 # Outputs
 
