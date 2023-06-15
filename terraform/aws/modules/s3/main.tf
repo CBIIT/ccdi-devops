@@ -64,3 +64,13 @@ resource "aws_s3_bucket_versioning" "this" {
     status = var.enable_object_versioning ? "Enabled" : "Disabled"
   }
 }
+
+module "encryption" {
+  count  = var.enable_encryption ? 1 : 0
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3-bucket-encryption?ref=main"
+
+  bucket_id               = aws_s3_bucket.this.id
+  deletion_window_in_days = var.encryption_deletion_window_in_days
+  enable_key_rotation     = var.encryption_enable_key_rotation
+  sse_algorithm           = var.encryption_sse_algorithm
+}
