@@ -53,13 +53,13 @@ output "name" {
 }
 
 output "security_group_arn" {
-  value       = aws_security_group.this[0].arn
+  value       = local.security_group_arn
   description = "arn of the security group if created by this module"
   sensitive   = false
 }
 
 output "security_group_id" {
-  value       = aws_security_group.this[0].id
+  value       = local.security_group_id
   description = "id of the security group if created by this module"
   sensitive   = false
 }
