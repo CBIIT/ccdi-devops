@@ -55,6 +55,34 @@ variable "enable_object_versioning" {
   default     = true
 }
 
+variable "encryption_enabled" {
+  type        = bool
+  description = "enable s3 object encryption"
+  default     = false
+  sensitive   = false
+}
+
+variable "encryption_deletion_window_in_days" {
+  type        = number
+  description = "number of days to wait before deleting an encryption key - required if encryption_enabled is true and encryption_sse_algorithm is aws:kms"
+  default     = 7
+  sensitive   = false
+}
+
+variable "encryption_enable_key_rotation" {
+  type        = bool
+  description = "enable key rotation - required if encryption is true encryption_sse_algorithm is aws:kms"
+  default     = false
+  sensitive   = false
+}
+
+variable "encryption_sse_algorithm" {
+  type        = string
+  description = "server-side encryption algorithm - required if encryption_enabled is true"
+  default     = "AES256"
+  sensitive   = false
+}
+
 variable "expire_objects_after_days" {
   type        = number
   description = "required if expire_objects is true - number of days to retain objects in the bucket"

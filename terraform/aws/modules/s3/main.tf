@@ -3,6 +3,30 @@ resource "aws_s3_bucket" "this" {
   force_destroy = var.force_destroy
 }
 
+resource "aws_s3_bucket_public_access_block" "this" {
+  bucket                  = aws_s3_bucket.this.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_versioning" "this" {
+  bucket = aws_s3_bucket.this.id
+
+  versioning_configuration {
+    status = var.enable_object_versioning ? "Enabled" : "Disabled"
+  }
+}
+
+resource "aws_s3_bucket_logging" "this" {
+  count = var.enable_access_logging ? 1 : 0
+
+  bucket        = var.enable_access_logging ? aws_s3_bucket.this.id : null
+  target_bucket = var.enable_access_logging ? var.logging_target_bucket : null
+  target_prefix = var.enable_access_logging ? var.logging_target_prefix : null
+}
+
 resource "aws_s3_bucket_inventory" "this" {
   count = var.enable_bucket_inventory ? 1 : 0
 
@@ -41,32 +65,8 @@ resource "aws_s3_bucket_lifecycle_configuration" "this" {
   }
 }
 
-resource "aws_s3_bucket_logging" "this" {
-  count = var.enable_access_logging ? 1 : 0
-
-  bucket        = var.enable_access_logging ? aws_s3_bucket.this.id : null
-  target_bucket = var.enable_access_logging ? var.logging_target_bucket : null
-  target_prefix = var.enable_access_logging ? var.logging_target_prefix : null
-}
-
-resource "aws_s3_bucket_public_access_block" "this" {
-  bucket                  = aws_s3_bucket.this.id
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
-
-resource "aws_s3_bucket_versioning" "this" {
-  bucket = aws_s3_bucket.this.id
-
-  versioning_configuration {
-    status = var.enable_object_versioning ? "Enabled" : "Disabled"
-  }
-}
-
 module "encryption" {
-  count  = var.enable_encryption ? 1 : 0
+  count  = var.encryption_enabled ? 1 : 0
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3-bucket-encryption?ref=main"
 
   bucket_id               = aws_s3_bucket.this.id
