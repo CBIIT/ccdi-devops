@@ -40,6 +40,10 @@ resource "aws_db_instance" "this" {
   blue_green_update {
     enabled = true
   }
+
+  lifecycle {
+    ignore_changes = [snapshot_identifier]
+  }
 }
 
 resource "aws_db_subnet_group" "this" {
