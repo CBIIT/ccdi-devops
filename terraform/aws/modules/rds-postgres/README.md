@@ -40,6 +40,7 @@
 | <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | the number of days to retain backups for the rds instance | `number` | `1` | no |
 | <a name="input_backup_window"></a> [backup\_window](#input\_backup\_window) | the backup window for the rds instance in UTC time | `string` | `"02:00-03:00"` | no |
 | <a name="input_create_db_subnet_group"></a> [create\_db\_subnet\_group](#input\_create\_db\_subnet\_group) | whether to create a db subnet group for the rds instance | `bool` | `true` | no |
+| <a name="input_create_from_snapshot"></a> [create\_from\_snapshot](#input\_create\_from\_snapshot) | whether to create the rds instance from a snapshot - if true, snapshot\_identifier must be set | `bool` | `false` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | whether to create a security group for the rds instance | `bool` | `true` | no |
 | <a name="input_db_name"></a> [db\_name](#input\_db\_name) | name of the database thats created with the instance (defaults to 'postgres' if null) | `string` | `null` | no |
 | <a name="input_db_subnet_group_name"></a> [db\_subnet\_group\_name](#input\_db\_subnet\_group\_name) | name of the db subnet group - required if create\_db\_subnet\_group is false | `string` | `null` | no |
@@ -59,6 +60,7 @@
 | <a name="input_performance_insights_retention_period"></a> [performance\_insights\_retention\_period](#input\_performance\_insights\_retention\_period) | the number of days to retain performance insights data for the rds instance | `number` | `7` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_rds_suffix"></a> [rds\_suffix](#input\_rds\_suffix) | suffix to append to the rds instance name after the stack name | `string` | `"rds-postgres"` | no |
+| <a name="input_snapshot_identifier"></a> [snapshot\_identifier](#input\_snapshot\_identifier) | identifier of the snapshot to create the rds instance from - required if create\_from\_snapshot is true | `string` | `null` | no |
 | <a name="input_storage_throughput"></a> [storage\_throughput](#input\_storage\_throughput) | the amount of throughput (in MB/s) to provision for the rds instance | `number` | `500` | no |
 | <a name="input_storage_type"></a> [storage\_type](#input\_storage\_type) | type of storage to use for the rds instance - either io1, gp2, or gp3 | `string` | `"gp3"` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | list of subnet ids to associate with the rds instance - necessary if create\_db\_subnet\_group is true | `list(string)` | `[]` | no |
