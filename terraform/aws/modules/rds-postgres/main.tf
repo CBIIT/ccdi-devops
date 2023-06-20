@@ -28,6 +28,7 @@ resource "aws_db_instance" "this" {
   performance_insights_retention_period = var.performance_insights_retention_period
   port                                  = 5432
   publicly_accessible                   = false
+  snapshot_identifier                   = var.create_from_snapshot ? var.snapshot_identifier : null
   skip_final_snapshot                   = false
   storage_encrypted                     = true
   storage_type                          = var.storage_type
