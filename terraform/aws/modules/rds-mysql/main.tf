@@ -29,6 +29,7 @@ resource "aws_db_instance" "this" {
   port                                  = 3306
   publicly_accessible                   = false
   skip_final_snapshot                   = false
+  snapshot_identifier                   = var.create_from_snapshot ? var.snapshot_identifier : null
   storage_encrypted                     = true
   storage_type                          = var.storage_type
   storage_throughput                    = var.allocated_storage > 399 ? var.storage_throughput : null
@@ -38,6 +39,10 @@ resource "aws_db_instance" "this" {
 
   blue_green_update {
     enabled = true
+  }
+
+  lifecycle {
+    ignore_changes = [snapshot_identifier]
   }
 }
 

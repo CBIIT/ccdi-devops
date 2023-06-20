@@ -81,6 +81,13 @@ variable "create_db_subnet_group" {
   sensitive   = false
 }
 
+variable "create_from_snapshot" {
+  type        = bool
+  description = "whether to create the rds instance from a snapshot - if true, snapshot_identifier must be set"
+  default     = false
+  sensitive   = false
+}
+
 variable "create_security_group" {
   type        = bool
   description = "whether to create a security group for the rds instance"
@@ -194,6 +201,13 @@ variable "rds_suffix" {
   type        = string
   description = "suffix to append to the rds instance name after the stack name"
   default     = "rds-postgres"
+  sensitive   = false
+}
+
+variable "snapshot_identifier" {
+  type        = string
+  description = "identifier of the snapshot to create the rds instance from - required if create_from_snapshot is true"
+  default     = null
   sensitive   = false
 }
 
