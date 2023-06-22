@@ -21,6 +21,7 @@ variable "enable_key_rotation" {
 variable "sse_algorithm" {
   type        = string
   description = "the server-side encryption algorithm to use - either 'AES256' and 'aws:kms'"
+  default     = "AES256"
   sensitive   = false
 
   validation {
