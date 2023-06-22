@@ -2,7 +2,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
   bucket = var.bucket_id
 
   rule {
-    bucket_key_enabled = var.ss3_algorithm == "aws:kms" ? true : false
+    bucket_key_enabled = var.sse_algorithm == "aws:kms" ? true : false
 
     apply_server_side_encryption_by_default {
       sse_algorithm     = var.sse_algorithm
