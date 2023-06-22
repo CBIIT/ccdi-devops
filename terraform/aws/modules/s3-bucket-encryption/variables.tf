@@ -25,7 +25,7 @@ variable "sse_algorithm" {
   sensitive   = false
 
   validation {
-    condition     = contains(["aws:kms", "AES256"], var.ss3_algorithm)
+    condition     = contains(["aws:kms", "AES256"], var.sse_algorithm)
     error_message = "valid values for the server side encyption algorythm are 'AES256' and 'aws:kms'"
   }
 }
