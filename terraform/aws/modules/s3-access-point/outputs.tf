@@ -26,7 +26,6 @@ output "endpoints" {
   value       = aws_s3_access_point.this.endpoints
   description = "the list of endpoints for the access point"
   sensitive   = false
-
 }
 
 output "id" {

@@ -74,3 +74,28 @@ module "encryption" {
   enable_key_rotation     = var.encryption_enable_key_rotation
   sse_algorithm           = var.encryption_sse_algorithm
 }
+
+module "access_point" {
+  count = var.create_access_point ? 1 : 0
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3-access-point?ref=v3.1.5"
+
+  access_point_suffix = var.access_point_suffix
+  account_id = data.aws_caller_identity.current.account_id
+  bucket_account_id = data.aws_caller_identity.current.account_id
+  bucket_name = aws_s3_bucket.this.id
+  vpc_id = var.access_point_vpc_id
+}
+
+variable "access_point_suffix" {
+  type        = string
+  description = "suffix to append to the access point name to describe its use or allowed principals - required if create_access_point is true"
+  default = "null"
+  sensitive   = false
+}
+
+variable "access_point_vpc_id" {
+    type        = string
+  description = "the vpc id from which to allow access to the bucket via the access point - required if create_access_point is true"
+  default = null
+  sensitive   = false
+}

@@ -31,6 +31,12 @@ variable "bucket_suffix" {
   description = ""
 }
 
+variable "create_access_point" {
+  type        = bool
+  description = "whether to create access points for the bucket"
+  default     = false
+}
+
 variable "enable_access_logging" {
   type        = bool
   description = "whether to enable access logging for the bucket"
