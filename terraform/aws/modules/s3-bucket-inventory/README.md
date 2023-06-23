@@ -17,15 +17,11 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_bucket_id"></a> [bucket\_id](#input\_bucket\_id) | the name of the bucket | `string` | n/a | yes |
-| <a name="input_bucket_suffix"></a> [bucket\_suffix](#input\_bucket\_suffix) | the suffix to be applied to the bucket name | `string` | n/a | yes |
 | <a name="input_destination_bucket_arn"></a> [destination\_bucket\_arn](#input\_destination\_bucket\_arn) | arn of the bucket to which the inventory will be delivered | `string` | n/a | yes |
 | <a name="input_destination_format"></a> [destination\_format](#input\_destination\_format) | the format of the inventory | `string` | `"CSV"` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_filter_prefix"></a> [filter\_prefix](#input\_filter\_prefix) | the prefix to be applied to the inventory (e.g. 'logs/') | `string` | `null` | no |
 | <a name="input_included_object_versions"></a> [included\_object\_versions](#input\_included\_object\_versions) | the object versions to be included in the inventory | `string` | `"All"` | no |
-| <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_schedule_frequency"></a> [schedule\_frequency](#input\_schedule\_frequency) | the frequency of the inventory | `string` | `"Daily"` | no |
 
 # Outputs
