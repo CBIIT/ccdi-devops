@@ -27,42 +27,25 @@ resource "aws_s3_bucket_logging" "this" {
   target_prefix = var.enable_access_logging ? var.logging_target_prefix : null
 }
 
-resource "aws_s3_bucket_inventory" "this" {
-  count = var.enable_bucket_inventory ? 1 : 0
+module "inventory" {
+  count = var.inventory_enabled ? 1 : 0
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3-bucket-inventory?ref=main"
 
-  bucket                   = var.enable_bucket_inventory ? aws_s3_bucket.this.id : null
-  name                     = var.enable_bucket_inventory ? "${local.stack}-${var.bucket_suffix}-inventory" : null
-  included_object_versions = var.enable_bucket_inventory ? var.inventory_included_object_versions : null
-
-  filter {
-    prefix = var.enable_bucket_inventory ? var.inventory_filter_prefix : null
-  }
-
-  schedule {
-    frequency = var.enable_bucket_inventory ? var.inventory_schedule_frequency : null
-  }
-
-  destination {
-    bucket {
-      bucket_arn = var.enable_bucket_inventory ? var.inventory_destination_bucket_arn : null
-      format     = var.enable_bucket_inventory ? var.inventory_destination_format : null
-    }
-  }
+  bucket_id = aws_s3_bucket.this.id
+  included_object_versions = var.inventory_included_object_versions
+  filter_prefix = var.inventory_filter_prefix
+  schedule_frequency = var.inventory_schedule_frequency
+  destination_bucket_arn = var.inventory_destination_bucket_arn
+  destination_format = var.inventory_destination_format
 }
 
-resource "aws_s3_bucket_lifecycle_configuration" "this" {
-  count = var.enable_object_expiration ? 1 : 0
+module "lifecycle_configuration" {
+  count = var.lifecycle_policy_enabled ? 1 : 0
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3-bucket-lifecycle?ref=main"
 
-  bucket = aws_s3_bucket.this.id
-
-  rule {
-    id     = var.enable_object_expiration ? "expire-after-90-days" : null
-    status = var.enable_object_expiration ? "Enabled" : null
-
-    expiration {
-      days = var.enable_object_expiration ? var.expire_objects_after_days : null
-    }
-  }
+  bucket_id = aws_s3_bucket.this.id
+  expiration_days              = var.lifecycle_expiration_days
+  noncurrent_expiration_days   = var.lifecycle_noncurrent_expiration_days
 }
 
 module "encryption" {
@@ -76,7 +59,7 @@ module "encryption" {
 }
 
 module "access_point" {
-  count = var.create_access_point ? 1 : 0
+  count = var.access_point_enabled ? 1 : 0
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3-access-point?ref=v3.1.5"
 
   access_point_suffix = var.access_point_suffix

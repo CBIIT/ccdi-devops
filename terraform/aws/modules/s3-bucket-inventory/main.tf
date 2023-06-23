@@ -1,7 +1,7 @@
 resource "aws_s3_bucket_inventory" "this" {
   bucket                   = var.bucket_id
   enabled                  = true
-  name                     = "${local.stack}-${var.bucket_suffix}-inventory"
+  name                     = "${var.bucket_id}-inventory"
   included_object_versions = var.included_object_versions
   optional_fields          = ["Size", "LastModifiedDate", "ETag", "ChecksumAlgorithm"]
 

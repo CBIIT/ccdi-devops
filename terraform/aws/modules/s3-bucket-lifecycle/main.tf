@@ -1,15 +1,6 @@
 resource "aws_s3_bucket_lifecycle_configuration" "this" {
   bucket = var.bucket_id
 
-  rule {
-    id     = "selected-objects-to-expire"
-    status = "Enabled"
-
-    filter {
-      prefix = var.filter_prefix
-    }
-  }
-
   dynamic "rule" {
     for_each = var.expiration_days != null ? [1] : []
 
@@ -24,7 +15,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "this" {
   }
 
   dynamic "rule" {
-    for_each = var.noncurrent_expiration_days == null ? [1] : []
+    for_each = var.noncurrent_expiration_days != null ? [1] : []
 
     content {
       id     = "noncurrent-object-expiration"
