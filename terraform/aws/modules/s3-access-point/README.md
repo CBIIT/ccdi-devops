@@ -22,7 +22,10 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_point_suffix"></a> [access\_point\_suffix](#input\_access\_point\_suffix) | suffix to append to the access point name to describe its use or allowed principals | `string` | n/a | yes |
+| <a name="input_account_id"></a> [account\_id](#input\_account\_id) | the account id of the account that owns the access point - defaults to account id of the terraform provider | `string` | `null` | no |
+| <a name="input_bucket_account_id"></a> [bucket\_account\_id](#input\_bucket\_account\_id) | the account id of the account that owns the bucket - defaults to account id of the terraform provider | `string` | `null` | no |
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | name of the bucket to associate with the access point | `string` | n/a | yes |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | the vpc id from which to allow access to the bucket via the access point | `string` | n/a | yes |
 
 # Outputs
 
