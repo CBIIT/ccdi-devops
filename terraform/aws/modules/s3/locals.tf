@@ -5,6 +5,6 @@ locals {
   access_point_arn = var.access_point_enabled ? module.access_point[0].arn : "access point was not created"
   access_point_domain_name = var.access_point_enabled ? module.access_point[0].domain_name : "access point was not created"
   access_point_endpoints = var.access_point_enabled ? module.access_point[0].endpoints : "access point was not created"
-  access_point_id = var.access_point_enabled ? module.access_point[0].id : "access point was not created"
+  access_point_id = var.access_point_enabled ? module.access_point[0].id : tomap({"access point created" = false})
   access_point_name = var.access_point_enabled ? module.access_point[0].name : "access point was not created"
 }
