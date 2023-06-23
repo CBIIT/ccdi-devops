@@ -26,6 +26,20 @@ variable "program" {
   }
 }
 
+variable "access_point_suffix" {
+  type        = string
+  description = "suffix to append to the access point name to describe its use or allowed principals - required if create_access_point is true"
+  default = "null"
+  sensitive   = false
+}
+
+variable "access_point_vpc_id" {
+    type        = string
+  description = "the vpc id from which to allow access to the bucket via the access point - required if create_access_point is true"
+  default = null
+  sensitive   = false
+}
+
 variable "bucket_suffix" {
   type        = string
   description = ""
