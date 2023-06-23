@@ -29,7 +29,7 @@ variable "program" {
 variable "access_point_suffix" {
   type        = string
   description = "suffix to append to the access point name to describe its use or allowed principals - required if create_access_point is true"
-  default = "null"
+  default = null
   sensitive   = false
 }
 
