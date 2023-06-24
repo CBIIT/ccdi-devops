@@ -7,14 +7,14 @@ variable "access_point_suffix" {
 variable "account_id" {
   type        = string
   description = "the account id of the account that owns the access point - defaults to account id of the terraform provider"
-  default = null
+  default     = null
   sensitive   = false
 }
 
 variable "bucket_account_id" {
   type        = string
   description = "the account id of the account that owns the bucket - defaults to account id of the terraform provider"
-  default = null
+  default     = null
   sensitive   = false
 }
 
