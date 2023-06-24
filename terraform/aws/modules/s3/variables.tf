@@ -30,20 +30,20 @@ variable "access_point_enabled" {
   type        = bool
   description = "whether to create access points for the bucket"
   default     = false
-  sensitive = false
+  sensitive   = false
 }
 
 variable "access_point_suffix" {
   type        = string
   description = "suffix to append to the access point name to describe its use or allowed principals - required if access_point_enabled is true"
-  default = null
+  default     = null
   sensitive   = false
 }
 
 variable "access_point_vpc_id" {
-    type        = string
+  type        = string
   description = "the vpc id from which to allow access to the bucket via the access point - required if access_point_enabled is true"
-  default = null
+  default     = null
   sensitive   = false
 }
 
@@ -115,7 +115,7 @@ variable "inventory_destination_bucket_arn" {
   type        = string
   description = "arn of the bucket to store inventory reports - required if inventory_enabled is true"
   default     = null
-  sensitive = false
+  sensitive   = false
 }
 
 variable "inventory_destination_format" {
@@ -128,42 +128,42 @@ variable "inventory_included_object_versions" {
   type        = string
   description = "use 'ALL' to inventory objects and histoical versions or 'CURRENT' for only current versions - required if inventory_enabled is true"
   default     = null
-  sensitive = false
+  sensitive   = false
 }
 
 variable "inventory_filter_prefix" {
   type        = string
   description = "name of the directory to narrow inventory scope to - required if inventory_enabled is true"
   default     = null
-  sensitive = false
+  sensitive   = false
 }
 
 variable "inventory_schedule_frequency" {
   type        = string
   description = "frequency in which inventory reports are produced ('Daily' or 'Weekly') - required if inventory_enabled is true"
   default     = null
-  sensitive = false
+  sensitive   = false
 }
 
 variable "lifecycle_policy_enabled" {
   type        = bool
   description = "whether to enable lifecycle configuration for the bucket"
   default     = false
-  sensitive = false
+  sensitive   = false
 }
 
 variable "lifecycle_expiration_days" {
-  type = number
+  type        = number
   description = "number of days before objects expire - required if lifecycle_policy_enabled is true"
-  default = null
-  sensitive = false
+  default     = null
+  sensitive   = false
 }
 
 variable "lifecycle_noncurrent_expiration_days" {
-  type = number 
+  type        = number
   description = "number of days before noncurrent object versions expire - required if lifecycle_policy_enabled is true"
-  default = null
-  sensitive = false
+  default     = null
+  sensitive   = false
 }
 
 variable "logging_target_bucket" {
