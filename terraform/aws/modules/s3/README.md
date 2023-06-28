@@ -40,14 +40,14 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_access_point_enabled"></a> [access\_point\_enabled](#input\_access\_point\_enabled) | whether to create access points for the bucket | `bool` | `false` | no |
+| <a name="input_access_logs_enabled"></a> [access\_logs\_enabled](#input\_access\_logs\_enabled) | whether to enable access logging for the bucket | `bool` | `false` | no |
+| <a name="input_access_logs_target_bucket"></a> [access\_logs\_target\_bucket](#input\_access\_logs\_target\_bucket) | destination bucket name for access logs | `string` | `null` | no |
+| <a name="input_access_logs_target_prefix"></a> [access\_logs\_target\_prefix](#input\_access\_logs\_target\_prefix) | prefix of the access logs in the destination bucket | `string` | `null` | no |
 | <a name="input_access_point_suffix"></a> [access\_point\_suffix](#input\_access\_point\_suffix) | suffix to append to the access point name to describe its use or allowed principals - required if access\_point\_enabled is true | `string` | `null` | no |
 | <a name="input_access_point_vpc_id"></a> [access\_point\_vpc\_id](#input\_access\_point\_vpc\_id) | the vpc id from which to allow access to the bucket via the access point - required if access\_point\_enabled is true | `string` | `null` | no |
+| <a name="input_access_points_enabled"></a> [access\_points\_enabled](#input\_access\_points\_enabled) | whether to create access points for the bucket | `bool` | `false` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
-| <a name="input_bucket_suffix"></a> [bucket\_suffix](#input\_bucket\_suffix) | n/a | `string` | n/a | yes |
-| <a name="input_enable_access_logging"></a> [enable\_access\_logging](#input\_enable\_access\_logging) | whether to enable access logging for the bucket | `bool` | `false` | no |
-| <a name="input_enable_bucket_inventory"></a> [enable\_bucket\_inventory](#input\_enable\_bucket\_inventory) | whether to enable s3 bucket inventory feature | `bool` | `false` | no |
-| <a name="input_enable_object_versioning"></a> [enable\_object\_versioning](#input\_enable\_object\_versioning) | whether to enable versioning for objects in the bucket | `bool` | `true` | no |
+| <a name="input_bucket_suffix"></a> [bucket\_suffix](#input\_bucket\_suffix) | suffix to append to the bucket name after the stack name to describe its use | `string` | n/a | yes |
 | <a name="input_encryption_deletion_window_in_days"></a> [encryption\_deletion\_window\_in\_days](#input\_encryption\_deletion\_window\_in\_days) | number of days to wait before deleting an encryption key - required if encryption\_enabled is true and encryption\_sse\_algorithm is aws:kms | `number` | `7` | no |
 | <a name="input_encryption_enable_key_rotation"></a> [encryption\_enable\_key\_rotation](#input\_encryption\_enable\_key\_rotation) | enable key rotation - required if encryption is true encryption\_sse\_algorithm is aws:kms | `bool` | `false` | no |
 | <a name="input_encryption_enabled"></a> [encryption\_enabled](#input\_encryption\_enabled) | enable s3 object encryption | `bool` | `false` | no |
@@ -63,9 +63,8 @@
 | <a name="input_lifecycle_expiration_days"></a> [lifecycle\_expiration\_days](#input\_lifecycle\_expiration\_days) | number of days before objects expire - required if lifecycle\_policy\_enabled is true | `number` | `null` | no |
 | <a name="input_lifecycle_noncurrent_expiration_days"></a> [lifecycle\_noncurrent\_expiration\_days](#input\_lifecycle\_noncurrent\_expiration\_days) | number of days before noncurrent object versions expire - required if lifecycle\_policy\_enabled is true | `number` | `null` | no |
 | <a name="input_lifecycle_policy_enabled"></a> [lifecycle\_policy\_enabled](#input\_lifecycle\_policy\_enabled) | whether to enable lifecycle configuration for the bucket | `bool` | `false` | no |
-| <a name="input_logging_target_bucket"></a> [logging\_target\_bucket](#input\_logging\_target\_bucket) | destination bucket name for access logs | `string` | `null` | no |
-| <a name="input_logging_target_prefix"></a> [logging\_target\_prefix](#input\_logging\_target\_prefix) | prefix of the access logs in the destination bucket | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_versioning_enabled"></a> [versioning\_enabled](#input\_versioning\_enabled) | whether to enable versioning for the bucket | `bool` | `false` | no |
 
 # Outputs
 
