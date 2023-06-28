@@ -1,3 +1,7 @@
+data "aws_caller_identity" "current" {
+  
+}
+
 data "aws_iam_policy_document" "trust" {
   statement {
     effect  = "Allow"
@@ -19,7 +23,7 @@ data "aws_iam_policy_document" "trust" {
 data "aws_iam_policy_document" "this" {
    dynamic "statement" {
     for_each = var.s3_bucket_ids
-    
+
     content {
       effect = "Allow"
       actions = [
