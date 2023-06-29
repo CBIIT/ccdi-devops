@@ -27,7 +27,7 @@ variable "program" {
 }
 
 variable "s3_bucket_ids" {
-  type = set(string)
+  type        = set(string)
   description = "the bucket ids to allow sumologic to read from"
-  sensitive = false
+  sensitive   = false
 }
