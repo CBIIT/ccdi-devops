@@ -22,7 +22,7 @@ resource "aws_s3_bucket_versioning" "this" {
 resource "aws_s3_bucket_logging" "this" {
   count = var.access_logs_enabled ? 1 : 0
 
-  bucket        = aws_s3_bucket.this.id 
+  bucket        = aws_s3_bucket.this.id
   target_bucket = var.access_logs_target_bucket
   target_prefix = var.access_logs_target_prefix
 }
@@ -59,7 +59,7 @@ module "encryption" {
 }
 
 module "access_point" {
-  count = var.access_point_enabled ? 1 : 0
+  count  = var.access_point_enabled ? 1 : 0
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3-access-point?ref=v3.1.5"
 
   access_point_suffix = var.access_point_suffix

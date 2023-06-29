@@ -37,14 +37,14 @@ variable "access_logs_target_bucket" {
   type        = string
   description = "destination bucket name for access logs"
   default     = null
-  sensitive = false
+  sensitive   = false
 }
 
 variable "access_logs_target_prefix" {
   type        = string
   description = "prefix of the access logs in the destination bucket"
   default     = null
-  sensitive = false
+  sensitive   = false
 }
 
 variable "access_points_enabled" {
@@ -71,7 +71,7 @@ variable "access_point_vpc_id" {
 variable "bucket_suffix" {
   type        = string
   description = "suffix to append to the bucket name after the stack name to describe its use"
-  sensitive = false
+  sensitive   = false
 }
 
 variable "encryption_enabled" {
@@ -126,7 +126,7 @@ variable "inventory_destination_format" {
   type        = string
   description = "format of the bucket inventory file ('CSV', 'ORC', or 'Parquet') - required if inventory_enabled is true"
   default     = null
-  sensitive = false
+  sensitive   = false
 }
 
 variable "inventory_included_object_versions" {
@@ -172,8 +172,8 @@ variable "lifecycle_noncurrent_expiration_days" {
 }
 
 variable "versioning_enabled" {
-  type = bool 
+  type        = bool
   description = "whether to enable versioning for the bucket"
-  default = false 
-  sensitive = false
+  default     = false
+  sensitive   = false
 }
