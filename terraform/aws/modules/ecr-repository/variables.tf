@@ -10,8 +10,8 @@ variable "program" {
   sensitive   = false
 
   validation {
-    condition     = contains(["crdc", "ccdi", "ctos", "fnl"], var.program)
-    error_message = "valid values for program are 'crdc', 'ccdi', 'fnl' and 'ctos'"
+    condition     = contains(["bento","crdc", "ccdi", "ctos", "fnl"], var.program)
+    error_message = "valid values for program are 'bento', 'crdc', 'ccdi', 'fnl' and 'ctos'"
   }
 }
 
