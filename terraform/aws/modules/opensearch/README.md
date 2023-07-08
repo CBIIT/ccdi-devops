@@ -49,7 +49,6 @@ module "opensearch" {
   ebs_throughput                   = 
   ebs_volume_size                  = 
   ebs_volume_type                  = 
-  enforce_https                    = 
   engine_version                   = 
   env                              = 
   instance_count                   = 

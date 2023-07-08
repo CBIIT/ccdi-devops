@@ -17,12 +17,10 @@ The following provides an example of how to use this module by defining values f
 
     app                             =
     attach_permissions_boundary     =
-    config_s3_bucket_name           =
     enable_config                   =
     env                             =
     manager_account_id              =
     program                         =
-    recording_group_resource_types  =
 }</code></pre>
 
 <!-- BEGIN_TF_DOCS -->
