@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "this" {
 
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::*:role/power-user-*-kinesis-firehose-delivery-stream"]
+      identifiers = ["arn:aws:iam::*:role/power-user-*"]
     }
 
     condition {
