@@ -58,13 +58,13 @@ variable "execution_role_arn" {
 }
 
 variable "memory" {
-  type        = string
+  type        = number
   description = "amount (MiB) of memory used by the task"
   default     = "2048"
   sensitive   = false
 
   validation {
-    condition     = contains(["512", "1024", "2048", "3072", "4096", "5120", "6144", "7168", "8192", "16384"], var.memory)
+    condition     = contains([512, 1024, 2048, 3072, 4096, 5120, 6144, 7168, 8192, 16384], var.memory)
     error_message = "valid values are '512', '1024', '2048', '3072', '4096', '5120', '6144', '7168', '8192', and '16384'"
   }
 }
@@ -76,7 +76,7 @@ variable "microservice" {
 }
 
 variable "port" {
-  type        = string
+  type        = number
   description = "port the microservice listens on"
   sensitive   = false
 }
