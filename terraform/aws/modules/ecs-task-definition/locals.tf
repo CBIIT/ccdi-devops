@@ -2,6 +2,14 @@ locals {
   memory = tonumber(var.memory) == 512 ? 2048 : sum([tonumber(var.memory), 1024])
   cpu    = tonumber(var.cpu) == 512 ? 1024 : sum([tonumber(var.cpu), 1024])
 
+  container_environment_variables = var.container_environment_variables == {} ? null : [
+    for k, v in var.container_environment_variables :
+    {
+      name  = k
+      value = v
+    }
+  ]
+
   sumologic_container_definition = {
     name              = "${var.program}-${var.app}-${var.microservice}-sumologic-sidecar"
     image             = "amazon/aws-for-fluent-bit:latest"
@@ -74,16 +82,16 @@ locals {
       }
     ]
 
-    environment = var.container_environment_variables
+    environment = local.container_environment_variables
 
     logConfiguration = {
       logDriver = "awsfirelens"
       options = {
-        Name        = "http"
-        Host        = "collectors.fed.sumologic.com"
-        URI         = "/receiver/v1/http/${var.sumo_collector_token}"
-        Port        = "443"
-        tls         = "on"
+        Name = "http"
+        Host = "collectors.fed.sumologic.com"
+        URI  = "/receiver/v1/http/${var.sumo_collector_token}"
+        Port = "443"
+        tls  = "on"
         # tls.verify  = "off"
         Format      = "json_lines"
         Retry_Limit = "2"
