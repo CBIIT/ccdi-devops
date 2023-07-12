@@ -21,7 +21,7 @@ locals {
     firelensConfiguration = {
       "type" = "fluentbit"
       "options" = {
-        enable-ecs-log-metadata = true
+        enable-ecs-log-metadata = "true"
       }
     }
   }
