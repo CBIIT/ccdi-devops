@@ -79,14 +79,14 @@ locals {
     logConfiguration = {
       logDriver = "awsfirelens"
       options = {
-        Name        = "http"
-        Host        = "collectors.fed.sumologic.com"
-        URI         = "/receiver/v1/http/${var.sumo_collector_token}"
-        Port        = "443"
-        tls         = "on"
-        tls.verify  = "off"
-        Format      = "json_lines"
-        Retry_Limit = "2"
+        "Name"        = "http"
+        "Host"        = "collectors.fed.sumologic.com"
+        "URI"         = "/receiver/v1/http/${var.sumo_collector_token}"
+        "Port"        = "443"
+        "tls"         = "on"
+        "tls.verify"  = "off"
+        "Format"      = "json_lines"
+        "Retry_Limit" = "2"
       }
     }
   }
