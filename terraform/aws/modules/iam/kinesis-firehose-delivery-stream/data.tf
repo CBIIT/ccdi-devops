@@ -25,8 +25,8 @@ data "aws_iam_policy_document" "this" {
       "s3:PutObject"
     ]
     resources = [
-      "${var.s3_bucket_arn}",
-      "${var.s3_bucket_arn}/*"
+      "arn:aws:s3:::ctos-nonprod-manager-kinesis-delivery-failure",
+      "arn:aws:s3:::ctos-nonprod-manager-kinesis-delivery-failure/*"
     ]
   }
 

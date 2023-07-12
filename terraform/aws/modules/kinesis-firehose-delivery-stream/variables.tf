@@ -94,12 +94,6 @@ variable "s3_backup_mode" {
   sensitive   = false
 }
 
-variable "s3_bucket_arn" {
-  type        = string
-  description = "The arn of the S3 bucket where failed message deliveries to New Relic are delivered"
-  sensitive   = false
-}
-
 variable "s3_compression_format" {
   type        = string
   description = "File compression format - values are 'GZIP', 'ZIP', 'Snappy', & 'HADOOP_SNAPPY'"
@@ -110,13 +104,6 @@ variable "s3_compression_format" {
 variable "s3_error_output_prefix" {
   type        = string
   description = "Prefix added to failed records before writing them to S3 - immediately follows bucket name"
-  default     = null
-  sensitive   = false
-}
-
-variable "s3_object_prefix" {
-  type        = string
-  description = "The 'YYYY/MM/DD/HH' time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix"
   default     = null
   sensitive   = false
 }
