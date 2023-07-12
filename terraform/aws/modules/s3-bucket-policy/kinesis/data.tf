@@ -19,7 +19,10 @@ data "aws_iam_policy_document" "this" {
       "s3:PutObjectAcl"
     ]
 
-    resources = [var.s3_bucket_arn]
+    resources = [
+      var.s3_bucket_arn,
+      "${var.s3_bucket_arn}/*"
+    ]
 
     condition {
       test     = "StringEquals"
