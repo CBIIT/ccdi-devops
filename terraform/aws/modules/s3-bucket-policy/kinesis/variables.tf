@@ -1,5 +1,5 @@
 variable "principal_account_ids" {
-  type        = set(string)
+  type        = list(string)
   description = "ids of the accounts from which to allow access to the bucket"
   sensitive   = false
 }
