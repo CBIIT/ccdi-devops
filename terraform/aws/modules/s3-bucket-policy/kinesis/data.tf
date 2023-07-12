@@ -4,13 +4,9 @@ data "aws_iam_policy_document" "this" {
   statement {
     effect = "Allow"
 
-    dynamic "principals" {
-      for_each = var.principal_account_ids
-
-      content {
-        type        = "AWS"
-        identifiers = ["arn:aws:iam::${principals.value}:role/power-user-*"]
-      }
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
     }
 
     actions = [
@@ -24,5 +20,11 @@ data "aws_iam_policy_document" "this" {
     ]
 
     resources = [var.s3_bucket_arn]
+  }
+
+  condition {
+    test     = "StringEquals"
+    variable = "aws:PrincipalOrgID"
+    values   = [data.aws_organizations_organization.current.id]
   }
 }
