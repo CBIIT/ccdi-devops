@@ -43,9 +43,9 @@
 | <a name="input_access_logs_enabled"></a> [access\_logs\_enabled](#input\_access\_logs\_enabled) | whether to enable access logging for the bucket | `bool` | `false` | no |
 | <a name="input_access_logs_target_bucket"></a> [access\_logs\_target\_bucket](#input\_access\_logs\_target\_bucket) | destination bucket name for access logs | `string` | `null` | no |
 | <a name="input_access_logs_target_prefix"></a> [access\_logs\_target\_prefix](#input\_access\_logs\_target\_prefix) | prefix of the access logs in the destination bucket | `string` | `null` | no |
+| <a name="input_access_point_enabled"></a> [access\_point\_enabled](#input\_access\_point\_enabled) | whether to create access points for the bucket | `bool` | `false` | no |
 | <a name="input_access_point_suffix"></a> [access\_point\_suffix](#input\_access\_point\_suffix) | suffix to append to the access point name to describe its use or allowed principals - required if access\_point\_enabled is true | `string` | `null` | no |
 | <a name="input_access_point_vpc_id"></a> [access\_point\_vpc\_id](#input\_access\_point\_vpc\_id) | the vpc id from which to allow access to the bucket via the access point - required if access\_point\_enabled is true | `string` | `null` | no |
-| <a name="input_access_points_enabled"></a> [access\_points\_enabled](#input\_access\_points\_enabled) | whether to create access points for the bucket | `bool` | `false` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_bucket_suffix"></a> [bucket\_suffix](#input\_bucket\_suffix) | suffix to append to the bucket name after the stack name to describe its use | `string` | n/a | yes |
 | <a name="input_encryption_deletion_window_in_days"></a> [encryption\_deletion\_window\_in\_days](#input\_encryption\_deletion\_window\_in\_days) | number of days to wait before deleting an encryption key - required if encryption\_enabled is true and encryption\_sse\_algorithm is aws:kms | `number` | `7` | no |

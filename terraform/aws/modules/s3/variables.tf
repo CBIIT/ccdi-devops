@@ -47,7 +47,7 @@ variable "access_logs_target_prefix" {
   sensitive   = false
 }
 
-variable "access_points_enabled" {
+variable "access_point_enabled" {
   type        = bool
   description = "whether to create access points for the bucket"
   default     = false

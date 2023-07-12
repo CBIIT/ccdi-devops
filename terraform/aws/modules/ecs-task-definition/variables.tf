@@ -26,21 +26,29 @@ variable "program" {
   }
 }
 
-variable "container_definitions" {
+variable "container_environment_variables" {
+  type        = map(string)
+  description = "map of environment variables to pass to the container"
+  sensitive   = false
+  default     = {}
+}
+
+variable "container_image_url" {
   type        = string
-  description = "provide the json document that defines the container definitions for this task"
+  description = "provide the ecr repository url for the microservice container image"
+  sensitive   = false
 }
 
 variable "cpu" {
   type        = string
   description = "number of cpu units used by the task"
-}
-
-variable "cpu_architecture" {
-  type        = string
-  description = "ust be set to either 'X86_64' or 'ARM64'"
-  default     = "X86_64"
+  default     = "2048"
   sensitive   = false
+
+  validation {
+    condition     = contains(["512", "1024", "2048", "4096", "8192", "16384"], var.cpu)
+    error_message = "valid values are '512', '1024', '2048', '4096', '8192', and '16384'"
+  }
 }
 
 variable "execution_role_arn" {
@@ -52,6 +60,13 @@ variable "execution_role_arn" {
 variable "memory" {
   type        = string
   description = "amount (MiB) of memory used by the task"
+  default     = "2048"
+  sensitive   = false
+
+  validation {
+    condition     = contains(["512", "1024", "2048", "3072", "4096", "5120", "6144", "7168", "8192", "16384"], var.memory)
+    error_message = "valid values are '512', '1024', '2048', '3072', '4096', '5120', '6144', '7168', '8192', and '16384'"
+  }
 }
 
 variable "microservice" {
@@ -60,25 +75,22 @@ variable "microservice" {
   sensitive   = false
 }
 
-variable "network_mode" {
+variable "port" {
   type        = string
-  description = "docker networking mode to use for the containers in the task - either 'host', 'bridge', 'awsvpc' or 'none'"
-  default     = "awsvpc"
+  description = "port the microservice listens on"
   sensitive   = false
 }
 
-variable "operating_system_family" {
+variable "secret_arn" {
   type        = string
-  description = "if requires_compatibilities is FARGATE this field is required"
-  default     = "LINUX"
+  description = "arn of the secret that contains the newrelic license key (NRIA_LICENSE_KEY)"
   sensitive   = false
 }
 
-variable "requires_compatibilities" {
-  type        = set(string)
-  description = "et of launch types required by the task - can be 'EC2' and/or 'FARGATE'"
-  default     = ["FARGATE"]
-  sensitive   = false
+variable "sumo_collector_token" {
+  type        = string
+  description = "sumologic collector token"
+  sensitive   = true
 }
 
 variable "task_role_arn" {
