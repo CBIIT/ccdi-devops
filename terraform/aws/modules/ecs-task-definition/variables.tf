@@ -64,7 +64,7 @@ variable "memory" {
   sensitive   = false
 
   validation {
-    condition     = contains(["512", "1024", "2048", "3072", "4096", "5120", "6144", "7168", "8192", "16384"], var.memory)
+    condition     = contains([512, 1024, 2048, 3072, 4096, 5120, 6144, 7168, 8192, 16384], var.memory)
     error_message = "valid values are '512', '1024', '2048', '3072', '4096', '5120', '6144', '7168', '8192', and '16384'"
   }
 }
