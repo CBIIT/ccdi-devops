@@ -75,6 +75,12 @@ variable "microservice" {
   sensitive   = false
 }
 
+variable "port" {
+  type        = string
+  description = "port the microservice listens on"
+  sensitive   = false
+}
+
 variable "secret_arn" {
   type        = string
   description = "arn of the secret that contains the newrelic license key (NRIA_LICENSE_KEY)"
