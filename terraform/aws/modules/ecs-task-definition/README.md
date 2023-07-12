@@ -55,6 +55,7 @@ module "ecs_task_definition_frontend" {
 | <a name="input_execution_role_arn"></a> [execution\_role\_arn](#input\_execution\_role\_arn) | arn of the role the task assigns to the ECS container agent and the Docker daemon | `string` | n/a | yes |
 | <a name="input_memory"></a> [memory](#input\_memory) | amount (MiB) of memory used by the task | `string` | `"2048"` | no |
 | <a name="input_microservice"></a> [microservice](#input\_microservice) | name of the microservice this task supports - i.e. backend, frontend, files | `string` | n/a | yes |
+| <a name="input_port"></a> [port](#input\_port) | port the microservice listens on | `string` | n/a | yes |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_secret_arn"></a> [secret\_arn](#input\_secret\_arn) | arn of the secret that contains the newrelic license key (NRIA\_LICENSE\_KEY) | `string` | n/a | yes |
 | <a name="input_sumo_collector_token"></a> [sumo\_collector\_token](#input\_sumo\_collector\_token) | sumologic collector token | `string` | n/a | yes |
