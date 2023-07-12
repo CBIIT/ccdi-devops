@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "this" {
     cpu_architecture        = "X86_64"
   }
 
-  container_definitions = jsondecode([
+  container_definitions = jsonencode([
     local.application_container_definition,
     local.sumologic_container_definition,
     local.newrelic_container_definition
