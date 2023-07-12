@@ -58,7 +58,7 @@ variable "execution_role_arn" {
 }
 
 variable "memory" {
-  type        = string
+  type        = number
   description = "amount (MiB) of memory used by the task"
   default     = "2048"
   sensitive   = false
@@ -76,7 +76,7 @@ variable "microservice" {
 }
 
 variable "port" {
-  type        = string
+  type        = number
   description = "port the microservice listens on"
   sensitive   = false
 }
