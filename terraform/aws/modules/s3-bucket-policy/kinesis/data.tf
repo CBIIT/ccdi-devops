@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "this" {
 
       content {
         type        = "AWS"
-        identifiers = ["arn:aws:iam::${principal_account_ids.value}:role/power-user-*"]
+        identifiers = ["arn:aws:iam::${principals.value}:role/power-user-*"]
       }
     }
 
