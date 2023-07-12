@@ -13,11 +13,11 @@ module "s3" {
   count  = var.create_config_s3_bucket ? 1 : 0
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/s3?ref=main"
 
-  access_point_enabled = false
-  app                = var.app
-  bucket_suffix      = "config-conformance-pack"
-  env                = var.env
-  force_destroy      = true
-  program            = var.program
-  versioning_enabled = true
+  access_points_enabled = false
+  app                   = var.app
+  bucket_suffix         = "config-conformance-pack"
+  env                   = var.env
+  force_destroy         = true
+  program               = var.program
+  versioning_enabled    = true
 }
