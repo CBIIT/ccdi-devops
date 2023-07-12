@@ -4,6 +4,15 @@ data "aws_iam_policy_document" "this" {
   statement {
     effect = "Allow"
 
+    dynamic "principals" {
+      for_each = var.principal_account_ids
+
+      content {
+        type        = "AWS"
+        identifiers = ["arn:aws:iam::${principal_account_ids.value}:role/power-user-*"]
+      }
+    }
+
     actions = [
       "s3:AbortMultipartUpload",
       "s3:GetBucketLocation",
@@ -15,16 +24,5 @@ data "aws_iam_policy_document" "this" {
     ]
 
     resources = [var.s3_bucket_arn]
-
-    principals {
-      type        = "AWS"
-      identifiers = ["arn:aws:iam::*:role/power-user-*"]
-    }
-
-    condition {
-      test     = "StringEquals"
-      variable = "aws:PrincipalOrgID"
-      values   = [data.aws_organizations_organization.current.id]
-    }
   }
 }

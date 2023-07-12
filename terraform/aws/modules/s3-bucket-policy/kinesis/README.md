@@ -23,6 +23,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_principal_account_ids"></a> [principal\_account\_ids](#input\_principal\_account\_ids) | ids of the accounts from which to allow access to the bucket | `set(string)` | n/a | yes |
 | <a name="input_s3_bucket_arn"></a> [s3\_bucket\_arn](#input\_s3\_bucket\_arn) | arn of the s3 bucket to attach the policy to | `string` | n/a | yes |
 | <a name="input_s3_bucket_id"></a> [s3\_bucket\_id](#input\_s3\_bucket\_id) | id of the s3 bucket to attach the policy to | `string` | n/a | yes |
 
