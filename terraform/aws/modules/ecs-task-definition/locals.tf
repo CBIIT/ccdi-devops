@@ -72,7 +72,7 @@ locals {
     name              = "${var.program}-${var.app}-${var.microservice}"
     image             = var.container_image_url
     essential         = true
-    memoryReservation = var.memory
+    memoryReservation = tonumber(var.memory)
 
     portMappings = [
       {
