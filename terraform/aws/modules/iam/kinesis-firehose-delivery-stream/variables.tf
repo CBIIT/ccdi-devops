@@ -31,9 +31,3 @@ variable "attach_permissions_boundary" {
   description = "whether to attach permissions boundary to the role"
   sensitive   = false
 }
-
-variable "s3_bucket_arn" {
-  type        = string
-  description = "the arn of the s3 bucket to deliver failed messages to"
-  sensitive   = false
-}
