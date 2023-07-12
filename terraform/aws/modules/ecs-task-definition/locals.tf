@@ -1,5 +1,5 @@
 locals {
-  memory = tonumber(var.memory) == 512 ? 1024 : sum([tonumber(var.memory), 1024])
+  memory = tonumber(var.memory) == 512 ? 2048 : sum([tonumber(var.memory), 1024])
   cpu    = tonumber(var.cpu) == 512 ? 1024 : sum([tonumber(var.cpu), 1024])
 
   sumologic_container_definition = {
