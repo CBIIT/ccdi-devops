@@ -76,8 +76,8 @@ locals {
 
     portMappings = [
       {
-        containerPort = var.port
-        hostPort      = var.port
+        containerPort = tonumber(var.port)
+        hostPort      = tonumber(var.port)
         protocol      = "tcp"
       }
     ]
