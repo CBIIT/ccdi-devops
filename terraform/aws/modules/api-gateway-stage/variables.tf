@@ -40,7 +40,7 @@ variable "canary_percent_traffic" {
   sensitive   = false
 }
 
-variable "canary_settings_stage_variable_overrides" {
+variable "canary_stage_variable_overrides" {
   type        = map(string)
   description = ""
   default     = {}
