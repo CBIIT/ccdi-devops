@@ -26,14 +26,14 @@ variable "cache_cluster_size" {
   sensitive   = false
 }
 
-variable "canary_settings_deployment_id" {
+variable "canary_deployment_id" {
   type        = string
   description = ""
   default     = null
   sensitive   = false
 }
 
-variable "canary_settings_percent_traffic" {
+variable "canary_percent_traffic" {
   type        = number
   description = ""
   default     = null
