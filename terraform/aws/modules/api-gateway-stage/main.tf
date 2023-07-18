@@ -13,7 +13,7 @@ resource "aws_api_gateway_stage" "this" {
 
   canary_settings {
     percent_traffic          = var.canary_percent_traffic
-    use_stage_cache = var.canary_use_stage_cache
+    use_stage_cache          = var.canary_use_stage_cache
     stage_variable_overrides = var.canary_stage_variable_overrides
   }
 
