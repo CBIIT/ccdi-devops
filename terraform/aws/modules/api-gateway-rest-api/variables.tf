@@ -36,6 +36,7 @@ variable "api_key_source" {
 variable "api_suffix" {
   type        = string
   description = ""
+  default     = "api"
   sensitive   = false
 }
 
@@ -55,6 +56,7 @@ variable "body" {
 variable "description" {
   type        = string
   description = ""
+  default     = null
   sensitive   = false
 }
 
