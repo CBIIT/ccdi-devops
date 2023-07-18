@@ -10,7 +10,7 @@ resource "aws_api_gateway_rest_api" "this" {
   put_rest_api_mode            = var.put_rest_api_mode              #  x-amazon-apigateway-put-integration-method extension
 
   endpoint_configuration {
-    types            = var.endpoint_configuration_types
+    types = var.endpoint_configuration_types
   }
 
   parameters = var.parameters

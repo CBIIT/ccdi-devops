@@ -22,6 +22,12 @@ output "execution_arn" {
   sensitive   = false
 }
 
+output "stage_name" {
+  value       = aws_api_gateway_stage.this.stage_name
+  description = "name of the api gateway stage resource"
+  sensitive   = false
+}
+
 output "web_acl_arn" {
   value       = aws_api_gateway_stage.this.web_acl_arn
   description = "arn of the web acl associated with the stage"
