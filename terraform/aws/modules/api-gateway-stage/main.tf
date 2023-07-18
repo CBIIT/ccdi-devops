@@ -12,13 +12,13 @@ resource "aws_api_gateway_stage" "this" {
 
 
   canary_settings {
-    percent_traffic          = var.canary_settings_percent_traffic
-    deployment_id            = var.canary_settings_deployment_id
-    stage_variable_overrides = var.canary_settings_stage_variable_overrides
+    percent_traffic          = var.canary_percent_traffic
+    deployment_id            = var.canary_deployment_id
+    stage_variable_overrides = var.canary_stage_variable_overrides
   }
 
   access_log_settings {
-    destination_arn = var.access_log_settings_destination_arn
-    format          = var.access_log_settings_format
+    destination_arn = var.access_log_destination_arn
+    format          = var.access_log_format
   }
 }
