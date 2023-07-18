@@ -1,11 +1,11 @@
-variable "access_log_settings_destination_arn" {
+variable "access_log_destination_arn" {
   type        = string
   description = ""
   default     = null
   sensitive   = false
 }
 
-variable "access_log_settings_format" {
+variable "access_log_format" {
   type        = string
   description = ""
   default     = null
