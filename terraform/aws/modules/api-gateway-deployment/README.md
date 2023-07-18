@@ -21,12 +21,12 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_description"></a> [description](#input\_description) | n/a | `any` | n/a | yes |
-| <a name="input_rest_api_id"></a> [rest\_api\_id](#input\_rest\_api\_id) | n/a | `any` | n/a | yes |
-| <a name="input_stage_description"></a> [stage\_description](#input\_stage\_description) | n/a | `any` | n/a | yes |
-| <a name="input_stage_name"></a> [stage\_name](#input\_stage\_name) | n/a | `any` | n/a | yes |
-| <a name="input_triggers"></a> [triggers](#input\_triggers) | n/a | `any` | n/a | yes |
-| <a name="input_variables"></a> [variables](#input\_variables) | n/a | `any` | n/a | yes |
+| <a name="input_description"></a> [description](#input\_description) | The description of the api | `string` | `null` | no |
+| <a name="input_rest_api_id"></a> [rest\_api\_id](#input\_rest\_api\_id) | The ID of the associated REST API | `string` | n/a | yes |
+| <a name="input_stage_description"></a> [stage\_description](#input\_stage\_description) | The description of the stage | `string` | `null` | no |
+| <a name="input_stage_name"></a> [stage\_name](#input\_stage\_name) | The name of the stage | `string` | n/a | yes |
+| <a name="input_triggers"></a> [triggers](#input\_triggers) | A map of triggers to re-deploy the API Gateway | `map(any)` | `null` | no |
+| <a name="input_variables"></a> [variables](#input\_variables) | A map of variables to be used for the stage | `map(any)` | `{}` | no |
 
 # Outputs
 

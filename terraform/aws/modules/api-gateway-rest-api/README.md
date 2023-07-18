@@ -22,14 +22,13 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_api_key_source"></a> [api\_key\_source](#input\_api\_key\_source) | n/a | `string` | `null` | no |
-| <a name="input_api_suffix"></a> [api\_suffix](#input\_api\_suffix) | n/a | `string` | n/a | yes |
+| <a name="input_api_suffix"></a> [api\_suffix](#input\_api\_suffix) | n/a | `string` | `"api"` | no |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_binary_media_types"></a> [binary\_media\_types](#input\_binary\_media\_types) | n/a | `list(string)` | `[]` | no |
 | <a name="input_body"></a> [body](#input\_body) | n/a | `string` | n/a | yes |
-| <a name="input_description"></a> [description](#input\_description) | n/a | `string` | n/a | yes |
+| <a name="input_description"></a> [description](#input\_description) | n/a | `string` | `null` | no |
 | <a name="input_disable_execute_api_endpoint"></a> [disable\_execute\_api\_endpoint](#input\_disable\_execute\_api\_endpoint) | n/a | `bool` | `false` | no |
 | <a name="input_endpoint_configuration_types"></a> [endpoint\_configuration\_types](#input\_endpoint\_configuration\_types) | n/a | `list(string)` | `[]` | no |
-| <a name="input_endpoint_configuration_vpc_endpoint_ids"></a> [endpoint\_configuration\_vpc\_endpoint\_ids](#input\_endpoint\_configuration\_vpc\_endpoint\_ids) | n/a | `set(string)` | `[]` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_fail_on_warnings"></a> [fail\_on\_warnings](#input\_fail\_on\_warnings) | n/a | `bool` | `false` | no |
 | <a name="input_minimum_compression_size"></a> [minimum\_compression\_size](#input\_minimum\_compression\_size) | n/a | `number` | `0` | no |
