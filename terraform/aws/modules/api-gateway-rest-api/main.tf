@@ -6,7 +6,7 @@ resource "aws_api_gateway_rest_api" "this" {
   disable_execute_api_endpoint = var.disable_execute_api_endpoint # x-amazon-apigateway-endpoint-configuration extension,  disableExecuteApiEndpoint property 
   fail_on_warnings             = var.fail_on_warnings             # whether warnings while API Gateway is creating or updating the resource should return an error or not. Defaults to false
   minimum_compression_size     = var.minimum_compression_size     #  x-amazon-apigateway-minimum-compression-size
-  name                         = var.name                         # info.title field
+  name                         = "${local.stack}-${var.api_suffix}"                      # info.title field
   put_rest_api_mode            = var.put_rest_api_mode            #  x-amazon-apigateway-put-integration-method extension
 
   endpoint_configuration {
