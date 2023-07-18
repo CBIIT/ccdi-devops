@@ -11,7 +11,6 @@ resource "aws_api_gateway_rest_api" "this" {
 
   endpoint_configuration {
     types            = var.endpoint_configuration_types
-    vpc_endpoint_ids = var.endpoint_configuration_vpc_endpoint_ids
   }
 
   parameters = var.parameters

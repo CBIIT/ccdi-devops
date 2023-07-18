@@ -67,20 +67,6 @@ variable "disable_execute_api_endpoint" {
   sensitive   = false
 }
 
-variable "endpoint_configuration_types" {
-  type        = list(string)
-  description = ""
-  default     = []
-  sensitive   = false
-}
-
-variable "endpoint_configuration_vpc_endpoint_ids" {
-  type        = set(string)
-  description = ""
-  default     = []
-  sensitive   = false
-}
-
 variable "fail_on_warnings" {
   type        = bool
   description = ""
