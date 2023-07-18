@@ -5,4 +5,8 @@ resource "aws_api_gateway_deployment" "this" {
   stage_name        = var.stage_name
   triggers          = var.triggers
   variables         = var.variables
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
