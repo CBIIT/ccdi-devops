@@ -26,10 +26,10 @@ variable "cache_cluster_size" {
   sensitive   = false
 }
 
-variable "canary_deployment_id" {
-  type        = string
+variable "canary_use_stage_cache" {
+  type        = bool
   description = ""
-  default     = null
+  default     = false
   sensitive   = false
 }
 
