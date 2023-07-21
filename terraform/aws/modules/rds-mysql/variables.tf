@@ -82,7 +82,7 @@ variable "create_db_subnet_group" {
   sensitive   = false
 }
 
-variable "create_from_snpashot" {
+variable "create_from_snapshot" {
   type        = bool
   description = "whether to create the instance from a snapshot - if true, provide shapshot id for snapshot_identifier variable"
   default     = false
