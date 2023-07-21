@@ -62,6 +62,7 @@ module "lambda" {
 | <a name="input_role"></a> [role](#input\_role) | provide the role that provides permission for the lambda function to access aws services and resources | `string` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | the language-specific environment specified in the runtime parameter | `string` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | optionally provide a list of security group ids to associate with the lambda function | `list(string)` | `[]` | no |
+| <a name="input_source_code_hash"></a> [source\_code\_hash](#input\_source\_code\_hash) | the base64-encoded sha256 hash of the package file specified in the filename parameter | `string` | n/a | yes |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | optionally provide a list of subnet ids to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_timeout"></a> [timeout](#input\_timeout) | the amount of time that lambda allows a function to run before stopping it | `number` | `30` | no |
 
