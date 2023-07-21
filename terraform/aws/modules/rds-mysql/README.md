@@ -92,9 +92,11 @@
 | <a name="output_identifier"></a> [identifier](#output\_identifier) | identifier of the instance |
 | <a name="output_identifier_prefix"></a> [identifier\_prefix](#output\_identifier\_prefix) | identifier prefix of the instance |
 | <a name="output_monitoring_role_arn"></a> [monitoring\_role\_arn](#output\_monitoring\_role\_arn) | monitoring role arn of the instance |
+| <a name="output_password"></a> [password](#output\_password) | password of the instance |
 | <a name="output_port"></a> [port](#output\_port) | port of the instance |
 | <a name="output_resource_id"></a> [resource\_id](#output\_resource\_id) | resource id of the instance |
 | <a name="output_security_group_arn"></a> [security\_group\_arn](#output\_security\_group\_arn) | arn of the security group - if create\_security\_group is true |
 | <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | id of the security group - if create\_security\_group is true |
 | <a name="output_security_group_name"></a> [security\_group\_name](#output\_security\_group\_name) | name of the security group - if create\_security\_group is true |
+| <a name="output_username"></a> [username](#output\_username) | username of the instance |
 <!-- END_TF_DOCS -->
