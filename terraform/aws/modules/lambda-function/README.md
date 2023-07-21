@@ -54,7 +54,6 @@
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | the arn of the lambda function |
 | <a name="output_description"></a> [description](#output\_description) | the description of the lambda function |
-| <a name="output_environment"></a> [environment](#output\_environment) | the environment variables of the lambda function |
 | <a name="output_filename"></a> [filename](#output\_filename) | the filename of the lambda function |
 | <a name="output_function_name"></a> [function\_name](#output\_function\_name) | the name of the lambda function |
 | <a name="output_handler"></a> [handler](#output\_handler) | the handler of the lambda function |
