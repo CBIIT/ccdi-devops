@@ -10,12 +10,6 @@ output "description" {
   sensitive   = false
 }
 
-output "environment" {
-  value       = aws_lambda_function.this.environment
-  description = "the environment variables of the lambda function"
-  sensitive   = false
-}
-
 output "filename" {
   value       = aws_lambda_function.this.filename
   description = "the filename of the lambda function"
