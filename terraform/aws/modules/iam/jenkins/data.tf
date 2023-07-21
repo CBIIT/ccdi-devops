@@ -239,7 +239,8 @@ data "aws_iam_policy_document" "s3" {
       "s3:ListBucket",
       "s3:ListBucketVersions",
       "s3:PutObject",
-      "s3:DeleteObject"
+      "s3:DeleteObject",
+      "s3:DeleteObjectVersion"
     ]
     resources = [for bucket in var.s3_bucket_names : "arn:aws:s3:::${bucket}/*"]
   }
