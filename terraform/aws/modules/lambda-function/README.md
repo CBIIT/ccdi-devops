@@ -7,6 +7,22 @@
 
 
 <pre><code>
+module "lambda" {
+  source = ""
+
+  app                     = 
+  description             = 
+  env                     = 
+  environment_variables   = {}
+  filename                = 
+  function_name           = 
+  handler                 = 
+  program                 = 
+  role                    = 
+  runtime                 = 
+  subnet_ids              = []
+  security_group_ids      = []
+}
 </code></pre>
 
 
