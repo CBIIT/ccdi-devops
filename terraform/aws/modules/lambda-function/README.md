@@ -52,6 +52,7 @@ module "lambda" {
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_architectures"></a> [architectures](#input\_architectures) | the architectures supported by the lambda function | `string` | `"x86_64"` | no |
 | <a name="input_description"></a> [description](#input\_description) | describe the purpose of the lambda function | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | provide a map of key-value pairs to be used as environment variables for the lambda function | `map(string)` | `{}` | no |
 | <a name="input_filename"></a> [filename](#input\_filename) | provide the path and name of the file that contains your lambda function code | `string` | n/a | yes |
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | provide a name for the lambda function that will be appended to the stack name | `string` | n/a | yes |
