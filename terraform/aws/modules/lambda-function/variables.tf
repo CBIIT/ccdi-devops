@@ -100,6 +100,12 @@ variable "security_group_ids" {
   sensitive   = false
 }
 
+variable "source_code_hash" {
+  type        = string
+  description = "the base64-encoded sha256 hash of the package file specified in the filename parameter"
+  sensitive   = false
+}
+
 variable "subnet_ids" {
   type        = list(string)
   description = "optionally provide a list of subnet ids to associate with the lambda function"
