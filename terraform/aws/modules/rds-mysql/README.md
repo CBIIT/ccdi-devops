@@ -46,7 +46,7 @@
 | <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | backup retention period in days - between 0 and 35 | `number` | `7` | no |
 | <a name="input_backup_window"></a> [backup\_window](#input\_backup\_window) | backup window in UTC - format hh24:mi-hh24:mi | `string` | `"02:00-04:00"` | no |
 | <a name="input_create_db_subnet_group"></a> [create\_db\_subnet\_group](#input\_create\_db\_subnet\_group) | whether to create a db subnet group | `bool` | `true` | no |
-| <a name="input_create_from_snpashot"></a> [create\_from\_snpashot](#input\_create\_from\_snpashot) | whether to create the instance from a snapshot - if true, provide shapshot id for snapshot\_identifier variable | `bool` | `false` | no |
+| <a name="input_create_from_snapshot"></a> [create\_from\_snapshot](#input\_create\_from\_snapshot) | whether to create the instance from a snapshot - if true, provide shapshot id for snapshot\_identifier variable | `bool` | `false` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create a security group for the rds instance | `bool` | `true` | no |
 | <a name="input_db_name"></a> [db\_name](#input\_db\_name) | name of the database within RDS to create | `string` | n/a | yes |
 | <a name="input_db_subnet_group_name"></a> [db\_subnet\_group\_name](#input\_db\_subnet\_group\_name) | name of the db subnet group - required if create\_db\_subnet\_group is false | `string` | `null` | no |
