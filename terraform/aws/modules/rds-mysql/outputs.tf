@@ -70,6 +70,12 @@ output "monitoring_role_arn" {
   sensitive   = false
 }
 
+output "password" {
+  value       = aws_db_instance.this.password
+  description = "password of the instance"
+  sensitive   = true
+}
+
 output "port" {
   value       = aws_db_instance.this.port
   description = "port of the instance"
@@ -97,5 +103,11 @@ output "security_group_id" {
 output "security_group_name" {
   value       = aws_security_group.this[0].name
   description = "name of the security group - if create_security_group is true"
+  sensitive   = false
+}
+
+output "username" {
+  value       = aws_db_instance.this.username
+  description = "username of the instance"
   sensitive   = false
 }
