@@ -106,8 +106,8 @@ output "security_group_name" {
   sensitive   = false
 }
 
-output "" {
-  value = aws_db_instance.this.username
+output "username" {
+  value       = aws_db_instance.this.username
   description = "username of the instance"
-  sensitive = false
+  sensitive   = false
 }
