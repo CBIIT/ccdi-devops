@@ -1,10 +1,11 @@
 resource "aws_lambda_function" "this" {
-  function_name = "${local.stack}-${var.function_name}"
-  description   = var.description
-  filename      = var.filename
-  handler       = var.handler
-  role          = var.role
-  runtime       = var.runtime
+  function_name    = "${local.stack}-${var.function_name}"
+  description      = var.description
+  filename         = var.filename
+  source_code_hash = var.source_code_hash
+  handler          = var.handler
+  role             = var.role
+  runtime          = var.runtime
 
   memory_size   = var.memory_size
   timeout       = var.timeout
