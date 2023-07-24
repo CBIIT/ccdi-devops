@@ -43,7 +43,14 @@ module "lambda" {
 
 | Name | Type |
 |------|------|
+| [aws_cloudwatch_log_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
+| [aws_iam_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_lambda_function.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.trust](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 # Inputs
 
@@ -51,6 +58,7 @@ module "lambda" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_architectures"></a> [architectures](#input\_architectures) | the architectures supported by the lambda function | `string` | `"x86_64"` | no |
+| <a name="input_attach_permission_boundary"></a> [attach\_permission\_boundary](#input\_attach\_permission\_boundary) | whether to attach a permission boundary to the iam role for lambda | `bool` | `false` | no |
 | <a name="input_description"></a> [description](#input\_description) | describe the purpose of the lambda function | `string` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | provide a map of key-value pairs to be used as environment variables for the lambda function | `map(string)` | `{}` | no |
@@ -82,6 +90,8 @@ module "lambda" {
 | <a name="output_memory_size"></a> [memory\_size](#output\_memory\_size) | the memory size of the lambda function |
 | <a name="output_qualified_arn"></a> [qualified\_arn](#output\_qualified\_arn) | the qualified arn of the lambda function |
 | <a name="output_qualified_invoke_arn"></a> [qualified\_invoke\_arn](#output\_qualified\_invoke\_arn) | the qualified invoke arn of the lambda function |
-| <a name="output_role"></a> [role](#output\_role) | the role of the lambda function |
+| <a name="output_role_arn"></a> [role\_arn](#output\_role\_arn) | the arn of the role |
+| <a name="output_role_id"></a> [role\_id](#output\_role\_id) | the id of the role |
+| <a name="output_role_name"></a> [role\_name](#output\_role\_name) | the name of the role |
 | <a name="output_version"></a> [version](#output\_version) | the version of the lambda function |
 <!-- END_TF_DOCS -->
