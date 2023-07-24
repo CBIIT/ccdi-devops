@@ -32,8 +32,8 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_created_date"></a> [created\_date](#output\_created\_date) | creation date of the deployment |
-| <a name="output_execution_arn"></a> [execution\_arn](#output\_execution\_arn) | execution arn to be used in lambda\_permission's source\_arn when allowing API Gateway to invoke a Lambda function |
-| <a name="output_id"></a> [id](#output\_id) | id of the deployment |
-| <a name="output_invoke_url"></a> [invoke\_url](#output\_invoke\_url) | url to invoke the api pointing to the stage |
+| <a name="output_deployment_created_date"></a> [deployment\_created\_date](#output\_deployment\_created\_date) | creation date of the deployment |
+| <a name="output_deployment_execution_arn"></a> [deployment\_execution\_arn](#output\_deployment\_execution\_arn) | execution arn to be used in lambda\_permission's source\_arn when allowing API Gateway to invoke a Lambda function |
+| <a name="output_deployment_id"></a> [deployment\_id](#output\_deployment\_id) | id of the deployment |
+| <a name="output_deployment_invoke_url"></a> [deployment\_invoke\_url](#output\_deployment\_invoke\_url) | url to invoke the api pointing to the stage |
 <!-- END_TF_DOCS -->

@@ -41,10 +41,10 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_arn"></a> [arn](#output\_arn) | arn of the api gateway stage resource |
-| <a name="output_execution_arn"></a> [execution\_arn](#output\_execution\_arn) | execution arn to be used in lambda\_permission's source\_arn when allowing api gateway to invoke a lambda function |
-| <a name="output_id"></a> [id](#output\_id) | id of the api gateway stage resource |
-| <a name="output_invoke_url"></a> [invoke\_url](#output\_invoke\_url) | url to invoke the api pointing to the stage |
+| <a name="output_stage_arn"></a> [stage\_arn](#output\_stage\_arn) | arn of the api gateway stage resource |
+| <a name="output_stage_execution_arn"></a> [stage\_execution\_arn](#output\_stage\_execution\_arn) | execution arn to be used in lambda\_permission's source\_arn when allowing api gateway to invoke a lambda function |
+| <a name="output_stage_id"></a> [stage\_id](#output\_stage\_id) | id of the api gateway stage resource |
+| <a name="output_stage_invoke_url"></a> [stage\_invoke\_url](#output\_stage\_invoke\_url) | url to invoke the api pointing to the stage |
 | <a name="output_stage_name"></a> [stage\_name](#output\_stage\_name) | name of the api gateway stage resource |
-| <a name="output_web_acl_arn"></a> [web\_acl\_arn](#output\_web\_acl\_arn) | arn of the web acl associated with the stage |
+| <a name="output_stage_web_acl_arn"></a> [stage\_web\_acl\_arn](#output\_stage\_web\_acl\_arn) | arn of the web acl associated with the stage |
 <!-- END_TF_DOCS -->
