@@ -41,7 +41,7 @@ resource "aws_api_gateway_stage" "this" {
   xray_tracing_enabled  = var.xray_tracing_enabled
 
   access_log_settings {
-    destination_arn = aws_cloudwatch_log_group.this.id
+    destination_arn = aws_cloudwatch_log_group.this.arn
     format          = replace(var.api_access_log_format, "\n", "")
   }
 
