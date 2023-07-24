@@ -15,7 +15,7 @@ resource "aws_api_gateway_rest_api" "this" {
   put_rest_api_mode            = var.put_rest_api_mode
 
   endpoint_configuration {
-    types = var.endpoint_configuration_types
+    types = ["REGIONAL"]
   }
 
   parameters = var.parameters

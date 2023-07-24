@@ -95,18 +95,6 @@ variable "disable_execute_api_endpoint" {
   sensitive   = false
 }
 
-variable "endpoint_configuration_types" {
-  type        = list(string)
-  description = "the type of endpoint deployment configuration"
-  default     = ["REGIONAL"]
-  sensitive   = false
-
-  validation {
-    condition     = contains(["EDGE", "REGIONAL"], var.endpoint_configuration_types)
-    error_message = "valid values are 'EDGE' or 'REGIONAL'"
-  }
-}
-
 variable "fail_on_warnings" {
   type        = bool
   description = "whether to fail the Terraform plan if there are any warnings"
