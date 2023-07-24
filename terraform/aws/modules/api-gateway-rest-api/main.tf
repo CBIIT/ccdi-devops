@@ -34,7 +34,7 @@ resource "aws_api_gateway_stage" "this" {
   cache_cluster_enabled = var.cluster_cache_enabled
   cache_cluster_size    = var.cluster_cache_size
   client_certificate_id = var.client_certificate_id
-  deployment_id         = ""
+  deployment_id         = aws_api_gateway_deployment.this.id
   description           = "The ${var.env} stage for the ${local.stack} API Gateway"
   stage_name            = var.env
   variables             = var.variables
