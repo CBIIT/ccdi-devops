@@ -83,12 +83,6 @@ variable "memory_size" {
   sensitive   = false
 }
 
-variable "role" {
-  type        = string
-  description = "provide the role that provides permission for the lambda function to access aws services and resources"
-  sensitive   = false
-}
-
 variable "runtime" {
   type        = string
   description = "the language-specific environment specified in the runtime parameter"

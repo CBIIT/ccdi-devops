@@ -67,7 +67,6 @@ module "lambda" {
 | <a name="input_handler"></a> [handler](#input\_handler) | the name of the handler function (for example, main.lambda\_handler) | `string` | n/a | yes |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | the amount of memory available to the lambda function | `number` | `128` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
-| <a name="input_role"></a> [role](#input\_role) | provide the role that provides permission for the lambda function to access aws services and resources | `string` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | the language-specific environment specified in the runtime parameter | `string` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | optionally provide a list of security group ids to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_source_code_hash"></a> [source\_code\_hash](#input\_source\_code\_hash) | the base64-encoded sha256 hash of the package file specified in the filename parameter | `string` | n/a | yes |
