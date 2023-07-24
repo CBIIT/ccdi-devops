@@ -70,14 +70,26 @@ output "qualified_invoke_arn" {
   sensitive   = false
 }
 
-output "role" {
-  value       = aws_lambda_function.this.role
-  description = "the role of the lambda function"
-  sensitive   = false
-}
-
 output "version" {
   value       = aws_lambda_function.this.version
   description = "the version of the lambda function"
+  sensitive   = false
+}
+
+output "role_arn" {
+  value       = aws_iam_role.this.arn
+  description = "the arn of the role"
+  sensitive   = false
+}
+
+output "role_name" {
+  value       = aws_iam_role.this.name
+  description = "the name of the role"
+  sensitive   = false
+}
+
+output "role_id" {
+  value       = aws_iam_role.this.id
+  description = "the id of the role"
   sensitive   = false
 }
