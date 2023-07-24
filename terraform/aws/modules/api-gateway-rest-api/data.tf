@@ -28,9 +28,6 @@ data "aws_iam_policy_document" "this" {
       "logs:GetLogEvents",
       "logs:FilterLogEvents"
     ]
-    resources = [
-      "${aws_cloudwatch_log_group.this.arn}",
-      "${aws_cloudwatch_log_group.this.arn}:log-stream:*"
-      ]
+    resources = ["*"]
   }
 }
