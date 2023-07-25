@@ -62,14 +62,16 @@ module "lambda" {
 | <a name="input_description"></a> [description](#input\_description) | describe the purpose of the lambda function | `string` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | provide a map of key-value pairs to be used as environment variables for the lambda function | `map(string)` | `{}` | no |
-| <a name="input_filename"></a> [filename](#input\_filename) | provide the path and name of the file that contains your lambda function code | `string` | n/a | yes |
+| <a name="input_filename"></a> [filename](#input\_filename) | provide the path and name of the file that contains your lambda function code | `string` | `null` | no |
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | provide a name for the lambda function that will be appended to the stack name | `string` | n/a | yes |
 | <a name="input_handler"></a> [handler](#input\_handler) | the name of the handler function (for example, main.lambda\_handler) | `string` | n/a | yes |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | the amount of memory available to the lambda function | `number` | `128` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | the language-specific environment specified in the runtime parameter | `string` | n/a | yes |
+| <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | the name of the s3 bucket that contains the lambda function code | `string` | `null` | no |
+| <a name="input_s3_key"></a> [s3\_key](#input\_s3\_key) | the path and name of the file that contains your lambda function code | `string` | `null` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | optionally provide a list of security group ids to associate with the lambda function | `list(string)` | `[]` | no |
-| <a name="input_source_code_hash"></a> [source\_code\_hash](#input\_source\_code\_hash) | the base64-encoded sha256 hash of the package file specified in the filename parameter | `string` | n/a | yes |
+| <a name="input_source_code_hash"></a> [source\_code\_hash](#input\_source\_code\_hash) | the base64-encoded sha256 hash of the package file specified in the filename parameter | `string` | `null` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | optionally provide a list of subnet ids to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_timeout"></a> [timeout](#input\_timeout) | the amount of time that lambda allows a function to run before stopping it | `number` | `30` | no |
 
