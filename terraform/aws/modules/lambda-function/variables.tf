@@ -67,6 +67,7 @@ variable "function_name" {
 variable "filename" {
   type        = string
   description = "provide the path and name of the file that contains your lambda function code"
+  default     = null
   sensitive   = false
 }
 
@@ -94,6 +95,20 @@ variable "runtime" {
   }
 }
 
+variable "s3_bucket" {
+  type        = string
+  description = "the name of the s3 bucket that contains the lambda function code"
+  default     = null
+  sensitive   = false
+}
+
+variable "s3_key" {
+  type        = string
+  description = "the path and name of the file that contains your lambda function code"
+  default     = null
+  sensitive   = false
+}
+
 variable "security_group_ids" {
   type        = list(string)
   description = "optionally provide a list of security group ids to associate with the lambda function"
@@ -104,6 +119,7 @@ variable "security_group_ids" {
 variable "source_code_hash" {
   type        = string
   description = "the base64-encoded sha256 hash of the package file specified in the filename parameter"
+  default     = null
   sensitive   = false
 }
 
