@@ -1,3 +1,9 @@
+output "architectures" {
+  value       = aws_lambda_function.this.architectures
+  description = "the architectures supported by the lambda function"
+  sensitive   = false
+}
+
 output "arn" {
   value       = aws_lambda_function.this.arn
   description = "the arn of the lambda function"
@@ -67,6 +73,12 @@ output "qualified_arn" {
 output "qualified_invoke_arn" {
   value       = aws_lambda_function.this.qualified_invoke_arn
   description = "the qualified invoke arn of the lambda function"
+  sensitive   = false
+}
+
+output "runtime" {
+  value       = aws_lambda_function.this.runtime
+  description = "the runtime of the lambda function"
   sensitive   = false
 }
 
