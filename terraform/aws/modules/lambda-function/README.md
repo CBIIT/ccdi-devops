@@ -65,6 +65,7 @@ module "lambda" {
 | <a name="input_filename"></a> [filename](#input\_filename) | provide the path and name of the file that contains your lambda function code | `string` | `null` | no |
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | provide a name for the lambda function that will be appended to the stack name | `string` | n/a | yes |
 | <a name="input_handler"></a> [handler](#input\_handler) | the name of the handler function (for example, main.lambda\_handler) | `string` | n/a | yes |
+| <a name="input_layers"></a> [layers](#input\_layers) | optionally provide a list of lambda layer arns to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | the amount of memory available to the lambda function | `number` | `128` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | the language-specific environment specified in the runtime parameter | `string` | n/a | yes |
@@ -79,6 +80,7 @@ module "lambda" {
 
 | Name | Description |
 |------|-------------|
+| <a name="output_architectures"></a> [architectures](#output\_architectures) | the architectures supported by the lambda function |
 | <a name="output_arn"></a> [arn](#output\_arn) | the arn of the lambda function |
 | <a name="output_description"></a> [description](#output\_description) | the description of the lambda function |
 | <a name="output_filename"></a> [filename](#output\_filename) | the filename of the lambda function |
@@ -94,5 +96,6 @@ module "lambda" {
 | <a name="output_role_arn"></a> [role\_arn](#output\_role\_arn) | the arn of the role |
 | <a name="output_role_id"></a> [role\_id](#output\_role\_id) | the id of the role |
 | <a name="output_role_name"></a> [role\_name](#output\_role\_name) | the name of the role |
+| <a name="output_runtime"></a> [runtime](#output\_runtime) | the runtime of the lambda function |
 | <a name="output_version"></a> [version](#output\_version) | the version of the lambda function |
 <!-- END_TF_DOCS -->
