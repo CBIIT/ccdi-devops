@@ -77,6 +77,13 @@ variable "handler" {
   sensitive   = false
 }
 
+variable "layers" {
+  type        = list(string)
+  description = "optionally provide a list of lambda layer arns to associate with the lambda function"
+  default     = []
+  sensitive   = false
+}
+
 variable "memory_size" {
   type        = number
   description = "the amount of memory available to the lambda function"

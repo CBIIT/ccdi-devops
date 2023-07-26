@@ -3,6 +3,7 @@ resource "aws_lambda_function" "this" {
   description      = var.description
   filename         = var.filename
   source_code_hash = var.source_code_hash
+  layers           = var.layers == [] ? null : var.layers
   s3_bucket        = var.s3_bucket
   s3_key           = var.s3_key
   handler          = var.handler
