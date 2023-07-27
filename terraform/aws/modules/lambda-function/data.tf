@@ -39,6 +39,12 @@ data "aws_iam_policy_document" "this" {
   }
 
   statement {
+    effect = "Allow" 
+    actions = [ "rds-data:*" ]
+    resources = [ "*" ]
+  }
+
+  statement {
     effect = "Allow"
     actions = [
       "ec2:DescribeNetworkInterfaces",
