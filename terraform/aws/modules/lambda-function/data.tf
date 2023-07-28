@@ -15,35 +15,36 @@ data "aws_iam_policy_document" "trust" {
   }
 }
 
-data "aws_iam_policy_document" "this" {
+data "aws_iam_policy_document" "cloudwatch" {
   statement {
     effect = "Allow"
     actions = [
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
-      "logs:DescribeLogStreams"
-    ]
-    resources = [
-      "${aws_cloudwatch_log_group.this.arn}"
-    ]
-  }
-
-  statement {
-    effect = "Allow"
-    actions = [
+      "logs:DescribeLogStreams",
       "logs:PutLogEvents"
     ]
     resources = [
-      "${aws_cloudwatch_log_group.this.arn}:log-stream:*"
+      "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:*"
     ]
   }
+}
 
+data "aws_iam_policy_document" "xray" {
   statement {
-    effect = "Allow" 
-    actions = [ "rds-data:*" ]
-    resources = [ "*" ]
+    effect = "Allow"
+    actions = [
+      "xray:PutTraceSegments",
+      "xray:PutTelemetryRecords",
+      "xray:GetSamplingRules",
+      "xray:GetSamplingTargets",
+      "xray:GetSamplingStatisticSummaries"
+    ]
+    resources = ["*"]
   }
+}
 
+data "aws_iam_policy_document" "vpc" {
   statement {
     effect = "Allow"
     actions = [
