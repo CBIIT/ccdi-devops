@@ -28,6 +28,6 @@ data "aws_iam_policy_document" "this" {
       "logs:GetLogEvents",
       "logs:FilterLogEvents"
     ]
-    resources = ["*"]
+    resources = ["arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:*"]
   }
 }
