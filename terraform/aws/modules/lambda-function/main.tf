@@ -7,7 +7,7 @@ resource "aws_lambda_function" "this" {
   s3_bucket        = var.s3_bucket
   s3_key           = var.s3_key
   handler          = var.handler
-  role             = aws_iam_role.this.arn
+  role             = module.role.arn
   runtime          = var.runtime
   memory_size      = var.memory_size
   timeout          = var.timeout
@@ -21,7 +21,7 @@ resource "aws_lambda_function" "this" {
     size = var.ephemeral_storage_size
   }
 
-  dynamic environment {
+  dynamic "environment" {
     for_each = var.environment_variables != {} ? [true] : []
 
     content {
@@ -41,58 +41,29 @@ resource "aws_lambda_function" "this" {
     for_each = var.vpc_config != null ? [var.vpc_config] : []
 
     content {
-      security_group_ids = vpc_config.value.security_group_ids
-      subnet_ids         = vpc_config.value.subnet_ids
+      security_group_ids = var.vpc_config.value.security_group_ids
+      subnet_ids         = var.vpc_config.value.subnet_ids
     }
   }
 
-  depends_on = [
-    aws_iam_role_policy_attachment.cloudwatch,
-    aws_iam_role_policy_attachment.xray,
-    aws_iam_role_policy_attachment.vpc
-  ]
+  lifecycle {
+    ignore_changes = [last_modified]
+  }
 }
 
-resource "aws_iam_role" "this" {
-  name                 = "power-user-${local.stack}-lambda-${var.function_name}"
-  description          = "the role for the lambda function named ${local.stack}-${var.function_name}"
-  assume_role_policy   = data.aws_iam_policy_document.trust.json
-  permissions_boundary = var.attach_permission_boundary ? local.permissions_boundary_arn : null
+module "role" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function?ref=main"
+
+  app                        = var.app
+  env                        = var.env
+  program                    = var.program
+  attach_permission_boundary = var.attach_permission_boundary
+  enable_vpc_access          = var.vpc_config != null ? true : false
+  function_name              = var.function_name
 }
 
-resource "aws_iam_policy" "cloudwatch" {
-  name        = "power-user-${local.stack}-lambda-${var.function_name}-cloudwatch"
-  description = "allows the lambda function named ${local.stack}-${var.function_name} to write to cloudwatch logs"
-  policy      = data.aws_iam_policy_document.cloudwatch.json
-}
-
-resource "aws_iam_role_policy_attachment" "cloudwatch" {
-  role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.cloudwatch.arn
-}
-
-resource "aws_iam_policy" "xray" {
-  name        = "power-user-${local.stack}-lambda-${var.function_name}-xray"
-  description = "allows the lambda function named ${local.stack}-${var.function_name} to write to xray"
-  policy      = data.aws_iam_policy_document.xray.json
-}
-
-resource "aws_iam_role_policy_attachment" "xray" {
-  role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.xray.arn
-}
-
-resource "aws_iam_policy" "vpc" {
-  count = var.enable_vpc_access ? 1 : 0
-
-  name        = "power-user-${local.stack}-lambda-${var.function_name}-vpc"
-  description = "allows the lambda function named ${local.stack}-${var.function_name} to access the vpc"
-  policy      = data.aws_iam_policy_document.vpc.json
-}
-
-resource "aws_iam_role_policy_attachment" "vpc" {
-  count = var.enable_vpc_access ? 1 : 0
-  
-  role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.vpc.arn
+resource "aws_cloudwatch_log_group" "this" {
+  name              = "/aws/lambda/${local.stack}-${var.function_name}"
+  retention_in_days = 90
+  kms_key_id        = ""
 }

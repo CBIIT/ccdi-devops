@@ -59,10 +59,10 @@ variable "description" {
 }
 
 variable "ephemeral_storage_size" {
-  type = number 
+  type        = number
   description = "the amount of ephemeral storage available to the lambda function (MB)"
-  default = 512 
-  sensitive = false
+  default     = 512
+  sensitive   = false
 }
 
 variable "environment_variables" {
