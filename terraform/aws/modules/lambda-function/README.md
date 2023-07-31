@@ -43,6 +43,7 @@ module "lambda" {
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_code_signing_config"></a> [code\_signing\_config](#module\_code\_signing\_config) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config | main |
 | <a name="module_logs"></a> [logs](#module\_logs) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-log-group | main |
 | <a name="module_logs_key"></a> [logs\_key](#module\_logs\_key) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/kms | main |
 | <a name="module_role"></a> [role](#module\_role) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function | main |
@@ -62,6 +63,7 @@ module "lambda" {
 | <a name="input_attach_permission_boundary"></a> [attach\_permission\_boundary](#input\_attach\_permission\_boundary) | whether to attach a permission boundary to the iam role for lambda | `bool` | `false` | no |
 | <a name="input_dead_letter_config_target_arn"></a> [dead\_letter\_config\_target\_arn](#input\_dead\_letter\_config\_target\_arn) | the arn of the dead letter queue to which lambda will send failed events | `string` | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | describe the purpose of the lambda function | `string` | n/a | yes |
+| <a name="input_enable_log_encryption"></a> [enable\_log\_encryption](#input\_enable\_log\_encryption) | whether to enable encryption of logs in cloudwatch with kms | `bool` | `true` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | provide a map of key-value pairs to be used as environment variables for the lambda function | `map(string)` | `{}` | no |
 | <a name="input_ephemeral_storage_size"></a> [ephemeral\_storage\_size](#input\_ephemeral\_storage\_size) | the amount of ephemeral storage available to the lambda function (MB) | `number` | `512` | no |
@@ -75,6 +77,7 @@ module "lambda" {
 | <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | the name of the s3 bucket that contains the lambda function code | `string` | `null` | no |
 | <a name="input_s3_key"></a> [s3\_key](#input\_s3\_key) | the path and name of the file that contains your lambda function code | `string` | `null` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | optionally provide a list of security group ids to associate with the lambda function | `list(string)` | `[]` | no |
+| <a name="input_signing_profile_version_arns"></a> [signing\_profile\_version\_arns](#input\_signing\_profile\_version\_arns) | optionally provide a list of signing profile version arns to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_source_code_hash"></a> [source\_code\_hash](#input\_source\_code\_hash) | the base64-encoded sha256 hash of the package file specified in the filename parameter | `string` | `null` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | optionally provide a list of subnet ids to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_timeout"></a> [timeout](#input\_timeout) | the amount of time that lambda allows a function to run before stopping it | `number` | `30` | no |

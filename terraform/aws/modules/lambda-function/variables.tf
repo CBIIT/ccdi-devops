@@ -65,6 +65,13 @@ variable "ephemeral_storage_size" {
   sensitive   = false
 }
 
+variable "enable_log_encryption" {
+  type        = bool
+  description = "whether to enable encryption of logs in cloudwatch with kms"
+  default     = true
+  sensitive   = false
+}
+
 variable "environment_variables" {
   type        = map(string)
   description = "provide a map of key-value pairs to be used as environment variables for the lambda function"
@@ -133,6 +140,13 @@ variable "s3_key" {
 variable "security_group_ids" {
   type        = list(string)
   description = "optionally provide a list of security group ids to associate with the lambda function"
+  default     = []
+  sensitive   = false
+}
+
+variable "signing_profile_version_arns" {
+  type        = list(string)
+  description = "optionally provide a list of signing profile version arns to associate with the lambda function"
   default     = []
   sensitive   = false
 }

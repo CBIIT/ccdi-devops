@@ -1,17 +1,18 @@
 resource "aws_lambda_function" "this" {
-  function_name    = "${local.stack}-${var.function_name}"
-  description      = var.description
-  filename         = var.filename
-  source_code_hash = var.source_code_hash
-  layers           = var.layers == [] ? null : var.layers
-  s3_bucket        = var.s3_bucket
-  s3_key           = var.s3_key
-  handler          = var.handler
-  role             = module.role.arn
-  runtime          = var.runtime
-  memory_size      = var.memory_size
-  timeout          = var.timeout
-  architectures    = [var.architectures]
+  function_name           = "${local.stack}-${var.function_name}"
+  description             = var.description
+  filename                = var.filename
+  source_code_hash        = var.source_code_hash
+  code_signing_config_arn = var.signing_profile_version_arns != [] ? module.code_signing_config[0].arn : null
+  layers                  = var.layers == [] ? null : var.layers
+  s3_bucket               = var.s3_bucket
+  s3_key                  = var.s3_key
+  handler                 = var.handler
+  role                    = module.role.arn
+  runtime                 = var.runtime
+  memory_size             = var.memory_size
+  timeout                 = var.timeout
+  architectures           = [var.architectures]
 
   tracing_config {
     mode = var.tracing_mode
@@ -84,4 +85,11 @@ module "logs_key" {
   description             = "KMS key for ${local.stack}-${var.function_name} lambda logs"
   deletion_window_in_days = 7
   kms_suffix              = "lambda-${var.function_name}"
+}
+
+module "code_signing_config" {
+  count  = var.signing_profile_version_arns != [] ? 1 : 0
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config?ref=main"
+
+  signing_profile_version_arns = var.signing_profile_version_arns
 }
