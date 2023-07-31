@@ -15,7 +15,7 @@ variable "signing_profile_version_arns" {
 variable "untrusted_artifact_on_deployment" {
   type        = bool
   description = "whether to allow untrusted artifacts to be deployed - either 'Warn' or 'Enforce'"
-  default     = "Enforce"
+  default     = "Warn"
   sensitive   = false
 
   validation {

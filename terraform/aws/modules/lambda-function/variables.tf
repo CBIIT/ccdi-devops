@@ -144,6 +144,13 @@ variable "security_group_ids" {
   sensitive   = false
 }
 
+variable "signing_profile_version_arns" {
+  type        = list(string)
+  description = "optionally provide a list of signing profile version arns to associate with the lambda function"
+  default     = []
+  sensitive   = false
+}
+
 variable "source_code_hash" {
   type        = string
   description = "the base64-encoded sha256 hash of the package file specified in the filename parameter"
