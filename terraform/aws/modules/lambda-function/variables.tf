@@ -45,9 +45,23 @@ variable "attach_permission_boundary" {
   sensitive   = false
 }
 
+variable "dead_letter_config_target_arn" {
+  type        = string
+  description = "the arn of the dead letter queue to which lambda will send failed events"
+  default     = null
+  sensitive   = false
+}
+
 variable "description" {
   type        = string
   description = "describe the purpose of the lambda function"
+  sensitive   = false
+}
+
+variable "ephemeral_storage_size" {
+  type        = number
+  description = "the amount of ephemeral storage available to the lambda function (MB)"
+  default     = 512
   sensitive   = false
 }
 
@@ -141,5 +155,22 @@ variable "timeout" {
   type        = number
   description = "the amount of time that lambda allows a function to run before stopping it"
   default     = 30
+  sensitive   = false
+}
+
+variable "tracing_mode" {
+  type        = string
+  description = "the tracing mode for the lambda function - either 'Active' or 'PassThrough'"
+  default     = "Active"
+  sensitive   = false
+}
+
+variable "vpc_config" {
+  type = object({
+    security_group_ids = list(string)
+    subnet_ids         = list(string)
+  })
+  description = "provide a list of security group ids and subnet ids to associate with the lambda function if it is to be deployed in a vpc"
+  default     = null
   sensitive   = false
 }

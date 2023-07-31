@@ -1,24 +1,12 @@
 resource "aws_kms_key" "this" {
-  customer_master_key_spec = var.customer_master_key_spec
-  deletion_window_in_days  = var.deletion_window_in_days
-  description              = "kms key used to encrypt images in the ${local.repository_name} repository"
-  enabled                  = true
-  enable_key_rotation      = true
-  key_usage                = "ENCRYPT_DECRYPT"
-
-  tags = {
-    app     = var.app
-    program = var.program
-    alias   = var.alias
-  }
+  description             = var.description
+  deletion_window_in_days = var.deletion_window_in_days
+  is_enabled              = true
+  enable_key_rotation     = var.enable_key_rotation
+  policy                  = data.aws_iam_policy_document.this.json
 }
 
 resource "aws_kms_alias" "this" {
-  name          = "alias/${var.alias}"
+  name          = "${local.stack}-${var.kms_suffix}"
   target_key_id = aws_kms_key.this.key_id
-}
-
-resource "aws_kms_key_policy" "this" {
-  key_id = aws_kms_key.this.key_id
-  policy = var.policy
 }

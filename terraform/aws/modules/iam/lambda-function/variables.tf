@@ -26,28 +26,23 @@ variable "program" {
   }
 }
 
-variable "description" {
-  type        = string
-  description = "description of how the key will be used"
-  sensitive   = false
-}
-
-variable "deletion_window_in_days" {
-  type        = number
-  description = "duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days"
-  default     = 0
-  sensitive   = false
-}
-
-variable "enable_key_rotation" {
+variable "attach_permissions_boundary" {
   type        = bool
-  description = "whether to enable automatic rotation of the key"
+  description = "whether or not to attach the permission boundary to the role"
   default     = true
   sensitive   = false
+
 }
 
-variable "kms_suffix" {
+variable "enable_vpc_access" {
+  type        = bool
+  description = "whether or not to enable vpc access for the lambda function"
+  default     = false
+  sensitive   = false
+}
+
+variable "function_name" {
   type        = string
-  description = "suffix to append to the kms alias"
+  description = "the name of the lambda function that is appended to the stack name"
   sensitive   = false
 }
