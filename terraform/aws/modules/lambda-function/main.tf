@@ -14,16 +14,36 @@ resource "aws_lambda_function" "this" {
   architectures    = [var.architectures]
 
   tracing_config {
-    mode = "Active"
+    mode = var.tracing_mode
   }
 
-  vpc_config {
-    subnet_ids         = var.subnet_ids == [] ? null : var.subnet_ids
-    security_group_ids = var.security_group_ids == [] ? null : var.security_group_ids
+  ephemeral_storage {
+    size = var.ephemeral_storage_size
   }
 
-  environment {
-    variables = var.environment_variables
+  dynamic environment {
+    for_each = var.environment_variables != {} ? [true] : []
+
+    content {
+      variables = var.environment_variables
+    }
+  }
+
+  dynamic "dead_letter_config" {
+    for_each = var.dead_letter_config_target_arn != null ? [true] : []
+
+    content {
+      target_arn = var.dead_letter_config_target_arn
+    }
+  }
+
+  dynamic "vpc_config" {
+    for_each = var.vpc_config != null ? [var.vpc_config] : []
+
+    content {
+      security_group_ids = vpc_config.value.security_group_ids
+      subnet_ids         = vpc_config.value.subnet_ids
+    }
   }
 
   depends_on = [
