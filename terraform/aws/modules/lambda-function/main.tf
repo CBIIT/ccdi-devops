@@ -46,6 +46,11 @@ resource "aws_lambda_function" "this" {
     }
   }
 
+  depends_on = [
+    module.role,
+    module.logs
+  ]
+
   lifecycle {
     ignore_changes = [last_modified]
   }
@@ -62,8 +67,21 @@ module "role" {
   function_name              = var.function_name
 }
 
-resource "aws_cloudwatch_log_group" "this" {
-  name              = "/aws/lambda/${local.stack}-${var.function_name}"
-  retention_in_days = 90
-  kms_key_id        = ""
+module "logs" {
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-log-group?ref=main"
+
+  name        = "/aws/lambda/${local.stack}-${var.function_name}"
+  kms_key_arn = var.enable_log_encryption ? module.logs_key[0].arn : null
+}
+
+module "logs_key" {
+  count  = var.enable_log_encryption ? 1 : 0
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/kms?ref=main"
+
+  app                     = var.app
+  env                     = var.env
+  program                 = var.program
+  description             = "KMS key for ${local.stack}-${var.function_name} lambda logs"
+  deletion_window_in_days = 7
+  kms_suffix              = "lambda-${var.function_name}"
 }
