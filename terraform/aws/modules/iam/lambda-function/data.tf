@@ -45,6 +45,8 @@ data "aws_iam_policy_document" "xray" {
 }
 
 data "aws_iam_policy_document" "vpc" {
+  count = var.enable_vpc_access ? 1 : 0
+
   statement {
     effect = "Allow"
     actions = [
