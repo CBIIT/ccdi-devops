@@ -4,6 +4,17 @@ variable "app" {
   sensitive   = false
 }
 
+variable "env" {
+  type        = string
+  description = "the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.)"
+  sensitive   = false
+
+  validation {
+    condition     = contains(["dev", "qa", "stage", "prod", "nonprod"], var.env)
+    error_message = "valid values are 'dev', 'qa', 'stage', 'prod', and 'nonprod'"
+  }
+}
+
 variable "program" {
   type        = string
   description = "the program associated with the application"
@@ -15,22 +26,28 @@ variable "program" {
   }
 }
 
-variable "alias" {
+variable "description" {
   type        = string
-  description = "the alias for the kms key"
-  sensitive   = false
-}
-
-variable "customer_master_key_spec" {
-  type        = string
-  description = "whether the key contains a symmetric key or an asymmetric key pair and the encryption algorithms or signing algorithms that the key supports"
-  default     = "SYMMETRIC_DEFAULT"
+  description = "description of how the key will be used"
   sensitive   = false
 }
 
 variable "deletion_window_in_days" {
   type        = number
-  description = "days before the key is permanently deleted after destruction of the resource"
-  default     = 7
+  description = "duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days"
+  default     = 0
+  sensitive   = false
+}
+
+variable "enable_key_rotation" {
+  type        = bool
+  description = "whether to enable automatic rotation of the key"
+  default     = true
+  sensitive   = false
+}
+
+variable "kms_suffix" {
+  type        = string
+  description = "suffix to append to the kms alias"
   sensitive   = false
 }

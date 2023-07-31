@@ -16,3 +16,20 @@ output "key_id" {
   sensitive   = false
 }
 
+output "alias_arn" {
+  value       = aws_kms_alias.this.arn
+  description = "arn of the kms key alias"
+  sensitive   = false
+}
+
+output "alias_id" {
+  value     = aws_kms_alias.this.id
+  output    = "id of the kms key alias"
+  sensitive = false
+}
+
+output "alias_name" {
+  value       = aws_kms_alias.this.name
+  description = "name of the kms key alias"
+  sensitive   = false
+}
