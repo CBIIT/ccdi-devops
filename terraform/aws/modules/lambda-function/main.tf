@@ -60,12 +60,12 @@ resource "aws_lambda_function" "this" {
 module "role" {
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function?ref=main"
 
-  app                        = var.app
-  env                        = var.env
-  program                    = var.program
-  attach_permission_boundary = var.attach_permission_boundary
-  enable_vpc_access          = var.vpc_config != null ? true : false
-  function_name              = var.function_name
+  app                         = var.app
+  env                         = var.env
+  program                     = var.program
+  attach_permissions_boundary = var.attach_permissions_boundary
+  enable_vpc_access           = var.vpc_config != null ? true : false
+  function_name               = var.function_name
 }
 
 module "logs" {

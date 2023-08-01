@@ -38,7 +38,7 @@ variable "architectures" {
   }
 }
 
-variable "attach_permission_boundary" {
+variable "attach_permissions_boundary" {
   type        = bool
   description = "whether to attach a permission boundary to the iam role for lambda"
   default     = false
