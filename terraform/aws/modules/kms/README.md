@@ -17,6 +17,8 @@
 |------|------|
 | [aws_kms_alias.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
 | [aws_kms_key.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
+| [aws_kms_key_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key_policy) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 # Inputs
@@ -36,7 +38,7 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_alias_arn"></a> [alias\_arn](#output\_alias\_arn) | arn of the kms key alias |
-| <a name="output_alias_id"></a> [alias\_id](#output\_alias\_id) | n/a |
+| <a name="output_alias_id"></a> [alias\_id](#output\_alias\_id) | id of the kms key alias |
 | <a name="output_alias_name"></a> [alias\_name](#output\_alias\_name) | name of the kms key alias |
 | <a name="output_arn"></a> [arn](#output\_arn) | arn of the kms key |
 | <a name="output_id"></a> [id](#output\_id) | id of the kms key |

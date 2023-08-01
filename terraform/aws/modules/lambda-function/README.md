@@ -53,6 +53,7 @@ module "lambda" {
 | Name | Type |
 |------|------|
 | [aws_lambda_function.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) | resource |
+| [aws_lambda_permission.api_gateway](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_permission) | resource |
 
 # Inputs
 
@@ -60,7 +61,7 @@ module "lambda" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_architectures"></a> [architectures](#input\_architectures) | the architectures supported by the lambda function | `string` | `"x86_64"` | no |
-| <a name="input_attach_permission_boundary"></a> [attach\_permission\_boundary](#input\_attach\_permission\_boundary) | whether to attach a permission boundary to the iam role for lambda | `bool` | `false` | no |
+| <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether to attach a permission boundary to the iam role for lambda | `bool` | `false` | no |
 | <a name="input_dead_letter_config_target_arn"></a> [dead\_letter\_config\_target\_arn](#input\_dead\_letter\_config\_target\_arn) | the arn of the dead letter queue to which lambda will send failed events | `string` | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | describe the purpose of the lambda function | `string` | n/a | yes |
 | <a name="input_enable_log_encryption"></a> [enable\_log\_encryption](#input\_enable\_log\_encryption) | whether to enable encryption of logs in cloudwatch with kms | `bool` | `true` | no |
@@ -70,16 +71,15 @@ module "lambda" {
 | <a name="input_filename"></a> [filename](#input\_filename) | provide the path and name of the file that contains your lambda function code | `string` | `null` | no |
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | provide a name for the lambda function that will be appended to the stack name | `string` | n/a | yes |
 | <a name="input_handler"></a> [handler](#input\_handler) | the name of the handler function (for example, main.lambda\_handler) | `string` | n/a | yes |
+| <a name="input_lambda_permissions_api_gateway_execution_arn"></a> [lambda\_permissions\_api\_gateway\_execution\_arn](#input\_lambda\_permissions\_api\_gateway\_execution\_arn) | optionally provide a list of api gateway execution arns to associate with the lambda function | `set(string)` | `[]` | no |
 | <a name="input_layers"></a> [layers](#input\_layers) | optionally provide a list of lambda layer arns to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | the amount of memory available to the lambda function | `number` | `128` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | the language-specific environment specified in the runtime parameter | `string` | n/a | yes |
 | <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | the name of the s3 bucket that contains the lambda function code | `string` | `null` | no |
 | <a name="input_s3_key"></a> [s3\_key](#input\_s3\_key) | the path and name of the file that contains your lambda function code | `string` | `null` | no |
-| <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | optionally provide a list of security group ids to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_signing_profile_version_arns"></a> [signing\_profile\_version\_arns](#input\_signing\_profile\_version\_arns) | optionally provide a list of signing profile version arns to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_source_code_hash"></a> [source\_code\_hash](#input\_source\_code\_hash) | the base64-encoded sha256 hash of the package file specified in the filename parameter | `string` | `null` | no |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | optionally provide a list of subnet ids to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_timeout"></a> [timeout](#input\_timeout) | the amount of time that lambda allows a function to run before stopping it | `number` | `30` | no |
 | <a name="input_tracing_mode"></a> [tracing\_mode](#input\_tracing\_mode) | the tracing mode for the lambda function - either 'Active' or 'PassThrough' | `string` | `"Active"` | no |
 | <a name="input_vpc_config"></a> [vpc\_config](#input\_vpc\_config) | provide a list of security group ids and subnet ids to associate with the lambda function if it is to be deployed in a vpc | <pre>object({<br>    security_group_ids = list(string)<br>    subnet_ids         = list(string)<br>  })</pre> | `null` | no |
