@@ -39,7 +39,6 @@
 | <a name="output_job_invoker"></a> [job\_invoker](#output\_job\_invoker) | the iam principal that requested the signing job |
 | <a name="output_job_owner"></a> [job\_owner](#output\_job\_owner) | the iam principal that owns the signing job |
 | <a name="output_platform_display_name"></a> [platform\_display\_name](#output\_platform\_display\_name) | the display name of the signing platform |
-| <a name="output_platform_version"></a> [platform\_version](#output\_platform\_version) | the version of the signing platform |
 | <a name="output_requested_by"></a> [requested\_by](#output\_requested\_by) | the iam principal that requested the signing job |
 | <a name="output_revocation_record"></a> [revocation\_record](#output\_revocation\_record) | the revocation record for the signing job |
 | <a name="output_signature_expires_at"></a> [signature\_expires\_at](#output\_signature\_expires\_at) | the date and time that the signing job signature expires |

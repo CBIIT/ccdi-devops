@@ -34,12 +34,6 @@ output "platform_display_name" {
   sensitive   = false
 }
 
-output "platform_version" {
-  value       = aws_signer_signing_job.this.platform_version
-  description = "the version of the signing platform"
-  sensitive   = false
-}
-
 output "requested_by" {
   value       = aws_signer_signing_job.this.requested_by
   description = "the iam principal that requested the signing job"
