@@ -17,9 +17,4 @@ variable "untrusted_artifact_on_deployment" {
   description = "whether to allow untrusted artifacts to be deployed - either 'Warn' or 'Enforce'"
   default     = "Warn"
   sensitive   = false
-
-  validation {
-    condition     = contains(["Warn", "Enforce"], var.untrusted_artifact_on_deployment)
-    error_message = "untrusted_artifact_on_deployment must be either 'Warn' or 'Enforce'"
-  }
 }

@@ -95,7 +95,7 @@ module "code_signing_config" {
 }
 
 resource "aws_lambda_permission" "api_gateway" {
-  for_each = var.lambda_permissions_api_gateway_execution_arn 
+  for_each = var.lambda_permissions_api_gateway_execution_arn
 
   principal     = "apigateway.amazonaws.com"
   action        = "lambda:InvokeFunction"

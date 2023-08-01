@@ -23,9 +23,9 @@ output "alias_arn" {
 }
 
 output "alias_id" {
-  value     = aws_kms_alias.this.id
-  output    = "id of the kms key alias"
-  sensitive = false
+  value       = aws_kms_alias.this.id
+  description = "id of the kms key alias"
+  sensitive   = false
 }
 
 output "alias_name" {
