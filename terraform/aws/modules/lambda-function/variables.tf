@@ -144,13 +144,6 @@ variable "s3_key" {
   sensitive   = false
 }
 
-variable "security_group_ids" {
-  type        = list(string)
-  description = "optionally provide a list of security group ids to associate with the lambda function"
-  default     = []
-  sensitive   = false
-}
-
 variable "signing_profile_version_arns" {
   type        = list(string)
   description = "optionally provide a list of signing profile version arns to associate with the lambda function"
@@ -162,13 +155,6 @@ variable "source_code_hash" {
   type        = string
   description = "the base64-encoded sha256 hash of the package file specified in the filename parameter"
   default     = null
-  sensitive   = false
-}
-
-variable "subnet_ids" {
-  type        = list(string)
-  description = "optionally provide a list of subnet ids to associate with the lambda function"
-  default     = []
   sensitive   = false
 }
 
