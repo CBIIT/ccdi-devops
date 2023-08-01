@@ -36,7 +36,7 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_alias_arn"></a> [alias\_arn](#output\_alias\_arn) | arn of the kms key alias |
-| <a name="output_alias_id"></a> [alias\_id](#output\_alias\_id) | n/a |
+| <a name="output_alias_id"></a> [alias\_id](#output\_alias\_id) | id of the kms key alias |
 | <a name="output_alias_name"></a> [alias\_name](#output\_alias\_name) | name of the kms key alias |
 | <a name="output_arn"></a> [arn](#output\_arn) | arn of the kms key |
 | <a name="output_id"></a> [id](#output\_id) | id of the kms key |
