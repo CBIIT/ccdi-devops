@@ -25,6 +25,7 @@
 | <a name="input_signing_profile_version_arns"></a> [signing\_profile\_version\_arns](#input\_signing\_profile\_version\_arns) | list of signing profile version arns to allow | `list(string)` | `[]` | no |
 | <a name="input_untrusted_artifact_on_deployment"></a> [untrusted\_artifact\_on\_deployment](#input\_untrusted\_artifact\_on\_deployment) | whether to allow untrusted artifacts to be deployed - either 'Warn' or 'Enforce' | `string` | `"Enforce"` | no |
 
+
 # Outputs
 
 | Name | Description |
