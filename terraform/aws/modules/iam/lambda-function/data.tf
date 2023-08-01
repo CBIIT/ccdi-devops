@@ -19,13 +19,11 @@ data "aws_iam_policy_document" "cloudwatch" {
   statement {
     effect = "Allow"
     actions = [
-      "logs:CreateLogGroup",
       "logs:CreateLogStream",
-      "logs:DescribeLogStreams",
       "logs:PutLogEvents"
     ]
     resources = [
-      "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:*"
+      "arn:aws:logs:*:*:*"
     ]
   }
 }
