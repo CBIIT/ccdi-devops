@@ -1,3 +1,7 @@
+data "aws_caller_identity" "current" {
+  
+}
+
 data "aws_iam_policy_document" "this" {
   statement {
     effect = "Allow"
@@ -29,7 +33,7 @@ data "aws_iam_policy_document" "this" {
       "kms:DescribeKey"
     ]
     resources = [
-      aws_kms_key.this.arn
+      "arn:aws:kms:us-east-1:${data.aws_caller_identity.current.account_id}:key/*"
     ]
 
     principals {

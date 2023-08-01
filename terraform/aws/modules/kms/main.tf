@@ -3,7 +3,11 @@ resource "aws_kms_key" "this" {
   deletion_window_in_days = var.deletion_window_in_days
   is_enabled              = true
   enable_key_rotation     = var.enable_key_rotation
-  policy                  = data.aws_iam_policy_document.this.json
+}
+
+resource "aws_kms_key_policy" "this" {
+  key_id  = aws_kms_key.this.key_id
+  policy  = data.aws_iam_policy_document.this.json
 }
 
 resource "aws_kms_alias" "this" {

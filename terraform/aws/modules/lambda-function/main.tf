@@ -58,18 +58,18 @@ resource "aws_lambda_function" "this" {
 }
 
 module "role" {
-  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function?ref=main"
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function"
 
-  app                        = var.app
-  env                        = var.env
-  program                    = var.program
-  attach_permission_boundary = var.attach_permission_boundary
-  enable_vpc_access          = var.vpc_config != null ? true : false
-  function_name              = var.function_name
+  app                         = var.app
+  env                         = var.env
+  program                     = var.program
+  attach_permissions_boundary = var.attach_permissions_boundary
+  enable_vpc_access           = var.vpc_config != null ? true : false
+  function_name               = var.function_name
 }
 
 module "logs" {
-  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-log-group?ref=main"
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-log-group"
 
   name        = "/aws/lambda/${local.stack}-${var.function_name}"
   kms_key_arn = var.enable_log_encryption ? module.logs_key[0].arn : null
@@ -77,7 +77,7 @@ module "logs" {
 
 module "logs_key" {
   count  = var.enable_log_encryption ? 1 : 0
-  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/kms?ref=main"
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/kms"
 
   app                     = var.app
   env                     = var.env
@@ -89,7 +89,7 @@ module "logs_key" {
 
 module "code_signing_config" {
   count  = var.signing_profile_version_arns != [] ? 1 : 0
-  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config?ref=main"
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config"
 
   signing_profile_version_arns = var.signing_profile_version_arns
 }

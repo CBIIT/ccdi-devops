@@ -43,10 +43,10 @@ module "lambda" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_code_signing_config"></a> [code\_signing\_config](#module\_code\_signing\_config) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config | main |
-| <a name="module_logs"></a> [logs](#module\_logs) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-log-group | main |
-| <a name="module_logs_key"></a> [logs\_key](#module\_logs\_key) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/kms | main |
-| <a name="module_role"></a> [role](#module\_role) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function | main |
+| <a name="module_code_signing_config"></a> [code\_signing\_config](#module\_code\_signing\_config) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config | n/a |
+| <a name="module_logs"></a> [logs](#module\_logs) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-log-group | n/a |
+| <a name="module_logs_key"></a> [logs\_key](#module\_logs\_key) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/kms | n/a |
+| <a name="module_role"></a> [role](#module\_role) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function | n/a |
 
 # Resources
 
@@ -61,7 +61,7 @@ module "lambda" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_architectures"></a> [architectures](#input\_architectures) | the architectures supported by the lambda function | `string` | `"x86_64"` | no |
-| <a name="input_attach_permission_boundary"></a> [attach\_permission\_boundary](#input\_attach\_permission\_boundary) | whether to attach a permission boundary to the iam role for lambda | `bool` | `false` | no |
+| <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether to attach a permission boundary to the iam role for lambda | `bool` | `false` | no |
 | <a name="input_dead_letter_config_target_arn"></a> [dead\_letter\_config\_target\_arn](#input\_dead\_letter\_config\_target\_arn) | the arn of the dead letter queue to which lambda will send failed events | `string` | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | describe the purpose of the lambda function | `string` | n/a | yes |
 | <a name="input_enable_log_encryption"></a> [enable\_log\_encryption](#input\_enable\_log\_encryption) | whether to enable encryption of logs in cloudwatch with kms | `bool` | `true` | no |
