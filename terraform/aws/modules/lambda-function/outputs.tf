@@ -89,19 +89,19 @@ output "version" {
 }
 
 output "role_arn" {
-  value       = aws_iam_role.this.arn
+  value       = module.role.arn
   description = "the arn of the role"
   sensitive   = false
 }
 
 output "role_name" {
-  value       = aws_iam_role.this.name
+  value       = module.role.name
   description = "the name of the role"
   sensitive   = false
 }
 
 output "role_id" {
-  value       = aws_iam_role.this.id
+  value       = module.role.id
   description = "the id of the role"
   sensitive   = false
 }

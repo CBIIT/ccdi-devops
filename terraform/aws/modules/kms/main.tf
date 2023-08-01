@@ -6,8 +6,8 @@ resource "aws_kms_key" "this" {
 }
 
 resource "aws_kms_key_policy" "this" {
-  key_id  = aws_kms_key.this.key_id
-  policy  = data.aws_iam_policy_document.this.json
+  key_id = aws_kms_key.this.key_id
+  policy = data.aws_iam_policy_document.this.json
 }
 
 resource "aws_kms_alias" "this" {

@@ -40,12 +40,16 @@ resource "aws_iam_role_policy_attachment" "xray" {
 ####################################################################################################
 
 resource "aws_iam_policy" "vpc" {
+  count = var.enable_vpc_access ? 1 : 0
+
   name        = "power-user-${local.stack}-lambda-${var.function_name}-vpc"
   description = "allows the lambda function named ${local.stack}-${var.function_name} to access the vpc"
-  policy      = data.aws_iam_policy_document.vpc.json
+  policy      = data.aws_iam_policy_document.vpc[0].json
 }
 
 resource "aws_iam_role_policy_attachment" "vpc" {
+  count = var.enable_vpc_access ? 1 : 0
+
   role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.vpc.arn
+  policy_arn = aws_iam_policy.vpc[0].arn
 }
