@@ -43,10 +43,10 @@ module "lambda" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_code_signing_config"></a> [code\_signing\_config](#module\_code\_signing\_config) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config | main |
-| <a name="module_logs"></a> [logs](#module\_logs) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-log-group | main |
-| <a name="module_logs_key"></a> [logs\_key](#module\_logs\_key) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/kms | main |
-| <a name="module_role"></a> [role](#module\_role) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function | main |
+| <a name="module_code_signing_config"></a> [code\_signing\_config](#module\_code\_signing\_config) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config | n/a |
+| <a name="module_logs"></a> [logs](#module\_logs) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/cloudwatch-log-group | n/a |
+| <a name="module_logs_key"></a> [logs\_key](#module\_logs\_key) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/kms | n/a |
+| <a name="module_role"></a> [role](#module\_role) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/lambda-function | n/a |
 
 # Resources
 
