@@ -88,7 +88,7 @@ module "logs_key" {
 }
 
 module "code_signing_config" {
-  count  = var.signing_profile_version_arns != [] ? 1 : 0
+  count  = var.signing_profile_version_arns == null ? 0 : 1
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/lambda-code-signing-config"
 
   signing_profile_version_arns = var.signing_profile_version_arns

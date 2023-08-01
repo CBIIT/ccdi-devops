@@ -147,7 +147,7 @@ variable "s3_key" {
 variable "signing_profile_version_arns" {
   type        = list(string)
   description = "optionally provide a list of signing profile version arns to associate with the lambda function"
-  default     = []
+  default     = null
   sensitive   = false
 }
 
