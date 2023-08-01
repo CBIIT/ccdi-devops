@@ -98,6 +98,13 @@ variable "handler" {
   sensitive   = false
 }
 
+variable "lambda_permissions_api_gateway_execution_arn" {
+  type        = set(string)
+  description = "optionally provide a list of api gateway execution arns to associate with the lambda function"
+  default     = []
+  sensitive   = false
+}
+
 variable "layers" {
   type        = list(string)
   description = "optionally provide a list of lambda layer arns to associate with the lambda function"

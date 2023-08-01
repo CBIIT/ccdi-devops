@@ -53,6 +53,7 @@ module "lambda" {
 | Name | Type |
 |------|------|
 | [aws_lambda_function.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) | resource |
+| [aws_lambda_permission.api_gateway](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_permission) | resource |
 
 # Inputs
 
@@ -70,6 +71,7 @@ module "lambda" {
 | <a name="input_filename"></a> [filename](#input\_filename) | provide the path and name of the file that contains your lambda function code | `string` | `null` | no |
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | provide a name for the lambda function that will be appended to the stack name | `string` | n/a | yes |
 | <a name="input_handler"></a> [handler](#input\_handler) | the name of the handler function (for example, main.lambda\_handler) | `string` | n/a | yes |
+| <a name="input_lambda_permissions_api_gateway_execution_arn"></a> [lambda\_permissions\_api\_gateway\_execution\_arn](#input\_lambda\_permissions\_api\_gateway\_execution\_arn) | optionally provide a list of api gateway execution arns to associate with the lambda function | `set(string)` | `[]` | no |
 | <a name="input_layers"></a> [layers](#input\_layers) | optionally provide a list of lambda layer arns to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | the amount of memory available to the lambda function | `number` | `128` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
