@@ -42,8 +42,8 @@ resource "aws_lambda_function" "this" {
     for_each = var.vpc_config != null ? [var.vpc_config] : []
 
     content {
-      security_group_ids = var.vpc_config.value.security_group_ids
-      subnet_ids         = var.vpc_config.value.subnet_ids
+      security_group_ids = var.vpc_config.security_group_ids
+      subnet_ids         = var.vpc_config.subnet_ids
     }
   }
 
@@ -102,3 +102,4 @@ resource "aws_lambda_permission" "api_gateway" {
   function_name = aws_lambda_function.this.function_name
   source_arn    = "${each.key}/*"
 }
+
