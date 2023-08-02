@@ -102,3 +102,4 @@ resource "aws_lambda_permission" "api_gateway" {
   function_name = aws_lambda_function.this.function_name
   source_arn    = "${each.key}/*"
 }
+
