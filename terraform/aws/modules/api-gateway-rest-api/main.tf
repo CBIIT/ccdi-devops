@@ -1,9 +1,3 @@
-resource "aws_api_gateway_account" "this" {
-  count = var.create_cloudwatch_role ? 1 : 0
-
-  cloudwatch_role_arn = aws_iam_role.this.arn
-}
-
 resource "aws_api_gateway_rest_api" "this" {
   api_key_source               = var.api_key_source
   binary_media_types           = var.binary_media_types
@@ -65,21 +59,21 @@ resource "aws_api_gateway_method_settings" "this" {
 
 resource "aws_cloudwatch_log_group" "this" {
   name              = "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.this.id}/${var.env}"
-  retention_in_days = 90
+  retention_in_days = 180
 }
 
-resource "aws_iam_role" "this" {
-  name                 = "power-user-${var.program}-${local.level}-${var.app}-rest-api-logs"
-  assume_role_policy   = data.aws_iam_policy_document.trust.json
-  permissions_boundary = local.level == "prod" ? null : local.permissions_boundary_arn
+resource "aws_api_gateway_account" "this" {
+  count = var.create_cloudwatch_role ? 1 : 0
+
+  cloudwatch_role_arn = module.role[0].arn
 }
 
-resource "aws_iam_policy" "this" {
-  name   = "power-user-${var.program}-${local.level}-${var.app}-rest-api-logs"
-  policy = data.aws_iam_policy_document.this.json
-}
+module "role" {
+  count  = var.create_cloudwatch_role ? 1 : 0
+  source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/api-gateway"
 
-resource "aws_iam_role_policy_attachment" "this" {
-  role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.this.arn
+  app                         = var.app
+  env                         = local.level
+  program                     = var.program
+  attach_permissions_boundary = local.level == "prod" ? false : true
 }
