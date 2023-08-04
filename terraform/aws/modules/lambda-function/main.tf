@@ -93,13 +93,3 @@ module "code_signing_config" {
 
   signing_profile_version_arns = var.signing_profile_version_arns
 }
-
-resource "aws_lambda_permission" "api_gateway" {
-  for_each = var.lambda_permissions_api_gateway_execution_arn
-
-  principal     = "apigateway.amazonaws.com"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.this.function_name
-  source_arn    = "${each.key}/*"
-}
-
