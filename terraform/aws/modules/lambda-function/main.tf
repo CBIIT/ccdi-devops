@@ -51,10 +51,6 @@ resource "aws_lambda_function" "this" {
     module.role,
     module.logs
   ]
-
-  lifecycle {
-    ignore_changes = [last_modified]
-  }
 }
 
 module "role" {
