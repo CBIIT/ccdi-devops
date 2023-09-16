@@ -46,6 +46,9 @@
 | <a name="input_nonprod_account_id"></a> [nonprod\_account\_id](#input\_nonprod\_account\_id) | the nonprod project account id - required if create\_access\_policy is true | `string` | `null` | no |
 | <a name="input_prod_account_id"></a> [prod\_account\_id](#input\_prod\_account\_id) | the prod project account id - required if create\_access\_policy is true | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_tpm_email"></a> [tpm\_email](#input\_tpm\_email) | the email address of the technical project manager for the application | `string` | n/a | yes |
+| <a name="input_tpm_first_name"></a> [tpm\_first\_name](#input\_tpm\_first\_name) | the first name of the technical project manager for the application | `string` | n/a | yes |
+| <a name="input_tpm_last_name"></a> [tpm\_last\_name](#input\_tpm\_last\_name) | the last name of the technical project manager for the application | `string` | n/a | yes |
 
 # Outputs
 
