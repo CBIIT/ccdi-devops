@@ -53,7 +53,7 @@
 | <a name="input_preferred_backup_window"></a> [preferred\_backup\_window](#input\_preferred\_backup\_window) | the daily time range during which automated backups are created if automated backups are enabled | `string` | `"07:00-09:00"` | no |
 | <a name="input_preferred_maintenance_window"></a> [preferred\_maintenance\_window](#input\_preferred\_maintenance\_window) | the weekly time range during which system maintenance can occur, in (UTC) | `string` | `"sun:05:00-sun:09:00"` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
-| <a name="input_query_timeout"></a> [query\_timeout](#input\_query\_timeout) | time in milliseconds that a query can run before it is terminated by the cluster | `number` | `"120,000"` | no |
+| <a name="input_query_timeout"></a> [query\_timeout](#input\_query\_timeout) | time in milliseconds that a query can run before it is terminated by the cluster | `string` | `"120,000"` | no |
 | <a name="input_replication_source_identifier"></a> [replication\_source\_identifier](#input\_replication\_source\_identifier) | the ARN of the source Neptune instance if this Neptune instance is a read replica | `string` | `null` | no |
 | <a name="input_skip_final_snapshot"></a> [skip\_final\_snapshot](#input\_skip\_final\_snapshot) | whether to skip the creation of a final snapshot before deleting the cluster | `bool` | `true` | no |
 | <a name="input_snapshot_identifier"></a> [snapshot\_identifier](#input\_snapshot\_identifier) | the name of an existing snapshot from which to create this cluster | `string` | `null` | no |
