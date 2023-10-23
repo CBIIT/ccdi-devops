@@ -137,7 +137,7 @@ variable "port" {
 }
 
 variable "query_timeout" {
-  type        = number
+  type        = string
   description = "time in milliseconds that a query can run before it is terminated by the cluster"
   default     = "120,000"
   sensitive   = false
