@@ -1,0 +1,79 @@
+<!-- BEGIN_TF_DOCS -->
+# Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
+
+# Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0 |
+
+# Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_cluster_parameters"></a> [cluster\_parameters](#module\_cluster\_parameters) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/neptune-cluster-parameter-group | neptune-demo |
+| <a name="module_instance_parameters"></a> [instance\_parameters](#module\_instance\_parameters) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/neptune-instance-parameter-group | neptune-demo |
+
+# Resources
+
+| Name | Type |
+|------|------|
+| [aws_kms_alias.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
+| [aws_kms_key.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
+| [aws_kms_key_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key_policy) | resource |
+| [aws_neptune_cluster.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster) | resource |
+| [aws_neptune_subnet_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_subnet_group) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.kms](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+
+# Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_allow_major_version_upgrade"></a> [allow\_major\_version\_upgrade](#input\_allow\_major\_version\_upgrade) | indicates that major version upgrades are allowed | `string` | `false` | no |
+| <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
+| <a name="input_apply_immediately"></a> [apply\_immediately](#input\_apply\_immediately) | indicates whether the changes should be applied immediately or during the next maintenance window | `string` | `true` | no |
+| <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | number of days to retain backups for | `string` | `1` | no |
+| <a name="input_copy_tags_to_snapshot"></a> [copy\_tags\_to\_snapshot](#input\_copy\_tags\_to\_snapshot) | whether to copy tags to snapshots | `bool` | `true` | no |
+| <a name="input_database_subnet_ids"></a> [database\_subnet\_ids](#input\_database\_subnet\_ids) | the list of subnet IDs to associate with the cluster | `set(string)` | n/a | yes |
+| <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | whether to enable deletion protection | `bool` | `true` | no |
+| <a name="input_enable_caching"></a> [enable\_caching](#input\_enable\_caching) | whether to enable caching for the cluster | `bool` | `false` | no |
+| <a name="input_enable_cloudwatch_logs_exports"></a> [enable\_cloudwatch\_logs\_exports](#input\_enable\_cloudwatch\_logs\_exports) | list of log types to export to cloudwatch | `list(string)` | <pre>[<br>  "audit"<br>]</pre> | no |
+| <a name="input_engine"></a> [engine](#input\_engine) | the name of the database engine to be used for this instance | `string` | `"neptune"` | no |
+| <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | the version of the database engine to use | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
+| <a name="input_final_snapshot_identifier"></a> [final\_snapshot\_identifier](#input\_final\_snapshot\_identifier) | the name of the final snapshot to be created immediately before deleting the cluster | `string` | `null` | no |
+| <a name="input_iam_database_authentication_enabled"></a> [iam\_database\_authentication\_enabled](#input\_iam\_database\_authentication\_enabled) | whether to enable IAM database authentication for the cluster | `bool` | `false` | no |
+| <a name="input_iam_roles"></a> [iam\_roles](#input\_iam\_roles) | the list of IAM roles to associate with the cluster | `set(string)` | `[]` | no |
+| <a name="input_port"></a> [port](#input\_port) | the port on which the DB accepts connections | `number` | `8182` | no |
+| <a name="input_preferred_backup_window"></a> [preferred\_backup\_window](#input\_preferred\_backup\_window) | the daily time range during which automated backups are created if automated backups are enabled | `string` | `"07:00-09:00"` | no |
+| <a name="input_preferred_maintenance_window"></a> [preferred\_maintenance\_window](#input\_preferred\_maintenance\_window) | the weekly time range during which system maintenance can occur, in (UTC) | `string` | `"sun:05:00-sun:09:00"` | no |
+| <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_query_timeout"></a> [query\_timeout](#input\_query\_timeout) | time in milliseconds that a query can run before it is terminated by the cluster | `number` | `"120,000"` | no |
+| <a name="input_replication_source_identifier"></a> [replication\_source\_identifier](#input\_replication\_source\_identifier) | the ARN of the source Neptune instance if this Neptune instance is a read replica | `string` | `null` | no |
+| <a name="input_skip_final_snapshot"></a> [skip\_final\_snapshot](#input\_skip\_final\_snapshot) | whether to skip the creation of a final snapshot before deleting the cluster | `bool` | `true` | no |
+| <a name="input_snapshot_identifier"></a> [snapshot\_identifier](#input\_snapshot\_identifier) | the name of an existing snapshot from which to create this cluster | `string` | `null` | no |
+| <a name="input_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#input\_vpc\_security\_group\_ids) | the list of security group IDs to associate with the cluster | `set(string)` | n/a | yes |
+
+# Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | the neptune cluster arn |
+| <a name="output_cluster_identifier"></a> [cluster\_identifier](#output\_cluster\_identifier) | the neptune cluster identifier |
+| <a name="output_cluster_members"></a> [cluster\_members](#output\_cluster\_members) | the neptune cluster members |
+| <a name="output_cluster_resource_id"></a> [cluster\_resource\_id](#output\_cluster\_resource\_id) | the neptune cluster resource id |
+| <a name="output_endpoint"></a> [endpoint](#output\_endpoint) | the neptune cluster endpoint |
+| <a name="output_id"></a> [id](#output\_id) | the neptune cluster id |
+| <a name="output_kms_alias_arn"></a> [kms\_alias\_arn](#output\_kms\_alias\_arn) | the neptune cluster kms key alias arn |
+| <a name="output_kms_alias_id"></a> [kms\_alias\_id](#output\_kms\_alias\_id) | the neptune cluster kms key alias id |
+| <a name="output_kms_alias_name"></a> [kms\_alias\_name](#output\_kms\_alias\_name) | the neptune cluster kms key alias name |
+| <a name="output_kms_key_arn"></a> [kms\_key\_arn](#output\_kms\_key\_arn) | the neptune cluster kms key arn |
+| <a name="output_kms_key_id"></a> [kms\_key\_id](#output\_kms\_key\_id) | the neptune cluster kms key id |
+| <a name="output_port"></a> [port](#output\_port) | the neptune cluster port |
+| <a name="output_reader_endpoint"></a> [reader\_endpoint](#output\_reader\_endpoint) | the neptune cluster reader endpoint |
+<!-- END_TF_DOCS -->
