@@ -51,7 +51,7 @@ resource "aws_kms_key" "this" {
 }
 
 resource "aws_kms_alias" "this" {
-  name          = "${local.stack}-neptune-key"
+  name          = "alias/${local.stack}-neptune-key"
   target_key_id = aws_kms_key.this.id
 }
 
