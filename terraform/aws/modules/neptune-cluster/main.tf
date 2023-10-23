@@ -31,7 +31,7 @@ module "cluster_parameters" {
   app              = var.app
   env              = var.env
   program          = var.program
-  enable_audit_log = var.enable_audit_log == ["audit"] ? true : false
+  enable_audit_log = var.enable_cloudwatch_logs_exports == ["audit"] ? true : false
 }
 
 module "instance_parameters" {
