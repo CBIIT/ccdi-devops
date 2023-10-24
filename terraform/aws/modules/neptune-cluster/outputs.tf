@@ -89,7 +89,7 @@ output "instance_id" {
 }
 
 output "instance_identifier" {
-  value       = aws_neptune_cluster_instance.this.identifier
+  value       = module.neptune_instance.identifier
   description = "The neptune instance identifier"
   sensitive   = false
 }
