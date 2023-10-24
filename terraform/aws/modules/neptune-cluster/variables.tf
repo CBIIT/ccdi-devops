@@ -140,7 +140,7 @@ variable "instance_class" {
 variable "max_capacity" {
   type        = number
   description = "the maximum capacity for the cluster in neptune capacity units when serverless is enabled"
-  default     = 2
+  default     = 128
   sensitive   = false
 }
 
