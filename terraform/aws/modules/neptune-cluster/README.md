@@ -53,7 +53,7 @@
 | <a name="input_iam_database_authentication_enabled"></a> [iam\_database\_authentication\_enabled](#input\_iam\_database\_authentication\_enabled) | whether to enable IAM database authentication for the cluster | `bool` | `false` | no |
 | <a name="input_iam_roles"></a> [iam\_roles](#input\_iam\_roles) | the list of IAM roles to associate with the cluster | `set(string)` | `[]` | no |
 | <a name="input_instance_class"></a> [instance\_class](#input\_instance\_class) | the instance class to use (i.e., db.r5.large) - only required when serverless is not enabled | `string` | `"db.r5.large"` | no |
-| <a name="input_max_capacity"></a> [max\_capacity](#input\_max\_capacity) | the maximum capacity for the cluster in neptune capacity units when serverless is enabled | `number` | `2` | no |
+| <a name="input_max_capacity"></a> [max\_capacity](#input\_max\_capacity) | the maximum capacity for the cluster in neptune capacity units when serverless is enabled | `number` | `128` | no |
 | <a name="input_min_capacity"></a> [min\_capacity](#input\_min\_capacity) | the minimum capacity for the cluster in neptune capacity units when serverless is enabled | `number` | `2` | no |
 | <a name="input_port"></a> [port](#input\_port) | the port on which the DB accepts connections | `number` | `8182` | no |
 | <a name="input_preferred_backup_window"></a> [preferred\_backup\_window](#input\_preferred\_backup\_window) | the daily time range during which automated backups are created if automated backups are enabled | `string` | `"07:00-09:00"` | no |
