@@ -64,6 +64,7 @@ variable "copy_tags_to_snapshot" {
 variable "database_subnet_ids" {
   type        = set(string)
   description = "the list of subnet IDs to associate with the cluster"
+  default = [  ]
   sensitive   = false
 }
 
