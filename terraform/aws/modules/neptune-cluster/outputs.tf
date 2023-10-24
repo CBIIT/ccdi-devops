@@ -1,4 +1,4 @@
-output "arn" {
+output "cluster_arn" {
   value       = aws_neptune_cluster.this.arn
   description = "the neptune cluster arn"
   sensitive   = false
@@ -22,25 +22,25 @@ output "cluster_resource_id" {
   sensitive   = false
 }
 
-output "endpoint" {
+output "cluster_endpoint" {
   value       = aws_neptune_cluster.this.endpoint
   description = "the neptune cluster endpoint"
   sensitive   = false
 }
 
-output "id" {
+output "cluster_id" {
   value       = aws_neptune_cluster.this.id
   description = "the neptune cluster id"
   sensitive   = false
 }
 
-output "port" {
+output "cluster_port" {
   value       = aws_neptune_cluster.this.port
   description = "the neptune cluster port"
   sensitive   = false
 }
 
-output "reader_endpoint" {
+output "cluster_reader_endpoint" {
   value       = aws_neptune_cluster.this.reader_endpoint
   description = "the neptune cluster reader endpoint"
   sensitive   = false
@@ -49,6 +49,48 @@ output "reader_endpoint" {
 output "kms_key_arn" {
   value       = aws_kms_key.this.arn
   description = "the neptune cluster kms key arn"
+  sensitive   = false
+}
+
+output "instance_address" {
+  value       = aws_neptune_cluster_instance.this.address
+  description = "The hostname of the instance. See also endpoint and port."
+  sensitive   = false
+}
+
+output "instance_arn" {
+  value       = aws_neptune_cluster_instance.this.arn
+  description = "The ARN of the neptune instance"
+  sensitive   = false
+}
+
+output "instance_cluster_identifier" {
+  value       = aws_neptune_cluster_instance.this.cluster_identifier
+  description = "The neptune cluster identifier"
+  sensitive   = false
+}
+
+output "instance_dbi_resource_id" {
+  value       = aws_neptune_cluster_instance.this.dbi_resource_id
+  description = "The neptune instance resource ID"
+  sensitive   = false
+}
+
+output "instance_endpoint" {
+  value       = aws_neptune_cluster_instance.this.endpoint
+  description = "The hostname of the instance. See also address and port."
+  sensitive   = false
+}
+
+output "instance_id" {
+  value       = aws_neptune_cluster_instance.this.id
+  description = "The neptune instance ID"
+  sensitive   = false
+}
+
+output "instance_identifier" {
+  value       = aws_neptune_cluster_instance.this.identifier
+  description = "The neptune instance identifier"
   sensitive   = false
 }
 

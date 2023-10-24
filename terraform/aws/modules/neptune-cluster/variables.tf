@@ -40,6 +40,13 @@ variable "apply_immediately" {
   sensitive   = false
 }
 
+variable "auto_minor_version_upgrade" {
+  type        = bool
+  description = "indicates that minor engine upgrades are applied automatically to the instance during the maintenance window"
+  default     = true
+  sensitive   = false
+}
+
 variable "backup_retention_period" {
   type        = string
   description = "number of days to retain backups for"
@@ -81,6 +88,13 @@ variable "enable_cloudwatch_logs_exports" {
   sensitive   = false
 }
 
+variable "enable_serverless" {
+  type        = bool
+  description = "whether to enable serverless mode for the cluster"
+  default     = true
+  sensitive   = false
+}
+
 variable "engine" {
   type        = string
   description = "the name of the database engine to be used for this instance"
@@ -91,6 +105,7 @@ variable "engine" {
 variable "engine_version" {
   type        = string
   description = "the version of the database engine to use"
+  default     = "1.2.1.0"
   sensitive   = false
 }
 
@@ -112,6 +127,27 @@ variable "iam_database_authentication_enabled" {
   type        = bool
   description = "whether to enable IAM database authentication for the cluster"
   default     = false
+  sensitive   = false
+}
+
+variable "instance_class" {
+  type        = string
+  description = "the instance class to use (i.e., db.r5.large) - only required when serverless is not enabled"
+  default     = "db.r5.large"
+  sensitive   = false
+}
+
+variable "max_capacity" {
+  type        = number
+  description = "the maximum capacity for the cluster in neptune capacity units when serverless is enabled"
+  default     = 2
+  sensitive   = false
+}
+
+variable "min_capacity" {
+  type        = number
+  description = "the minimum capacity for the cluster in neptune capacity units when serverless is enabled"
+  default     = 2
   sensitive   = false
 }
 
