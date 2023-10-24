@@ -41,7 +41,7 @@
 | <a name="input_auto_minor_version_upgrade"></a> [auto\_minor\_version\_upgrade](#input\_auto\_minor\_version\_upgrade) | indicates that minor engine upgrades are applied automatically to the instance during the maintenance window | `bool` | `true` | no |
 | <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | number of days to retain backups for | `string` | `1` | no |
 | <a name="input_copy_tags_to_snapshot"></a> [copy\_tags\_to\_snapshot](#input\_copy\_tags\_to\_snapshot) | whether to copy tags to snapshots | `bool` | `true` | no |
-| <a name="input_database_subnet_ids"></a> [database\_subnet\_ids](#input\_database\_subnet\_ids) | the list of subnet IDs to associate with the cluster | `set(string)` | `[]` | no |
+| <a name="input_database_subnet_ids"></a> [database\_subnet\_ids](#input\_database\_subnet\_ids) | the list of subnet IDs to associate with the cluster | `set(string)` | n/a | yes |
 | <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | whether to enable deletion protection | `bool` | `true` | no |
 | <a name="input_enable_caching"></a> [enable\_caching](#input\_enable\_caching) | whether to enable caching for the cluster | `bool` | `false` | no |
 | <a name="input_enable_cloudwatch_logs_exports"></a> [enable\_cloudwatch\_logs\_exports](#input\_enable\_cloudwatch\_logs\_exports) | list of log types to export to cloudwatch | `list(string)` | <pre>[<br>  "audit"<br>]</pre> | no |
