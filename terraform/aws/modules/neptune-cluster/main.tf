@@ -48,7 +48,7 @@ module "instance_parameters" {
   app            = var.app
   env            = var.env
   program        = var.program
-  enable_caching = var.serverless_enabled ? false : var.enable_caching
+  enable_caching = var.enable_serverless ? false : var.enable_caching
   query_timeout  = var.query_timeout
 }
 
