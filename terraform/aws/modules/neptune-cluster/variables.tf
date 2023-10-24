@@ -205,4 +205,3 @@ variable "vpc_security_group_ids" {
   description = "the list of security group IDs to associate with the cluster"
   sensitive   = false
 }
-
