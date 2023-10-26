@@ -96,20 +96,6 @@ variable "port" {
   sensitive   = false
 }
 
-variable "preferred_backup_window" {
-  type        = string
-  description = "the daily time range during which automated backups are created if automated backups are enabled"
-  default     = null
-  sensitive   = false
-}
-
-variable "preferred_maintenance_window" {
-  type        = string
-  description = "the weekly time range (in UTC) during which system maintenance can occur"
-  default     = null
-  sensitive   = false
-}
-
 variable "promotion_tier" {
   type        = number
   description = "a value that specifies the order in which an instance is promoted to the primary instance after a failure of the existing primary instance"
