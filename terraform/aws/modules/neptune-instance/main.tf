@@ -9,8 +9,6 @@ resource "aws_neptune_cluster_instance" "this" {
   neptune_subnet_group_name    = var.neptune_subnet_group_name
   neptune_parameter_group_name = var.neptune_parameter_group_name
   port                         = var.port
-  preferred_backup_window      = var.preferred_backup_window
-  preferred_maintenance_window = var.preferred_maintenance_window
   promotion_tier               = var.promotion_tier
   publicly_accessible          = false
 }
