@@ -62,7 +62,6 @@ module "neptune_instance" {
   auto_minor_version_upgrade   = var.auto_minor_version_upgrade
   cluster_identifier           = aws_neptune_cluster.this.cluster_identifier
   engine_version               = var.engine_version
-  identifier_prefix            = "${local.stack}-neptune-serverless-instance"
   instance_class               = var.enable_serverless ? "db.serverless" : var.instance_class
   neptune_subnet_group_name    = aws_neptune_subnet_group.this.name
   neptune_parameter_group_name = var.enable_serverless ? "default.neptune1.2" : module.instance_parameters.name

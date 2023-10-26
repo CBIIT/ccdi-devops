@@ -68,13 +68,6 @@ variable "engine_version" {
   sensitive   = false
 }
 
-variable "identifier_prefix" {
-  type        = string
-  description = "creates a unique identifier beginning with the specified prefix"
-  default     = null
-  sensitive   = false
-}
-
 variable "instance_class" {
   type        = string
   description = "the instance class to use"

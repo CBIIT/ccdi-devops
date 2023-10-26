@@ -5,7 +5,6 @@ resource "aws_neptune_cluster_instance" "this" {
   cluster_identifier           = var.cluster_identifier
   engine                       = var.engine
   engine_version               = var.engine_version
-  identifier_prefix            = var.identifier_prefix
   instance_class               = var.instance_class
   neptune_subnet_group_name    = var.neptune_subnet_group_name
   neptune_parameter_group_name = var.neptune_parameter_group_name
