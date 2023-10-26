@@ -68,13 +68,6 @@ variable "engine_version" {
   sensitive   = false
 }
 
-variable "identifier" {
-  type        = string
-  description = "the name of the neptune instance"
-  default     = null
-  sensitive   = false
-}
-
 variable "identifier_prefix" {
   type        = string
   description = "creates a unique identifier beginning with the specified prefix"
