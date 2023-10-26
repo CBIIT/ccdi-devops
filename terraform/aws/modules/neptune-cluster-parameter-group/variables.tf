@@ -32,3 +32,10 @@ variable "enable_audit_log" {
   default     = true
   sensitive   = false
 }
+
+variable "family" {
+  type        = string
+  description = "the family of the neptune cluster parameter group"
+  default     = "neptune1.2"
+  sensitive   = false
+}
