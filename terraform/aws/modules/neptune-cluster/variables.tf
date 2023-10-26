@@ -154,7 +154,7 @@ variable "min_capacity" {
 variable "preferred_backup_window" {
   type        = string
   description = "the daily time range during which automated backups are created if automated backups are enabled"
-  default     = "07:00-09:00"
+  default     = "02:00-04:00"
   sensitive   = false
 }
 
