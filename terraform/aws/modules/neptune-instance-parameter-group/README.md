@@ -24,6 +24,7 @@
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_enable_caching"></a> [enable\_caching](#input\_enable\_caching) | enable neptune query caching | `bool` | `false` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
+| <a name="input_family"></a> [family](#input\_family) | the neptune parameter group family | `string` | `"neptune1.2"` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_query_timeout"></a> [query\_timeout](#input\_query\_timeout) | the timeout for neptune queries | `string` | `"120,000"` | no |
 
