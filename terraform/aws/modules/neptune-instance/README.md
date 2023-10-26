@@ -29,7 +29,6 @@
 | <a name="input_engine"></a> [engine](#input\_engine) | the name of the database engine to be used for this instance | `string` | `"neptune"` | no |
 | <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | the version number of the database engine to use | `string` | `null` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
-| <a name="input_identifier_prefix"></a> [identifier\_prefix](#input\_identifier\_prefix) | creates a unique identifier beginning with the specified prefix | `string` | `null` | no |
 | <a name="input_instance_class"></a> [instance\_class](#input\_instance\_class) | the instance class to use | `string` | `null` | no |
 | <a name="input_neptune_parameter_group_name"></a> [neptune\_parameter\_group\_name](#input\_neptune\_parameter\_group\_name) | the name of the neptune parameter group | `string` | `null` | no |
 | <a name="input_neptune_subnet_group_name"></a> [neptune\_subnet\_group\_name](#input\_neptune\_subnet\_group\_name) | the name of the neptune subnet group | `string` | `null` | no |
