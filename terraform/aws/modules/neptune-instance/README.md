@@ -33,8 +33,6 @@
 | <a name="input_neptune_parameter_group_name"></a> [neptune\_parameter\_group\_name](#input\_neptune\_parameter\_group\_name) | the name of the neptune parameter group | `string` | `null` | no |
 | <a name="input_neptune_subnet_group_name"></a> [neptune\_subnet\_group\_name](#input\_neptune\_subnet\_group\_name) | the name of the neptune subnet group | `string` | `null` | no |
 | <a name="input_port"></a> [port](#input\_port) | the port on which the DB accepts connections | `number` | `null` | no |
-| <a name="input_preferred_backup_window"></a> [preferred\_backup\_window](#input\_preferred\_backup\_window) | the daily time range during which automated backups are created if automated backups are enabled | `string` | `null` | no |
-| <a name="input_preferred_maintenance_window"></a> [preferred\_maintenance\_window](#input\_preferred\_maintenance\_window) | the weekly time range (in UTC) during which system maintenance can occur | `string` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_promotion_tier"></a> [promotion\_tier](#input\_promotion\_tier) | a value that specifies the order in which an instance is promoted to the primary instance after a failure of the existing primary instance | `number` | `null` | no |
 
