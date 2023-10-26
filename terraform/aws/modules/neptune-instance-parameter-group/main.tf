@@ -1,6 +1,6 @@
 resource "aws_neptune_parameter_group" "this" {
   name        = "${local.stack}-neptune-instance-params"
-  family      = "${local.stack}-neptune-cluster"
+  family      = var.family
   description = "${local.stack} neptune instance-level parameter group"
 
   parameter {

@@ -13,7 +13,7 @@ resource "aws_neptune_cluster" "this" {
   iam_database_authentication_enabled  = var.iam_database_authentication_enabled
   kms_key_arn                          = aws_kms_alias.this.arn
   neptune_subnet_group_name            = aws_neptune_subnet_group.this.name
-  neptune_cluster_parameter_group_name = var.enable_serverless ? "default.neptune1.2" : module.cluster_parameters.name
+  neptune_cluster_parameter_group_name = var.enable_serverless ? "default.neptune1.2" : module.cluster_parameters[0].name
   preferred_backup_window              = var.preferred_backup_window
   preferred_maintenance_window         = var.preferred_maintenance_window
   port                                 = var.port
@@ -34,6 +34,7 @@ resource "aws_neptune_cluster" "this" {
 }
 
 module "cluster_parameters" {
+  count = var.enable_serverless ? 0 : 1
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/neptune-cluster-parameter-group?ref=neptune-demo"
 
   app              = var.app
