@@ -36,6 +36,7 @@ data "aws_iam_policy_document" "kms" {
       "kms:ListAliases",
       "kms:ListGrants",
       "kms:ListKeys",
+      "kms:ListResourceTags",
       "kms:PutKeyPolicy",
       "kms:ReEncryptFrom",
       "kms:ReEncryptTo",
