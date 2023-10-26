@@ -24,6 +24,7 @@
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
 | <a name="input_enable_audit_log"></a> [enable\_audit\_log](#input\_enable\_audit\_log) | whether to enable audit logs | `bool` | `true` | no |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
+| <a name="input_family"></a> [family](#input\_family) | the family of the neptune cluster parameter group | `string` | `"neptune1.2"` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 
 # Outputs
