@@ -88,3 +88,21 @@ variable "prod_account_id" {
   default     = null
   sensitive   = true
 }
+
+variable "tpm_email" {
+  type        = string
+  description = "the email address of the technical project manager for the application"
+  sensitive   = false
+}
+  
+variable "tpm_first_name" {
+  type        = string
+  description = "the first name of the technical project manager for the application"
+  sensitive   = false
+}
+
+variable "tpm_last_name" {
+  type        = string
+  description = "the last name of the technical project manager for the application"
+  sensitive   = false
+}
