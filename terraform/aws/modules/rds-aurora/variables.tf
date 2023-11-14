@@ -6,12 +6,12 @@ variable "app" {
 
 variable "env" {
   type        = string
-  description = "the target tier ('dev', 'qa', 'stage', or 'prod'.)"
+  description = "the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.)"
   sensitive   = false
 
   validation {
-    condition     = contains(["dev", "qa", "stage", "prod", "nonprod"], var.env)
-    error_message = "valid values are 'dev', 'qa', 'stage', 'prod', and 'nonprod'"
+    condition     = contains(["dev", "qa", "stage", "prod", "nonprod", "sandbox"], var.env)
+    error_message = "valid values are 'dev', 'qa', 'stage', 'prod', 'nonprod', and 'sandbox'"
   }
 }
 
