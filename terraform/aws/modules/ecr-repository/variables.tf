@@ -94,7 +94,7 @@ variable "tpm_email" {
   description = "the email address of the technical project manager for the application"
   sensitive   = false
 }
-  
+
 variable "tpm_first_name" {
   type        = string
   description = "the first name of the technical project manager for the application"
