@@ -4,14 +4,14 @@ variable "app" {
   sensitive   = false
 }
 
-variable "program" {
+variable "env" {
   type        = string
-  description = "the program associated with the application"
+  description = "the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.)"
   sensitive   = false
 
   validation {
-    condition     = contains(["bento", "crdc", "ccdi", "ctos", "fnl"], var.program)
-    error_message = "valid values for program are 'bento', 'crdc', 'ccdi', 'fnl' and 'ctos'"
+    condition     = contains(["dev", "qa", "stage", "prod", "nonprod", "sandbox"], var.env)
+    error_message = "valid values are 'dev', 'qa', 'stage', 'prod', 'nonprod', and 'sandbox'"
   }
 }
 
@@ -94,7 +94,7 @@ variable "tpm_email" {
   description = "the email address of the technical project manager for the application"
   sensitive   = false
 }
-  
+
 variable "tpm_first_name" {
   type        = string
   description = "the first name of the technical project manager for the application"

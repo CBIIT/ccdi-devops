@@ -52,7 +52,7 @@
 | <a name="input_db_subnet_ids"></a> [db\_subnet\_ids](#input\_db\_subnet\_ids) | list of subnet IDs to usee | `list(string)` | `[]` | no |
 | <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | prevent deletion | `bool` | `false` | no |
 | <a name="input_enable_enhanced_monitoring"></a> [enable\_enhanced\_monitoring](#input\_enable\_enhanced\_monitoring) | whether to enable enhanced monitoring | `bool` | `true` | no |
-| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
+| <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_maintenance_window"></a> [maintenance\_window](#input\_maintenance\_window) | time to perform maintenance | `string` | `"sun:00:00-sun:02:00"` | no |
 | <a name="input_master_password_length"></a> [master\_password\_length](#input\_master\_password\_length) | length of master user password | `number` | `15` | no |
 | <a name="input_master_username"></a> [master\_username](#input\_master\_username) | username for the database | `string` | n/a | yes |
