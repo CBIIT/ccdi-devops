@@ -5,19 +5,19 @@ output "id" {
 }
 
 output "kms_arn" {
-  value       = aws_kms_key.this[0].arn
+  value       = local.kms_arn
   description = "arn of the kms key used to encrypt the s3 bucket"
   sensitive   = false
 }
 
 output "kms_id" {
-  value       = aws_kms_key.this[0].id
+  value       = local.kms_id
   description = "id of the kms key used to encrypt the s3 bucket"
   sensitive   = false
 }
 
 output "kms_key_id" {
-  value       = aws_kms_key.this[0].key_id
+  value       = local.kms_key_id
   description = "key id of the kms key used to encrypt the s3 bucket"
   sensitive   = false
 }
