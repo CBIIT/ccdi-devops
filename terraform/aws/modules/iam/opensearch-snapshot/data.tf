@@ -11,12 +11,6 @@ data "aws_iam_policy_document" "trust" {
       identifiers = ["es.amazonaws.com"]
     }
     actions = ["sts:AssumeRole"]
-
-    condition {
-      test     = "StringEquals"
-      variable = "aws:SourceAccount"
-      values   = [data.aws_caller_identity.current.account_id]
-    }
   }
 }
 
@@ -41,14 +35,10 @@ data "aws_iam_policy_document" "this" {
   statement {
     effect = "Allow"
     actions = [
-      "iam:PassRole"
+      "iam:PassRole", 
+      "iam:GetRole"
     ]
-    resources = [aws_iam_role.this.arn]
-    condition {
-      test = "StringEquals"
-      variable = "SourceAccount"
-      values = [data.aws_caller_identity.current.account_id]
-    }
+    resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/power-user*"]
   }
 
   statement {
@@ -60,4 +50,4 @@ data "aws_iam_policy_document" "this" {
   }
 }
 
-# arn:aws:es:us-east-1:966526488680:domain/ccdi-dev-hub-opensearch
+
