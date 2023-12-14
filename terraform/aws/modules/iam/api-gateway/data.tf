@@ -20,42 +20,6 @@ data "aws_iam_policy_document" "trust" {
 
 data "aws_iam_policy_document" "this" {
   statement {
-    sid    = "apiGatewayLogPrivileges"
-    effect = "Allow"
-    actions = [
-      "logs:CreateLogDelivery",
-      "logs:CreateLogGroup",
-      "logs:CreateLogStream",
-      "logs:DeleteLogDelivery",
-      "logs:DescribeLogGroups",
-      "logs:DescribeLogStreams",
-      "logs:FilterLogEvents",
-      "logs:GetLogDelivery",
-      "logs:GetLogEvents",
-      "logs:ListLogDeliveries",
-      "logs:PutLogEvents",
-      "logs:UpdateLogDelivery"
-    ]
-    resources = ["arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:*"]
-  }
-
-  statement {
-    sid    = "apiGatewayXrayPrivileges"
-    effect = "Allow"
-    actions = [
-      "xray:PutTraceSegments",
-      "xray:PutTelemetryRecords",
-      "xray:GetSamplingRules",
-      "xray:GetSamplingTargets"
-    ]
-    resources = [
-      "arn:aws:xray:us-east-1:${data.aws_caller_identity.current.account_id}:group/*",
-      "arn:aws:xray:us-east-1:${data.aws_caller_identity.current.account_id}:sampling-rule/*"
-    ]
-  }
-
-  statement {
-    sid    = "apiGatewayELBPrivileges"
     effect = "Allow"
     actions = [
       "elasticloadbalancing:AddListenerCertificates",
@@ -63,42 +27,51 @@ data "aws_iam_policy_document" "this" {
       "elasticloadbalancing:ModifyListener",
       "elasticloadbalancing:DescribeListeners",
       "elasticloadbalancing:DescribeLoadBalancers",
+      "xray:PutTraceSegments",
+      "xray:PutTelemetryRecords",
+      "xray:GetSamplingTargets",
+      "xray:GetSamplingRules",
+      "logs:CreateLogDelivery",
+      "logs:GetLogDelivery",
+      "logs:UpdateLogDelivery",
+      "logs:DeleteLogDelivery",
+      "logs:ListLogDeliveries",
       "servicediscovery:DiscoverInstances"
     ]
     resources = ["*"]
   }
 
   statement {
-    sid    = "apiGatewayKinesisPrivileges"
     effect = "Allow"
     actions = [
       "firehose:DescribeDeliveryStream",
       "firehose:PutRecord",
       "firehose:PutRecordBatch"
     ]
-    resources = [
-      "arn:aws:firehose:us-east-1:${data.aws_caller_identity.current.account_id}:deliverystream/*"
-    ]
+    resources = ["arn:aws:firehose:*:*:deliverystream/amazon-apigateway-*"]
   }
 
   statement {
-    sid    = "apiGatewayACMPrivileges"
     effect = "Allow"
     actions = [
       "acm:DescribeCertificate",
       "acm:GetCertificate"
     ]
-    resources = [
-      "arn:aws:acm:us-east-1:${data.aws_caller_identity.current.account_id}:certificate/*"
-    ]
+    resources = ["arn:aws:acm:*:*:certificate/*"]
   }
 
   statement {
-    sid    = "apiGatewayENIPrivileges"
     effect = "Allow"
     actions = [
-      "arn:aws:ec2:us-east-1:${data.aws_caller_identity.current.account_id}:network-interface/*"
+      "ec2:CreateNetworkInterfacePermission"
     ]
+    resources = ["arn:aws:ec2:*:*:network-interface/*"]
+  }
+
+  statement {
+    effect    = "Allow"
+    actions   = ["ec2:CreateTags"]
+    resources = ["arn:aws:ec2:*:*:network-interface/*"]
     condition {
       test     = "ForAllValues:StringEquals"
       variable = "aws:TagKeys"
@@ -107,7 +80,6 @@ data "aws_iam_policy_document" "this" {
   }
 
   statement {
-    sid    = "apiGatewayNetworkPrivileges"
     effect = "Allow"
     actions = [
       "ec2:ModifyNetworkInterfaceAttribute",
@@ -129,17 +101,16 @@ data "aws_iam_policy_document" "this" {
   }
 
   statement {
-    sid    = "apiGatewayServiceDiscPrivileges"
     effect = "Allow"
     actions = [
-      "servicediscovery:GetNamespace",
-      "servicediscovery:GetService",
+      "servicediscovery:GetNamespace"
     ]
-    resources = [
-      "arn:aws:servicediscovery:us-east-1:${data.aws_caller_identity.current.account_id}:namespace/*",
-      "arn:aws:servicediscovery:us-east-1:${data.aws_caller_identity.current.account_id}:service/*"
-    ]
+    resources = ["arn:aws:servicediscovery:*:*:namespace/*"]
   }
 
-
+  statement {
+    effect    = "Allow"
+    actions   = ["servicediscovery:GetService"]
+    resources = ["arn:aws:servicediscovery:*:*:service/*"]
+  }
 }
