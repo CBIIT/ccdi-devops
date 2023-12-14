@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "this" {
-  family                   = "${var.program}-${var.app}-${var.microservice}"
+  family                   = "${var.program}-${var.env}-${var.app}-${var.microservice}"
   cpu                      = local.cpu
   memory                   = local.memory
   execution_role_arn       = var.execution_role_arn
