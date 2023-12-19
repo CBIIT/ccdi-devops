@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "this" {
       "s3:PutObject",
       "s3:GetObject"
     ]
-    resources = [var.s3_bucket_arn]
+    resources = ["${var.s3_bucket_arn}/*"]
   }
 
   statement {
