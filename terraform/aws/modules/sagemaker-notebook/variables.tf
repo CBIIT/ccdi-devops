@@ -1,7 +1,7 @@
 variable "direct_internet_access" {
-  type        = bool
+  type        = string
   description = "Whether the notebook instance is directly accessible via the internet. The default value is Disabled"
-  default     = false
+  default     = "Disabled"
   sensitive   = false
 }
 
