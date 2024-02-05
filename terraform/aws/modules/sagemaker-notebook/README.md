@@ -6,7 +6,6 @@
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-| <a name="provider_template"></a> [template](#provider\_template) | n/a |
 
 # Resources
 
@@ -15,13 +14,12 @@
 | [aws_sagemaker_notebook_instance.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sagemaker_notebook_instance) | resource |
 | [aws_sagemaker_notebook_instance_lifecycle_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sagemaker_notebook_instance_lifecycle_configuration) | resource |
 | [aws_region.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
-| [template_file.this](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 # Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_direct_internet_access"></a> [direct\_internet\_access](#input\_direct\_internet\_access) | Whether the notebook instance is directly accessible via the internet. The default value is Disabled | `bool` | `false` | no |
+| <a name="input_direct_internet_access"></a> [direct\_internet\_access](#input\_direct\_internet\_access) | Whether the notebook instance is directly accessible via the internet. The default value is Disabled | `string` | `"Disabled"` | no |
 | <a name="input_graph_notebook_auth_mode"></a> [graph\_notebook\_auth\_mode](#input\_graph\_notebook\_auth\_mode) | The authentication mode to use when connecting to the Neptune Cluster | `string` | `"DEFAULT"` | no |
 | <a name="input_graph_notebook_host"></a> [graph\_notebook\_host](#input\_graph\_notebook\_host) | The endpoint for the Neptune Cluster that this notebook instance will connect to | `string` | n/a | yes |
 | <a name="input_graph_notebook_port"></a> [graph\_notebook\_port](#input\_graph\_notebook\_port) | The port number on which the notebook server will listen | `number` | `8182` | no |
