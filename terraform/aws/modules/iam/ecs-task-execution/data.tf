@@ -37,6 +37,18 @@ data "aws_iam_policy_document" "this" {
   statement {
     effect = "Allow"
     actions = [
+      "secretsmanager:ListSecrets",
+      "secretsmanager:ListSecretVersionIds",
+      "secretsmanager:GetSecretValue",
+      "secretsmanager:GetResourcePolicy",
+      "secretsmanager:DescribeSecret"
+    ]
+    resources = ["arn:aws:secretsmanager:us-east-1:${data.aws_caller_identity.current.account_id}:secret:*"]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
       "ecr:GetAuthorizationToken"
     ]
     resources = ["*"]
