@@ -1,3 +1,17 @@
+variable "attach_permissions_boundary" {
+  type        = bool
+  description = "Whether to attach a permissions boundary to the IAM role if the iam role is created"
+  default     = false
+  sensitive   = false
+}
+
+variable "create_iam_role" {
+  type        = bool
+  description = "Whether to create an IAM role for the notebook instance"
+  default     = true
+  sensitive   = false
+}
+
 variable "create_lifecycle_config" {
   type        = bool
   description = "Whether to create a lifecycle configuration for the notebook instance"
@@ -29,6 +43,13 @@ variable "graph_notebook_port" {
   type        = number
   description = "The port number on which the notebook server will listen"
   default     = 8182
+  sensitive   = false
+}
+
+variable "iam_prefix" {
+  type        = string
+  description = "The prefix to use for the name of the IAM role that is created"
+  default     = "power-user"
   sensitive   = false
 }
 

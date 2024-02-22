@@ -27,3 +27,27 @@ resource "aws_sagemaker_notebook_instance_lifecycle_configuration" "this" {
     aws_region                    = data.aws_region.this.name
   })
 }
+
+resource "aws_iam_role" "this" {
+  count = var.create_iam_role ? 1 : 0
+
+  name                 = "${var.iam_prefix}-${var.resource_prefix}-notebook-role"
+  description          = "iam role for the notebook instance"
+  assume_role_policy   = data.aws_iam_policy_document.trust[0].json
+  permissions_boundary = local.permissions_boundary_arn
+}
+
+resource "aws_iam_policy" "this" {
+  count = var.create_iam_role ? 1 : 0
+
+  name        = "${var.iam_prefix}-${var.resource_prefix}-notebook-policy"
+  description = "iam policy for the notebook instance"
+  policy      = data.aws_iam_policy_document.this[0].json
+}
+
+resource "aws_iam_role_policy_attachment" "this" {
+  count = var.create_iam_role ? 1 : 0
+
+  role       = aws_iam_role.this[0].name
+  policy_arn = aws_iam_policy.this[0].arn
+}
