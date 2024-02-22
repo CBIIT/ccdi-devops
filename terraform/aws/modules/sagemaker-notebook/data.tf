@@ -69,7 +69,7 @@ data "aws_iam_policy_document" "this" {
       "sagemaker:CreateApp",
       "sagemaker:DeleteApp"
     ]
-    resources = "arn:aws:sagemaker:*:*:app/*/*/*/*"
+    resources = ["arn:aws:sagemaker:*:*:app/*/*/*/*"]
     condition {
       test     = "Null"
       variable = "sagemaker:OwnerUserProfileArn"
@@ -84,7 +84,7 @@ data "aws_iam_policy_document" "this" {
       "sagemaker:CreateApp",
       "sagemaker:DeleteApp"
     ]
-    resources = "arn:aws:sagemaker:*:*:app/*/*/*/*"
+    resources = ["arn:aws:sagemaker:*:*:app/*/*/*/*"]
     condition {
       test     = "StringEquals"
       variable = "sagemaker:SpaceSharingType"
@@ -100,7 +100,7 @@ data "aws_iam_policy_document" "this" {
       "sagemaker:UpdateSpace",
       "sagemaker:DeleteSpace"
     ]
-    resources = "arn:aws:sagemaker:*:*:space/*/*"
+    resources = ["arn:aws:sagemaker:*:*:space/*/*"]
     condition {
       test     = "Null"
       variable = "sagemaker:OwnerUserProfileArn"
@@ -116,7 +116,7 @@ data "aws_iam_policy_document" "this" {
       "sagemaker:UpdateSpace",
       "sagemaker:DeleteSpace"
     ]
-    resources = "arn:aws:sagemaker:*:*:space/*/*"
+    resources = ["arn:aws:sagemaker:*:*:space/*/*"]
     condition {
       test     = "ArnLike"
       variable = "sagemaker:OwnerUserProfileArn"
@@ -136,7 +136,7 @@ data "aws_iam_policy_document" "this" {
       "sagemaker:CreateApp",
       "sagemaker:DeleteApp"
     ]
-    resources = "arn:aws:sagemaker:*:*:app/*/*/*/*"
+    resources = ["arn:aws:sagemaker:*:*:app/*/*/*/*"]
     condition {
       test     = "ArnLike"
       variable = "sagemaker:OwnerUserProfileArn"
