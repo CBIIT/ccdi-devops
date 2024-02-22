@@ -82,7 +82,8 @@ variable "resource_prefix" {
 
 variable "role_arn" {
   type        = string
-  description = "The Amazon Resource Name (ARN) of the IAM role to associate with the instance. This is the role that has permissions to be able to access data sources and resources that you specify in your notebook instance"
+  description = "The Amazon Resource Name (ARN) of the IAM role to associate with the instance - use if create_iam_role is false"
+  default     = null
   sensitive   = false
 }
 
@@ -98,7 +99,6 @@ variable "security_groups" {
   description = "The security group IDs to associate with the instance"
   default     = []
   sensitive   = false
-
 }
 
 variable "subnet_id" {
@@ -106,7 +106,6 @@ variable "subnet_id" {
   description = "The subnet ID in which to launch the instance"
   default     = null
   sensitive   = false
-
 }
 
 variable "volume_size" {
