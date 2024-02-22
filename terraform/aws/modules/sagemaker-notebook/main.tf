@@ -15,8 +15,8 @@ resource "aws_sagemaker_notebook_instance" "this" {
   }
 
   tags = {
-    aws-neptune-cluster-id = var.neptune_cluster_id
-    aws-neptune-cluster-arn = var.neptune_cluster_arn
+    aws-neptune-cluster-id  = var.neptune_cluster_id
+    aws-neptune-resource-id = var.neptune_resource_id
   }
 }
 
