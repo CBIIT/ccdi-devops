@@ -510,7 +510,7 @@ data "aws_iam_policy_document" "this" {
     sid       = "CtosAllowPassRoleToSageMaker"
     effect    = "Allow"
     actions   = ["iam:PassRole"]
-    resources = "arn:aws:iam::*:role/*"
+    resources = ["arn:aws:iam::*:role/*"]
     condition {
       test     = "StringEquals"
       variable = "iam:PassedToService"
