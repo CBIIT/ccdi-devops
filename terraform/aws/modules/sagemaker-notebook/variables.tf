@@ -1,3 +1,10 @@
+variable "create_lifecycle_config" {
+  type        = bool
+  description = "Whether to create a lifecycle configuration for the notebook instance"
+  default     = true
+  sensitive   = false
+}
+
 variable "direct_internet_access" {
   type        = string
   description = "Whether the notebook instance is directly accessible via the internet. The default value is Disabled"

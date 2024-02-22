@@ -1,0 +1,5 @@
+locals {
+  lifecycle_config_arn            = var.create_lifecycle_config ? aws_sagemaker_notebook_instance_lifecycle_configuration.this[0].arn : "lifecycle config was not created"
+  lifecycle_config_name           = var.create_lifecycle_config ? aws_sagemaker_notebook_instance_lifecycle_configuration.this[0].name : "lifecycle config was not created"
+  lifecycle_config_onstart_script = var.create_lifecycle_config ? aws_sagemaker_notebook_instance_lifecycle_configuration.this[0].on_start : "lifecycle config was not created"
+}

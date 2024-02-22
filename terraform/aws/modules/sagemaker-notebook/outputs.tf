@@ -41,25 +41,19 @@ output "url" {
 }
 
 output "lifecycle_config_arn" {
-  value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.arn
+  value       = local.lifecycle_config_arn
   description = "the arn of the lifecycle configuration"
   sensitive   = false
 }
 
-output "lifecycle_config_id" {
-  value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.id
-  description = "the id of the lifecycle configuration"
-  sensitive   = false
-}
-
 output "lifecycle_config_name" {
-  value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.name
+  value       = local.lifecycle_config_name
   description = "the name of the lifecycle configuration"
   sensitive   = false
 }
 
 output "lifecycle_config_onstart_script" {
-  value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.on_start
+  value       = local.lifecycle_config_onstart_script
   description = "the on start script of the lifecycle configuration"
   sensitive   = false
 }
