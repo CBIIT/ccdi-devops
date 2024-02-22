@@ -23,7 +23,7 @@ resource "aws_sagemaker_notebook_instance_lifecycle_configuration" "this" {
     graph_notebook_auth_mode      = var.graph_notebook_auth_mode
     graph_notebook_host           = var.graph_notebook_host
     graph_notebook_port           = var.graph_notebook_port
-    neptune_load_from_s3_role_arn = var.role_arn
+    neptune_load_from_s3_role_arn = local.role_arn
     aws_region                    = data.aws_region.this.name
   })
 }
