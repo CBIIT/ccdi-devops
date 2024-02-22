@@ -13,6 +13,11 @@ resource "aws_sagemaker_notebook_instance" "this" {
   instance_metadata_service_configuration {
     minimum_instance_metadata_service_version = var.minimum_instance_metadata_service_version
   }
+
+  tags = {
+    aws-neptune-cluster-id = var.neptune_cluster_id
+    aws-neptune-cluster-arn = var.neptune_cluster_arn
+  }
 }
 
 resource "aws_sagemaker_notebook_instance_lifecycle_configuration" "this" {

@@ -67,6 +67,18 @@ variable "minimum_instance_metadata_service_version" {
   sensitive   = false
 }
 
+variable "neptune_cluster_arn" {
+  type        = string
+  description = "The ARN of the Neptune Cluster that this notebook instance will connect to"
+  sensitive   = false
+}
+
+variable "neptune_cluster_id" {
+  type        = string
+  description = "The ID of the Neptune Cluster that this notebook instance will connect to"
+  sensitive   = false
+}
+
 variable "platform_identifier" {
   type        = string
   description = "The identifier of the notebook instance platform."
