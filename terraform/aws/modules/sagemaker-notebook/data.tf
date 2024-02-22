@@ -340,7 +340,7 @@ data "aws_iam_policy_document" "this" {
       "secretsmanager:DescribeSecret",
       "secretsmanager:GetSecretValue"
     ]
-    resources = "*"
+    resources = ["*"]
     condition {
       test     = "StringEquals"
       variable = "secretsmanager:ResourceTag/SageMaker"
@@ -352,7 +352,7 @@ data "aws_iam_policy_document" "this" {
     sid       = "CtosAllowServiceCatalogProvisionProduct"
     effect    = "Allow"
     actions   = ["servicecatalog:ProvisionProduct"]
-    resources = "*"
+    resources = ["*"]
   }
 
   statement {
@@ -362,7 +362,7 @@ data "aws_iam_policy_document" "this" {
       "servicecatalog:TerminateProvisionedProduct",
       "servicecatalog:UpdateProvisionedProduct"
     ]
-    resources = "*"
+    resources = ["*"]
     condition {
       test     = "StringEquals"
       variable = "servicecatalog:userLevel"
@@ -422,7 +422,7 @@ data "aws_iam_policy_document" "this" {
       "s3:GetBucketCors",
       "s3:PutBucketCors"
     ]
-    resources = "*"
+    resources = ["*"]
   }
 
   statement {
@@ -455,7 +455,7 @@ data "aws_iam_policy_document" "this" {
     sid       = "CtosAllowCreateServiceLinkedRoleForSageMakerApplicationAutoscaling"
     effect    = "Allow"
     actions   = ["iam:CreateServiceLinkedRole"]
-    resources = "arn:aws:iam::*:role/aws-service-role/sagemaker.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint"
+    resources = ["arn:aws:iam::*:role/aws-service-role/sagemaker.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint"]
     condition {
       test     = "StringLike"
       variable = "iam:AWSServiceName"
@@ -467,7 +467,7 @@ data "aws_iam_policy_document" "this" {
     sid       = "CtosAllowCreateServiceLinkedRoleForRobomaker"
     effect    = "Allow"
     actions   = ["iam:CreateServiceLinkedRole"]
-    resources = "*"
+    resources = ["*"]
     condition {
       test     = "StringEquals"
       variable = "iam:AWSServiceName"
@@ -494,7 +494,7 @@ data "aws_iam_policy_document" "this" {
     sid       = "CtosAllowPassRoleForSageMakerRoles"
     effect    = "Allow"
     actions   = ["iam:PassRole"]
-    resources = "arn:aws:iam::*:role/*AmazonSageMaker*"
+    resources = ["arn:aws:iam::*:role/*AmazonSageMaker*"]
     condition {
       test     = "StringEquals"
       variable = "iam:PassedToService"
