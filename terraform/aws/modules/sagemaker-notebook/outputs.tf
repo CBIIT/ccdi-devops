@@ -1,0 +1,65 @@
+output "arn" {
+  value       = aws_sagemaker_notebook_instance.this.arn
+  description = "the arn of the notebook instance"
+  sensitive   = false
+}
+
+output "id" {
+  value       = aws_sagemaker_notebook_instance.this.id
+  description = "the id of the notebook instance"
+  sensitive   = false
+}
+
+output "kms_key_id" {
+  value       = aws_sagemaker_notebook_instance.this.kms_key_id
+  description = "the kms key id of the notebook instance"
+  sensitive   = false
+}
+
+output "name" {
+  value       = aws_sagemaker_notebook_instance.this.name
+  description = "the name of the notebook instance"
+  sensitive   = false
+}
+
+output "network_interface_id" {
+  value       = aws_sagemaker_notebook_instance.this.network_interface_id
+  description = "the network interface id of the notebook instance"
+  sensitive   = false
+}
+
+output "role_arn" {
+  value       = aws_sagemaker_notebook_instance.this.role_arn
+  description = "the role arn of the notebook instance"
+  sensitive   = false
+}
+
+output "url" {
+  value       = aws_sagemaker_notebook_instance.this.url
+  description = "the url of the notebook instance"
+  sensitive   = false
+}
+
+output "lifecycle_config_arn" {
+  value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.arn
+  description = "the arn of the lifecycle configuration"
+  sensitive   = false
+}
+
+output "lifecycle_config_id" {
+  value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.id
+  description = "the id of the lifecycle configuration"
+  sensitive   = false
+}
+
+output "lifecycle_config_name" {
+  value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.name
+  description = "the name of the lifecycle configuration"
+  sensitive   = false
+}
+
+output "lifecycle_config_onstart_script" {
+  value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.on_start
+  description = "the on start script of the lifecycle configuration"
+  sensitive   = false
+}
