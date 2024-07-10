@@ -73,6 +73,7 @@ module "lambda" {
 | <a name="input_layers"></a> [layers](#input\_layers) | optionally provide a list of lambda layer arns to associate with the lambda function | `list(string)` | `[]` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | the amount of memory available to the lambda function | `number` | `128` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_publish"></a> [publish](#input\_publish) | whether to publish the lambda function as a new version | `bool` | `false` | no |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | the language-specific environment specified in the runtime parameter | `string` | n/a | yes |
 | <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | the name of the s3 bucket that contains the lambda function code | `string` | `null` | no |
 | <a name="input_s3_key"></a> [s3\_key](#input\_s3\_key) | the path and name of the file that contains your lambda function code | `string` | `null` | no |
