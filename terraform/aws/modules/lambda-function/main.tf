@@ -13,6 +13,7 @@ resource "aws_lambda_function" "this" {
   memory_size             = var.memory_size
   timeout                 = var.timeout
   architectures           = [var.architectures]
+  publish                 = var.publish
 
   tracing_config {
     mode = var.tracing_mode
