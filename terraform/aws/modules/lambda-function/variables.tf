@@ -112,6 +112,13 @@ variable "memory_size" {
   sensitive   = false
 }
 
+variable "publish" {
+  type        = bool
+  description = "whether to publish the lambda function as a new version"
+  default     = false
+  sensitive   = false
+}
+
 variable "runtime" {
   type        = string
   description = "the language-specific environment specified in the runtime parameter"
