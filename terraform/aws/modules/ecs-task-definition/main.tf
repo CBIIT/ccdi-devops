@@ -17,4 +17,9 @@ resource "aws_ecs_task_definition" "this" {
     local.sumologic_container_definition,
     local.newrelic_container_definition
   ])
+
+  lifecycle {
+    ignore_changes = [ container_definitions ]
+  }
 }
+
