@@ -94,6 +94,12 @@ variable "s3_backup_mode" {
   sensitive   = false
 }
 
+variable "s3_bucket_arn" {
+  type        = string
+  description = "The ARN of the S3 bucket to deliver delivery failure data to"
+  sensitive   = false
+}
+
 variable "s3_compression_format" {
   type        = string
   description = "File compression format - values are 'GZIP', 'ZIP', 'Snappy', & 'HADOOP_SNAPPY'"
