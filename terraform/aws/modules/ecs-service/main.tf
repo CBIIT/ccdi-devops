@@ -17,6 +17,11 @@ resource "aws_ecs_service" "this" {
     type = var.deployment_controller_type
   }
 
+  deployment_circuit_breaker {
+    enable = true
+    rollback = true
+  }
+
   load_balancer {
     target_group_arn = var.target_group_arn
     container_name   = "${var.program}-${var.app}-${var.container_name}"
@@ -32,7 +37,8 @@ resource "aws_ecs_service" "this" {
   lifecycle {
     ignore_changes = [
       task_definition,
-      desired_count
+      desired_count,
+      deployment_circuit_breaker
     ]
   }
 }
