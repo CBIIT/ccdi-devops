@@ -58,17 +58,13 @@ The variable named `create_security_group` allows engineers to specify whether t
 Please note that NCI restricts traffic to the non-production account environments to only permit origins from within the NIH network. Even though the default rule allows traffic from any IP over any protocol, only requests originating from the NIH network will be able to reach the non-production load balancers.
 
 <!-- BEGIN_TF_DOCS -->
-# Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
 
 # Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 # Resources
 

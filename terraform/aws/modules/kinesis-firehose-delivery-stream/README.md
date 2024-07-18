@@ -30,17 +30,13 @@ module "kinesis_firehose_delivery_stream" {
 </code></pre>
 
 <!-- BEGIN_TF_DOCS -->
-# Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
 
 # Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 # Resources
 
@@ -65,6 +61,7 @@ module "kinesis_firehose_delivery_stream" {
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_role_arn"></a> [role\_arn](#input\_role\_arn) | arn of the role for cloudwatch metric stream to assume | `string` | n/a | yes |
 | <a name="input_s3_backup_mode"></a> [s3\_backup\_mode](#input\_s3\_backup\_mode) | Defines how documents should be delivered to Amazon S3. Valid values are 'FailedDataOnly' and 'AllData' | `string` | `"FailedDataOnly"` | no |
+| <a name="input_s3_bucket_arn"></a> [s3\_bucket\_arn](#input\_s3\_bucket\_arn) | The ARN of the S3 bucket to deliver delivery failure data to | `string` | n/a | yes |
 | <a name="input_s3_compression_format"></a> [s3\_compression\_format](#input\_s3\_compression\_format) | File compression format - values are 'GZIP', 'ZIP', 'Snappy', & 'HADOOP\_SNAPPY' | `string` | `"UNCOMPRESSED"` | no |
 | <a name="input_s3_error_output_prefix"></a> [s3\_error\_output\_prefix](#input\_s3\_error\_output\_prefix) | Prefix added to failed records before writing them to S3 - immediately follows bucket name | `string` | `null` | no |
 
