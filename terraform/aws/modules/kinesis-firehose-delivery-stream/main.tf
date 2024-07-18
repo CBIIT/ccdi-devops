@@ -16,10 +16,10 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis" {
     }
 
     s3_configuration {
-      role_arn = var.role_arn
-      bucket_arn = var.s3_bucket_arn
-      prefix              = "${var.program}/${var.env}/${var.app}/"
-      buffering_size = var.buffer_size
+      role_arn           = var.role_arn
+      bucket_arn         = var.s3_bucket_arn
+      prefix             = "${var.program}/${var.env}/${var.app}/"
+      buffering_size     = var.buffer_size
       buffering_interval = var.buffer_interval
       compression_format = var.s3_compression_format
     }
