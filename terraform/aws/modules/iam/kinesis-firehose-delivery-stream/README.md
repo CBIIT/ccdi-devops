@@ -26,6 +26,7 @@
 | <a name="input_attach_permissions_boundary"></a> [attach\_permissions\_boundary](#input\_attach\_permissions\_boundary) | whether to attach permissions boundary to the role | `bool` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.) | `string` | n/a | yes |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_s3_bucket_arn"></a> [s3\_bucket\_arn](#input\_s3\_bucket\_arn) | the ARN of the S3 bucket to which the Kinesis Firehose Delivery Stream will deliver data or logs | `string` | n/a | yes |
 
 # Outputs
 
