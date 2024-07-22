@@ -31,3 +31,9 @@ variable "attach_permissions_boundary" {
   description = "whether to attach permissions boundary to the role"
   sensitive   = false
 }
+
+variable "s3_bucket_arn" {
+  type        = string
+  description = "the ARN of the S3 bucket to which the Kinesis Firehose Delivery Stream will deliver data or logs"
+  sensitive   = false
+}
