@@ -26,10 +26,18 @@ data "aws_iam_policy_document" "this" {
     effect = "Allow"
     actions = [
       "s3:GetObject",
+      "s3:GetObjectVersion",
+      "s3:GetObjectVersionAttributes",
       "s3:PutObject",
-      "s3:DeleteObject"
+      "s3:DeleteObject",
+      "s3:DeleteObjectVersion",
+      "s3:GetBucketOwnershipControls",
+      "s3:PutObjectAcl"
     ]
-    resources = ["${var.s3_bucket_arn}/*"]
+    resources = [
+      "${var.s3_bucket_arn}",
+      "${var.s3_bucket_arn}/*"
+      ]
   }
 
   statement {
@@ -43,7 +51,14 @@ data "aws_iam_policy_document" "this" {
 
   statement {
     effect = "Allow"
-    actions = ["es:ESHttpPut"]
+    actions = [
+      "es:ESHttpDelete",
+      "es:ESHttpGet",
+      "es:ESHttpHead",
+      "es:ESHttpPatch",
+      "es:ESHttpPost",
+      "es:ESHttpPut"
+      ]
     resources = [ 
       "arn:aws:es:us-east-1:${data.aws_caller_identity.current.account_id}:domain/*/*"
     ]
