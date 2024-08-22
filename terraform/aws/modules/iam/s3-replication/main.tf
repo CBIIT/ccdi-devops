@@ -6,7 +6,7 @@ resource "aws_iam_role" "this" {
 }
 
 resource "aws_iam_policy" "this" {
-  name        = "${local.stack}-s3-replication"
+  name        = "power-user-${local.stack}-s3-replication"
   description = "Policy to allow S3 to replicate objects"
   policy      = data.aws_iam_policy_document.this.json
 }
