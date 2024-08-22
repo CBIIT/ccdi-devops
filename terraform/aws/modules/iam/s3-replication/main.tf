@@ -1,5 +1,5 @@
 resource "aws_iam_role" "this" {
-  name                 = "${local.stack}-s3-replication"
+  name                 = "power-user-${local.stack}-s3-replication"
   description          = "Role assumed by S3 to support object replication"
   assume_role_policy   = data.aws_iam_policy_document.trust.json
   permissions_boundary = local.permissions_boundary_arn
