@@ -13,6 +13,12 @@
 |------|--------|---------|
 | <a name="module_role"></a> [role](#module\_role) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/api-gateway | n/a |
 
+# Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_role"></a> [role](#module\_role) | git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/iam/api-gateway | n/a |
+
 # Resources
 
 | Name | Type |
