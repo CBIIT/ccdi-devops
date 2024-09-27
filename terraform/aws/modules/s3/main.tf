@@ -68,3 +68,13 @@ module "access_point" {
   bucket_name         = aws_s3_bucket.this.id
   vpc_id              = var.access_point_vpc_id
 }
+
+resource "aws_s3_bucket_website_configuration" "this" {
+  count = var.website_configuration_enabled ? 1 : 0 
+
+  bucket = aws_s3_bucket.this.id
+  
+  index_document {
+    suffix = "index.html"
+  }
+}
