@@ -75,7 +75,12 @@ resource "aws_opensearch_domain" "this" {
     cloudwatch_log_group_arn = aws_cloudwatch_log_group.error.arn
     log_type                 = "ES_APPLICATION_LOGS"
   }
+
+  lifecycle {
+    ignore_changes = [ cluster_config[0].zone_awareness_config[0].availability_zone_count ]
+  }
 }
+
 
 module "opensearch_domain_policy" {
   count = var.create_domain_policy ? 1 : 0
