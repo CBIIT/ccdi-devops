@@ -77,7 +77,9 @@ resource "aws_opensearch_domain" "this" {
   }
 
   lifecycle {
-    ignore_changes = [ cluster_config[0].zone_awareness_config[0].availability_zone_count ]
+    ignore_changes = [
+      cluster_config[0].zone_awareness_config,
+    ]
   }
 }
 
