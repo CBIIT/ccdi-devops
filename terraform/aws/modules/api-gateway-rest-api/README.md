@@ -22,6 +22,7 @@
 | [aws_api_gateway_method_settings.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_method_settings) | resource |
 | [aws_api_gateway_rest_api.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_rest_api) | resource |
 | [aws_api_gateway_stage.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage) | resource |
+| [aws_cloudwatch_log_group.access_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 
@@ -54,6 +55,9 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_access_log_group_arn"></a> [access\_log\_group\_arn](#output\_access\_log\_group\_arn) | arn of the access log group |
+| <a name="output_access_log_group_id"></a> [access\_log\_group\_id](#output\_access\_log\_group\_id) | id of the access log group |
+| <a name="output_access_log_group_name"></a> [access\_log\_group\_name](#output\_access\_log\_group\_name) | name of the access log group |
 | <a name="output_arn"></a> [arn](#output\_arn) | arn of the api gateway resource |
 | <a name="output_created_date"></a> [created\_date](#output\_created\_date) | creation date of the api gateway resource |
 | <a name="output_deployment_created_date"></a> [deployment\_created\_date](#output\_deployment\_created\_date) | creation date of the deployment |
