@@ -39,11 +39,11 @@ resource "aws_api_gateway_stage" "this" {
   xray_tracing_enabled  = var.xray_tracing_enabled
 
   access_log_settings {
-    destination_arn = aws_cloudwatch_log_group.this.arn
+    destination_arn = aws_cloudwatch_log_group.access_logs.arn
     format          = replace(var.api_access_log_format, "\n", "")
   }
 
-  depends_on = [aws_cloudwatch_log_group.this]
+  depends_on = [aws_cloudwatch_log_group.access_logs]
 }
 
 resource "aws_api_gateway_method_settings" "this" {
@@ -59,6 +59,11 @@ resource "aws_api_gateway_method_settings" "this" {
 
 resource "aws_cloudwatch_log_group" "this" {
   name              = "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.this.id}/${var.env}"
+  retention_in_days = 180
+}
+
+resource "aws_cloudwatch_log_group" "access_logs" {
+  name              = "${local.stack}-api-gateway-access-logs"
   retention_in_days = 180
 }
 

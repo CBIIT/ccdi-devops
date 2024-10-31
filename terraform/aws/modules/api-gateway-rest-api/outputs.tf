@@ -93,3 +93,21 @@ output "stage_web_acl_arn" {
   description = "arn of the web acl associated with the stage"
   sensitive   = false
 }
+
+output "access_log_group_arn" {
+  value       = aws_cloudwatch_log_group.access_logs.arn
+  description = "arn of the access log group"
+  sensitive   = false
+}
+
+output "access_log_group_id" {
+  value       = aws_cloudwatch_log_group.access_logs.id
+  description = "id of the access log group"
+  sensitive   = false
+}
+
+output "access_log_group_name" {
+  value       = aws_cloudwatch_log_group.access_logs.name
+  description = "name of the access log group"
+  sensitive   = false
+}

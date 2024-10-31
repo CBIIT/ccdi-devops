@@ -37,13 +37,13 @@ data "aws_iam_policy_document" "this" {
     resources = [
       "${var.s3_bucket_arn}",
       "${var.s3_bucket_arn}/*"
-      ]
+    ]
   }
 
   statement {
     effect = "Allow"
     actions = [
-      "iam:PassRole", 
+      "iam:PassRole",
       "iam:GetRole"
     ]
     resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/power-user*"]
@@ -58,8 +58,8 @@ data "aws_iam_policy_document" "this" {
       "es:ESHttpPatch",
       "es:ESHttpPost",
       "es:ESHttpPut"
-      ]
-    resources = [ 
+    ]
+    resources = [
       "arn:aws:es:us-east-1:${data.aws_caller_identity.current.account_id}:domain/*/*"
     ]
   }

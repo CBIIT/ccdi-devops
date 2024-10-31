@@ -18,7 +18,7 @@ resource "aws_ecs_service" "this" {
   }
 
   deployment_circuit_breaker {
-    enable = true
+    enable   = true
     rollback = true
   }
 
