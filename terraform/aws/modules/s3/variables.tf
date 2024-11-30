@@ -177,3 +177,10 @@ variable "versioning_enabled" {
   default     = false
   sensitive   = false
 }
+
+variable "website_configuration_enabled" {
+  type        = bool
+  description = "whether to enable website configuration for the bucket"
+  default     = false
+  sensitive   = false
+}
