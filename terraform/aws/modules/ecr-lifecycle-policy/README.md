@@ -17,6 +17,8 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_dev_image_limit"></a> [dev\_image\_limit](#input\_dev\_image\_limit) | the number of non-prod images to retain in the repo | `number` | `30` | no |
+| <a name="input_prod_image_limit"></a> [prod\_image\_limit](#input\_prod\_image\_limit) | the number of prod images to retain in the repo | `number` | `10` | no |
 | <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | the name of the ecr repository to associate the lifecycle policy with | `string` | n/a | yes |
 
 # Outputs
