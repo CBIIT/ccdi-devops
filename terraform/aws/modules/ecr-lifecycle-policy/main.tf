@@ -5,12 +5,12 @@ resource "aws_ecr_lifecycle_policy" "this" {
     "rules": [
         {
             "rulePriority": 1,
-            "description": "keep last ${prod_image_count} prod images",
+            "description": "keep last ${prod_image_limit} prod images",
             "selection": {
                 "tagStatus": "tagged",
                 "tagPrefixList": ["prod"],
                 "countType": "imageCountMoreThan",
-                "countNumber": var.prod_image_count
+                "countNumber": var.prod_image_limit
             },
             "action": {
                 "type": "expire"
@@ -18,11 +18,11 @@ resource "aws_ecr_lifecycle_policy" "this" {
         },
         {
             "rulePriority": 2,
-            "description": "keep latest ${dev_image_count} non prod images",
+            "description": "keep latest ${dev_image_limit} non prod images",
             "selection": {
                 "tagStatus": "any",
                 "countType": "imageCountMoreThan",
-                "countNumber": var.dev_image_count
+                "countNumber": var.dev_image_limit
             },
             "action": {
                 "type": "expire"
