@@ -9,6 +9,7 @@ variable "dev_image_limit" {
   description = "the number of non-prod images to retain in the repo"
   sensitive   = false
   default = 30
+  nullable = false
 }
 
 variable "prod_image_limit" {
@@ -16,4 +17,5 @@ variable "prod_image_limit" {
   description = "the number of prod images to retain in the repo"
   sensitive   = false
   default = 10
+  nullable = false
 }
