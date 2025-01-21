@@ -4,14 +4,14 @@ variable "app" {
   sensitive   = false
 }
 
-variable "env" {
+variable "program" {
   type        = string
-  description = "the target tier ('dev', 'qa', 'stage', 'nonprod' or 'prod'.)"
+  description = "the program associated with the application"
   sensitive   = false
 
   validation {
-    condition     = contains(["dev", "qa", "stage", "prod", "nonprod", "sandbox"], var.env)
-    error_message = "valid values are 'dev', 'qa', 'stage', 'prod', 'nonprod', and 'sandbox'"
+    condition     = contains(["bento", "crdc", "ccdi", "ctos", "fnl"], var.program)
+    error_message = "valid values for program are 'bento', 'crdc', 'ccdi', 'fnl' and 'ctos'"
   }
 }
 
