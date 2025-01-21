@@ -106,3 +106,17 @@ variable "tpm_last_name" {
   description = "the last name of the technical project manager for the application"
   sensitive   = false
 }
+
+variable "dev_image_limit" {
+  type        = number
+  description = "the number of non-prod images to retain in the repo"
+  sensitive   = false
+  default = null
+}
+
+variable "prod_image_limit" {
+  type        = number
+  description = "the number of prod images to retain in the repo"
+  sensitive   = false
+  default = null
+}

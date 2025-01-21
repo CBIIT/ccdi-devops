@@ -26,6 +26,8 @@ module "lifecycle_policy" {
   source = "git::https://github.com/CBIIT/ccdi-devops.git//terraform/aws/modules/ecr-lifecycle-policy"
 
   repository_name = aws_ecr_repository.this.name
+  dev_image_limit = var.dev_image_limit
+  prod_image_limit = var.prod_image_limit
 }
 
 module "access_policy" {
