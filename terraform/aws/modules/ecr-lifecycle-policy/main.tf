@@ -10,7 +10,7 @@ resource "aws_ecr_lifecycle_policy" "this" {
                 "tagStatus": "tagged",
                 "tagPrefixList": ["prod"],
                 "countType": "imageCountMoreThan",
-                "countNumber": var.prod_image_limit
+                "countNumber": ${var.prod_image_limit}
             },
             "action": {
                 "type": "expire"
@@ -22,7 +22,7 @@ resource "aws_ecr_lifecycle_policy" "this" {
             "selection": {
                 "tagStatus": "any",
                 "countType": "imageCountMoreThan",
-                "countNumber": var.dev_image_limit
+                "countNumber": ${var.dev_image_limit}
             },
             "action": {
                 "type": "expire"
