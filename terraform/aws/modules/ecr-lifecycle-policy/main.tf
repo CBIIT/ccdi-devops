@@ -5,7 +5,7 @@ resource "aws_ecr_lifecycle_policy" "this" {
     "rules": [
         {
             "rulePriority": 1,
-            "description": "keep last ${prod_image_limit} prod images",
+            "description": "keep last ${var.prod_image_limit} prod images",
             "selection": {
                 "tagStatus": "tagged",
                 "tagPrefixList": ["prod"],
@@ -18,7 +18,7 @@ resource "aws_ecr_lifecycle_policy" "this" {
         },
         {
             "rulePriority": 2,
-            "description": "keep latest ${dev_image_limit} non prod images",
+            "description": "keep latest ${var.dev_image_limit} non prod images",
             "selection": {
                 "tagStatus": "any",
                 "countType": "imageCountMoreThan",
