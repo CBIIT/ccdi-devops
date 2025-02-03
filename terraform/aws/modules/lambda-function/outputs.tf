@@ -105,3 +105,9 @@ output "role_id" {
   description = "the id of the role"
   sensitive   = false
 }
+
+output "logs_id" {
+  value       = module.logs.id
+  description = "the id of the cloudwatch log group"
+  sensitive   = false
+}

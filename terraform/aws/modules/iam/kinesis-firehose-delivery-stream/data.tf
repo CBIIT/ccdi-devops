@@ -40,4 +40,29 @@ data "aws_iam_policy_document" "this" {
     ]
     resources = ["arn:aws:kinesis:us-east-1:${data.aws_caller_identity.current.account_id}:stream/*"]
   }
+
+# Allow CloudWatch Logs to push logs from multiple log groups to Kinesis Firehose
+  statement {
+    effect = "Allow"
+    actions = [
+      "logs:DescribeLogGroups",
+      "logs:DescribeLogStreams",
+      "logs:FilterLogEvents",
+      "logs:GetLogEvents",
+      "logs:PutSubscriptionFilter"
+    ]
+    resources = [
+      "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/*"
+    ]
+  }
+
+  # Allow Kinesis Firehose to send logs to Sumo Logic HTTP endpoint
+  statement {
+    effect = "Allow"
+    actions = [
+      "firehose:PutRecord",
+      "firehose:PutRecordBatch"
+    ]
+    resources = ["arn:aws:firehose:us-east-1:${data.aws_caller_identity.current.account_id}:deliverystream/*"]
+  }
 }
