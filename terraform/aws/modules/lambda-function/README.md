@@ -97,6 +97,7 @@ module "lambda" {
 | <a name="output_image_uri"></a> [image\_uri](#output\_image\_uri) | the image uri of the lambda function |
 | <a name="output_invoke_arn"></a> [invoke\_arn](#output\_invoke\_arn) | the invoke arn of the lambda function |
 | <a name="output_last_modified"></a> [last\_modified](#output\_last\_modified) | the last modified date of the lambda function |
+| <a name="output_logs_id"></a> [logs\_id](#output\_logs\_id) | the id of the cloudwatch log group |
 | <a name="output_memory_size"></a> [memory\_size](#output\_memory\_size) | the memory size of the lambda function |
 | <a name="output_qualified_arn"></a> [qualified\_arn](#output\_qualified\_arn) | the qualified arn of the lambda function |
 | <a name="output_qualified_invoke_arn"></a> [qualified\_invoke\_arn](#output\_qualified\_invoke\_arn) | the qualified invoke arn of the lambda function |
