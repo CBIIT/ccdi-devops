@@ -41,7 +41,8 @@ data "aws_iam_policy_document" "this" {
       "secretsmanager:ListSecretVersionIds",
       "secretsmanager:GetSecretValue",
       "secretsmanager:GetResourcePolicy",
-      "secretsmanager:DescribeSecret"
+      "secretsmanager:DescribeSecret",
+      "secretsmanager:GetParameters",
     ]
     resources = ["arn:aws:secretsmanager:us-east-1:${data.aws_caller_identity.current.account_id}:secret:*"]
   }
