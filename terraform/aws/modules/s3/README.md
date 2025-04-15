@@ -30,6 +30,7 @@
 | [aws_s3_bucket_logging.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_logging) | resource |
 | [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_versioning.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
+| [aws_s3_bucket_website_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 
 # Inputs
@@ -61,6 +62,7 @@
 | <a name="input_lifecycle_policy_enabled"></a> [lifecycle\_policy\_enabled](#input\_lifecycle\_policy\_enabled) | whether to enable lifecycle configuration for the bucket | `bool` | `false` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_versioning_enabled"></a> [versioning\_enabled](#input\_versioning\_enabled) | whether to enable versioning for the bucket | `bool` | `false` | no |
+| <a name="input_website_configuration_enabled"></a> [website\_configuration\_enabled](#input\_website\_configuration\_enabled) | whether to enable website configuration for the bucket | `bool` | `false` | no |
 
 # Outputs
 
