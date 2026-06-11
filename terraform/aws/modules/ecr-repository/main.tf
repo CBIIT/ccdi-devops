@@ -13,6 +13,7 @@ resource "aws_ecr_repository" "this" {
 
   tags = {
     program        = var.program
+    project        = var.project
     app            = var.app
     microservice   = var.microservice
     tpm_email      = var.tpm_email

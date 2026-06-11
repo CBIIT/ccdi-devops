@@ -44,6 +44,7 @@
 | <a name="input_prod_account_id"></a> [prod\_account\_id](#input\_prod\_account\_id) | the prod project account id - required if create\_access\_policy is true | `string` | `null` | no |
 | <a name="input_prod_image_limit"></a> [prod\_image\_limit](#input\_prod\_image\_limit) | the number of prod images to retain in the repo | `number` | `null` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
+| <a name="input_project"></a> [project](#input\_project) | the name of the project this repo is for | `string` | n/a | yes |
 | <a name="input_tpm_email"></a> [tpm\_email](#input\_tpm\_email) | the email address of the technical project manager for the application | `string` | n/a | yes |
 | <a name="input_tpm_first_name"></a> [tpm\_first\_name](#input\_tpm\_first\_name) | the first name of the technical project manager for the application | `string` | n/a | yes |
 | <a name="input_tpm_last_name"></a> [tpm\_last\_name](#input\_tpm\_last\_name) | the last name of the technical project manager for the application | `string` | n/a | yes |
