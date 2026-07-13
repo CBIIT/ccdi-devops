@@ -18,6 +18,7 @@ resource "aws_ecr_repository" "this" {
     tpm_email      = var.tpm_email
     tpm_first_name = var.tpm_first_name
     tpm_last_name  = var.tpm_last_name
+    project        = var.project
   }
 }
 
