@@ -4,6 +4,12 @@ variable "app" {
   sensitive   = false
 }
 
+variable "project" {
+  type        = string
+  description = "the name of the application"
+  sensitive   = false
+}
+
 variable "program" {
   type        = string
   description = "the program associated with the application"
